@@ -10,6 +10,8 @@ public class Block_UD : MonoBehaviour {
 
 	public Material clicked_Color;
 
+	public GameObject Tower;
+
 	bool isClicked = false;
 	private MeshRenderer current_Color;
 
@@ -22,8 +24,12 @@ public class Block_UD : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+		Vector3 offset = Vector3.zero;
+		offset = gameObject.transform.position;
+		offset.y = gameObject.transform.position.y + 1;
 		current_Color.material = clicked_Color;
 		isClicked = true;
+		Instantiate(Tower, offset, Quaternion.identity);
 	}
 	void OnMouseOver() {
 		current_Color.material = hovered_Color;
