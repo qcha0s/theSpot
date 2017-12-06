@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class BaseKartMovement : MonoBehaviour {
     #region Public Variables
-    public float m_acceleration;
-    public float m_brakeAcceleration;
-    public float m_frictionAcceleration;
-    public float m_maxSpeed;
-    public float m_maxReverseSpeed;
-    public float m_speedEpsilon;
-    public float m_bestTurnSpeed;
-    public float m_maxTurnRadius;
-    public float m_minTurnRadius;
-    public float m_forceDeadZone;
-    public float m_turnDeadZone;
-    public float m_minDriftRadius;
+    public float m_acceleration = 5f;
+    public float m_brakeAcceleration = 10f;
+    public float m_frictionAcceleration = 2f;
+    public float m_maxSpeed = 20f;
+    public float m_maxReverseSpeed = 5f;
+    public float m_speedEpsilon = 0.1f;
+    public float m_bestTurnSpeed = 15f;
+    public float m_maxTurnRadius = 50f;
+    public float m_minTurnRadius = 5f;
+    public float m_forceDeadZone = 0.1f;
+    public float m_turnDeadZone = 0.1f;
+    public float m_minDriftRadius = 4f;
     #endregion
     #region Private Variables
     private bool m_isGrounded = false;
@@ -29,17 +29,8 @@ public class BaseKartMovement : MonoBehaviour {
     #endregion
     #region Accessors
     #endregion
-    #region Methods
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
-    {
-        m_velocity = new Vector3();
-        m_characterController = GetComponent<CharacterController>();
-    }
-    public void Gas(float amount){
+    #region Public Methods
+     public void Gas(float amount){
         // Mathf.Clamp(amount, 0, 1);
         if(amount > m_forceDeadZone){
             m_isForceApplied = true;
@@ -83,9 +74,21 @@ public class BaseKartMovement : MonoBehaviour {
     public void SetDrift(bool isDrifting){
         m_isDrifting = isDrifting;
     }
+
+    #endregion
+    #region Private & Protected Methods
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        m_velocity = new Vector3();
+        m_characterController = GetComponent<CharacterController>();
+    }
     void FixedUpdate() {
 
-        if(!m_isForceApplied){
+        if(!m_isForceApplied && m_isGrounded){
             float slowDirection = m_speed > 0 ? 1 : -1; 
             m_speed -= m_frictionAcceleration * slowDirection * Time.deltaTime;
             if(m_speed * slowDirection < m_speedEpsilon){
@@ -110,6 +113,4 @@ public class BaseKartMovement : MonoBehaviour {
         m_isForceApplied = false;
     }
     #endregion
-
-	
 }
