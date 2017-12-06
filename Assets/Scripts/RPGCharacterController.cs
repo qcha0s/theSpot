@@ -87,9 +87,9 @@ public class RPGCharacterController : MonoBehaviour {
 			}
 
 			if(m_moveDirection.magnitude > 0.05f){
-				m_animationController.SetBool("isWalking",true);
+				m_animationController.SetBool("isRunning",true);
 			}else{
-				m_animationController.SetBool("isWalking",false);
+				m_animationController.SetBool("isRunning",false);
 			}
 			m_animationController.SetFloat("Speed", m_moveDirection.z);
 			m_animationController.SetFloat("Direction", m_moveDirection.x);
@@ -136,35 +136,7 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetBool("isAttacking",false);
 			//m_weaponHitBox.enabled = false;
 		}
-		// if(currentupperTorsoState.fullPathHash == m_attackState){
-		// 	for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-		// 		m_weaponHitBoxes[i].enabled = true;
-		// 	}
-		// }
-		// else{
-		// 	if(Input.GetMouseButtonDown(0)){
-		// 		m_animationController.SetBool("isAttacking",true);
-		// 	}
-		// 	else{
-		// 		m_animationController.SetBool("isAttacking", false);
-		// 	}
-		// }
-		// if(currentupperTorsoState.fullPathHash == m_attackState){
-		// 	for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-		// 		m_weaponHitBoxes[i].enabled = true;
-		// 	}
-			
-		// }else{
-		// 	if(Input.GetButtonDown("Attack")){
-				
-		// 		m_animationController.SetBool("isAttacking",true);
-		// 	} else {
-		// 		m_animationController.SetBool("isAttacking", false);
-		// 		for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-		// 			m_weaponHitBoxes[i].enabled = false;
-		// 		}
-		// 	}
-		// }
+		
 
 	}
 }
