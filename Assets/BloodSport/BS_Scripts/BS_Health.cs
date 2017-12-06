@@ -6,13 +6,14 @@ public class BS_Health : MonoBehaviour {
 
 	public const float MAX_HEALTH = 1000.0f;
 	public float m_currentHealth;
+	public float m_damageReduction = 1f;
 
-	void start() {
+	void Start() {
 		m_currentHealth = MAX_HEALTH;
 	}
 
 	public void TakeDamage(float damage) {
-		m_currentHealth -= damage;
+		m_currentHealth -= damage * m_damageReduction;
 		Die();
 	}
 
