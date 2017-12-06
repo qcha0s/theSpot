@@ -12,15 +12,8 @@ public class BS_Health : MonoBehaviour {
 		m_currentHealth = MAX_HEALTH;
 	}
 
-	void Update() {
-		if(Input.GetKeyDown(KeyCode.X)) {
-			TakeDamage(50.0f);
-		}
-	}
-
 	public void TakeDamage(float damage) {
 		m_currentHealth -= damage * m_damageReduction;
-		Debug.Log(m_currentHealth);
 		Die();
 	}
 
