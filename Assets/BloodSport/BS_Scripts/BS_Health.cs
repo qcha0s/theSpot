@@ -1,20 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BS_Health : MonoBehaviour {
 
 	public const float MAX_HEALTH = 1000.0f;
 	public float m_currentHealth;
 	public float m_damageReduction = 1f;
+	public Slider m_healthBar;
+	public Text m_healthText;
 
 	void Start() {
 		m_currentHealth = MAX_HEALTH;
+		m_healthBar.value = CalculateHealth();
+		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
 	}
 
 	public void TakeDamage(float damage) {
 		m_currentHealth -= damage * m_damageReduction;
 		Die();
+		m_healthBar.value = CalculateHealth();
+		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
 	}
 
 	public void Die() {
@@ -30,5 +37,11 @@ public class BS_Health : MonoBehaviour {
 		if(m_currentHealth > MAX_HEALTH) {
 			m_currentHealth = MAX_HEALTH;
 		}
+		m_healthBar.value = CalculateHealth();
+		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+	}
+
+	private float CalculateHealth() {
+		return m_currentHealth / MAX_HEALTH;
 	}
 }
