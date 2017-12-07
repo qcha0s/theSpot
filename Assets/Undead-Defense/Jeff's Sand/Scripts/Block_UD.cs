@@ -31,14 +31,14 @@ public class Block_UD : MonoBehaviour {
 		isClicked = true;
 		Instantiate(Tower, offset, Quaternion.identity);
 	}
-	void OnMouseOver() {
+	public void HighlightBlock() {
 		current_Color.material = hovered_Color;
 		if(isClicked) {
 			current_Color.material = clicked_Color;
 		}
 	}
 
-	void OnMouseExit() {
+	public void NormalizeBlock() {
 		current_Color.material = unhovered_Color;
 		if(isClicked) {
 			current_Color.material = clicked_Color;
