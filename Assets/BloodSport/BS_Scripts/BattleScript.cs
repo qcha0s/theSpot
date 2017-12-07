@@ -43,7 +43,7 @@ public class BattleScript : NetworkBehaviour {
 	void CmdAttack(Quaternion bulletRotation){
 		GameObject fireBall = Instantiate(prefab, prefabSpawnPoint.transform.position + transform.forward * m_bulletSpace, bulletRotation).gameObject;
         fireBall.GetComponent<Rigidbody>().velocity = fireBall.transform.forward * m_fireBallSpeed;
-		fireBall.GetComponent<Bullet>().SetOwner(gameObject);
+		//fireBall.GetComponent<Bullet>().SetOwner(gameObject);
         NetworkServer.Spawn(fireBall);
         Destroy(fireBall.gameObject, 2.0f);
 	}
