@@ -33,6 +33,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
+		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
 		
 	}
 
@@ -82,17 +83,17 @@ public class RPGCharacterController : MonoBehaviour {
 			m_moveDirection *= m_isWalking ? m_walkSpeed * m_speedMultiplier : m_runSpeed * m_speedMultiplier;
 
 			if(Input.GetButton("Jump")){
-				m_jumping = true;
+				m_animationController.SetTrigger("Jump");
 				m_moveDirection.y = m_jumpSpeed;
 			}
 
-			if(m_moveDirection.magnitude > 0.05f){
+			if(m_moveDirection.magnitude > 0.1f){
 				m_animationController.SetBool("isRunning",true);
 			}else{
 				m_animationController.SetBool("isRunning",false);
 			}
-			m_animationController.SetFloat("Speed", m_moveDirection.z);
-			m_animationController.SetFloat("Direction", m_moveDirection.x);
+			m_animationController.SetFloat("Forward", m_moveDirection.z);
+			m_animationController.SetFloat("Right", m_moveDirection.x);
 
 			m_moveDirection = transform.TransformDirection(m_moveDirection);
 		}
@@ -111,10 +112,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 		if(m_jumping){
 			m_moveStatus = "jump";
-			m_animationController.SetBool("isJumping",true);
-		}
-		else{
-			m_animationController.SetBool("isJumping",false);
+			m_animationController.SetTrigger("Jump");
 		}
 
 
