@@ -55,9 +55,9 @@ public class BaseKartMovement : MonoBehaviour {
             float turnDirection = amount < 0 ? -1 : 1; 
             if(m_speed != 0){
                 underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_speed, -1, 1);
+                m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - m_minTurnRadius) * Mathf.Abs(amount * underSteerFactor));
             }
-            m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - m_minTurnRadius) * Mathf.Abs(amount * underSteerFactor));
-            if(underSteerFactor == 0f){
+            else if(underSteerFactor == 0f){
                 m_currentTurnRadius = Mathf.Infinity;
             }
         }
@@ -74,7 +74,19 @@ public class BaseKartMovement : MonoBehaviour {
     public void SetDrift(bool isDrifting){
         m_isDrifting = isDrifting;
     }
-
+    public float GetTurnAmountForTurnRadius(float turnRadius){
+        float underSteerFactor = 0f;
+        float turnDirection = turnRadius < 0 ? -1 : 1;
+        float maxMinTurnRadiusDifference = m_maxTurnRadius - m_minTurnRadius;
+        if(m_speed != 0){
+            underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_speed, -1, 1);
+        }else{
+            underSteerFactor = 1;
+        }
+        float turnAmount = (m_maxTurnRadius - (turnRadius / turnDirection)) / 
+            maxMinTurnRadiusDifference * underSteerFactor * turnDirection;
+        return turnAmount;
+    }
     #endregion
     #region Private & Protected Methods
     /// <summary>
@@ -83,6 +95,11 @@ public class BaseKartMovement : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        Debug.Log(GetTurnAmountForTurnRadius(m_maxTurnRadius-1));
+        Debug.Log(GetTurnAmountForTurnRadius(m_minTurnRadius));
+        Debug.Log(GetTurnAmountForTurnRadius(-m_maxTurnRadius+1));
+        Debug.Log(GetTurnAmountForTurnRadius(-m_minTurnRadius));
+
         m_velocity = new Vector3();
         m_characterController = GetComponent<CharacterController>();
     }
