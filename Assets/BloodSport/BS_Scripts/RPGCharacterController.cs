@@ -127,14 +127,11 @@ public class RPGCharacterController : MonoBehaviour {
 			Debug.Log(currentupperTorsoState.fullPathHash);
 		}
 		if(Input.GetMouseButtonDown(0)){
-			m_animationController.SetBool("isAttacking",true);
+			m_animationController.SetBool("isAttacking", true);
 			//m_weaponHitBox.enabled = true;
-		}
-		else if(Input.GetMouseButtonUp(0)){
-			m_animationController.SetBool("isAttacking",false);
+		} else if(Input.GetMouseButtonUp(0)){
+			m_animationController.SetBool("isAttacking", false);
 			//m_weaponHitBox.enabled = false;
 		}
-		
-
 	}
 }
