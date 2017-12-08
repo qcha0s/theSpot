@@ -71,11 +71,6 @@ public class UD_Tower : MonoBehaviour {
 		InvokeRepeating("LookAtTarget", 0f, 0f);
 	}
 
-	void OnTriggerExit (Collider other) {
-		Debug.Log("Lost you");
-	}
-
-
 	void OnDrawGizmosSelected () {
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, range);
