@@ -18,6 +18,20 @@ public class BS_Mage : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.F)) {
 			m_animationController.SetTrigger("isAttacking");
+			Debug.Log("pressed F");
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha1)) {
+			m_animationController.SetTrigger("isAbility1");
+			Debug.Log("pressed 1");
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+			m_animationController.SetTrigger("isAbility2");
+			Debug.Log("pressed 2");
+
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			m_animationController.SetTrigger("isAbility3");
+			Debug.Log("pressed 3");
 		}
 	}
 
