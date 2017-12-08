@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: EZReplayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1002 &100001
+EditorExtensionImpl:
+  serializedVersion: 6
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!1002 &400001
+EditorExtensionImpl:
+  serializedVersion: 6
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1981636484, guid: a6e864248dcad154cac649966b55ef4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EZRicon: {fileID: 2800000, guid: 7c402dc20066ca342b9f2cf8f3a67bdd, type: 3}
+  playIcon: {fileID: 2800000, guid: 635f2b0393a3ada4582dca68766d869d, type: 3}
+  pauseIcon: {fileID: 2800000, guid: 36ef1f977cc57a340ada10ba2a0d6e7e, type: 3}
+  startRecordIcon: {fileID: 2800000, guid: 46ccf505474693547b4c7073461176b5, type: 3}
+  stopRecordIcon: {fileID: 2800000, guid: 4081d4bc8f574d94b87db8bf455c8b52, type: 3}
+  replayIcon: {fileID: 2800000, guid: 80b9a14103b8ba34b853007f3c859d4e, type: 3}
+  stopIcon: {fileID: 2800000, guid: 80b4743b96d41794ca714b66ff7707a0, type: 3}
+  closeIcon: {fileID: 2800000, guid: 1c8939577864be54293170ed4ac42f42, type: 3}
+  rewindIcon: {fileID: 2800000, guid: 029f51967ff13a64ab2a09a07958a9b8, type: 3}
+  showHintsForImportantOptions: 1
+  useRecordingGUI: 1
+  useReplayGUI: 1
+  useDarkStripesInReplay: 1
+  precacheGameobjects: 0
+  compressSaves: 0
+  sendCallbacks: 0
+  callbacksToExecute: []
+  showFullVersionLicensingInfo: 1
+  autoDeactivateLiveObjectsOnReplay: 1
+  recordingInterval: .0500000007
+  gameObjectsToRecord: []
+  componentsAndScriptsToKeepAtReplay: []
+--- !u!1002 &11400001
+EditorExtensionImpl:
+  serializedVersion: 6
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+--- !u!1002 &100100001
+EditorExtensionImpl:
+  serializedVersion: 6
