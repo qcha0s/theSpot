@@ -31,7 +31,7 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		if (Physics.Raycast(startPos,forward, out hit)) {
 			Debug.Log(hit.collider.name);
 			if (hit.collider.tag == "Interactable") {
-				InteractableObject_UD newObj = m_object = hit.collider.GetComponent<InteractableObject_UD>();
+				InteractableObject_UD newObj = hit.collider.GetComponent<InteractableObject_UD>();
 				if (m_object == null) {
 					m_object = newObj;
 				} else if (newObj != m_object) {
