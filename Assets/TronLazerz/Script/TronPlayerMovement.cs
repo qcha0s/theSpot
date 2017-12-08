@@ -4,46 +4,22 @@ using UnityEngine;
 
 public class TronPlayerMovement : MonoBehaviour {
 
-	bool wasJustClicked = true;
-    bool canMove;
-    Vector2 playerSize;
- 
-	// Use this for initialization
-	void Start () {
-        playerSize = gameObject.GetComponent<SpriteRenderer>().bounds.extents;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButton(0))
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
- 
-            if (wasJustClicked)
+	float distance = 10;
+
+    
+    public Rigidbody rb_paddle;
+        void Start() {
+            rb_paddle = GetComponent<Rigidbody>();
+            
+        }
+        void Update(){
+            if (Input.GetMouseButton(0))
             {
-                wasJustClicked = false;
- 
-                if ((mousePos.x >= transform.position.x && mousePos.x < transform.position.x + playerSize.x ||
-                mousePos.x <= transform.position.x && mousePos.x > transform.position.x - playerSize.x) &&
-                (mousePos.y >= transform.position.y && mousePos.y < transform.position.y + playerSize.y ||
-                mousePos.y <= transform.position.y && mousePos.y > transform.position.y - playerSize.y))
-                {
-                    canMove = true;
-                }
-                else
-                {
-                    canMove = false;
-                }
-            }
- 
-            if (canMove)
-            {
-                transform.position = mousePos;
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+            transform.position = objPosition;
             }
         }
-        else
-        {
-            wasJustClicked = true;
-        }
-	}
+   
 }
