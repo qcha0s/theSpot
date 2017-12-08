@@ -41,11 +41,11 @@ public class UD_Tower : MonoBehaviour {
 
 	void Shoot () {
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-		Bullet bullet = bulletGO.GetComponent<Bullet>();
+//		Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-		if(bullet != null) {
-			bullet.Seek(target);
-		}
+		// if(bullet != null) {
+		// 	bullet.Seek(target);
+		// }
 	}
 
 	void LookAtTarget () {
