@@ -13,7 +13,11 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
 			if (m_object != null) {
+				
+				GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
 				m_object.Interact();
+				
+				
 			}
 		}
 	}

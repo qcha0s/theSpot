@@ -38,12 +38,6 @@ public class GameManager_UD : MonoBehaviour {
 
 	int[] m_mapUnlockState = new int[3];
 
-	GameMode m_currentGameMode = GameMode.Normal;
-
-	bool m_showMouse;
-
-	BuildSpot_UD m_currentSpot;
-
 	//unlock states
 	//0 - locked
 	//1 - unlocked - normal
@@ -51,6 +45,15 @@ public class GameManager_UD : MonoBehaviour {
 	int m_map1 = 1;
 	int m_map2 = 0;
 	int m_map3 = 0;
+
+	GameMode m_currentGameMode = GameMode.Normal;
+
+	bool m_showMouse;
+
+	BuildSpot_UD m_currentSpot;
+
+	CharacterMovement_UD playerMovementScript;
+	
 
 
 	void Awake(){
@@ -180,11 +183,16 @@ public class GameManager_UD : MonoBehaviour {
 		m_currentSpot = script;
 		m_buildTowerUI.SetActive(true);
 		ShowMouse();
+		playerMovementScript.enabled = false;
+		playerMovementScript.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
 	}
 	public void HideBuildTowerUI(){
 		m_currentSpot = null;
 		m_buildTowerUI.SetActive(false);
 		HideMouse();
+		playerMovementScript.enabled = true;
+		Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = true;
 	}
 
 	public void BuildArrowTower(){
@@ -215,5 +223,9 @@ public class GameManager_UD : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		m_showMouse = false;
+	}
+
+	public void SetPlayerMovementScript(CharacterMovement_UD script){
+		playerMovementScript = script;
 	}
 }
