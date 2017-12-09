@@ -40,6 +40,10 @@ public class GameManager_UD : MonoBehaviour {
 
 	GameMode m_currentGameMode = GameMode.Normal;
 
+	bool m_showMouse;
+
+	BuildSpot_UD m_currentSpot;
+
 	//unlock states
 	//0 - locked
 	//1 - unlocked - normal
@@ -68,6 +72,8 @@ public class GameManager_UD : MonoBehaviour {
 		m_map1 = PlayerPrefs.GetInt("Map1");
 		m_map2 = PlayerPrefs.GetInt("Map2");
 		m_map3 = PlayerPrefs.GetInt("Map3");
+
+		ShowMouse();
 
 	}
 	void Start () {
@@ -167,28 +173,47 @@ public class GameManager_UD : MonoBehaviour {
 	public void MapReady(){
 		Instantiate(m_poolManager);
 		ChangeState(GameState.Play);
-		
+		HideMouse();
 	}
 
-	public void ShowBuildTowerUI(){
+	public void ShowBuildTowerUI(BuildSpot_UD script){
+		m_currentSpot = script;
 		m_buildTowerUI.SetActive(true);
+		ShowMouse();
 	}
 	public void HideBuildTowerUI(){
+		m_currentSpot = null;
 		m_buildTowerUI.SetActive(false);
+		HideMouse();
 	}
 
 	public void BuildArrowTower(){
 		//0
+		m_currentSpot.BuildTower(0);
 		HideBuildTowerUI();
 	}
 
 	public void BuildCannonTower(){
 		//1
+		m_currentSpot.BuildTower(1);
 		HideBuildTowerUI();
 	}
 
 	public void BuildTarTower(){
 		//2
+		m_currentSpot.BuildTower(2);
 		HideBuildTowerUI();
+	}
+
+	void ShowMouse(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		m_showMouse = true;
+	}
+
+	void HideMouse(){
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		m_showMouse = false;
 	}
 }

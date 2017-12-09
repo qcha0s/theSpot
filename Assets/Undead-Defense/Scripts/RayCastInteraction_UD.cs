@@ -13,7 +13,6 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
 			if (m_object != null) {
-				GameManager_UD.instance.ShowBuildTowerUI();
 				m_object.Interact();
 			}
 		}

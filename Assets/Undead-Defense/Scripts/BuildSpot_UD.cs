@@ -19,14 +19,7 @@ public class BuildSpot_UD : InteractableObject_UD {
 	}
 
 	public override void Interact() {
-		if (!m_hasTower) {
-			m_mesh.material = m_unhoveredMat;
-			m_hasTower = true;
-			GameObject temp = PoolManager_UD.Instance.GetObject((int)UD_Objects.ArrowTower);
-			temp.transform.position = m_spawnTransform.position;
-			temp.SetActive(true);
-			m_floatingImage.SetActive(false);
-		}
+		GameManager_UD.instance.ShowBuildTowerUI(this);
 	}
 
 	public override void OnBeginRaycast() {
@@ -42,5 +35,16 @@ public class BuildSpot_UD : InteractableObject_UD {
 	public void ResetBlock() {
 		m_hasTower = false;
 		m_floatingImage.SetActive(true);
+	}
+
+	public void BuildTower(int tower){
+		if (!m_hasTower) {
+			m_mesh.material = m_unhoveredMat;
+			m_hasTower = true;
+			GameObject temp = PoolManager_UD.Instance.GetObject(tower);
+			temp.transform.position = m_spawnTransform.position;
+			temp.SetActive(true);
+			m_floatingImage.SetActive(false);
+		}
 	}
 }
