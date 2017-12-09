@@ -22,7 +22,9 @@ public class BuildSpot_UD : InteractableObject_UD {
 		if (!m_hasTower) {
 			m_mesh.material = m_unhoveredMat;
 			m_hasTower = true;
-			PoolManager_UD.Instance.GetArrowTower(m_spawnTransform.position);
+			GameObject temp = PoolManager_UD.Instance.GetObject((int)UD_Objects.ArrowTower);
+			temp.transform.position = m_spawnTransform.position;
+			temp.SetActive(true);
 			m_floatingImage.SetActive(false);
 		}
 	}
