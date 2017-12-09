@@ -32,6 +32,7 @@ public class BS_Mage : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
 			Debug.Log("pressed 3");
+			transform.position += transform.rotation * Vector3.forward * 5;
 		}
 	}
 
