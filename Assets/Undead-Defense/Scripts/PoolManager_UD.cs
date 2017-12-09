@@ -23,9 +23,9 @@ public class PoolManager_UD : MonoBehaviour {
 	private const float LISTGROWTHPERCENTAGE = 1.15f;
 
 	private void Awake() {
-		if (m_instance == null) {
+		//if (m_instance == null) {
 			m_instance = this;
-		}
+		//}
 		m_poolContainer = new GameObject();
 		m_poolContainer.name = "pooledObjects";
 		InitObjectArrays();

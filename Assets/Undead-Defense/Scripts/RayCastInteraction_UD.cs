@@ -13,6 +13,7 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
 			if (m_object != null) {
+				GameManager_UD.instance.ShowBuildTowerUI();
 				m_object.Interact();
 			}
 		}
@@ -29,7 +30,7 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		Vector3 forward = Camera.main.transform.forward * m_raycastDistance;
 		Debug.DrawRay(startPos, forward, Color.blue);
 		if (Physics.Raycast(startPos,forward, out hit)) {
-			Debug.Log(hit.collider.name);
+//			Debug.Log(hit.collider.name);
 			if (hit.collider.tag == "Interactable") {
 				InteractableObject_UD newObj = hit.collider.GetComponent<InteractableObject_UD>();
 				if (m_object == null) {

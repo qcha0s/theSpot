@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GameState { Intro, Menu, Loading, Play, Win, Lose }
 public enum GameMode {Normal,Survival}
@@ -25,6 +26,11 @@ public class GameManager_UD : MonoBehaviour {
 	public GameObject m_lockImage;
 	public GameObject m_normalButton;
 	public GameObject m_survivalButton;
+
+	public GameObject m_poolManager;
+
+	public GameObject m_buildTowerUI;
+
 	//private
 	float m_currentIntroTimer;
 	
@@ -82,6 +88,11 @@ public class GameManager_UD : MonoBehaviour {
 			break;
 			case GameState.Menu:
 			break;
+			case GameState.Loading:
+			break;
+			case GameState.Play:
+				UpdatePlay();
+			break;
 		}
 	}
 
@@ -92,6 +103,10 @@ public class GameManager_UD : MonoBehaviour {
 			m_currentIntroTimer += Time.deltaTime;
 		}
 		
+	}
+
+	void UpdatePlay(){
+
 	}
 
 	void ChangeState(GameState newState){
@@ -134,16 +149,46 @@ public class GameManager_UD : MonoBehaviour {
 		//TODO:change level
 		m_currentGameMode = GameMode.Normal;
 		ChangeState(GameState.Loading);
+		LoadLevel(m_currentSelectedLevel);
+
 	}
 
 	public void StartSurvival(){
 		//TODO:change level
 		m_currentGameMode = GameMode.Survival;
 		ChangeState(GameState.Loading);
+		LoadLevel(m_currentSelectedLevel);
 	}
 
-
+	void LoadLevel(int scene){
+		SceneManager.LoadScene(scene+1);
+		//don't instantiate objects here	
+	}
 	public void MapReady(){
+		Instantiate(m_poolManager);
 		ChangeState(GameState.Play);
+		
+	}
+
+	public void ShowBuildTowerUI(){
+		m_buildTowerUI.SetActive(true);
+	}
+	public void HideBuildTowerUI(){
+		m_buildTowerUI.SetActive(false);
+	}
+
+	public void BuildArrowTower(){
+		//0
+		HideBuildTowerUI();
+	}
+
+	public void BuildCannonTower(){
+		//1
+		HideBuildTowerUI();
+	}
+
+	public void BuildTarTower(){
+		//2
+		HideBuildTowerUI();
 	}
 }
