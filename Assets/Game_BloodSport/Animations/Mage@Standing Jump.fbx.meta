@@ -1,43 +1,41 @@
 fileFormatVersion: 2
 guid: e982cf7f6c2976a45b76f94b46b509f3
-timeCreated: 1512679533
-licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Head
     100002: HeadTop_End
     100004: Hips
-    100006: //RootNode
-    100008: LeftArm
-    100010: LeftFoot
-    100012: LeftForeArm
-    100014: LeftHand
-    100016: LeftHandIndex1
-    100018: LeftHandIndex2
-    100020: LeftHandIndex3
-    100022: LeftHandIndex4
-    100024: LeftHandMiddle1
-    100026: LeftHandMiddle2
-    100028: LeftHandMiddle3
-    100030: LeftHandMiddle4
-    100032: LeftHandPinky1
-    100034: LeftHandPinky2
-    100036: LeftHandPinky3
-    100038: LeftHandPinky4
-    100040: LeftHandRing1
-    100042: LeftHandRing2
-    100044: LeftHandRing3
-    100046: LeftHandRing4
-    100048: LeftHandThumb1
-    100050: LeftHandThumb2
-    100052: LeftHandThumb3
-    100054: LeftHandThumb4
-    100056: LeftLeg
-    100058: LeftShoulder
-    100060: LeftToe_End
-    100062: LeftToeBase
-    100064: LeftUpLeg
+    100006: LeftArm
+    100008: LeftFoot
+    100010: LeftForeArm
+    100012: LeftHand
+    100014: LeftHandIndex1
+    100016: LeftHandIndex2
+    100018: LeftHandIndex3
+    100020: LeftHandIndex4
+    100022: LeftHandMiddle1
+    100024: LeftHandMiddle2
+    100026: LeftHandMiddle3
+    100028: LeftHandMiddle4
+    100030: LeftHandPinky1
+    100032: LeftHandPinky2
+    100034: LeftHandPinky3
+    100036: LeftHandPinky4
+    100038: LeftHandRing1
+    100040: LeftHandRing2
+    100042: LeftHandRing3
+    100044: LeftHandRing4
+    100046: LeftHandThumb1
+    100048: LeftHandThumb2
+    100050: LeftHandThumb3
+    100052: LeftHandThumb4
+    100054: LeftLeg
+    100056: LeftShoulder
+    100058: LeftToe_End
+    100060: LeftToeBase
+    100062: LeftUpLeg
+    100064: //RootNode
     100066: Neck
     100068: RightArm
     100070: RightFoot
@@ -74,36 +72,36 @@ ModelImporter:
     400000: Head
     400002: HeadTop_End
     400004: Hips
-    400006: //RootNode
-    400008: LeftArm
-    400010: LeftFoot
-    400012: LeftForeArm
-    400014: LeftHand
-    400016: LeftHandIndex1
-    400018: LeftHandIndex2
-    400020: LeftHandIndex3
-    400022: LeftHandIndex4
-    400024: LeftHandMiddle1
-    400026: LeftHandMiddle2
-    400028: LeftHandMiddle3
-    400030: LeftHandMiddle4
-    400032: LeftHandPinky1
-    400034: LeftHandPinky2
-    400036: LeftHandPinky3
-    400038: LeftHandPinky4
-    400040: LeftHandRing1
-    400042: LeftHandRing2
-    400044: LeftHandRing3
-    400046: LeftHandRing4
-    400048: LeftHandThumb1
-    400050: LeftHandThumb2
-    400052: LeftHandThumb3
-    400054: LeftHandThumb4
-    400056: LeftLeg
-    400058: LeftShoulder
-    400060: LeftToe_End
-    400062: LeftToeBase
-    400064: LeftUpLeg
+    400006: LeftArm
+    400008: LeftFoot
+    400010: LeftForeArm
+    400012: LeftHand
+    400014: LeftHandIndex1
+    400016: LeftHandIndex2
+    400018: LeftHandIndex3
+    400020: LeftHandIndex4
+    400022: LeftHandMiddle1
+    400024: LeftHandMiddle2
+    400026: LeftHandMiddle3
+    400028: LeftHandMiddle4
+    400030: LeftHandPinky1
+    400032: LeftHandPinky2
+    400034: LeftHandPinky3
+    400036: LeftHandPinky4
+    400038: LeftHandRing1
+    400040: LeftHandRing2
+    400042: LeftHandRing3
+    400044: LeftHandRing4
+    400046: LeftHandThumb1
+    400048: LeftHandThumb2
+    400050: LeftHandThumb3
+    400052: LeftHandThumb4
+    400054: LeftLeg
+    400056: LeftShoulder
+    400058: LeftToe_End
+    400060: LeftToeBase
+    400062: LeftUpLeg
+    400064: //RootNode
     400066: Neck
     400068: RightArm
     400070: RightFoot
@@ -642,48 +640,28 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-<<<<<<< HEAD
-    - name: knight_d_pelegrini@Standing Idle(Clone)
-=======
     - name: Mage@Standing Idle(Clone)
->>>>>>> bloodsport
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
-<<<<<<< HEAD
-      parentName: knight_d_pelegrini@Standing Idle(Clone)
-=======
       parentName: Mage@Standing Idle(Clone)
->>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Head_Hands
-<<<<<<< HEAD
-      parentName: knight_d_pelegrini@Standing Idle(Clone)
-=======
       parentName: Mage@Standing Idle(Clone)
->>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lower_Armor
-<<<<<<< HEAD
-      parentName: knight_d_pelegrini@Standing Idle(Clone)
-=======
       parentName: Mage@Standing Idle(Clone)
->>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
-<<<<<<< HEAD
-      parentName: knight_d_pelegrini@Standing Idle(Clone)
-=======
       parentName: Mage@Standing Idle(Clone)
->>>>>>> bloodsport
       position: {x: -0.0000000018626451, y: 1.2170984, z: -0.009874502}
       rotation: {x: 1.01643954e-16, y: -0.000000023283064, z: 0.0000000043655746,
         w: 1}
@@ -1051,11 +1029,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-<<<<<<< HEAD
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7ee0e6317672868468c66367221ee3e2,
-=======
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5ef046ac41622f541813cf5493f1bd09,
->>>>>>> bloodsport
     type: 3}
   animationType: 3
   humanoidOversampling: 1
