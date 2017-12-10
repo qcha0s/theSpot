@@ -151,12 +151,25 @@ ModelImporter:
     13700000: Body
     13700002: Head_Hands
     13700004: Lower_Armor
+<<<<<<< HEAD
   externalObjects: {}
+=======
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Knight_MAT
+    second: {fileID: 2100000, guid: c3344b12fb4556e4898ba4da963ce96e, type: 2}
+>>>>>>> bloodsport
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
+<<<<<<< HEAD
     materialLocation: 0
+=======
+    materialLocation: 1
+>>>>>>> bloodsport
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -368,7 +381,11 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
+<<<<<<< HEAD
     tangentImportMode: 0
+=======
+    tangentImportMode: 3
+>>>>>>> bloodsport
     normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0

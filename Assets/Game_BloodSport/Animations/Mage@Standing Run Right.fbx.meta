@@ -184,7 +184,11 @@ ModelImporter:
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
+<<<<<<< HEAD
       keepOriginalPositionXZ: 0
+=======
+      keepOriginalPositionXZ: 1
+>>>>>>> bloodsport
       heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -642,28 +646,48 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
+<<<<<<< HEAD
     - name: knight_d_pelegrini@Standing Idle(Clone)
+=======
+    - name: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Head_Hands
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lower_Armor
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0.0000000018626451, y: 1.2170984, z: -0.009874502}
       rotation: {x: 1.01643954e-16, y: -0.000000023283064, z: 0.0000000043655746,
         w: 1}
@@ -1031,7 +1055,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
+<<<<<<< HEAD
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7ee0e6317672868468c66367221ee3e2,
+=======
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5ef046ac41622f541813cf5493f1bd09,
+>>>>>>> bloodsport
     type: 3}
   animationType: 3
   humanoidOversampling: 1

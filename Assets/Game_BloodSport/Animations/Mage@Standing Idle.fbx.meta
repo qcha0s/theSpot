@@ -156,7 +156,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Knight_MAT
+<<<<<<< HEAD
     second: {fileID: 2100000, guid: de815d3de3ba6504187f0592ccefdbcc, type: 2}
+=======
+    second: {fileID: 2100000, guid: 98169eb9ed13b4b46a59588b8f529af2, type: 2}
+>>>>>>> bloodsport
   materials:
     importMaterials: 1
     materialName: 0
@@ -659,28 +663,48 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
+<<<<<<< HEAD
     - name: knight_d_pelegrini@Standing Idle(Clone)
+=======
+    - name: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Head_Hands
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lower_Armor
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
+<<<<<<< HEAD
       parentName: knight_d_pelegrini@Standing Idle(Clone)
+=======
+      parentName: Mage@Standing Idle(Clone)
+>>>>>>> bloodsport
       position: {x: -0.0000000018626451, y: 1.2170984, z: -0.009874502}
       rotation: {x: 1.01643954e-16, y: -0.000000023283064, z: 0.0000000043655746,
         w: 1}
