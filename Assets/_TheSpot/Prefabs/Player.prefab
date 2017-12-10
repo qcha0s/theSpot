@@ -169,7 +169,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e852cc7209385a341a1eaf5427183e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_speed: 5
+  m_sensitivity: 2
   m_player: {fileID: 143835287426344106}
+  m_moveFB: 0
+  m_moveRL: 0
+  m_rotationY: 0
+  m_rotationX: 0
+  m_maxrotation: 0
   m_eyes: {fileID: 1709695260413488}
 --- !u!124 &124679934987763174
 Behaviour:
