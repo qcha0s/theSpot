@@ -1,64 +1,84 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
  
 [RequireComponent (typeof(UnityEngine.AI.NavMeshAgent))]
 public class NavWaypointAI_UD : MonoBehaviour {
-    // Reference to NavMeshAgent component
-    private UnityEngine.AI.NavMeshAgent nav;
+
+    public float m_speed = 2.0f;
+    public float m_minWaypointDistance = 0.1f;
+    public Transform m_wpContainer;
+    public Vector3 Velocity { get {return nav.velocity; }}
  
-    // Movement Speed
-    public float patrolSpeed = 2.0f;
+    private Transform[] m_waypoints;
+    private NavMeshAgent nav;
+    private int m_curWaypoint = 0;
+    private int m_lastWP;
+    private bool m_chasingPlayer = false;
+    private Transform m_target = null;
  
-    // Waypoints
-    public Transform[] waypoints;
- 
-    private int curWaypoint = 0;
-    private int maxWaypoint;
- 
-    public float minWaypointDistance = 0.1f;
- 
-    // When the game starts...
     private void Awake () {
-        nav = GetComponent<UnityEngine.AI.NavMeshAgent> ();
- 
-        maxWaypoint = waypoints.Length - 1;
+        nav = GetComponent<NavMeshAgent> ();
+
+    }
+
+    private void Start() {
+        GetWaypoints();
+        m_lastWP = m_waypoints.Length - 1;
+        nav.speed = m_speed;
+        m_target = m_waypoints[m_curWaypoint];        
+    }
+
+    private void Update() {
+        if (m_chasingPlayer) {
+            ChasePlayer();
+        } else {
+           MoveToWP();
+        }
+        nav.SetDestination(m_target.position);
     }
  
-    // Every frame...
-    private void Update () {
-        Patrolling();
-    }
- 
-    public void Patrolling () {
-        // Set the ai agents movement speed to patrol speed
-        nav.speed = patrolSpeed;
-     
-        // Create two Vector3 variables, one to buffer the ai agents local position, the other to
-        // buffer the next waypoints position
+    private void MoveToWP() {
         Vector3 tempLocalPosition;
         Vector3 tempWaypointPosition;
- 
-        // Agents position (x, set y to 0, z)
         tempLocalPosition = transform.position;
         tempLocalPosition.y = 0f;
- 
-        // Current waypoints position (x, set y to 0, z)
-        tempWaypointPosition = waypoints [curWaypoint].position;
+        tempWaypointPosition = m_waypoints[m_curWaypoint].position;
         tempWaypointPosition.y = 0f;
- 
-        // Is the distance between the agent and the current waypoint within the minWaypointDistance?
-        if (Vector3.Distance (tempLocalPosition, tempWaypointPosition) <= minWaypointDistance) {
-            // Have we reached the last waypoint?
-            if (curWaypoint == maxWaypoint)
-                // If so, go back to the first waypoint and start over again
-                maxWaypoint = 0;
-            else
-                // If we haven't reached the Last waypoint, just move on to the next one
-                curWaypoint++;
+        if (Vector3.Distance (tempLocalPosition, tempWaypointPosition) <= m_minWaypointDistance) {
+            if (m_curWaypoint == m_lastWP){
+                Debug.Log("at Player's base");
+//              m_lastWP = 0;
+            } else {
+                m_curWaypoint++;
+                m_target = m_waypoints[m_curWaypoint];
+            }
         }
-     
-        // Set the destination for the agent
-        // The navmesh agent is going to do the rest of the work
-        nav.SetDestination (waypoints [curWaypoint].position);
+    }
+
+    private void ChasePlayer() {
+
+    }
+
+	private void GetWaypoints() {
+		Transform[] potentialWaypoints = m_wpContainer.GetComponentsInChildren<Transform>();
+		m_waypoints = new Transform[ (potentialWaypoints.Length - 1) ];
+		for (int i = 1; i < potentialWaypoints.Length; i++ ) {
+ 			m_waypoints[i - 1] = potentialWaypoints[i];
+		}
+	}
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
+            m_target = other.transform;
+            m_chasingPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            m_target = m_waypoints[m_curWaypoint];
+            m_chasingPlayer = false;
+        }
     }
 }

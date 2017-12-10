@@ -92,7 +92,7 @@ public class ProjectileTower_UD : MonoBehaviour {
 		float travelTime = (Mathf.Pow(direction.x,2)+Mathf.Pow(direction.z,2))/Mathf.Pow(projectile.m_speed,2);
 		travelTime = Mathf.Sqrt(travelTime);
 		if (m_predictMovement) {
-			Vector3 newEnemyPos = m_target.transform.position + (m_target.GetComponent<Rigidbody>().velocity*travelTime);
+			Vector3 newEnemyPos = m_target.transform.position + (m_target.GetComponent<NavWaypointAI_UD>().Velocity*travelTime);
 			direction = new Vector3(newEnemyPos.x - firePoint.position.x,newEnemyPos.y - firePoint.position.y,newEnemyPos.z - firePoint.position.z);
 		}
 		Vector3 newVelocity = new Vector3(direction.x/travelTime,(direction.y/travelTime)-(Physics.gravity.y*travelTime/2f),direction.z/travelTime);

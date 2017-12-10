@@ -9,7 +9,7 @@ public class Sensor_UD : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		BaseHealth newTarget = other.GetComponent<BaseHealth>();
-		if (newTarget != null) {
+		if (newTarget != null && newTarget.tag != "Player") {
 			m_targets.Add(other.GetComponent<BaseHealth>());
 		}
 	}
