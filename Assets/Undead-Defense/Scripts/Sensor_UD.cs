@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class Sensor_UD : MonoBehaviour {
 
-	private List<BS_Health> m_targets = new List<BS_Health>();
-	public List<BS_Health> Targets{ get{ return m_targets; }}
+	private List<BaseHealth> m_targets = new List<BaseHealth>();
+	public List<BaseHealth> Targets{ get{ return m_targets; }}
 
-	private void OnTriggerEnter(Collider other) {	
-		m_targets.Add(other.GetComponent<BS_Health>());
+	private void OnTriggerEnter(Collider other) {
+		BaseHealth newTarget = other.GetComponent<BaseHealth>();
+		if (newTarget != null) {
+			m_targets.Add(other.GetComponent<BaseHealth>());
+		}
 	}
 
 	private void OnTriggerExit(Collider other) {
-		m_targets.Remove(other.GetComponent<BS_Health>());
+		m_targets.Remove(other.GetComponent<BaseHealth>());
 	}
 
 	public void ClearTargets() {
 		m_targets.Clear();
 	}
 
-	public BS_Health GetClosestEnemy() {
-		BS_Health closestEnemy = m_targets[0];
+	public BaseHealth GetClosestEnemy() {
+		BaseHealth closestEnemy = m_targets[0];
 		float closestDistance = GetDistance(closestEnemy.transform.position);
 		for (int i = 1; i < m_targets.Count; i++) {
 			float distToEnemy = GetDistance(m_targets[i].transform.position);
@@ -32,23 +35,24 @@ public class Sensor_UD : MonoBehaviour {
 		return closestEnemy;
 	}
 
-	// public BS_Health GetStrongestEnemy() {
-	// 	BS_Health strongestEnemy = m_targets[0];
-	// 	for (int i = 1; i < m_targets.Count; i++) {
-	// 		float distToEnemy = GetDistance(m_targets[i].transform.position);
-	// 		if (distToEnemy < closestDistance) {
-	// 			closestDistance = distToEnemy;
-	// 			strongestEnemy = m_targets[i];
-	// 		}
-	// 	}
-	// 	return strongestEnemy;		
-	// }
+	public BaseHealth GetStrongestEnemy() {
+		BaseHealth strongestEnemy = m_targets[0];
+		float highestHealth = strongestEnemy.m_maxHealth;
+		for (int i = 1; i < m_targets.Count; i++) {
+			float newEnemyHealth = m_targets[i].m_maxHealth;
+			if (highestHealth < newEnemyHealth) {
+				highestHealth = newEnemyHealth;
+				strongestEnemy = m_targets[i];
+			}
+		}
+		return strongestEnemy;		
+	}
 
-	public BS_Health GetFirstEnemy() {
+	public BaseHealth GetFirstEnemy() {
 		return m_targets[0];
 	}
 
-	public BS_Health GetLastEnemy() {
+	public BaseHealth GetLastEnemy() {
 		return m_targets[m_targets.Count-1];
 	}
 

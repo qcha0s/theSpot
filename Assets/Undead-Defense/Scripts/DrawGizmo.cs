@@ -23,7 +23,7 @@ public class DrawGizmo : MonoBehaviour {
             Gizmos.color = m_color;
             Gizmos.DrawSphere(points[i].position, m_size);
             if (m_drawLines) {
-                if (i != 0 || m_connectFirstToLast) {
+                if (i != 1 || m_connectFirstToLast) {
                     Gizmos.DrawLine(last, points[i].position); 
                 }    
                 last = points[i].position;
