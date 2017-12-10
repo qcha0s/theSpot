@@ -723,24 +723,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1625925084155884
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4235065620844332}
-  - component: {fileID: 65634610039564316}
-  - component: {fileID: 54039836464453136}
-  - component: {fileID: 114338265648743086}
-  m_Layer: 0
-  m_Name: SwordCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1633498898211644
 GameObject:
   m_ObjectHideFlags: 1
@@ -1537,7 +1519,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329474469376806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.52, y: 0, z: 1.69}
+  m_LocalPosition: {x: 1.52, y: 0, z: 1.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4181280271686668}
@@ -1592,19 +1574,6 @@ Transform:
   m_Father: {fileID: 4964699546776462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4235065620844332
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625925084155884}
-  m_LocalRotation: {x: 0.031678807, y: 0.1261346, z: -0.004030053, w: 0.991499}
-  m_LocalPosition: {x: 0.163, y: -0.05, z: 0.322}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4686556979697074}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 3.66, y: 14.5, z: 0}
 --- !u!4 &4238074509407298
 Transform:
   m_ObjectHideFlags: 1
@@ -2139,7 +2108,6 @@ Transform:
   - {fileID: 4932592105188382}
   - {fileID: 4261713312268288}
   - {fileID: 4334062908662002}
-  - {fileID: 4235065620844332}
   m_Father: {fileID: 4495127426451728}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2371,33 +2339,6 @@ Transform:
   m_Father: {fileID: 4215058945071068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54039836464453136
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625925084155884}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65634610039564316
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625925084155884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.04, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95372476803215120
 Animator:
   serializedVersion: 3
@@ -2547,7 +2488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e165f8e76ddbf4c9c574dc44937d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 1000
   m_currentHealth: 0
   m_damageReduction: 1
   m_healthBar: {fileID: 114329684039932360}
@@ -2633,18 +2573,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114338265648743086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625925084155884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 900e7d3b12e0994488e7164f0fe16827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_animController: {fileID: 95372476803215120}
 --- !u!114 &114342553033734426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3536,7 +3464,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451994561187836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.69}
+  m_LocalPosition: {x: 0, y: 0, z: -1.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224302166837722074}
