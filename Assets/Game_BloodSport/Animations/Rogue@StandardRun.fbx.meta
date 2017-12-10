@@ -3,7 +3,7 @@ guid: 03da32721a697a1468bb9e6b148a2fab
 timeCreated: 1512548936
 licenseType: Pro
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Head
     100002: HeadTop_End
@@ -143,10 +143,17 @@ ModelImporter:
     7400000: Run
     9500000: //RootNode
     13700000: Vampire
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vampire_MAT
+    second: {fileID: 2100000, guid: 2c5ad9ac729b20545a072cf78dd4d3c9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -159,6 +166,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
