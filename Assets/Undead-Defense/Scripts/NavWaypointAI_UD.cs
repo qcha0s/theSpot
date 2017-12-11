@@ -35,22 +35,13 @@ public class NavWaypointAI_UD : MonoBehaviour {
     }
 
     private void Update() {
+        // Can Turn all of the below into a single function and call it from outside this script if needed
         if (m_chasingPlayer) {
             ChasePlayer();
         } else if (m_wpReached) {
            MoveToWP();
         }
-        Debug.Log(Vector3.Distance(new Vector3(transform.position.x,0,transform.position.z), m_targetPos));
-        if (Vector3.Distance(new Vector3(transform.position.x,0,transform.position.z), m_targetPos) <= m_minWaypointDistance) {
-            Debug.Log("Here");
-            if (m_curWaypoint == m_lastWP){
-                Debug.Log("at Player's base");
-//              m_lastWP = 0;
-            } else {
-                m_curWaypoint++;
-                m_wpReached = true;
-            }
-        }
+        CheckDistanceToWP();
     }
  
     private void MoveToWP() {
@@ -88,6 +79,19 @@ public class NavWaypointAI_UD : MonoBehaviour {
         if (other.tag == "Player") {
             m_chasingPlayer = false;
             m_wpReached = true;
+        }
+    }
+
+    private void CheckDistanceToWP() {
+        Vector3 tempPosition = new Vector3(transform.position.x,0,transform.position.z);
+        if (Vector3.Distance(tempPosition, m_targetPos) <= m_minWaypointDistance) {
+            if (m_curWaypoint == m_lastWP){
+                Debug.Log("at Player's base");
+//              m_lastWP = 0;
+            } else {
+                m_curWaypoint++;
+                m_wpReached = true;
+            }
         }
     }
 }

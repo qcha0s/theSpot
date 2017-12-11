@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 135877690072929504}
   - component: {fileID: 23076662609517084}
   - component: {fileID: 114383728383271776}
+  - component: {fileID: 54695981951058912}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -84,6 +85,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256397131846596}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54695981951058912
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256397131846596}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &114383728383271776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,8 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d909355b2c448646a568062019c46dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashRad: 0
-  speed: 60
+  m_splashRad: 10
+  m_speed: 10
+  m_damage: 5
+  m_fadeOutTime: 1
   impactParticle: {fileID: 1444485602312996, guid: dc90a6db723412044a82d02bc2c37c3e,
     type: 2}
 --- !u!135 &135877690072929504
