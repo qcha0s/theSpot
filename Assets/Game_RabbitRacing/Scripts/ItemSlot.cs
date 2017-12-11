@@ -14,7 +14,7 @@ public class ItemSlot : MonoBehaviour {
 	}
 	public void UseItem(){
 		if(m_item != null){
-			Transform item = Instantiate(m_item);
+			Transform item = Instantiate(m_item, transform.position + transform.forward, transform.rotation);
 			item.GetComponent<Item>().Use(gameObject);
 			m_item = null;
 		}
