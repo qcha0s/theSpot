@@ -62,9 +62,10 @@ GameObject:
   - component: {fileID: 114600843391990424}
   - component: {fileID: 114266393449070096}
   - component: {fileID: 114974403028326018}
+  - component: {fileID: 114224439428841572}
   m_Layer: 0
   m_Name: PlayerTemp_UD
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259560871961046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.66, y: 1, z: 9.79}
+  m_LocalPosition: {x: 73, y: 1, z: 9.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4386042847133596}
@@ -244,6 +245,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114224439428841572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259560871961046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7190aeae1797e44cb4489d08b475396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 100
+  m_isPlayer: 1
 --- !u!114 &114266393449070096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94a45eb089afa749a1592acd6f1c31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 200
+  m_speed: 400
 --- !u!114 &114600843391990424
 MonoBehaviour:
   m_ObjectHideFlags: 1
