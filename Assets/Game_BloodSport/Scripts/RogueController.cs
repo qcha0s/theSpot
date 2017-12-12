@@ -83,17 +83,17 @@ public class RogueController : MonoBehaviour {
 			m_moveDirection *= m_isWalking ? m_walkSpeed * m_speedMultiplier : m_runSpeed * m_speedMultiplier;
 
 			if(Input.GetButton("Jump")){
-				m_animationController.SetTrigger("Jump");
+				m_jumping = true;
 				m_moveDirection.y = m_jumpSpeed;
 			}
 
-			if(m_moveDirection.magnitude > 0.1f){
-				m_animationController.SetBool("isRunning",true);
+			if(m_moveDirection.magnitude > 0.05f){
+				m_animationController.SetBool("isWalking",true);
 			}else{
-				m_animationController.SetBool("isRunning",false);
+				m_animationController.SetBool("isWalking",false);
 			}
-			m_animationController.SetFloat("Forward", m_moveDirection.z);
-			m_animationController.SetFloat("Right", m_moveDirection.x);
+			m_animationController.SetFloat("Speed", m_moveDirection.z);
+			m_animationController.SetFloat("Direction", m_moveDirection.x);
 
 			m_moveDirection = transform.TransformDirection(m_moveDirection);
 		}
@@ -112,20 +112,19 @@ public class RogueController : MonoBehaviour {
 
 		if(m_jumping){
 			m_moveStatus = "jump";
-			m_animationController.SetTrigger("Jump");
 		}
 
 
 	
 		//is the player attacking
-		AnimatorStateInfo currentupperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
 		
-		if(currentupperTorsoState.fullPathHash == m_attackState){
+		
+		//if(currentupperTorsoState.fullPathHash == m_attackState){
 			// for(int i = 0;i < m_weaponHitBoxes.Length; i++){
 			// 	m_weaponHitBoxes[i].enabled = true;
 			// }
-			Debug.Log(currentupperTorsoState.fullPathHash);
-		}
+			//Debug.Log(currentupperTorsoState.fullPathHash);
+		//}
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
