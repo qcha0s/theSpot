@@ -25,6 +25,8 @@ public class GameManager_UD : MonoBehaviour
 
     public GameObject[] m_maps; //image of maps
 
+    public string[] m_mapSceneName;
+
     public GameObject m_lockImage;
     public GameObject m_normalButton;
     public GameObject m_survivalButton;
@@ -204,8 +206,8 @@ public class GameManager_UD : MonoBehaviour
     }
 
     void LoadLevel(int scene)
-    {
-        SceneManager.LoadScene(scene + 1);
+    {   
+        SceneManager.LoadScene(m_mapSceneName[scene]);
         //don't instantiate objects here	
 
     }
