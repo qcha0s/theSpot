@@ -6,6 +6,11 @@ public class Sensor_UD : MonoBehaviour {
 
 	private List<BaseHealth> m_targets = new List<BaseHealth>();
 	public List<BaseHealth> Targets{ get{ return m_targets; }}
+	private SphereCollider m_cldr;
+
+	private void Start() {
+		m_cldr = GetComponent<SphereCollider>();
+	}
 
 	private void OnTriggerEnter(Collider other) {
 		BaseHealth newTarget = other.GetComponent<BaseHealth>();
@@ -23,37 +28,60 @@ public class Sensor_UD : MonoBehaviour {
 	}
 
 	public BaseHealth GetClosestEnemy() {
-		BaseHealth closestEnemy = m_targets[0];
-		float closestDistance = GetDistance(closestEnemy.transform.position);
-		for (int i = 1; i < m_targets.Count; i++) {
-			float distToEnemy = GetDistance(m_targets[i].transform.position);
-			if (distToEnemy < closestDistance) {
-				closestDistance = distToEnemy;
-				closestEnemy = m_targets[i];
+		BaseHealth closestEnemy = null;
+		float closestDistance = m_cldr.radius;
+		for (int i = 0; i < m_targets.Count; i++) {
+			if (m_targets[i].gameObject.activeInHierarchy && !m_targets[i].IsDead) {
+				float distToEnemy = GetDistance(m_targets[i].transform.position);
+				if (distToEnemy < closestDistance) {
+					closestDistance = distToEnemy;
+					closestEnemy = m_targets[i];
+				}
 			}
 		}
 		return closestEnemy;
 	}
 
 	public BaseHealth GetStrongestEnemy() {
-		BaseHealth strongestEnemy = m_targets[0];
-		float highestHealth = strongestEnemy.m_maxHealth;
-		for (int i = 1; i < m_targets.Count; i++) {
-			float newEnemyHealth = m_targets[i].m_maxHealth;
-			if (highestHealth < newEnemyHealth) {
-				highestHealth = newEnemyHealth;
-				strongestEnemy = m_targets[i];
+		BaseHealth strongestEnemy = null;
+		float highestHealth = 0;
+		for (int i = 0; i < m_targets.Count; i++) {
+			if (m_targets[i].gameObject.activeInHierarchy && !m_targets[i].IsDead) {
+				float newEnemyHealth = m_targets[i].m_maxHealth;
+				if (highestHealth < newEnemyHealth) {
+					highestHealth = newEnemyHealth;
+					strongestEnemy = m_targets[i];
+				}
 			}
 		}
 		return strongestEnemy;		
 	}
 
 	public BaseHealth GetFirstEnemy() {
-		return m_targets[0];
+		BaseHealth firstEnemy = null;
+		for (int i = 0; i < m_targets.Count;) {
+			if (m_targets[i].gameObject.activeInHierarchy && !m_targets[i].IsDead) {
+				firstEnemy = m_targets[i];
+				break;
+			} else {
+				m_targets.Remove(m_targets[i]);
+			}
+		}
+		return firstEnemy;
 	}
 
 	public BaseHealth GetLastEnemy() {
-		return m_targets[m_targets.Count-1];
+		BaseHealth lastEnemy = null;
+		while (lastEnemy == null && m_targets.Count > 0) {
+			int i = m_targets.Count - 1;
+			if (m_targets[i].gameObject.activeInHierarchy && !m_targets[i].IsDead) {
+				lastEnemy = m_targets[i];
+				break;
+			} else {
+				m_targets.Remove(m_targets[i]);
+			}
+		}
+		return lastEnemy;
 	}
 
 	private float GetDistance(Vector3 target) {

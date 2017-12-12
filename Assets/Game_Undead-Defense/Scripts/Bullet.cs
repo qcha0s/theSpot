@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour {
 	public Rigidbody RBody { get{ return m_rb;} }
 	public float m_speed = 70f;
 	public float m_damage = 5f;
-	public float m_fadeOutTime = 1f;
+	public float m_fadeOutTime = 20f;
 	public GameObject impactParticle;
 
 	private void Awake() {
@@ -34,22 +34,22 @@ public class Bullet : MonoBehaviour {
 		// GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
 		// Destroy(partInst, 2f);
 
-		// if (m_splashRad > 0f) {
-		// 	Explode();
-		// } else {
-		// 	BaseHealth targetHealth = other.GetComponent<BaseHealth>();
-		// 	if (targetHealth != null) {
-		// 		targetHealth.TakeDamage(m_damage);
-		// 	}
-		// }
-//		m_rb.velocity = Vector3.zero;
+		if (m_splashRad > 0f) {
+			Explode();
+		} else {
+			BaseHealth targetHealth = other.GetComponent<BaseHealth>();
+			if (targetHealth != null) {
+				targetHealth.TakeDamage(m_damage);
+			}
+		}
+		gameObject.SetActive(false);
 //		StartCoroutine(Deactivate());
 	}
 
 	void Explode () {
 		Collider[] colliders = Physics.OverlapSphere(transform.position, m_splashRad);
-		foreach(Collider collider in colliders) {
-			BaseHealth targetInRange = collider.GetComponent<BaseHealth>();
+		for (int i = 0; i < colliders.Length; i++) {
+			BaseHealth targetInRange = colliders[i].GetComponent<BaseHealth>();
 			if (targetInRange != null) {
 				targetInRange.TakeDamage(m_damage);
 			}
@@ -62,17 +62,9 @@ public class Bullet : MonoBehaviour {
 	}
 
 	IEnumerator Deactivate() {
-		// MeshRenderer mesh = GetComponentInChildren<MeshRenderer>();
-		// Color32 meshColor = mesh.material.color;
-		// float matAlpha = mesh.material.color.a;
 		for (float i = 0; i < m_fadeOutTime; i+=Time.deltaTime) {
-			// float newAplha = (matAlpha - (i/m_fadeOutTime)*matAlpha);
-			// meshColor.a = (byte)newAplha;
-			// mesh.material.color = meshColor;
 			yield return null;
 		}
 		gameObject.SetActive(false);
-		// meshColor.a = (byte)matAlpha;
-		// mesh.material.color = meshColor;
 	}
 }
