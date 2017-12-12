@@ -9,6 +9,8 @@ public class RogueController : MonoBehaviour {
 
 	public Collider[] m_weaponHitBoxes;
 
+	public GameObject[] m_weapons;
+
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
 	public float m_runSpeed = 10.0f;
@@ -85,6 +87,10 @@ public class RogueController : MonoBehaviour {
 			if(Input.GetButton("Jump")){
 				m_jumping = true;
 				m_moveDirection.y = m_jumpSpeed;
+				m_animationController.SetBool("isJumping",true);
+			}
+			else{
+				m_animationController.SetBool("isJumping",false);
 			}
 
 			if(m_moveDirection.magnitude > 0.05f){
@@ -132,6 +138,11 @@ public class RogueController : MonoBehaviour {
 		else if(Input.GetMouseButtonUp(0)){
 			m_animationController.SetBool("isAttacking",false);
 			//m_weaponHitBox.enabled = false;
+		}
+
+		if(Input.GetKey(KeyCode.Alpha1)){
+			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
+			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
 		}
 		
 
