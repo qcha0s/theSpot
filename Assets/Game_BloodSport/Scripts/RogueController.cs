@@ -8,7 +8,7 @@ public class RogueController : MonoBehaviour {
 	public float m_gravity = 20.0f;
 
 	public Collider[] m_weaponHitBoxes;
-
+	public GameObject m_targetGUI;
 	public GameObject[] m_weapons;
 
 	//Movement Speeds
@@ -17,7 +17,7 @@ public class RogueController : MonoBehaviour {
 	public float m_walkSpeed = 4.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
-
+	
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
 	private bool m_grounded = false;
@@ -28,7 +28,7 @@ public class RogueController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
-
+	
 
 
 	void Awake(){
@@ -40,6 +40,7 @@ public class RogueController : MonoBehaviour {
 	}
 
 	void Update(){
+		
 		m_moveStatus = "idle";
 		m_isWalking = m_walkByDefault;
 
@@ -125,12 +126,12 @@ public class RogueController : MonoBehaviour {
 		//is the player attacking
 		
 		
-		//if(currentupperTorsoState.fullPathHash == m_attackState){
-			// for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-			// 	m_weaponHitBoxes[i].enabled = true;
-			// }
-			//Debug.Log(currentupperTorsoState.fullPathHash);
-		//}
+		// if(m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState){
+		// 	for(int i = 0;i < m_weaponHitBoxes.Length; i++){
+		// 		m_weaponHitBoxes[i].enabled = true;
+		// 	}
+		// 	Debug.Log(currentupperTorsoState.fullPathHash);
+		// }
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
@@ -144,7 +145,26 @@ public class RogueController : MonoBehaviour {
 			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
 			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
 		}
-		
+		if(Input.GetKey(KeyCode.Alpha2)){
+			
+				m_targetGUI.SetActive(true);
+			
+			
+		}
 
 	}
+	
+	public void ShadowStep(Transform targetLocation){
+		gameObject.SetActive(false);
+		//StartCoroutine(ShadowSteptime(targetLocation));
+		gameObject.transform.position = targetLocation.position;
+		gameObject.SetActive(true);
+		
+	}
+
+	// IEnumerator ShadowSteptime(Transform target){
+	// 	yield return new WaitForSeconds(2);
+	// 	gameObject.transform.position = target.position;
+	// 	gameObject.SetActive(true);
+	// }
 }

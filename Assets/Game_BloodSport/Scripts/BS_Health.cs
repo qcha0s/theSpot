@@ -18,10 +18,15 @@ public class BS_Health : MonoBehaviour {
 	}
 
 	public void TakeDamage(float damage) {
+		
 		m_currentHealth -= damage * m_damageReduction;
 		Die();
-		m_healthBar.value = CalculateHealth();
-		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+		//m_healthBar.value = CalculateHealth();
+		//m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+	}
+
+	public void TakeDotDamage(float dotDmg,float ticks,float tickTime){
+		StartCoroutine(Dot(dotDmg,ticks,tickTime));
 	}
 
 	public void Die() {
@@ -43,5 +48,18 @@ public class BS_Health : MonoBehaviour {
 
 	private float CalculateHealth() {
 		return m_currentHealth / MAX_HEALTH;
+	}
+
+	IEnumerator Dot(float dot,float tickNumber,float timePerTick){
+		float appliedTimes = 0;
+
+		yield return new WaitForSeconds(timePerTick);
+
+		 while(appliedTimes < tickNumber)
+   	 {
+        TakeDamage(dot);
+        yield return new WaitForSeconds(timePerTick);
+        appliedTimes++;
+   	 }
 	}
 }
