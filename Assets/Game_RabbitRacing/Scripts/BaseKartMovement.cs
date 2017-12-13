@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class BaseKartMovement : MonoBehaviour {
     #region Public Variables
@@ -157,9 +156,6 @@ public class BaseKartMovement : MonoBehaviour {
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
         m_isForceApplied = false;
-    }
-    private void OnDrawGizmos() {
-        Handles.Label(transform.position + Vector3.up*2, m_surfaceNormal.ToString());
     }
     #endregion
 }
