@@ -33,7 +33,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
-		Camera.main.GetComponent<CameraController>().m_target = transform;
+		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
 		
 	}
 
