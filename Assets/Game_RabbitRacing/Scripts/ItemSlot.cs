@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSlot : MonoBehaviour {
-	private Transform m_item;
+	public Transform m_item;
 	public Transform GetItem(){
 		return m_item;
 	}
@@ -13,8 +13,11 @@ public class ItemSlot : MonoBehaviour {
 		}
 	}
 	public void UseItem(){
-		Instantiate(m_item);
-		m_item.GetComponent<Item>().Use(gameObject);
+		if(m_item != null){
+			Transform item = Instantiate(m_item, transform.position + transform.forward, transform.rotation);
+			item.GetComponent<Item>().Use(gameObject);
+			m_item = null;
+		}
 	}
 	// Use this for initialization
 	void Start () {
