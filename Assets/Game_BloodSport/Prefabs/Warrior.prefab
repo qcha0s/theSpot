@@ -81,7 +81,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4784539216285304}
-  - component: {fileID: 65748676879288664}
+  - component: {fileID: 65780234227985170}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: Untagged
@@ -1504,8 +1504,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4784539216285304}
+  m_Children: []
   m_Father: {fileID: 4544483506381710}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1722,6 +1721,7 @@ Transform:
   - {fileID: 4899652941647318}
   - {fileID: 4234146476649018}
   - {fileID: 4676852219793838}
+  - {fileID: 4784539216285304}
   m_Father: {fileID: 4574769237812020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2099,13 +2099,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089149482226892}
-  m_LocalRotation: {x: 0.029452318, y: 0.119824186, z: -0.003556299, w: 0.99235183}
-  m_LocalPosition: {x: -0.20800018, y: -0.0909996, z: 0.016998291}
+  m_LocalRotation: {x: 0.030128313, y: 0.124323405, z: -0.0037767102, w: 0.99177706}
+  m_LocalPosition: {x: 0.159, y: -0.047, z: 0.307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4154563106110738}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 3.4, y: 13.77, z: 0}
+  m_Father: {fileID: 4443288307238306}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 3.48, y: 14.29, z: 0}
 --- !u!4 &4786364666625820
 Transform:
   m_ObjectHideFlags: 1
@@ -2369,7 +2369,7 @@ Transform:
   m_Father: {fileID: 4074491197673404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65748676879288664
+--- !u!65 &65780234227985170
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2380,7 +2380,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.04, z: 1}
-  m_Center: {x: 0.94, y: 1.51, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95048941272101864
 Animator:
   serializedVersion: 3
@@ -3495,7 +3495,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220577751350440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -32.273727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
