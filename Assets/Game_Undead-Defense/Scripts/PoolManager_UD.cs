@@ -49,7 +49,9 @@ public class PoolManager_UD : MonoBehaviour {
 		for (int j = 0; j < m_objectTypes[i].m_numInPool; j++) {
 			GameObject temp = Instantiate(m_objectTypes[i].m_objectPrefab);
 			temp.SetActive(false);
-			temp.transform.parent = m_objectContainers[i].transform;
+			if (i != (int)UD_Objects.EnemyNormal) {
+				temp.transform.parent = m_objectContainers[i].transform;
+			}
 			m_objectTypes[i].m_objects.Add(temp);
 		}
 	}
