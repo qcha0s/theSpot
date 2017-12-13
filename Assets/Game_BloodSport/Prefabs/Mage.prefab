@@ -2118,7 +2118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e165f8e76ddbf4c9c574dc44937d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 1000
   m_currentHealth: 0
   m_damageReduction: 1
   m_healthBar: {fileID: 0}
@@ -2157,7 +2156,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d14c9357f9882a64c8d9db12aaa450b8, type: 2}
+  - {fileID: 2100000, guid: cc0c5dca62cb08240bec42f2dfffe997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2234,7 +2233,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d14c9357f9882a64c8d9db12aaa450b8, type: 2}
+  - {fileID: 2100000, guid: cc0c5dca62cb08240bec42f2dfffe997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2345,7 +2344,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d14c9357f9882a64c8d9db12aaa450b8, type: 2}
+  - {fileID: 2100000, guid: cc0c5dca62cb08240bec42f2dfffe997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
