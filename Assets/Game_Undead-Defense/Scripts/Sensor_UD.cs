@@ -15,6 +15,7 @@ public class Sensor_UD : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		BaseHealth newTarget = other.GetComponent<BaseHealth>();
 		if (newTarget != null && newTarget.tag != "Player") {
+			Debug.Log("Enemy entered");
 			m_targets.Add(other.GetComponent<BaseHealth>());
 		}
 	}

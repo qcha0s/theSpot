@@ -24,7 +24,7 @@ public class PoolManager_UD : MonoBehaviour {
 
 	private void Awake() {
 		//if (m_instance == null) {
-			m_instance = this;
+		m_instance = this;
 		//}
 		m_poolContainer = new GameObject();
 		m_poolContainer.name = "pooledObjects";
@@ -49,9 +49,7 @@ public class PoolManager_UD : MonoBehaviour {
 		for (int j = 0; j < m_objectTypes[i].m_numInPool; j++) {
 			GameObject temp = Instantiate(m_objectTypes[i].m_objectPrefab);
 			temp.SetActive(false);
-			if (i != (int)UD_Objects.EnemyNormal) {
-				temp.transform.parent = m_objectContainers[i].transform;
-			}
+			temp.transform.parent = m_objectContainers[i].transform;
 			m_objectTypes[i].m_objects.Add(temp);
 		}
 	}

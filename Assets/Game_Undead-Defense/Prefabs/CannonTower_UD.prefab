@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009275095883210}
   - component: {fileID: 135427757146827674}
-  - component: {fileID: 114852306454712624}
+  - component: {fileID: 114455678278558704}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -108,8 +108,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1232737497955098}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.46, y: 0, z: 18.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -661.8179, y: 1000.8873, z: 1029.5332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4800086431760850}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_firingMode: 0
   m_ammo: 1
   firePoint: {fileID: 4262888598513040}
---- !u!114 &114852306454712624
+--- !u!114 &114455678278558704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187123695021732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d940650c4fc1ea94da9bf4cedd453cd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1209e8c93d0262643b5e58fe3a88ec4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135427757146827674
