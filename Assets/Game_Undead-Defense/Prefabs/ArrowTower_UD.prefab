@@ -67,8 +67,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4148315587043784}
-  - component: {fileID: 135835503884631624}
   - component: {fileID: 114052300785176706}
+  - component: {fileID: 135957783360434584}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177519200155272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -674.87787, y: 0, z: 1011.33325}
+  m_LocalPosition: {x: -684.7, y: 0, z: 973.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4595042857178122}
@@ -200,15 +200,15 @@ MonoBehaviour:
   m_firingMode: 0
   m_ammo: 0
   firePoint: {fileID: 4213448421631526}
---- !u!135 &135835503884631624
+--- !u!135 &135957783360434584
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1981087970923930}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
