@@ -6,6 +6,7 @@ public abstract class BaseHealth : MonoBehaviour {
 
 	public float m_maxHealth = 100f;
 	public bool IsDead { get{ return m_isDead; }}
+	public float Health {get{ return m_currentHealth; }}
 
 	private float m_currentHealth;
 	private bool m_isDead = false;
@@ -15,14 +16,19 @@ public abstract class BaseHealth : MonoBehaviour {
 	}
 
 	public virtual void TakeDamage(float damage) {
-		m_currentHealth -= damage;
-		if (m_currentHealth <= 0) {
-			m_currentHealth = 0;
-			if (!m_isDead) {
-				m_isDead = true;
-				Die();
+		if (!m_isDead) {
+			m_currentHealth -= damage;
+			if (m_currentHealth <= 0) {
+				m_currentHealth = 0;
 			}
 		}
+	}
+
+	public bool CheckIfDead() {
+		if (m_currentHealth <= 0) {
+			m_isDead = true;
+		}
+		return m_isDead;
 	}
 
 	public abstract void Die();

@@ -10,6 +10,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
     public float m_minWaypointDistance = 0.5f;
     public Transform m_wpContainer;
     public Vector3 Velocity { get {return nav.velocity; }}
+    public bool IsChasing { get {return m_chasingPlayer; }}
  
     private Transform[] m_waypoints;
     private NavMeshAgent nav;
@@ -21,7 +22,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private void Awake () {
         nav = GetComponent<NavMeshAgent> ();
-
     }
 
     private void Start() {
@@ -34,8 +34,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.SetDestination(m_targetPos);     
     }
 
-    private void Update() {
-        // Can Turn all of the below into a single function and call it from outside this script if needed
+    public void Move() {
         if (m_chasingPlayer) {
             ChasePlayer();
         } else if (m_wpReached) {
@@ -93,5 +92,10 @@ public class NavWaypointAI_UD : MonoBehaviour {
                 m_wpReached = true;
             }
         }
+    }
+
+    public void StopMovement() {
+        nav.isStopped = true;
+        nav.velocity = Vector3.zero;
     }
 }
