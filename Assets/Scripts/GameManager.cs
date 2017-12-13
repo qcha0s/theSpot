@@ -17,6 +17,7 @@ public GameObject[] m_gameStates;
 public GameObject[] m_paddle;
 public GameObject m_pauseMenu;
 public Dropdown m_dropdownPaddle;
+public int m_paddleSelected;
 
 public GameObject m_timer;
 //public GameObject m_controlsUI;
@@ -144,10 +145,10 @@ bool m_paused = false;
         m_pauseMenu.SetActive(false);
     }
 
-    public void ChangeCharacter()
+    public void ChangePaddle()
     {
         //Debug.Log("Menu changed char");
-       // m_playerSelected = m_dropdownCharacter.value;
+        m_paddleSelected = m_dropdownPaddle.value;
     }
 
     public void ChangeLevel()
