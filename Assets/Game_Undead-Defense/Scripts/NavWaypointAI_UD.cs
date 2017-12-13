@@ -98,4 +98,8 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.isStopped = true;
         nav.velocity = Vector3.zero;
     }
+
+    public void Slow (float prcnt) {
+		m_speed = nav.speed * (1f - prcnt);
+	}
 }
