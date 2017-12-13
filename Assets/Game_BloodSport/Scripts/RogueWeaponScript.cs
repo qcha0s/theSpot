@@ -31,6 +31,6 @@ public class RogueWeaponScript : MonoBehaviour {
 
 public void SetPoison(bool ispoisoned){
         m_poisoned = ispoisoned;
-        Debug.Log("We Poisoned Daggers");
+        
     }
 }

@@ -1406,13 +1406,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964249444454182}
-  m_LocalRotation: {x: 0.19488351, y: -0.6718884, z: -0.7093409, w: -0.08615079}
-  m_LocalPosition: {x: -0.188, y: -0.025, z: 0.105}
+  m_LocalRotation: {x: 0.73372924, y: -0.046552755, z: 0.052789163, w: -0.6757867}
+  m_LocalPosition: {x: -0.115, y: -0.048, z: -0.054}
   m_LocalScale: {x: 100.00004, y: 100.000015, z: 100.00011}
   m_Children: []
   m_Father: {fileID: 4778508980373254}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -99.328995, y: -262.495, z: 59.492996}
+  m_LocalEulerAnglesHint: {x: -99.328995, y: 300, z: 59.492996}
 --- !u!4 &4413993757068116
 Transform:
   m_ObjectHideFlags: 1
@@ -1584,13 +1584,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488543501266612}
-  m_LocalRotation: {x: 0.011838935, y: -0.6241029, z: -0.75374115, w: 0.2054989}
-  m_LocalPosition: {x: 0.13646406, y: -0.05341836, z: 0.03889971}
+  m_LocalRotation: {x: 0.7506029, y: -0.15692398, z: 0.069739886, w: -0.638049}
+  m_LocalPosition: {x: 0.149, y: -0.016, z: 0.032}
   m_LocalScale: {x: 100, y: 100.00002, z: 100.00008}
   m_Children: []
   m_Father: {fileID: 4094735884542958}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -110.617, y: -231.184, z: 67.185}
+  m_LocalEulerAnglesHint: {x: -110.617, y: 300, z: 67.185}
 --- !u!4 &4666406222225120
 Transform:
   m_ObjectHideFlags: 1
@@ -2165,6 +2165,7 @@ MonoBehaviour:
   m_weaponHitBoxes:
   - {fileID: 65981120881007744}
   - {fileID: 65277797119185396}
+  m_targetGUI: {fileID: 0}
   m_weapons:
   - {fileID: 1964249444454182}
   - {fileID: 1488543501266612}
@@ -2184,6 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea6e7210032b0943baaba26687706b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_poisoned: 0
 --- !u!114 &114729786561284614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2195,6 +2197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea6e7210032b0943baaba26687706b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_poisoned: 0
 --- !u!137 &137209953473049050
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

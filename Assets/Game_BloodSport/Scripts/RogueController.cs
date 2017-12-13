@@ -28,7 +28,7 @@ public class RogueController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
-	
+	private bool m_UltActive = false;
 
 
 	void Awake(){
@@ -44,9 +44,12 @@ public class RogueController : MonoBehaviour {
 		m_moveStatus = "idle";
 		m_isWalking = m_walkByDefault;
 
-		if(Input.GetAxis("Run") != 0){
-			m_isWalking = !m_walkByDefault;
+		if(Input.GetKey(KeyCode.Alpha2)){
+			
+			StartCoroutine(StartSprint());
 		}
+		
+		
 
 		if(m_grounded){
 			//if player is steering with the right mouse button .. A/D will strafe
@@ -123,15 +126,15 @@ public class RogueController : MonoBehaviour {
 
 
 	
-		//is the player attacking
 		
 		
-		// if(m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState){
-		// 	for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-		// 		m_weaponHitBoxes[i].enabled = true;
-		// 	}
-		// 	Debug.Log(currentupperTorsoState.fullPathHash);
-		// }
+		
+		if(m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState){
+			for(int i = 0;i < m_weaponHitBoxes.Length; i++){
+				m_weaponHitBoxes[i].enabled = true;
+			}
+			Debug.Log(currentupperTorsoState.fullPathHash);
+		}
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
@@ -145,9 +148,10 @@ public class RogueController : MonoBehaviour {
 			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
 			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
 		}
-		if(Input.GetKey(KeyCode.Alpha2)){
-			
+		if(Input.GetKey(KeyCode.Alpha3)){
+			if(m_UltActive){
 				m_targetGUI.SetActive(true);
+			}
 			
 			
 		}
@@ -156,15 +160,15 @@ public class RogueController : MonoBehaviour {
 	
 	public void ShadowStep(Transform targetLocation){
 		gameObject.SetActive(false);
-		//StartCoroutine(ShadowSteptime(targetLocation));
 		gameObject.transform.position = targetLocation.position;
 		gameObject.SetActive(true);
-		
+		m_targetGUI.SetActive(false);
 	}
-
-	// IEnumerator ShadowSteptime(Transform target){
-	// 	yield return new WaitForSeconds(2);
-	// 	gameObject.transform.position = target.position;
-	// 	gameObject.SetActive(true);
-	// }
+	IEnumerator StartSprint(){
+		m_isWalking = !m_walkByDefault;
+		m_animationController.SetBool("isSprinting",true);
+		yield return new WaitForSeconds(4);
+		m_animationController.SetBool("isSprinting",false);
+	}
+	
 }
