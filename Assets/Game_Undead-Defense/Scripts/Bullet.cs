@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	private Transform target;
 	private Rigidbody m_rb;
-
 	public float m_splashRad = 0f;
 	public Rigidbody RBody { get{ return m_rb;} }
 	public float m_speed = 70f;
@@ -17,10 +15,6 @@ public class Bullet : MonoBehaviour {
 	private void Awake() {
 		m_rb = GetComponent<Rigidbody>();
 	}
-
-	public void Seek (Transform _target) {
-		target = _target;
-	}
 	
 	void Update () {
 		transform.rotation = Quaternion.LookRotation(m_rb.velocity);
@@ -28,8 +22,6 @@ public class Bullet : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		Debug.Log("Hit");
-
-		// NEED TO SETUP LAYER FOR ENEMIES SO PROJECTILES KNOW WHAT TO HIT
 
 		// GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
 		// Destroy(partInst, 2f);

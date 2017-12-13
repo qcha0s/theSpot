@@ -36,10 +36,10 @@ public class EnemySpawner_UD : MonoBehaviour {
 		for (int i = 0; i < m_WPContainers.Length; i++) {
 			m_WPContainers[i].GetWayPoints();
 		}
-		SpawnEnemies(2);
+		SpawnEnemies(1);
 	}
 
-	public int SpawnEnemies(int waveNumber) {
+	public int SpawnEnemies(int waveNumber = 1) {
 		int numEnemiesSpawned = 0;
 		numEnemiesSpawned += SpawnSkeletons(waveNumber);
 		numEnemiesSpawned += SpawnFlyingUnits(waveNumber);
