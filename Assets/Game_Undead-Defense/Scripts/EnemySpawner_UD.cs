@@ -51,7 +51,7 @@ public class EnemySpawner_UD : MonoBehaviour {
 		int numToSpawn = waveNumber * 10;
 		for (int i = 0; i < numToSpawn; i++) {
 			GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyNormal);
-			WPContainer enemyWPs = m_WPContainers[UnityEngine.Random.Range(0,m_WPContainers.Length-1)];
+			WPContainer enemyWPs = m_WPContainers[UnityEngine.Random.Range(0,m_WPContainers.Length)];
 			enemy.SetActive(true);
 			enemy.transform.position = enemyWPs.StartPoint.position;
 			enemy.GetComponent<NavMeshAgent>().Warp(enemyWPs.StartPoint.position);
