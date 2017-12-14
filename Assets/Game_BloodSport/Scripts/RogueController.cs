@@ -29,9 +29,13 @@ public class RogueController : MonoBehaviour {
 	private CharacterController m_controller;
 	private int m_attackState;
 	private bool m_UltActive = true;
-	private float m_sprintCDStart;
+	private bool m_sprintOnCD = false;
+	private bool m_poisonOnCD = false;
 	private float m_sprintCD=10f;
 	private bool m_sprinting = false;
+	private float m_poisonCD = 6f;
+
+
 	void Awake(){
 		m_attackState = Animator.StringToHash("Base.Attack");
 		m_controller = GetComponent<CharacterController>();
@@ -44,7 +48,7 @@ public class RogueController : MonoBehaviour {
 		 //currentBaseState = m_animationController.GetCurrentAnimatorStateInfo(0);
 		m_moveStatus = "idle";
 		
-		Debug.Log(Time.time);
+		
 	
 		
 		
@@ -126,13 +130,7 @@ public class RogueController : MonoBehaviour {
 	
 		
 		
-		//m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState
-		if(m_animationController){
-			for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-				m_weaponHitBoxes[i].enabled = true;
-			}
-			
-		}
+	
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
@@ -142,19 +140,24 @@ public class RogueController : MonoBehaviour {
 			//m_weaponHitBox.enabled = false;
 		}
 
-		if(Input.GetKey(KeyCode.Alpha1)){
+		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
 			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
+			m_poisonOnCD = true;
+			StartCoroutine(CoolDownSystem(m_sprintCD,"Poison"));
+			StartCoroutine(StartPoison());
 		}
 
-		if(Input.GetKey(KeyCode.Alpha2)){
-			//m_sprintCDStart = Time.time;
+		if(Input.GetKey(KeyCode.Alpha2) && !m_sprintOnCD ){
+		
 			if(m_sprinting == false ){
 					m_sprinting = true;
+					m_sprintOnCD = true;
+					StartCoroutine(CoolDownSystem(m_sprintCD,"Sprint"));
 					StartCoroutine(StartSprint());
 			} 
 			
-			//StartCoroutine(StartSprint());
+			
 		}
 	if(m_sprinting){
 		m_animationController.SetBool("isSprinting",true);
@@ -164,12 +167,8 @@ public class RogueController : MonoBehaviour {
 		m_animationController.SetBool("isSprinting",false);
 		m_isWalking = m_walkByDefault;
 	}
-		if(Input.GetKey(KeyCode.Alpha3)){
-			if(m_UltActive){
-				m_targetGUI.SetActive(true);
-			}
-			
-			
+		if(Input.GetKey(KeyCode.Alpha3) && m_UltActive){
+			m_targetGUI.SetActive(true);
 		}
 
 	}
@@ -183,10 +182,23 @@ public class RogueController : MonoBehaviour {
 	IEnumerator StartSprint(){
 		yield return new WaitForSeconds(4);
 		m_sprinting = false;
+		
 	}
-	IEnumerator CoolDownSystem(float cooldownvalue){
+	IEnumerator StartPoison(){
+		yield return new WaitForSeconds(3);
+		m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(false);
+		m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(false);
+	}
+	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
+		
 		yield return new WaitForSeconds(cooldownvalue);
-
+		if(Ability == "Sprint"){
+			m_sprintOnCD = false;
+		}
+		if(Ability == "Poison"){
+			m_poisonOnCD = false;
+		}
+		
 	}
 	
 }

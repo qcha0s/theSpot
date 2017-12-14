@@ -13,7 +13,7 @@ public class BS_WarriorShieldCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(!(other.name == "warrior")) {
-			m_warriorScript.ResetAfterCharge();
+			//m_warriorScript.ResetAfterCharge();
 			if(other.name == "Enemy") {
 				BS_Health healthScript = other.GetComponent<BS_Health>();
 				if(healthScript != null) {
