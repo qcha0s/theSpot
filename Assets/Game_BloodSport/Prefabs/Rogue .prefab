@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 33409139126823824}
   - component: {fileID: 23579751939976642}
   - component: {fileID: 65145840112389482}
+  - component: {fileID: 114536057275969968}
   m_Layer: 0
   m_Name: RightDagger
   m_TagString: Untagged
@@ -115,6 +116,7 @@ GameObject:
   - component: {fileID: 33498619699508542}
   - component: {fileID: 23833242040984890}
   - component: {fileID: 65585012377110988}
+  - component: {fileID: 114199793690358812}
   m_Layer: 0
   m_Name: LeftDagger
   m_TagString: Untagged
@@ -2124,7 +2126,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039288689213448}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.008, z: 0.0003}
@@ -2146,6 +2148,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114199793690358812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1039288689213448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd2dcc2c498b374abbfe32734c043b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_poisoned: 0
 --- !u!114 &114402768186367416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2161,15 +2175,29 @@ MonoBehaviour:
   m_walkByDefault: 1
   m_gravity: 20
   m_weaponHitBoxes:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 65585012377110988}
+  - {fileID: 65145840112389482}
   m_targetGUI: {fileID: 0}
-  m_weapons: []
+  m_weapons:
+  - {fileID: 1039288689213448}
+  - {fileID: 1019736007757802}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
   m_turnSpeed: 250
   m_moveBackwardsMultiplier: 0.75
+--- !u!114 &114536057275969968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019736007757802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd2dcc2c498b374abbfe32734c043b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_poisoned: 0
 --- !u!137 &137685180993219750
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

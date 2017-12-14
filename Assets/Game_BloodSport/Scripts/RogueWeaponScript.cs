@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RogueWeaponScript : MonoBehaviour {
-   public bool m_poisoned;
+   public bool m_poisoned = false;
    private float m_weapDmg = 20;
 
    private float m_poisonDmg=5;
    private float m_poisonCount=5;
 
    private float m_totalPoisonTime=2;
+
+   void Update(){
+       Debug.Log(m_poisoned);
+   }
 	void OnTriggerEnter(Collider other){
 		if(other.tag == "target"){
 			 Vector3 toTarget = (other.transform.position - transform.position).normalized;
@@ -29,7 +33,7 @@ public class RogueWeaponScript : MonoBehaviour {
 
 	}
 
-public void SetPoison(bool ispoisoned){
+    public void SetPoison(bool ispoisoned){
         m_poisoned = ispoisoned;
         
     }
