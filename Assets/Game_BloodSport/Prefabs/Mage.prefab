@@ -785,6 +785,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1630894435339860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4892159366727178}
+  m_Layer: 0
+  m_Name: fireBallSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1631637386853604
 GameObject:
   m_ObjectHideFlags: 1
@@ -1443,6 +1458,7 @@ Transform:
   - {fileID: 4168474050329458}
   - {fileID: 4339408633405482}
   - {fileID: 224913761934874266}
+  - {fileID: 4892159366727178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2172,6 +2188,19 @@ Transform:
   m_Father: {fileID: 4682590414988042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4892159366727178
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630894435339860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.002, y: 1.35, z: 1.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4203099344902190}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4918832552108880
 Transform:
   m_ObjectHideFlags: 1
@@ -2285,12 +2314,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) use transforms that are
-    already bound by a Humanoid avatar. These transforms can only be changed by Humanoid
-    clips.\n\tTransform 'Hips'\n\tTransform 'Spine1'\n\tTransform 'LeftHandMiddle2'\n\tTransform
-    'Neck'\n\tTransform 'LeftHandThumb1'\n\tTransform 'LeftHandRing2'\n\tTransform
-    'RightHandIndex3'\n\tTransform 'LeftHandRing3'\n\tTransform 'RightHandMiddle1'\n\tTransform
-    'LeftUpLeg'\n\tand more ...\n\tFrom animation clip 'Standing Idle'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114041515044540594
@@ -2914,7 +2938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe49cf53acc7b7d4aa95a063d03f51b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallPrefab: {fileID: 0}
+  fireBallPrefab: {fileID: 1105812798509924, guid: a9d10e5300cf2914c8da418e54322bc1,
+    type: 2}
   fireBallSpawn: {fileID: 0}
 --- !u!114 &114970794472028226
 MonoBehaviour:
