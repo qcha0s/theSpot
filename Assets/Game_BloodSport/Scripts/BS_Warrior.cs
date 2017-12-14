@@ -58,6 +58,7 @@ public class BS_Warrior : MonoBehaviour {
 		m_usingWhirlWind = false;
 		m_animator.SetBool("isWhirlwind", false);
 		m_characterController.m_weaponHitBoxes.enabled = false;
+		m_characterController.m_hasDealtDamage = false;
 	}
 
 	public void Ultimate() {
