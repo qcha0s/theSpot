@@ -43,6 +43,8 @@ public class GameManager_UD : MonoBehaviour
 
     public int[] m_towerCost;
 
+    public Text m_wavesText;
+
     //enemy drops 1 gold
     //30 gold for a tower
 
@@ -312,4 +314,19 @@ public class GameManager_UD : MonoBehaviour
 			}
 		}
 	}
+
+    public void UpdateWavesText(int wave){
+        switch(m_currentGameMode){
+            case GameMode.Normal:
+                m_wavesText.text = "Wave "+wave+" of "+WaveManager.instance.m_maxWavesNormal;
+            break;
+            case GameMode.Survival:
+                m_wavesText.text = "Wave "+wave;
+            break;
+        }
+    }
+    
+    public GameMode GetMode(){
+        return m_currentGameMode;
+    }
 }
