@@ -47,7 +47,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         tempWaypointPosition = m_waypoints[m_curWaypoint].position;
         tempWaypointPosition.x += Random.Range(-m_wpOffset.x,m_wpOffset.x);
         tempWaypointPosition.z += Random.Range(-m_wpOffset.y,m_wpOffset.y);
-        tempWaypointPosition.y = 0f;
         m_targetPos = tempWaypointPosition;
         nav.SetDestination(m_targetPos);
         m_wpReached = false;
@@ -82,8 +81,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
     }
 
     private void CheckDistanceToWP() {
-        Vector3 tempPosition = new Vector3(transform.position.x,0,transform.position.z);
-        if (Vector3.Distance(tempPosition, m_targetPos) <= m_minWaypointDistance) {
+        if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
                 Debug.Log("at Player's base");
 //              m_lastWP = 0;
@@ -99,13 +97,15 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.velocity = Vector3.zero;
     }
 
+    public void Slow (float prcnt) {
+		m_speed = nav.speed * (1f - prcnt);
+	}
+
     public void SetWaypoints(Transform[] waypoints) {
         m_waypoints = waypoints;
         m_curWaypoint = 0;
         m_lastWP = waypoints.Length - 1;
-        Vector3 firstTarget = m_waypoints[m_curWaypoint].position;
-        firstTarget.y = 0;
-        m_targetPos = firstTarget;   
+        m_targetPos = m_waypoints[m_curWaypoint].position;  
         nav.SetDestination(m_targetPos);
 //        StartCoroutine(StartMovement());   
     }
