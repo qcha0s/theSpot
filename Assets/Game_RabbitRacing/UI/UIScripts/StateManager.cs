@@ -20,9 +20,9 @@ public class StateManager : MonoBehaviour {
 		m_activeState = GameStates.INTRO;
 		m_gameStates[(int)m_activeState].SetActive(true); // 0 == menu	
 		 
-		GameManager.Instance.StartGame();
+		//GameManager.Instance.StartGame();
 		 
-		((MovieTexture)GetComponent<Renderer>().material.mainTexture).Play();
+		//((MovieTexture)GetComponent<Renderer>().material.mainTexture).Play();
 	}
 
 	void Start(){
