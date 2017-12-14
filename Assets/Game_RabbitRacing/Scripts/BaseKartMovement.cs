@@ -4,46 +4,66 @@ using UnityEngine;
 
 public class BaseKartMovement : MonoBehaviour {
     #region Public Variables
+    public bool m_gluedToGround = true;
     public float m_acceleration = 5f;
-    public float m_brakeAcceleration = 10f;
-    public float m_frictionAcceleration = 2f;
-    public float m_maxSpeed = 20f;
-    public float m_maxReverseSpeed = 5f;
-    public float m_speedEpsilon = 0.1f;
     public float m_bestTurnSpeed = 15f;
-    public float m_maxTurnRadius = 50f;
-    public float m_minTurnRadius = 5f;
+    public float m_brakeAcceleration = 20f;
     public float m_forceDeadZone = 0.1f;
-    public float m_turnDeadZone = 0.1f;
+    public float m_frictionAcceleration = 2f;
+    public float m_gravity = -10f;
+    public float m_maxReverseSpeed = 5f;
+    public float m_maxSpeed = 20f;
+    public float m_maxTurnRadius = 50f;
     public float m_minDriftRadius = 4f;
+    public float m_minTurnRadius = 5f;
+    public float m_rayCastEpsilon = 0.2f;
+    public float m_speedEpsilon = 0.1f;
+    public float m_turnDeadZone = 0.1f;
+	public LayerMask m_groundLayer;
     #endregion
     #region Private Variables
-    private bool m_isGrounded = false;
     private bool m_isDrifting = false;
     private bool m_isForceApplied = false;
+    private bool m_isGrounded = false;
     private bool m_isTurning = false;
     private float m_currentTurnRadius = 0f;
-    private float m_speed = 0f;
+    private float m_forwardSpeed = 0f;
+	private float m_rayCastDistance;
+    private float m_yVelocity = 0;
+	private Vector3 m_surfaceNormal = Vector3.up;
     private Vector3 m_velocity;
     private CharacterController m_characterController;
     #endregion
     #region Accessors
+    public bool isGrounded{
+        get{
+            return m_isGrounded;
+        }
+        set{
+            m_isGrounded = value;
+        }
+    }
+    public float Speed{
+        get{
+            return m_forwardSpeed;
+        }
+    }
     #endregion
     #region Public Methods
      public void Gas(float amount){
         // Mathf.Clamp(amount, 0, 1);
-        if(amount > m_forceDeadZone){
+        if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
-            m_speed += amount * m_acceleration * Time.deltaTime;
-            m_speed = Mathf.Min(m_speed, m_maxSpeed);
+            m_forwardSpeed += amount * m_acceleration * Time.deltaTime;
+            m_forwardSpeed = Mathf.Min(m_forwardSpeed, m_maxSpeed);
         }
     }
     public void Brake(float amount){
         // Mathf.Clamp(amount, 0, 1);
-        if(amount > m_forceDeadZone){
+        if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
-            m_speed -= amount * m_brakeAcceleration * Time.deltaTime;
-            m_speed = Mathf.Max(m_speed, -m_maxReverseSpeed);
+            m_forwardSpeed -= amount * m_brakeAcceleration * Time.deltaTime;
+            m_forwardSpeed = Mathf.Max(m_forwardSpeed, -m_maxReverseSpeed);
         }
     }
     public void Turn(float amount){
@@ -51,10 +71,9 @@ public class BaseKartMovement : MonoBehaviour {
         if(Mathf.Abs(amount) > m_turnDeadZone){
             m_isTurning = true;
             float underSteerFactor = 0f;
-            float minTurnRadius = m_isDrifting ? m_minDriftRadius : m_minTurnRadius;
             float turnDirection = amount < 0 ? -1 : 1; 
-            if(m_speed != 0){
-                underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_speed, -1, 1);
+            if(m_forwardSpeed != 0){
+                underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_forwardSpeed, -1, 1);
                 m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - m_minTurnRadius) * Mathf.Abs(amount * underSteerFactor));
             }
             else if(underSteerFactor == 0f){
@@ -78,8 +97,8 @@ public class BaseKartMovement : MonoBehaviour {
         float underSteerFactor = 0f;
         float turnDirection = turnRadius < 0 ? -1 : 1;
         float maxMinTurnRadiusDifference = m_maxTurnRadius - m_minTurnRadius;
-        if(m_speed != 0){
-            underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_speed, -1, 1);
+        if(m_forwardSpeed != 0){
+            underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_forwardSpeed, -1, 1);
         }else{
             underSteerFactor = 1;
         }
@@ -89,44 +108,53 @@ public class BaseKartMovement : MonoBehaviour {
     }
     #endregion
     #region Private & Protected Methods
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
+    void Awake()
     {
-        Debug.Log(GetTurnAmountForTurnRadius(m_maxTurnRadius-1));
-        Debug.Log(GetTurnAmountForTurnRadius(m_minTurnRadius));
-        Debug.Log(GetTurnAmountForTurnRadius(-m_maxTurnRadius+1));
-        Debug.Log(GetTurnAmountForTurnRadius(-m_minTurnRadius));
-
-        m_velocity = new Vector3();
         m_characterController = GetComponent<CharacterController>();
+        m_rayCastDistance = m_characterController.height * 0.5f + m_rayCastEpsilon;
+        m_velocity = new Vector3();
     }
-    void FixedUpdate() {
-
+    Vector3 CalculateForwardMovement(){
         if(!m_isForceApplied && m_isGrounded){
-            float slowDirection = m_speed > 0 ? 1 : -1; 
-            m_speed -= m_frictionAcceleration * slowDirection * Time.deltaTime;
-            if(m_speed * slowDirection < m_speedEpsilon){
-                m_speed = 0;
+            float slowDirection = m_forwardSpeed > 0 ? 1 : -1; 
+            m_forwardSpeed -= m_frictionAcceleration * slowDirection * Time.deltaTime;
+            if(m_forwardSpeed * slowDirection < m_speedEpsilon){
+                m_forwardSpeed = 0;
             }
         }
-
-        m_velocity = new Vector3(0, 0, 1);
-        m_velocity *= m_speed;
-        m_velocity = transform.TransformDirection(m_velocity);
-        m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
-
+        Vector3 forwardVelocity = transform.TransformDirection(Vector3.forward * m_forwardSpeed);
+        return forwardVelocity;
+    }
+    Vector3 CalculateUpwardMovement(){
+        if(m_isGrounded){
+			MakePerpendicularToGround();
+			m_yVelocity = 0f;
+		}
+		else{
+			m_yVelocity += m_gravity * Time.deltaTime;
+		}
+        return (m_gluedToGround ? transform.up : Vector3.up) * m_yVelocity;
+    }
+    void MakePerpendicularToGround(){
+        RaycastHit hitInfo;
+        Ray surfaceRay = new Ray(transform.position + m_characterController.center, m_gluedToGround ? -transform.up : -Vector3.up);
+        if(Physics.Raycast(surfaceRay.origin, surfaceRay.direction, out hitInfo, Mathf.Infinity, m_groundLayer)){
+            m_surfaceNormal = hitInfo.normal;
+        }
+        transform.rotation = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
+    }
+    void RotateToTurn(){
         if(m_isTurning){
             float turnDirection = m_currentTurnRadius > 0 ? 1 : -1;
-            float angleToRotate = turnDirection * Mathf.Atan2(m_speed * Time.deltaTime, Mathf.Abs(m_currentTurnRadius)) * Mathf.Rad2Deg;
+            float angleToRotate = turnDirection * Mathf.Atan2(m_forwardSpeed * Time.deltaTime, Mathf.Abs(m_currentTurnRadius)) * Mathf.Rad2Deg;
             transform.Rotate(0, angleToRotate, 0);
         }
-        else{
-            m_isDrifting = false;
-        }
-        
+    }
+
+    void FixedUpdate() {
+        m_velocity = CalculateForwardMovement() + CalculateUpwardMovement();
+        m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
+        RotateToTurn();
         m_isForceApplied = false;
     }
     #endregion
