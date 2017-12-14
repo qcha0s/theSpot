@@ -96,12 +96,12 @@ public class RPGCharacterController : MonoBehaviour {
 
 				m_moveDirection = transform.TransformDirection(m_moveDirection);
 			}
+		}
 
-			if(Input.GetMouseButton(1)){
-				transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y,0);
-			} else{
-				transform.Rotate(0,Input.GetAxis("Horizontal") * m_turnSpeed * Time.deltaTime, 0);
-			}
+		if(Input.GetMouseButton(1)){
+			transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y,0);
+		} else{
+			transform.Rotate(0,Input.GetAxis("Horizontal") * m_turnSpeed * Time.deltaTime, 0);
 		}
 
 		m_moveDirection.y -= m_gravity * Time.deltaTime;

@@ -6,18 +6,22 @@ public class BS_Warrior : MonoBehaviour {
 
 	public float m_chargeSpeed = 200.0f;
 	public Collider m_shieldCollider;
+	public float m_chargeTurnSpeed = 50.0f;
+
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
 	private bool m_charging = false;
 	private bool m_usingWhirlWind = false;
 	private bool m_usingUltimate = false;
 	private Animator m_animator;
+	private float m_previousTurnSpeed;
 
 	void Start() {
 		m_animator = GetComponent<Animator>();
 		m_healthScript = GetComponent<BS_Health>();
 		m_characterController = GetComponent<RPGCharacterController>();
 		m_shieldCollider.enabled = false;
+		m_previousTurnSpeed = m_characterController.m_turnSpeed;
 	}
 
 	void Update() {
@@ -39,6 +43,7 @@ public class BS_Warrior : MonoBehaviour {
 		m_characterController.m_disableMovement = true;
 		m_animator.SetBool("isCharging", true);
 		m_shieldCollider.enabled = true;
+		m_characterController.m_turnSpeed = m_chargeTurnSpeed;
 	}
 
 	public void ResetAfterCharge() {
@@ -46,6 +51,7 @@ public class BS_Warrior : MonoBehaviour {
 		m_characterController.m_disableMovement = false;
 		m_animator.SetBool("isCharging", false);
 		m_shieldCollider.enabled = false;
+		m_characterController.m_turnSpeed = m_previousTurnSpeed;
 	}
 
 	public void WhirlWind() {
