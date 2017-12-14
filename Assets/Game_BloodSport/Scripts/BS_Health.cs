@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class BS_Health : MonoBehaviour {
 
-	public const float MAX_HEALTH = 1000.0f;
+	public float m_maxHealth = 1000.0f;
 	public float m_currentHealth;
 	public float m_damageReduction = 1f;
 	public Slider m_healthBar;
 	public Text m_healthText;
 
 	void Start() {
-		m_currentHealth = MAX_HEALTH;
+		m_currentHealth = m_maxHealth;
 		m_healthBar.value = CalculateHealth();
-		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+		m_healthText.text = m_currentHealth + "/" + m_maxHealth;
 	}
 
 	public void TakeDamage(float damage) {
 		
 		m_currentHealth -= damage * m_damageReduction;
 		Die();
-		//m_healthBar.value = CalculateHealth();
-		//m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+		m_healthBar.value = CalculateHealth();
+		m_healthText.text = m_currentHealth + "/" + m_maxHealth;
 	}
 
 	public void TakeDotDamage(float dotDmg,float ticks,float tickTime){
@@ -39,15 +39,15 @@ public class BS_Health : MonoBehaviour {
 
 	public void Heal(int amount) {
 		m_currentHealth += amount;
-		if(m_currentHealth > MAX_HEALTH) {
-			m_currentHealth = MAX_HEALTH;
+		if(m_currentHealth > m_maxHealth) {
+			m_currentHealth = m_maxHealth;
 		}
 		m_healthBar.value = CalculateHealth();
-		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+		m_healthText.text = m_currentHealth + "/" + m_maxHealth;
 	}
 
 	private float CalculateHealth() {
-		return m_currentHealth / MAX_HEALTH;
+		return m_currentHealth / m_maxHealth;
 	}
 
 	IEnumerator Dot(float dot,float tickNumber,float timePerTick){
@@ -55,11 +55,10 @@ public class BS_Health : MonoBehaviour {
 
 		yield return new WaitForSeconds(timePerTick);
 
-		 while(appliedTimes < tickNumber)
-   	 {
-        TakeDamage(dot);
-        yield return new WaitForSeconds(timePerTick);
-        appliedTimes++;
-   	 }
+		while(appliedTimes < tickNumber) {
+			TakeDamage(dot);
+			yield return new WaitForSeconds(timePerTick);
+			appliedTimes++;
+   	 	}
 	}
 }
