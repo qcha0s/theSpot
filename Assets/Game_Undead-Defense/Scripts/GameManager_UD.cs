@@ -329,4 +329,9 @@ public class GameManager_UD : MonoBehaviour
     public GameMode GetMode(){
         return m_currentGameMode;
     }
+
+    public void AddGold(int amount) {
+        m_currentGold += amount;
+        UpdateGold();
+    }
 }

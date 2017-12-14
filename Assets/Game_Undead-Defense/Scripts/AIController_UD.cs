@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController_UD : MonoBehaviour {
+
+	public int m_goldValue = 10;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
@@ -118,6 +120,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.DEAD:
+				GameManager_UD.instance.AddGold(m_goldValue);
 				m_health.Die();
 			break;
 			default:
