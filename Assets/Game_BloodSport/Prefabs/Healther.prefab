@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114868114741501044}
   m_Layer: 12
   m_Name: Healther
-  m_TagString: Untagged
+  m_TagString: Interact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032696428344656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 247.20001, y: 1, z: 100}
+  m_LocalPosition: {x: 14.743603, y: 2.11, z: 12.682011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: de9363d1d3347dd4faf9b80c8611f429, type: 2}
+  - {fileID: 2100000, guid: 44dc86d73db81b544a84a95c8e5ba697, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,11 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1032696428344656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d207e1a0e56baf40a24bb2db7acca41, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a078e10250a4a94ab84341b267acab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentHealth: 50
-  healthballPrefab: {fileID: 1173538822274918, guid: 37dcb7348e3afab4993796ae61405434,
+  m_currentHealth: 0
+  healthballPrefab: {fileID: 1173538822274918, guid: d1a598d1279cb0948b375969570803fa,
     type: 2}
 --- !u!136 &136619115350367286
 CapsuleCollider:
