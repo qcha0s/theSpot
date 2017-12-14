@@ -126,13 +126,7 @@ public class RogueController : MonoBehaviour {
 	
 		
 		
-		//m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState
-		if(m_animationController){
-			for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-				m_weaponHitBoxes[i].enabled = true;
-			}
-			
-		}
+	
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
