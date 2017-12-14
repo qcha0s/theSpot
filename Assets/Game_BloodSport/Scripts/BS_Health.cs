@@ -42,8 +42,8 @@ public class BS_Health : MonoBehaviour {
 		if(m_currentHealth > MAX_HEALTH) {
 			m_currentHealth = MAX_HEALTH;
 		}
-		m_healthBar.value = CalculateHealth();
-		m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
+		// m_healthBar.value = CalculateHealth();
+		// m_healthText.text = m_currentHealth + "/" + MAX_HEALTH;
 	}
 
 	private float CalculateHealth() {
