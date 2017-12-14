@@ -99,6 +99,10 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.velocity = Vector3.zero;
     }
 
+    public void Slow (float prcnt) {
+		m_speed = nav.speed * (1f - prcnt);
+	}
+
     public void SetWaypoints(Transform[] waypoints) {
         m_waypoints = waypoints;
         m_curWaypoint = 0;
