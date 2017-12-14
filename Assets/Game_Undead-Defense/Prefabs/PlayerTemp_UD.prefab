@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223139300000528230}
   - component: {fileID: 114031014847446652}
   - component: {fileID: 114635303116174286}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33008890018321112}
   - component: {fileID: 65275037881901336}
   - component: {fileID: 23697822558712422}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,11 +59,11 @@ GameObject:
   - component: {fileID: 136586120689072128}
   - component: {fileID: 23684109751307990}
   - component: {fileID: 54880573591269892}
-  - component: {fileID: 114600843391990424}
-  - component: {fileID: 114266393449070096}
-  - component: {fileID: 114974403028326018}
   - component: {fileID: 114224439428841572}
-  m_Layer: 0
+  - component: {fileID: 114207936891529746}
+  - component: {fileID: 114956865755113478}
+  - component: {fileID: 114517238298671498}
+  m_Layer: 11
   m_Name: PlayerTemp_UD
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 224094735721275964}
   - component: {fileID: 222206696932537850}
   - component: {fileID: 114670248550454698}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5d18edf62ba55aa4bab0f298845c2344, type: 2}
+  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,6 +245,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114207936891529746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259560871961046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4decd1abcf2c695428f5cab691625488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 400
 --- !u!114 &114224439428841572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_isPlayer: 1
---- !u!114 &114266393449070096
+--- !u!114 &114517238298671498
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -266,23 +278,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1259560871961046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94a45eb089afa749a1592acd6f1c31d, type: 3}
+  m_Script: {fileID: 11500000, guid: 401ec0a81776fe14295383b2863470ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 400
---- !u!114 &114600843391990424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259560871961046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rotationSpeed: 270
-  m_raycastDistance: 20
+  m_rotationSpeed: 180
+  m_raycastDistance: 10
 --- !u!114 &114635303116174286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114974403028326018
+--- !u!114 &114956865755113478
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1259560871961046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cef22bb01fe8e429e98bda76a06977, type: 3}
+  m_Script: {fileID: 11500000, guid: cdc8b467198071342ab59fd81fe86717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_imagePos: {fileID: 224094735721275964}
