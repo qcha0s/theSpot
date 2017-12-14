@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551461946692266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0735507, y: 0.58150196, z: 0.05430919}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,31 +60,31 @@ MonoBehaviour:
       type: 2}
     m_numInPool: 10
     m_objects: []
-  - m_objectPrefab: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
+  - m_objectPrefab: {fileID: 1177519200155272, guid: e3d276d02d33dbc47a12929757c63069,
       type: 2}
     m_numInPool: 10
     m_objects: []
-  - m_objectPrefab: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
+  - m_objectPrefab: {fileID: 1566978607458666, guid: b1d6b9f49a8ba5f46801923af2560681,
+      type: 2}
+    m_numInPool: 20
+    m_objects: []
+  - m_objectPrefab: {fileID: 1566978607458666, guid: b1d6b9f49a8ba5f46801923af2560681,
       type: 2}
     m_numInPool: 10
     m_objects: []
-  - m_objectPrefab: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
-      type: 2}
-    m_numInPool: 10
-    m_objects: []
-  - m_objectPrefab: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
+  - m_objectPrefab: {fileID: 1566978607458666, guid: b1d6b9f49a8ba5f46801923af2560681,
       type: 2}
     m_numInPool: 10
     m_objects: []
   - m_objectPrefab: {fileID: 1467028963198536, guid: 3ad6c8011f00c1c4aa28b9a7c494249e,
       type: 2}
-    m_numInPool: 10
+    m_numInPool: 20
     m_objects: []
   - m_objectPrefab: {fileID: 1256397131846596, guid: fb73b94802f6f1344843b0078ce17bfd,
       type: 2}
-    m_numInPool: 10
+    m_numInPool: 20
     m_objects: []
   - m_objectPrefab: {fileID: 1256397131846596, guid: fb73b94802f6f1344843b0078ce17bfd,
       type: 2}
-    m_numInPool: 10
+    m_numInPool: 20
     m_objects: []

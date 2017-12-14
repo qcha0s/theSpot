@@ -38,15 +38,15 @@ public class ProjectileTower_UD : MonoBehaviour {
 		GameObject projectile = null;
 		switch (m_ammo) {
 			case AmmoType.Arrow:
-				Debug.Log("arrow fired at " + m_target.name);
 				projectile = PoolManager_UD.Instance.GetObject((int)UD_Objects.Arrow);
+				SetProjectileVelocity(projectile.GetComponent<Bullet>());
 			break;
 			case AmmoType.Cannon:
-				Debug.Log("cannonball fired at " + m_target.name);
 				projectile = PoolManager_UD.Instance.GetObject((int)UD_Objects.CannonBall);
+				SetProjectileVelocity(projectile.GetComponent<Bullet>());
 			break;
 			case AmmoType.Tar:
-				Debug.Log("tar triggered by " + m_target.name);
+				firePoint.position = m_target.transform.position;
 				projectile = PoolManager_UD.Instance.GetObject((int)UD_Objects.TarField);
 			break;
 			default:
@@ -80,7 +80,6 @@ public class ProjectileTower_UD : MonoBehaviour {
 	IEnumerator Shoot() {
 		m_readyToFire = false;
 		GameObject projectile = GetProjectile();
-		SetProjectileVelocity(projectile.GetComponent<Bullet>());
 		projectile.transform.position = firePoint.position;
 		projectile.SetActive(true);
 		yield return new WaitForSeconds(m_fireRate);

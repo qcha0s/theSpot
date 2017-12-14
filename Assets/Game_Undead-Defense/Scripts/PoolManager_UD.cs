@@ -24,7 +24,7 @@ public class PoolManager_UD : MonoBehaviour {
 
 	private void Awake() {
 		//if (m_instance == null) {
-			m_instance = this;
+		m_instance = this;
 		//}
 		m_poolContainer = new GameObject();
 		m_poolContainer.name = "pooledObjects";
