@@ -36,7 +36,6 @@ public class RPGCharacterController : MonoBehaviour {
 	}
 
 	void Update(){
-		Debug.Log("Real Game");
 		if(!m_disableMovement) {
 			m_moveStatus = "idle";
 			m_isWalking = m_walkByDefault;
@@ -126,7 +125,7 @@ public class RPGCharacterController : MonoBehaviour {
 			Debug.Log(currentupperTorsoState.fullPathHash);
 		}
 		if(Input.GetMouseButtonDown(0)){
-			m_animationController.SetBool("isAttacking",true);
+			m_animationController.SetBool("isAttacking", true);
 			m_weaponHitBoxes.enabled = true;
 		}
 		else if(Input.GetMouseButtonUp(0)){
@@ -136,7 +135,7 @@ public class RPGCharacterController : MonoBehaviour {
 	}
 
 	public void EndAttack() {
-		m_animationController.SetBool("isAttacking",false);
+		m_animationController.SetBool("isAttacking", false);
 		m_weaponHitBoxes.enabled = false;
 		m_hasDealtDamage = false;
 	}
