@@ -25,5 +25,7 @@ public class InputHandler : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1")){
  			m_itemSlot.UseItem();
 		}
+
+		m_kartMovement.SetDrift(Input.GetButton("Jump"));
 	}
 }
