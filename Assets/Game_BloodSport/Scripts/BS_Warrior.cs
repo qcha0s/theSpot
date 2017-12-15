@@ -10,6 +10,8 @@ public class BS_Warrior : MonoBehaviour {
 	public bool m_charging = false;
 	public bool m_usingWhirlWind = false;
 	public bool m_usingUltimate = false;
+	public GameObject m_normalShield;
+	public GameObject m_ultimateShield;
 
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
@@ -22,12 +24,13 @@ public class BS_Warrior : MonoBehaviour {
 		m_characterController = GetComponent<RPGCharacterController>();
 		m_shieldCollider.enabled = false;
 		m_previousTurnSpeed = m_characterController.m_turnSpeed;
+		m_ultimateShield.SetActive(false);
 	}
 
 	void Update() {
-		if(Input.GetKeyDown(KeyCode.C)) {
+		if(Input.GetKeyDown(KeyCode.C) && !m_usingUltimate) {
 			Charge();
-		} else if (Input.GetKeyDown(KeyCode.V)) {
+		} else if (Input.GetKeyDown(KeyCode.V) && !m_usingUltimate) {
 			WhirlWind();
 		} else if (Input.GetKeyDown(KeyCode.R)) {
 			Ultimate();
@@ -68,10 +71,16 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void Ultimate() {
+		m_animator.SetBool("isUlting", true);
 		m_usingUltimate = true;
+		m_normalShield.SetActive(false);
+		m_ultimateShield.SetActive(true);
 	}
 
 	public void ResetAfterUltimate() {
+		m_animator.SetBool("isUlting", false);
 		m_usingUltimate = false;
+		m_normalShield.SetActive(true);
+		m_ultimateShield.SetActive(false);
 	}
 }
