@@ -15,9 +15,11 @@ public GameState m_currentState;
 
 public GameObject[] m_gameStates;
 public GameObject[] m_paddle;
+public Transform currentMount;
+
 public GameObject m_pauseMenu;
-public Dropdown m_dropdownPaddle;
-public int m_paddleSelected;
+public Button m_PaddleRed;
+public GameObject[] m_paddleSelected;
 
 public GameObject m_timer;
 //public GameObject m_controlsUI;
@@ -148,8 +150,9 @@ bool m_paused = false;
     public void ChangePaddle()
     {
         //Debug.Log("Menu changed char");
-        m_paddleSelected = m_dropdownPaddle.value;
+        m_paddleSelected = m_paddle;
     }
+
 
     public void ChangeLevel()
     {
