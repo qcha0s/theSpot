@@ -31,7 +31,7 @@ public class RPGCharacterController : MonoBehaviour {
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
-		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
+		Camera.main.GetComponent<CameraController>().m_target = transform;
 		if(m_weaponHitBoxes != null) {
 			m_weaponHitBoxes.enabled = false;
 		}
