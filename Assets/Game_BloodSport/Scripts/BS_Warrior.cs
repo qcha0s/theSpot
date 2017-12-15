@@ -104,7 +104,6 @@ public class BS_Warrior : MonoBehaviour {
 		yield return new WaitForSeconds(cooldownvalue);
 		if(Ability == "Whirlwind"){
 			m_whirlwindOnCD = false;
-			Debug.Log(m_whirlwindOnCD);
 		}
 		if(Ability == "Charge"){
 			m_ChargeOnCD = false;
