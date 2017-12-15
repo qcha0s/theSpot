@@ -50,7 +50,7 @@ public class EnemySpawner_UD : MonoBehaviour {
 	}
 
 	public int SpawnSkeletons(int waveNumber) {
-		int numToSpawn = waveNumber * 20;
+		int numToSpawn = 10 + ((waveNumber-1) * 5);
 		int numSpawned = 0;
 		for (int i = 0; i < m_WPContainers.Length; i++) {
 			int spawnAmount = 0;
