@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour {
 	public float m_countdownLength = 5.0f;
 
 	public int m_maxWavesNormal = 5;
+	public EnemySpawner_UD Spawner { set{ m_enemySpawner = value; }}
 
 	//Normal:
 	//first map - 5 waves

@@ -24,13 +24,8 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav = GetComponent<NavMeshAgent>();
     }
 
-    // private void Update() {
-    //     nav.SetDestination(m_targetPos);
-    // }
-
     private void Start() {
         nav.speed = m_speed;
-//        GetWayPoints();
     }
 
     public void Move() {
