@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent( typeof( CharacterController ) )]
-public class CharacterControllerKart : MonoBehaviour {
+public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     #region Public Variables
     public bool m_gluedToGround = true;
     public float m_acceleration = 5f;
