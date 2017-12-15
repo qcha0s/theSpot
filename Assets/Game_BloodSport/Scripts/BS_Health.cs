@@ -13,19 +13,13 @@ public class BS_Health : MonoBehaviour {
 
 	void Start() {
 		m_currentHealth = m_maxHealth;
-		if (m_healthBar != null && m_healthText != null) {
-			m_healthBar.value = CalculateHealth();
-			m_healthText.text = m_currentHealth + "/" + m_maxHealth;
-		}
+		UpdateHealthHUD();
 	}
 
 	public void TakeDamage(float damage) {
 		m_currentHealth -= damage * m_damageReduction;
 		Die();
-		if (m_healthBar != null && m_healthText != null) {
-			m_healthBar.value = CalculateHealth();
-			m_healthText.text = m_currentHealth + "/" + m_maxHealth;
-		}
+		UpdateHealthHUD();
 	}
 
 	public void TakeDotDamage(float dotDmg,float ticks,float tickTime){
@@ -45,10 +39,7 @@ public class BS_Health : MonoBehaviour {
 		if(m_currentHealth > m_maxHealth) {
 			m_currentHealth = m_maxHealth;
 		}
-		if (m_healthBar != null && m_healthText != null) {
-			m_healthBar.value = CalculateHealth();
-			m_healthText.text = m_currentHealth + "/" + m_maxHealth;
-		}
+		UpdateHealthHUD();
 	}
 
 	private float CalculateHealth() {
@@ -65,5 +56,12 @@ public class BS_Health : MonoBehaviour {
 			yield return new WaitForSeconds(timePerTick);
 			appliedTimes++;
    	 	}
+	}
+
+	public void UpdateHealthHUD() {
+		if (m_healthBar != null && m_healthText != null) {
+			m_healthBar.value = CalculateHealth();
+			m_healthText.text = m_currentHealth + "/" + m_maxHealth;
+		}
 	}
 }
