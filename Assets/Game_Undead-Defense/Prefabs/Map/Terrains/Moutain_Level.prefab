@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4594427441966326}
-  - component: {fileID: 114134971148326318}
+  - component: {fileID: 114010443412963390}
   m_Layer: 0
   m_Name: Waypoints
   m_TagString: Untagged
@@ -2191,14 +2191,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530169024402840}
-  m_LocalRotation: {x: -0, y: -0.8360403, z: -0, w: 0.5486681}
-  m_LocalPosition: {x: 205.27, y: 19.71, z: 119.26}
+  m_LocalRotation: {x: -0, y: -0.91086406, z: -0, w: 0.41270664}
+  m_LocalPosition: {x: 213.99, y: 19.71, z: 129.68}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Children:
   - {fileID: 4754232785189212}
   m_Father: {fileID: 4881678546558736}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -113.449005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -131.25, z: 0}
 --- !u!4 &4106349254715198
 Transform:
   m_ObjectHideFlags: 1
@@ -4530,6 +4530,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114010443412963390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092226492726146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544496c0d035b8d49af9c8641fe086ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_drawLines: 1
+  m_connectFirstToLast: 0
+  m_size: 2
+  m_color: {r: 0, g: 0.08965492, b: 1, a: 1}
+  m_type: 0
 --- !u!114 &114011834362326302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4812,22 +4828,6 @@ MonoBehaviour:
   m_floatingImage: {fileID: 1685515171946800}
   m_spawnTransform: {fileID: 4035189602731628}
   m_hasTower: 0
---- !u!114 &114134971148326318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1092226492726146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544496c0d035b8d49af9c8641fe086ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_drawLines: 1
-  m_connectFirstToLast: 0
-  m_size: 2
-  m_color: {r: 0.07586192, g: 0, b: 1, a: 1}
-  m_type: 0
 --- !u!114 &114136529808288376
 MonoBehaviour:
   m_ObjectHideFlags: 1
