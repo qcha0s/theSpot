@@ -33,6 +33,7 @@ public class BaseKartMovement : MonoBehaviour {
 	private Vector3 m_surfaceNormal = Vector3.up;
     private Vector3 m_velocity;
     private CharacterController m_characterController;
+
     #endregion
     #region Accessors
     public bool isGrounded{
@@ -154,6 +155,7 @@ public class BaseKartMovement : MonoBehaviour {
             transform.Rotate(0, angleToRotate, 0);
         }
     }
+
 
     void FixedUpdate() {
         m_velocity = CalculateForwardMovement() + CalculateUpwardMovement();
