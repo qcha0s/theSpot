@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent( typeof( CharacterController ) )]
 public class BaseKartMovement : MonoBehaviour {
     #region Public Variables
     public bool m_gluedToGround = true;
@@ -51,7 +51,6 @@ public class BaseKartMovement : MonoBehaviour {
     #endregion
     #region Public Methods
      public void Gas(float amount){
-        // Mathf.Clamp(amount, 0, 1);
         if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
             m_forwardSpeed += amount * m_acceleration * Time.deltaTime;
@@ -59,7 +58,6 @@ public class BaseKartMovement : MonoBehaviour {
         }
     }
     public void Brake(float amount){
-        // Mathf.Clamp(amount, 0, 1);
         if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
             m_forwardSpeed -= amount * m_brakeAcceleration * Time.deltaTime;
@@ -67,7 +65,6 @@ public class BaseKartMovement : MonoBehaviour {
         }
     }
     public void Turn(float amount){
-        // Mathf.Clamp(amount, -1, 1);
         if(Mathf.Abs(amount) > m_turnDeadZone){
             m_isTurning = true;
             float underSteerFactor = 0f;
@@ -122,7 +119,7 @@ public class BaseKartMovement : MonoBehaviour {
                 m_forwardSpeed = 0;
             }
         }
-        Vector3 forwardVelocity = transform.TransformDirection(Vector3.forward * m_forwardSpeed);
+        Vector3 forwardVelocity = transform.forward * m_forwardSpeed;
         return forwardVelocity;
     }
     Vector3 CalculateUpwardMovement(){
