@@ -27,12 +27,12 @@ public class BS_Mage : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha2)) {
 			m_animationController.SetTrigger("isAbility2");
 			Debug.Log("pressed 2");
+			m_animationController.SetTrigger("isBlinking");
 
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
 			Debug.Log("pressed 3");
-			transform.position += transform.rotation * Vector3.forward * 5;
 		}
 	}
 
@@ -45,5 +45,9 @@ public class BS_Mage : MonoBehaviour {
 
     // Destroy the bullet after 2 seconds
     Destroy(bullet, 2.0f);
+	}
+
+	void Blink() {
+		transform.position += transform.rotation * Vector3.forward * 5;
 	}
 }
