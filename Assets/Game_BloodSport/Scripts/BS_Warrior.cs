@@ -7,12 +7,12 @@ public class BS_Warrior : MonoBehaviour {
 	public float m_chargeSpeed = 200.0f;
 	public Collider m_shieldCollider;
 	public float m_chargeTurnSpeed = 50.0f;
+	public bool m_charging = false;
+	public bool m_usingWhirlWind = false;
+	public bool m_usingUltimate = false;
 
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
-	private bool m_charging = false;
-	private bool m_usingWhirlWind = false;
-	private bool m_usingUltimate = false;
 	private Animator m_animator;
 	private float m_previousTurnSpeed;
 

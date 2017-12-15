@@ -32,7 +32,9 @@ public class RPGCharacterController : MonoBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
-		m_weaponHitBoxes.enabled = false;
+		if(m_weaponHitBoxes != null) {
+			m_weaponHitBoxes.enabled = false;
+		}
 	}
 
 	void Update(){
@@ -126,7 +128,9 @@ public class RPGCharacterController : MonoBehaviour {
 		}
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking", true);
-			m_weaponHitBoxes.enabled = true;
+			if(m_weaponHitBoxes != null) {
+				m_weaponHitBoxes.enabled = true;
+			}
 		}
 		else if(Input.GetMouseButtonUp(0)){
 		//	m_animationController.SetBool("isAttacking",false);
@@ -136,7 +140,9 @@ public class RPGCharacterController : MonoBehaviour {
 
 	public void EndAttack() {
 		m_animationController.SetBool("isAttacking", false);
-		m_weaponHitBoxes.enabled = false;
+		if(m_weaponHitBoxes != null) {
+			m_weaponHitBoxes.enabled = false;
+		}
 		m_hasDealtDamage = false;
 	}
 }
