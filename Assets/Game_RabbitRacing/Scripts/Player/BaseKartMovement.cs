@@ -71,10 +71,11 @@ public class BaseKartMovement : MonoBehaviour {
         if(Mathf.Abs(amount) > m_turnDeadZone){
             m_isTurning = true;
             float underSteerFactor = 0f;
-            float turnDirection = amount < 0 ? -1 : 1; 
+            float turnDirection = amount < 0 ? -1 : 1;
+            float actualMinTurnRadius = m_isDrifting ? m_minDriftRadius : m_minTurnRadius; 
             if(m_forwardSpeed != 0){
                 underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_forwardSpeed, -1, 1);
-                m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - m_minTurnRadius) * Mathf.Abs(amount * underSteerFactor));
+                m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - actualMinTurnRadius) * Mathf.Abs(amount * underSteerFactor));
             }
             else if(underSteerFactor == 0f){
                 m_currentTurnRadius = Mathf.Infinity;
@@ -92,6 +93,9 @@ public class BaseKartMovement : MonoBehaviour {
     }
     public void SetDrift(bool isDrifting){
         m_isDrifting = isDrifting;
+        if(Speed < m_bestTurnSpeed){
+            m_isDrifting = false;
+        }
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
