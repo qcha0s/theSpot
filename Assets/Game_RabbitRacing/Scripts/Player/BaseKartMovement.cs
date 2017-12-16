@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface BaseKartMovement {
+public interface BaseKartMovement {
 	bool isGrounded{
         get;
         set;
