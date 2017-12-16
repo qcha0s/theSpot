@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour {
 	public bool scored_Red;
 	public bool scored_Blue;
 
+	public Rigidbody puck;
+
 
 
 
@@ -24,11 +26,17 @@ public class ScoreManager : MonoBehaviour {
 		
 	}
 
+	void RespawnPuck(){
+			Rigidbody clone;
+            clone = Instantiate(puck, transform.position, transform.rotation) as Rigidbody;
+		
+	}
+
 	void RedScore() {
 		Debug.Log(score_Red);
 		score_Red = score_Red + 1;
 		scored_Red = false;
-			if(score_Red <= ScoreToWin){
+			if(score_Red >= ScoreToWin){
 				RedWins();
 			}
 	}
@@ -37,17 +45,17 @@ public class ScoreManager : MonoBehaviour {
 		Debug.Log(score_Blue);
 		score_Blue = score_Blue + 1;
 		scored_Blue = false;
-			if(score_Blue <= ScoreToWin){
+			if(score_Blue >= ScoreToWin){
 				BlueWins();
 			}
 	}
 
 	void BlueWins(){
-
+		Debug.Log("blue");
 	}
 
 	void RedWins(){
-
+		Debug.Log("red");
 	}
 
 	
@@ -55,9 +63,11 @@ public class ScoreManager : MonoBehaviour {
 	void Update () {
 		if(scored_Blue == true){
 			BluedScore();
+			RespawnPuck();
 		}
 		if(scored_Red == true){
 			RedScore();
+			RespawnPuck();
 		}
 		
 	}

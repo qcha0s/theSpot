@@ -7,8 +7,8 @@ public class RedNetScore : MonoBehaviour {
 	public ScoreManager m_sm;
 
 	void OnTriggerEnter(Collider other){
-		if(gameObject.tag == "Player"){
-			Destroy(gameObject);
+		if(other.gameObject.tag == "Player"){
+			Destroy(other.gameObject);
 			m_sm.scored_Blue = true;
 		}
 	}
