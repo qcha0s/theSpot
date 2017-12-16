@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class ProjectileTower_UD : MonoBehaviour {
 
+	public enum TowerType {ArrowTower,CannonTower,TarCauldron}
 	public enum FiringMode {First,Closest,Strongest,Farthest}
 	public enum AmmoType {Arrow,Cannon,Tar}
 	public float m_range = 50f;
 	public float m_fireRate = 1f;
+	public float m_rotationSpeed = 30f;
 	public bool m_predictMovement = true;
+	public TowerType m_towerType = TowerType.ArrowTower;
 	public FiringMode m_firingMode = FiringMode.First;
 	public AmmoType m_ammo = AmmoType.Arrow;
-	public Transform firePoint;
+	public Transform m_firePoint;
+	public Transform m_turret;
 
 	private Sensor_UD m_sensor;
+	private bool m_facingTarget = false;
 	private bool m_readyToFire = true;
 	private BaseHealth m_target = null;
 
@@ -23,9 +28,11 @@ public class ProjectileTower_UD : MonoBehaviour {
 	}
 
 	private void Update() {
-		GetTarget();
-		if (m_sensor.Targets.Count > 0 && m_readyToFire) {
-			StartCoroutine(Shoot());
+		if (GetTarget() != null) {
+			SetTurretRotation();
+			if (m_readyToFire) {
+				StartCoroutine(Shoot());
+			}
 		}
 	}
 
@@ -46,7 +53,7 @@ public class ProjectileTower_UD : MonoBehaviour {
 				SetProjectileVelocity(projectile.GetComponent<Bullet>());
 			break;
 			case AmmoType.Tar:
-				firePoint.position = m_target.transform.position;
+				m_firePoint.position = m_target.transform.position;
 				projectile = PoolManager_UD.Instance.GetObject((int)UD_Objects.TarField);
 			break;
 			default:
@@ -57,49 +64,73 @@ public class ProjectileTower_UD : MonoBehaviour {
 		return projectile;
 	}
 
-	private void GetTarget() {
+	private BaseHealth GetTarget() {
+		BaseHealth target = null;
 		switch (m_firingMode) {
 			case FiringMode.First:
-				m_target = m_sensor.GetFirstEnemy();
+				target = m_sensor.GetFirstEnemy();
 			break;
 			case FiringMode.Closest:
-				m_target = m_sensor.GetClosestEnemy();
+				target = m_sensor.GetClosestEnemy();
 			break;
 			case FiringMode.Strongest:
-				m_target = m_sensor.GetStrongestEnemy();
+				target = m_sensor.GetStrongestEnemy();
 			break;
 			case FiringMode.Farthest:
-				m_target = m_sensor.GetLastEnemy();
+				target = m_sensor.GetLastEnemy();
 			break;
 			default:
 				Debug.Log("unknown firing mode");
 			break;
 		}
+		m_target = target;
+		return target;
 	}
 
 	IEnumerator Shoot() {
 		m_readyToFire = false;
 		GameObject projectile = GetProjectile();
-		projectile.transform.position = firePoint.position;
+		projectile.transform.position = m_firePoint.position;
 		projectile.SetActive(true);
 		yield return new WaitForSeconds(m_fireRate);
 		m_readyToFire = true;
 	}
 
 	private void SetProjectileVelocity(Bullet projectile) {
-		Debug.Log(m_target == null);
-		Vector3 direction = new Vector3(m_target.transform.position.x - firePoint.position.x,m_target.transform.position.y - firePoint.position.y,m_target.transform.position.z - firePoint.position.z);
+		Vector3 direction = m_target.transform.position - m_firePoint.position;
 		float travelTime = (Mathf.Pow(direction.x,2)+Mathf.Pow(direction.z,2))/Mathf.Pow(projectile.m_speed,2);
 		travelTime = Mathf.Sqrt(travelTime);
 		if (m_predictMovement) {
 			Vector3 newEnemyPos = m_target.transform.position + (m_target.GetComponent<NavWaypointAI_UD>().Velocity*travelTime);
-			direction = new Vector3(newEnemyPos.x - firePoint.position.x,newEnemyPos.y - firePoint.position.y,newEnemyPos.z - firePoint.position.z);
+			direction = newEnemyPos - m_firePoint.position;
 		}
 		Vector3 newVelocity = new Vector3(direction.x/travelTime,(direction.y/travelTime)-(Physics.gravity.y*travelTime/2f),direction.z/travelTime);
 		projectile.RBody.velocity = newVelocity;
 	}
 
 	private void OnEnable() {
-		m_sensor.ClearTargets();
+		if (m_sensor != null) {
+			m_sensor.ClearTargets();
+		}
+	}
+
+	private void SetTurretRotation() {
+		switch (m_towerType) {
+			case TowerType.ArrowTower:
+
+			break;
+			case TowerType.CannonTower:
+				Vector3 targetDir = m_target.transform.position - m_turret.position;
+				targetDir.y = 0;
+				Quaternion rotation = Quaternion.LookRotation(targetDir);
+				m_turret.rotation = rotation;
+			break;
+			case TowerType.TarCauldron:
+
+			break;			
+			default:
+				Debug.Log("unknown tower type");
+			break;
+		}
 	}
 }

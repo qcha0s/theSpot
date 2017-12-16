@@ -93,7 +93,7 @@ public class Sensor_UD : MonoBehaviour {
 	}
 
 	private void RemoveDeactivatedEnemies () {
-		for (int i = m_targets.Count; i > 0; i--) {
+		for (int i = m_targets.Count-1; i > 0; i--) {
 			if (!m_targets[i].gameObject.activeInHierarchy) {
 				m_targets.Remove(m_targets[i]);
 			}
