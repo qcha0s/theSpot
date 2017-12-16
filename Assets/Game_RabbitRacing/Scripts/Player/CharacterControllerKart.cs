@@ -18,8 +18,10 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     public float m_minTurnRadius = 15f;
     public float m_rayCastEpsilon = 0.2f;
     public float m_speedEpsilon = 0.1f;
+    public float m_surfaceNormalRotationSpeed = 20f;
     public float m_turnDeadZone = 0.3f;
 	public LayerMask m_groundLayer;
+    public Vector3 m_gravityDirection = -Vector3.up;
     #endregion
     #region Private Variables
     private bool m_isDrifting = false;
@@ -36,6 +38,34 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
 
     #endregion
     #region Accessors
+    public float MaxSpeed{
+        get{
+            return m_maxSpeed;
+        }
+        set{
+            if(value > 0){
+                m_maxSpeed = value;
+            }
+        }
+    }
+    public float Acceleration{
+        get{
+            return m_acceleration;
+        }
+        set{
+            if(value > 0){
+                m_acceleration = value;
+            }
+        }
+    }
+    public bool isGluedToGround{
+        get{
+            return m_gluedToGround;
+        }
+        set{
+            m_gluedToGround = value;
+        }
+    } 
     public bool isGrounded{
         get{
             return m_isGrounded;
@@ -83,7 +113,6 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
             m_currentTurnRadius = Mathf.Infinity;
             m_isTurning = false;
         }
-       
     }
     public void ResetSteering(){
         m_currentTurnRadius = Mathf.Infinity;
@@ -94,7 +123,6 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         if(Speed < m_bestTurnSpeed){
             m_isDrifting = false;
         }
-       
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
@@ -125,26 +153,30 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
                 m_forwardSpeed = 0;
             }
         }
+
         Vector3 forwardVelocity = transform.forward * m_forwardSpeed;
         return forwardVelocity;
     }
     Vector3 CalculateUpwardMovement(){
         if(m_isGrounded){
-			MakePerpendicularToGround();
 			m_yVelocity = 0f;
 		}
 		else{
 			m_yVelocity += m_gravity * Time.deltaTime;
 		}
-        return (m_gluedToGround ? transform.up : Vector3.up) * m_yVelocity;
+        return (m_gluedToGround && m_isGrounded ? transform.up : -m_gravityDirection) * m_yVelocity;
     }
     void MakePerpendicularToGround(){
         RaycastHit hitInfo;
-        Ray surfaceRay = new Ray(transform.position + m_characterController.center, m_gluedToGround ? -transform.up : -Vector3.up);
-        if(Physics.Raycast(surfaceRay.origin, surfaceRay.direction, out hitInfo, Mathf.Infinity, m_groundLayer)){
+        Ray surfaceRay = new Ray(transform.position + m_characterController.center, m_gluedToGround ? -transform.up : m_gravityDirection);
+        if(Physics.Raycast(surfaceRay.origin, surfaceRay.direction, out hitInfo, m_rayCastDistance, m_groundLayer)){
             m_surfaceNormal = hitInfo.normal;
+            transform.rotation = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
         }
-        transform.rotation = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
+        else{
+            m_surfaceNormal = -m_gravityDirection;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation, Time.deltaTime * m_surfaceNormalRotationSpeed);
+        }
     }
     void RotateToTurn(){
         if(m_isTurning){
@@ -153,9 +185,8 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
             transform.Rotate(0, angleToRotate, 0);
         }
     }
-
-
     void FixedUpdate() {
+        MakePerpendicularToGround();
         m_velocity = CalculateForwardMovement() + CalculateUpwardMovement();
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
