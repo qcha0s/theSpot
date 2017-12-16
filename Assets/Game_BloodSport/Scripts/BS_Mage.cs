@@ -5,7 +5,7 @@ using UnityEngine;
 public class BS_Mage : MonoBehaviour {
 
 	public GameObject fireBallPrefab;
-	public Transform fireBallSpawn;
+	public Transform spellSpawn;
 
 	private Animator m_animationController;
 
@@ -23,22 +23,38 @@ public class BS_Mage : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			m_animationController.SetTrigger("isAbility1");
 			Debug.Log("pressed 1");
+			m_animationController.SetTrigger("isPoly");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha2)) {
 			m_animationController.SetTrigger("isAbility2");
 			Debug.Log("pressed 2");
+			m_animationController.SetTrigger("isBlinking");
 
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
 			Debug.Log("pressed 3");
-			transform.position += transform.rotation * Vector3.forward * 5;
 		}
 	}
 
 	void Fire() 	{
     // Create the Bullet from the Bullet Prefab
-    var bullet = (GameObject)Instantiate (fireBallPrefab, fireBallSpawn.position, fireBallSpawn.rotation);
+    var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
+
+    // Add velocity to the bullet
+    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+
+    // Destroy the bullet after 2 seconds
+    Destroy(bullet, 2.0f);
+	}
+
+	void Blink() {
+		transform.position += transform.rotation * Vector3.forward * 5;
+	}
+
+	void Polymorph() 	{
+    // Create the Bullet from the Bullet Prefab
+    var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
 
     // Add velocity to the bullet
     bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;

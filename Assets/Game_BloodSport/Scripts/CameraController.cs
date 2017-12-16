@@ -75,31 +75,8 @@ public class CameraController : MonoBehaviour {
 		if(m_mouseSideButton && (Input.GetAxis("Vertical") != 0 || Input.GetButton("Jump")) || (Input.GetMouseButton(0) && Input.GetMouseButton(1))){
 			m_mouseSideButton  = false;
 		}
-
-		//if either mousebuuttons are down, let the mouse govern cam posiition
-
-		if(GUIUtility.hotControl == 0){
-			if(Input.GetMouseButton(0) || Input.GetMouseButton(1)){
-
-				//check to see if mouse input is allowed on axis
-				if(m_allowMouseInputX){
-					m_xDeg += Input.GetAxis("Mouse X") * m_xSpeed * 0.02f; // TODO: Fuck you magic Mike
-				} else {
-					RotateBehindTarget();
-				}
-
-				if(m_allowMouseInputY){
-					m_yDeg -= Input.GetAxis("Mouse Y") * m_ySpeed * 0.02f; // TODO: Fuck you magic Mike
-				}
-
-				if(!m_alwaysRotatetoRearofTarget){
-					m_rotateBehind = false;
-				}
-			}else if(Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0 || m_rotateBehind || m_mouseSideButton){
-				RotateBehindTarget();
-			}
-
-		}
+	
+		RotateBehindTarget();
 		//ensure pitch is in cam restraints
 		m_yDeg = ClampAngle(m_yDeg, m_yMinLimit, m_yMaxLimit);
 

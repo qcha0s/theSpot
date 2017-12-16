@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BS_Heal : MonoBehaviour {
-	private BS_PlayerHealth playerHealth; 
+	private BS_Health playerHealth; 
 void OnTriggerEnter(Collider other){
 		
-		Debug.Log("heal");
-			playerHealth = other.GetComponent<BS_PlayerHealth>();
+		//Debug.Log("heal");
+		playerHealth = other.GetComponent<BS_Health>();
 		if(playerHealth == null){
 			return;
 
 
 		}else{
-			
+			Debug.Log("heal");
 			Debug.Log(playerHealth == null);
-			playerHealth.PlayerHeal(100);
+			playerHealth.Heal(100);
 			Destroy(gameObject);
 		}
 }

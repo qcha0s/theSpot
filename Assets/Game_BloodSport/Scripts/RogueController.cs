@@ -28,11 +28,16 @@ public class RogueController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
-	
+	private bool m_UltActive = true;
+	private bool m_sprintOnCD = false;
+	private bool m_poisonOnCD = false;
+	private float m_sprintCD=10f;
+	private bool m_sprinting = false;
+	private float m_poisonCD = 6f;
 
 
 	void Awake(){
-
+		m_attackState = Animator.StringToHash("Base.Attack");
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
@@ -40,13 +45,13 @@ public class RogueController : MonoBehaviour {
 	}
 
 	void Update(){
-		
+		 //currentBaseState = m_animationController.GetCurrentAnimatorStateInfo(0);
 		m_moveStatus = "idle";
-		m_isWalking = m_walkByDefault;
-
-		if(Input.GetAxis("Run") != 0){
-			m_isWalking = !m_walkByDefault;
-		}
+		
+		
+	
+		
+		
 
 		if(m_grounded){
 			//if player is steering with the right mouse button .. A/D will strafe
@@ -123,15 +128,9 @@ public class RogueController : MonoBehaviour {
 
 
 	
-		//is the player attacking
 		
 		
-		// if(m_animationController.GetCurrentAnimatorStateInfo().fullPathHash == m_attackState){
-		// 	for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-		// 		m_weaponHitBoxes[i].enabled = true;
-		// 	}
-		// 	Debug.Log(currentupperTorsoState.fullPathHash);
-		// }
+	
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
@@ -141,30 +140,65 @@ public class RogueController : MonoBehaviour {
 			//m_weaponHitBox.enabled = false;
 		}
 
-		if(Input.GetKey(KeyCode.Alpha1)){
+		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
 			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
+			m_poisonOnCD = true;
+			StartCoroutine(CoolDownSystem(m_sprintCD,"Poison"));
+			StartCoroutine(StartPoison());
 		}
-		if(Input.GetKey(KeyCode.Alpha2)){
+
+		if(Input.GetKey(KeyCode.Alpha2) && !m_sprintOnCD ){
+		
+			if(m_sprinting == false ){
+					m_sprinting = true;
+					m_sprintOnCD = true;
+					StartCoroutine(CoolDownSystem(m_sprintCD,"Sprint"));
+					StartCoroutine(StartSprint());
+			} 
 			
-				m_targetGUI.SetActive(true);
 			
-			
+		}
+	if(m_sprinting){
+		m_animationController.SetBool("isSprinting",true);
+		m_isWalking = !m_walkByDefault;
+	}
+	else{
+		m_animationController.SetBool("isSprinting",false);
+		m_isWalking = m_walkByDefault;
+	}
+		if(Input.GetKey(KeyCode.Alpha3) && m_UltActive){
+			m_targetGUI.SetActive(true);
 		}
 
 	}
 	
 	public void ShadowStep(Transform targetLocation){
 		gameObject.SetActive(false);
-		//StartCoroutine(ShadowSteptime(targetLocation));
 		gameObject.transform.position = targetLocation.position;
 		gameObject.SetActive(true);
+		m_targetGUI.SetActive(false);
+	}
+	IEnumerator StartSprint(){
+		yield return new WaitForSeconds(4);
+		m_sprinting = false;
 		
 	}
-
-	// IEnumerator ShadowSteptime(Transform target){
-	// 	yield return new WaitForSeconds(2);
-	// 	gameObject.transform.position = target.position;
-	// 	gameObject.SetActive(true);
-	// }
+	IEnumerator StartPoison(){
+		yield return new WaitForSeconds(3);
+		m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(false);
+		m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(false);
+	}
+	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
+		
+		yield return new WaitForSeconds(cooldownvalue);
+		if(Ability == "Sprint"){
+			m_sprintOnCD = false;
+		}
+		if(Ability == "Poison"){
+			m_poisonOnCD = false;
+		}
+		
+	}
+	
 }
