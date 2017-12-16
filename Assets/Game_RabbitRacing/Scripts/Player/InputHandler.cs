@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent( typeof( BaseKartMovement ) )]
 public class InputHandler : MonoBehaviour {
 
 	private BaseKartMovement m_kartMovement;
@@ -23,8 +23,9 @@ public class InputHandler : MonoBehaviour {
 		m_kartMovement.Turn(Input.GetAxis("Horizontal"));
 
 		if(Input.GetButtonDown("Fire1")){
-			Debug.Log("FIRE");
-			m_itemSlot.UseItem();
+ 			m_itemSlot.UseItem();
 		}
+
+		m_kartMovement.SetDrift(Input.GetButton("Jump"));
 	}
 }

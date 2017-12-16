@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseKartMovement : MonoBehaviour {
+[RequireComponent( typeof( CharacterController ) )]
+public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     #region Public Variables
     public bool m_gluedToGround = true;
-    public float m_acceleration = 5f;
+    public float m_acceleration = 8f;
     public float m_bestTurnSpeed = 15f;
     public float m_brakeAcceleration = 20f;
     public float m_forceDeadZone = 0.1f;
@@ -14,12 +14,14 @@ public class BaseKartMovement : MonoBehaviour {
     public float m_maxReverseSpeed = 5f;
     public float m_maxSpeed = 20f;
     public float m_maxTurnRadius = 50f;
-    public float m_minDriftRadius = 4f;
-    public float m_minTurnRadius = 5f;
+    public float m_minDriftRadius = 1f;
+    public float m_minTurnRadius = 15f;
     public float m_rayCastEpsilon = 0.2f;
     public float m_speedEpsilon = 0.1f;
-    public float m_turnDeadZone = 0.1f;
+    public float m_surfaceNormalRotationSpeed = 20f;
+    public float m_turnDeadZone = 0.3f;
 	public LayerMask m_groundLayer;
+    public Vector3 m_gravityDirection = -Vector3.up;
     #endregion
     #region Private Variables
     private bool m_isDrifting = false;
@@ -33,8 +35,37 @@ public class BaseKartMovement : MonoBehaviour {
 	private Vector3 m_surfaceNormal = Vector3.up;
     private Vector3 m_velocity;
     private CharacterController m_characterController;
+
     #endregion
     #region Accessors
+    public float MaxSpeed{
+        get{
+            return m_maxSpeed;
+        }
+        set{
+            if(value > 0){
+                m_maxSpeed = value;
+            }
+        }
+    }
+    public float Acceleration{
+        get{
+            return m_acceleration;
+        }
+        set{
+            if(value > 0){
+                m_acceleration = value;
+            }
+        }
+    }
+    public bool isGluedToGround{
+        get{
+            return m_gluedToGround;
+        }
+        set{
+            m_gluedToGround = value;
+        }
+    } 
     public bool isGrounded{
         get{
             return m_isGrounded;
@@ -50,8 +81,7 @@ public class BaseKartMovement : MonoBehaviour {
     }
     #endregion
     #region Public Methods
-     public void Gas(float amount){
-        // Mathf.Clamp(amount, 0, 1);
+    public void Gas(float amount){
         if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
             m_forwardSpeed += amount * m_acceleration * Time.deltaTime;
@@ -59,7 +89,6 @@ public class BaseKartMovement : MonoBehaviour {
         }
     }
     public void Brake(float amount){
-        // Mathf.Clamp(amount, 0, 1);
         if(amount > m_forceDeadZone && m_isGrounded){
             m_isForceApplied = true;
             m_forwardSpeed -= amount * m_brakeAcceleration * Time.deltaTime;
@@ -67,14 +96,14 @@ public class BaseKartMovement : MonoBehaviour {
         }
     }
     public void Turn(float amount){
-        // Mathf.Clamp(amount, -1, 1);
         if(Mathf.Abs(amount) > m_turnDeadZone){
             m_isTurning = true;
             float underSteerFactor = 0f;
-            float turnDirection = amount < 0 ? -1 : 1; 
+            float turnDirection = amount < 0 ? -1 : 1;
+            float actualMinTurnRadius = m_isDrifting ? m_minDriftRadius : m_minTurnRadius; 
             if(m_forwardSpeed != 0){
                 underSteerFactor = Mathf.Clamp(m_bestTurnSpeed / m_forwardSpeed, -1, 1);
-                m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - m_minTurnRadius) * Mathf.Abs(amount * underSteerFactor));
+                m_currentTurnRadius = turnDirection * (m_maxTurnRadius - (m_maxTurnRadius - actualMinTurnRadius) * Mathf.Abs(amount * underSteerFactor));
             }
             else if(underSteerFactor == 0f){
                 m_currentTurnRadius = Mathf.Infinity;
@@ -84,7 +113,6 @@ public class BaseKartMovement : MonoBehaviour {
             m_currentTurnRadius = Mathf.Infinity;
             m_isTurning = false;
         }
-       
     }
     public void ResetSteering(){
         m_currentTurnRadius = Mathf.Infinity;
@@ -92,6 +120,9 @@ public class BaseKartMovement : MonoBehaviour {
     }
     public void SetDrift(bool isDrifting){
         m_isDrifting = isDrifting;
+        if(Speed < m_bestTurnSpeed){
+            m_isDrifting = false;
+        }
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
@@ -122,26 +153,30 @@ public class BaseKartMovement : MonoBehaviour {
                 m_forwardSpeed = 0;
             }
         }
-        Vector3 forwardVelocity = transform.TransformDirection(Vector3.forward * m_forwardSpeed);
+
+        Vector3 forwardVelocity = transform.forward * m_forwardSpeed;
         return forwardVelocity;
     }
     Vector3 CalculateUpwardMovement(){
         if(m_isGrounded){
-			MakePerpendicularToGround();
 			m_yVelocity = 0f;
 		}
 		else{
 			m_yVelocity += m_gravity * Time.deltaTime;
 		}
-        return (m_gluedToGround ? transform.up : Vector3.up) * m_yVelocity;
+        return (m_gluedToGround && m_isGrounded ? transform.up : -m_gravityDirection) * m_yVelocity;
     }
     void MakePerpendicularToGround(){
         RaycastHit hitInfo;
-        Ray surfaceRay = new Ray(transform.position + m_characterController.center, m_gluedToGround ? -transform.up : -Vector3.up);
-        if(Physics.Raycast(surfaceRay.origin, surfaceRay.direction, out hitInfo, Mathf.Infinity, m_groundLayer)){
+        Ray surfaceRay = new Ray(transform.position + m_characterController.center, m_gluedToGround ? -transform.up : m_gravityDirection);
+        if(Physics.Raycast(surfaceRay.origin, surfaceRay.direction, out hitInfo, m_rayCastDistance, m_groundLayer)){
             m_surfaceNormal = hitInfo.normal;
+            transform.rotation = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
         }
-        transform.rotation = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
+        else{
+            m_surfaceNormal = -m_gravityDirection;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation, Time.deltaTime * m_surfaceNormalRotationSpeed);
+        }
     }
     void RotateToTurn(){
         if(m_isTurning){
@@ -150,8 +185,8 @@ public class BaseKartMovement : MonoBehaviour {
             transform.Rotate(0, angleToRotate, 0);
         }
     }
-
     void FixedUpdate() {
+        MakePerpendicularToGround();
         m_velocity = CalculateForwardMovement() + CalculateUpwardMovement();
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
