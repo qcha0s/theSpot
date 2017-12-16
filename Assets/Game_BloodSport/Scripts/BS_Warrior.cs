@@ -14,6 +14,7 @@ public class BS_Warrior : MonoBehaviour {
 	public GameObject m_ultimateShield;
 	public float m_whirlwindCD = 5.0f;
 	public float m_chargeCD = 10.0f;
+	public float m_ultimateDuration = 5.0f;
 
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
@@ -86,6 +87,7 @@ public class BS_Warrior : MonoBehaviour {
 
 	public void Ultimate() {
 		if(!m_usingUltimate) {
+			StartCoroutine(CoolDownSystem(m_ultimateDuration, "Ultimate"));
 			m_animator.SetBool("isUlting", true);
 			m_usingUltimate = true;
 			m_normalShield.SetActive(false);
@@ -107,6 +109,9 @@ public class BS_Warrior : MonoBehaviour {
 		}
 		if(Ability == "Charge"){
 			m_ChargeOnCD = false;
+		}
+		if(Ability == "Ultimate") {
+			ResetAfterUltimate();
 		}
 	}
 }
