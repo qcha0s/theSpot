@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     #region Public Variables
     public bool m_gluedToGround = true;
-    public float m_acceleration = 5f;
+    public float m_acceleration = 8f;
     public float m_bestTurnSpeed = 15f;
     public float m_brakeAcceleration = 20f;
     public float m_forceDeadZone = 0.1f;
@@ -14,11 +14,11 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     public float m_maxReverseSpeed = 5f;
     public float m_maxSpeed = 20f;
     public float m_maxTurnRadius = 50f;
-    public float m_minDriftRadius = 4f;
-    public float m_minTurnRadius = 5f;
+    public float m_minDriftRadius = 1f;
+    public float m_minTurnRadius = 15f;
     public float m_rayCastEpsilon = 0.2f;
     public float m_speedEpsilon = 0.1f;
-    public float m_turnDeadZone = 0.1f;
+    public float m_turnDeadZone = 0.3f;
 	public LayerMask m_groundLayer;
     #endregion
     #region Private Variables
@@ -94,6 +94,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         if(Speed < m_bestTurnSpeed){
             m_isDrifting = false;
         }
+       
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
