@@ -9,7 +9,8 @@ public class FollowCamera : MonoBehaviour {
 	public float distance = 10.0f;
 	
 	public float height = 5.0f;
-	// How much we 
+	
+	
 	public float heightDamping = 2.0f;
 	public float rotationDamping = 3.0f;
 	public Vector3 m_pivotOffset = new Vector3();
