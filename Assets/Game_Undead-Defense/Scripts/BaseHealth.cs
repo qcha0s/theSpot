@@ -31,5 +31,10 @@ public abstract class BaseHealth : MonoBehaviour {
 		return m_isDead;
 	}
 
+	private void OnDisable() {
+		m_currentHealth = m_maxHealth;
+		m_isDead = false;
+	}
+
 	public abstract void Die();
 }

@@ -23,8 +23,8 @@ public class ProjectileTower_UD : MonoBehaviour {
 	}
 
 	private void Update() {
+		GetTarget();
 		if (m_sensor.Targets.Count > 0 && m_readyToFire) {
-			GetTarget();
 			StartCoroutine(Shoot());
 		}
 	}
@@ -87,6 +87,7 @@ public class ProjectileTower_UD : MonoBehaviour {
 	}
 
 	private void SetProjectileVelocity(Bullet projectile) {
+		Debug.Log(m_target == null);
 		Vector3 direction = new Vector3(m_target.transform.position.x - firePoint.position.x,m_target.transform.position.y - firePoint.position.y,m_target.transform.position.z - firePoint.position.z);
 		float travelTime = (Mathf.Pow(direction.x,2)+Mathf.Pow(direction.z,2))/Mathf.Pow(projectile.m_speed,2);
 		travelTime = Mathf.Sqrt(travelTime);
@@ -96,5 +97,9 @@ public class ProjectileTower_UD : MonoBehaviour {
 		}
 		Vector3 newVelocity = new Vector3(direction.x/travelTime,(direction.y/travelTime)-(Physics.gravity.y*travelTime/2f),direction.z/travelTime);
 		projectile.RBody.velocity = newVelocity;
+	}
+
+	private void OnEnable() {
+		m_sensor.ClearTargets();
 	}
 }

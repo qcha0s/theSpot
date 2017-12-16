@@ -41,7 +41,7 @@ public class EnemySpawner_UD : MonoBehaviour {
 		WaveManager.instance.Spawner = this;
 	}
 
-	public int SpawnEnemies(int waveNumber = 1) {
+	public int SpawnEnemies(int waveNumber) {
 		int numEnemiesSpawned = 0;
 		numEnemiesSpawned += SpawnSkeletons(waveNumber);
 		numEnemiesSpawned += SpawnFlyingUnits(waveNumber);

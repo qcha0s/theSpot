@@ -121,6 +121,7 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.DEAD:
 				GameManager_UD.instance.AddGold(m_goldValue);
+				WaveManager.instance.EnemyDied();
 				m_health.Die();
 			break;
 			default:
