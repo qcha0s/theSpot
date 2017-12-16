@@ -1,5 +1,5 @@
 /*
- * Unity VSCode Support
+ * Unity VSCode Support 
  *
  * Seamless support for Microsoft Visual Studio Code in Unity
  *
