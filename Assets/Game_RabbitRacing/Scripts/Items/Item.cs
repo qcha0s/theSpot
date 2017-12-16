@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface Item {
+public interface Item {
 	void Use(GameObject user);
 }
