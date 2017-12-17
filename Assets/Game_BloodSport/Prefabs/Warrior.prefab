@@ -3295,12 +3295,12 @@ MonoBehaviour:
   m_ultimateDuration: 5
   m_abilityDescription: {fileID: 114416447822824556}
   m_abilityDescriptionTitle: {fileID: 114130854844148068}
-  m_chargeDescription: Charge in the direction you are facing with crazy speed. If
-    you hit anything you stop at that object, if you hit an enemy deal 60 damage.
-  m_whirlwindDescription: Spin in a circle dealing X damage to the first person hit.
-  m_ultimateDescription: Your shield grows in size and now has 1000 health. Once your
-    shield is killed you revert back to your normal shield.
-  m_passiveDescription: You take 10% less damage.
+  m_chargeDescription: Charge in the direction you're facing stopping if you hit anything,
+    if you hit an enemy you deal 60 damage.
+  m_whirlwindDescription: Spin 360 degress dealing X damage to the first target hit.
+  m_ultimateDescription: Pull out your giant shield that has 1000 health so that you
+    can potect your allies.
+  m_passiveDescription: Take 10% less damage.
   m_toolTipCanvas: {fileID: 223303336202384514}
 --- !u!114 &114870763136426798
 MonoBehaviour:
