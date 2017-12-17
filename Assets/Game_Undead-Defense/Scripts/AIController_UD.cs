@@ -73,7 +73,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.MOVING_TO_WP:
-				m_movement.StopMovement();
+			
 			break;
 			case m_states.CHASING_PLAYER:
 
@@ -122,6 +122,8 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.DEAD:
 				GameManager_UD.instance.AddGold(m_goldValue);
 				WaveManager.instance.EnemyDied();
+				m_movement.Reset();
+				m_currentState = m_states.MOVING_TO_WP;
 				m_health.Die();
 			break;
 			default:

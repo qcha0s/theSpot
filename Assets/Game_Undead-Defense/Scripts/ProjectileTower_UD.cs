@@ -120,8 +120,11 @@ public class ProjectileTower_UD : MonoBehaviour {
 
 			break;
 			case TowerType.CannonTower:
-				Vector3 targetDir = m_target.transform.position - m_turret.position;
-				targetDir.y = 0;
+				Vector3 tempTargetPos = m_target.transform.position;
+				tempTargetPos.y = 0;
+				Vector3 tempTurretPos = m_turret.position;
+				tempTurretPos.y = 0;
+				Vector3 targetDir = tempTargetPos - tempTurretPos;
 				Quaternion rotation = Quaternion.LookRotation(targetDir);
 				m_turret.rotation = rotation;
 			break;
