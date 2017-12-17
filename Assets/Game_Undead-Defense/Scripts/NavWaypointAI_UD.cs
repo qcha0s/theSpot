@@ -85,7 +85,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
         Vector3 tempPosition = new Vector3(transform.position.x,0,transform.position.z);
         if (Vector3.Distance(tempPosition, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
-                Debug.Log("at Player's base");
+//                Debug.Log("at Player's base");
 //              m_lastWP = 0;
             } else {
                 m_curWaypoint++;

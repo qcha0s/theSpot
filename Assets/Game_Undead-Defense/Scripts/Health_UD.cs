@@ -9,6 +9,8 @@ public class Health_UD : BaseHealth {
 	public override void Die() {
 		if (!m_isPlayer) {
 			gameObject.SetActive(false);
+			Debug.Log("dead");
 		}
+		Debug.Log("dead1");
 	}
 }
