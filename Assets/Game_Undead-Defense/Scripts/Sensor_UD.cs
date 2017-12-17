@@ -12,9 +12,13 @@ public class Sensor_UD : MonoBehaviour {
 		m_cldr = GetComponent<SphereCollider>();
 	}
 
+	private void Update() {
+		RemoveDeactivatedEnemies();
+	}
+
 	private void OnTriggerEnter(Collider other) {
 		BaseHealth newTarget = other.GetComponent<BaseHealth>();
-		if (newTarget != null && newTarget.tag != "Player") {
+		if (newTarget.gameObject.activeInHierarchy) {
 			m_targets.Add(other.GetComponent<BaseHealth>());
 		}
 	}
@@ -86,5 +90,13 @@ public class Sensor_UD : MonoBehaviour {
 
 	private float GetDistance(Vector3 target) {
 		return Mathf.Abs((target - transform.position).magnitude);
+	}
+
+	private void RemoveDeactivatedEnemies () {
+		for (int i = m_targets.Count-1; i > 0; i--) {
+			if (!m_targets[i].gameObject.activeInHierarchy) {
+				m_targets.Remove(m_targets[i]);
+			}
+		}
 	}
 }

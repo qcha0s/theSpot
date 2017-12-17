@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block_UD : InteractableObject_UD {
+public class Block_UD : MonoBehaviour, InteractableObject_UD {
 
 	public Material hovered_Color;
 
@@ -23,7 +23,7 @@ public class Block_UD : InteractableObject_UD {
 
 	}
 
-	public override void Interact() {
+	void InteractableObject_UD.Interact() {
 		Vector3 offset = Vector3.zero;
 		offset = gameObject.transform.position;
 		offset.y = gameObject.transform.position.y + 1;
@@ -32,14 +32,14 @@ public class Block_UD : InteractableObject_UD {
 		Instantiate(Tower, offset, Quaternion.identity);
 	}
 
-	public override void OnBeginRaycast() {
+	void InteractableObject_UD.OnBeginRaycast() {
 		current_Color.material = hovered_Color;
 		if(isClicked) {
 			current_Color.material = clicked_Color;
 		}
 	}
 
-	public override void OnEndRaycast() {
+	void InteractableObject_UD.OnEndRaycast() {
 		current_Color.material = unhovered_Color;
 		if(isClicked) {
 			current_Color.material = clicked_Color;

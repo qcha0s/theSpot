@@ -32,7 +32,7 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		Vector3 startPos = Camera.main.transform.position;
 		Vector3 forward = Camera.main.transform.forward * m_raycastDistance;
 		Debug.DrawRay(startPos, forward, Color.blue);
-		if (Physics.Raycast(startPos,forward, out hit)) {
+		if (Physics.Raycast(startPos,forward, out hit,m_raycastDistance)) {
 //			Debug.Log(hit.collider.name);
 			if (hit.collider.tag == "Interactable") {
 				InteractableObject_UD newObj = hit.collider.GetComponent<InteractableObject_UD>();

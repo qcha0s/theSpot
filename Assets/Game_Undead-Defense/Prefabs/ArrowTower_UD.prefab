@@ -196,10 +196,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_range: 50
   m_fireRate: 1
+  m_rotationSpeed: 30
   m_predictMovement: 1
+  m_towerType: 0
   m_firingMode: 0
   m_ammo: 0
-  firePoint: {fileID: 4213448421631526}
+  m_firePoint: {fileID: 4213448421631526}
+  m_turret: {fileID: 0}
 --- !u!135 &135957783360434584
 SphereCollider:
   m_ObjectHideFlags: 1

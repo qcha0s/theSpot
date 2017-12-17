@@ -8,6 +8,8 @@ public class Health_UD : BaseHealth {
 
 	public override void Die() {
 		if (!m_isPlayer) {
+			m_currentHealth = m_maxHealth;
+			m_isDead = false;
 			gameObject.SetActive(false);
 			Debug.Log("dead");
 		}

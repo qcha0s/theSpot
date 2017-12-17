@@ -24,13 +24,8 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav = GetComponent<NavMeshAgent>();
     }
 
-    // private void Update() {
-    //     nav.SetDestination(m_targetPos);
-    // }
-
     private void Start() {
         nav.speed = m_speed;
-//        GetWayPoints();
     }
 
     public void Move() {
@@ -47,43 +42,32 @@ public class NavWaypointAI_UD : MonoBehaviour {
         tempWaypointPosition = m_waypoints[m_curWaypoint].position;
         tempWaypointPosition.x += Random.Range(-m_wpOffset.x,m_wpOffset.x);
         tempWaypointPosition.z += Random.Range(-m_wpOffset.y,m_wpOffset.y);
-        tempWaypointPosition.y = 0f;
         m_targetPos = tempWaypointPosition;
         nav.SetDestination(m_targetPos);
         m_wpReached = false;
-    }
-
-    public void GetWayPoints() {
-        Transform[] potentialWaypoints = m_wpContainer.GetComponentsInChildren<Transform>();
-        Transform[] waypoints = new Transform[ (potentialWaypoints.Length - 1) ];
-        for (int i = 1; i < potentialWaypoints.Length; i++ ) {
-            waypoints[i - 1] = potentialWaypoints[i];
-        }
-        SetWaypoints(waypoints);
     }
 
     private void ChasePlayer() {
       
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            m_targetPos = other.transform.position;
-            m_chasingPlayer = true;
-            nav.SetDestination(m_targetPos);  
-        }
-    }
+    // private void OnTriggerEnter(Collider other) {
+    //     if (other.tag == "Player") {
+    //         m_targetPos = other.transform.position;
+    //         m_chasingPlayer = true;
+    //         nav.SetDestination(m_targetPos);  
+    //     }
+    // }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
-            m_chasingPlayer = false;
-            m_wpReached = true;
-        }
-    }
+    // private void OnTriggerExit(Collider other) {
+    //     if (other.tag == "Player") {
+    //         m_chasingPlayer = false;
+    //         m_wpReached = true;
+    //     }
+    // }
 
     private void CheckDistanceToWP() {
-        Vector3 tempPosition = new Vector3(transform.position.x,0,transform.position.z);
-        if (Vector3.Distance(tempPosition, m_targetPos) <= m_minWaypointDistance) {
+        if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
 //                Debug.Log("at Player's base");
 //              m_lastWP = 0;
@@ -99,19 +83,24 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.velocity = Vector3.zero;
     }
 
+    public void Slow (float prcnt) {
+		m_speed = nav.speed * (1f - prcnt);
+	}
+
     public void SetWaypoints(Transform[] waypoints) {
+        m_wpReached = false;
         m_waypoints = waypoints;
         m_curWaypoint = 0;
         m_lastWP = waypoints.Length - 1;
-        Vector3 firstTarget = m_waypoints[m_curWaypoint].position;
-        firstTarget.y = 0;
-        m_targetPos = firstTarget;   
+        m_targetPos = m_waypoints[m_curWaypoint].position;  
         nav.SetDestination(m_targetPos);
 //        StartCoroutine(StartMovement());   
     }
 
-    IEnumerator StartMovement() {
-        yield return new WaitForSeconds(1);
-        nav.SetDestination(m_targetPos);
+    public void Reset() {
+        m_curWaypoint = 0;
+        transform.position = Vector3.zero;
+        nav.Warp(Vector3.zero);
+        nav.ResetPath();
     }
 }

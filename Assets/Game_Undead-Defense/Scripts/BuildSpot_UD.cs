@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildSpot_UD : InteractableObject_UD {
+public class BuildSpot_UD : MonoBehaviour, InteractableObject_UD {
 
 	public Material m_hoveredMat;
 	public GameObject m_arrowTower; //this will be taken out when pool manager and towers are working
@@ -13,22 +13,24 @@ public class BuildSpot_UD : InteractableObject_UD {
 	private Material m_unhoveredMat;
 	private MeshRenderer m_mesh;
 
+
+
 	void Awake() {
 		m_mesh = GetComponent<MeshRenderer>();
 		m_unhoveredMat = m_mesh.material;
 	}
 
-	public override void Interact() {
+	void InteractableObject_UD.Interact() {
 		GameManager_UD.instance.ShowBuildTowerUI(this);
 	}
 
-	public override void OnBeginRaycast() {
+	void InteractableObject_UD.OnBeginRaycast() {
 		if (!m_hasTower) {
 			m_mesh.material = m_hoveredMat;
 		}
 	}
 
-	public override void OnEndRaycast() {
+	void InteractableObject_UD.OnEndRaycast() {
 		m_mesh.material = m_unhoveredMat;
 	}
 
