@@ -1166,7 +1166,7 @@ Animator:
   m_GameObject: {fileID: 1259560871961046}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6ab2e9ab6449f10418d22989bca73340, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ce81b8f08e8b2f4c9989224cbfd10ed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1301,7 +1301,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: -0.12, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137197827076896148
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1473,7 +1473,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1048646776535254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -44.23343}
+  m_LocalPosition: {x: 0, y: 0, z: -54.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224094735721275964}

@@ -84,7 +84,7 @@ public class PoolManager_UD : MonoBehaviour {
 		for (int i = 0; i < difference; i++) {
 			GameObject temp = Instantiate(m_objectTypes[type].m_objectPrefab);
 			temp.SetActive(false);
-			temp.transform.parent = m_objectContainers[i].transform;			
+			temp.transform.parent = m_objectContainers[type].transform;			
 			m_objectTypes[type].m_objects.Add(temp);
 		}
 		GameObject newPoolObj = m_objectTypes[type].m_objects[currentPoolCapacity];
