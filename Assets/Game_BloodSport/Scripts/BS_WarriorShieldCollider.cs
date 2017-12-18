@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BS_WarriorShieldCollider : MonoBehaviour {
 
-	private float m_damage = 60.0f;
+	public float m_damage = 60.0f;
+	
 	private BS_Warrior m_warriorScript;
 
 	void Start() {
