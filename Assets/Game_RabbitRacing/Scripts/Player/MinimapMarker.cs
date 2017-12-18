@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MinimapMarker : MonoBehaviour {
 
-	// Rotation transform that the minimap marker is locked at
+	// Rotation transform that the minimap marker would be locked at
 	public float m_lockRot = 0;
+	// Position transform that the minimap marker would be locked at
 	public float m_lockPos = 19f;
 
 	void Update()
