@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 114517238298671498}
   - component: {fileID: 95391475474914856}
   - component: {fileID: 137197827076896148}
+  - component: {fileID: 143345583795925166}
   m_Layer: 11
   m_Name: PlayerTemp_UD
   m_TagString: Player
@@ -1149,12 +1150,12 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259560871961046}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Mass: 100
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &95391475474914856
@@ -1422,6 +1423,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.05437842, y: -0.15645647, z: 0.2659832}
     m_Extent: {x: 0.45766982, y: 0.9826678, z: 0.46322218}
   m_DirtyAABB: 0
+--- !u!143 &143345583795925166
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259560871961046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222206696932537850
 CanvasRenderer:
   m_ObjectHideFlags: 1
