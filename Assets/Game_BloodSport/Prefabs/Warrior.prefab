@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 143908793566656236}
   - component: {fileID: 114601723929437846}
   - component: {fileID: 114863253629189526}
+  - component: {fileID: 114621204658263206}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -771,7 +772,7 @@ GameObject:
   - component: {fileID: 222123706291679442}
   - component: {fileID: 114130854844148068}
   m_Layer: 5
-  m_Name: AbilityName
+  m_Name: AbilityTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1426,7 +1427,7 @@ GameObject:
   - component: {fileID: 114425786318666452}
   - component: {fileID: 114198792133850940}
   m_Layer: 5
-  m_Name: ToolTip
+  m_Name: ToolTipCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2895,7 +2896,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: OnMouseOverAbility
           m_Mode: 1
           m_Arguments:
@@ -2912,7 +2913,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: HideToolTipCanvas
           m_Mode: 1
           m_Arguments:
@@ -3039,7 +3040,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: OnMouseOverUltimate
           m_Mode: 1
           m_Arguments:
@@ -3056,7 +3057,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: HideToolTipCanvas
           m_Mode: 1
           m_Arguments:
@@ -3138,6 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29823b6c556b2794982ce487a862bc28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damage: 60
 --- !u!114 &114601723929437846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3154,6 +3156,30 @@ MonoBehaviour:
   m_damageReduction: 1
   m_healthBar: {fileID: 114927615196245056}
   m_healthText: {fileID: 114873308446822490}
+--- !u!114 &114621204658263206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053176498594614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f97b54bad7dfe4c88469f344a212df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityDescriptionTitle: {fileID: 114130854844148068}
+  m_abilityDescription: {fileID: 114416447822824556}
+  m_movementTitle: Charge
+  m_damageTitle: Whirlwind
+  m_ultimateTitle: Shield Wall
+  m_passiveTitle: Iron Man
+  m_movementDescription: Charge in the direction you're facing dealing damage to the
+    first enemy hit or stopping on impact.
+  m_damageDescription: Spin in a circle dealing X damage to the first enemy hit.
+  m_ultimateDescription: Your shield grows in size and now has 1000 health to protect
+    your allies.
+  m_passiveDescription: Damage decreased by 10%.
+  m_toolTipCanvas: {fileID: 223303336202384514}
 --- !u!114 &114626382596739946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3293,15 +3319,6 @@ MonoBehaviour:
   m_whirlwindCD: 5
   m_chargeCD: 10
   m_ultimateDuration: 5
-  m_abilityDescription: {fileID: 114416447822824556}
-  m_abilityDescriptionTitle: {fileID: 114130854844148068}
-  m_chargeDescription: Charge in the direction you're facing stopping if you hit anything,
-    if you hit an enemy you deal 60 damage.
-  m_whirlwindDescription: Spin 360 degress dealing X damage to the first target hit.
-  m_ultimateDescription: Pull out your giant shield that has 1000 health so that you
-    can potect your allies.
-  m_passiveDescription: Take 10% less damage.
-  m_toolTipCanvas: {fileID: 223303336202384514}
 --- !u!114 &114870763136426798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3318,7 +3335,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: OnMouseOverMovement
           m_Mode: 1
           m_Arguments:
@@ -3335,7 +3352,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114863253629189526}
+        - m_Target: {fileID: 114621204658263206}
           m_MethodName: HideToolTipCanvas
           m_Mode: 1
           m_Arguments:

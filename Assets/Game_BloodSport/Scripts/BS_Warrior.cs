@@ -16,13 +16,6 @@ public class BS_Warrior : MonoBehaviour {
 	public float m_whirlwindCD = 5.0f;
 	public float m_chargeCD = 10.0f;
 	public float m_ultimateDuration = 5.0f;
-	public Text m_abilityDescription;
-	public Text m_abilityDescriptionTitle;
-	public string m_chargeDescription;
-	public string m_whirlwindDescription;
-	public string m_ultimateDescription;
-	public string m_passiveDescription;
-	public Canvas m_toolTipCanvas;
 
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
@@ -36,7 +29,6 @@ public class BS_Warrior : MonoBehaviour {
 		m_healthScript = GetComponent<BS_Health>();
 		m_characterController = GetComponent<RPGCharacterController>();
 		m_shieldCollider.enabled = false;
-		m_toolTipCanvas.enabled = false;
 		m_previousTurnSpeed = m_characterController.m_turnSpeed;
 		m_ultimateShield.SetActive(false);
 	}
@@ -107,34 +99,6 @@ public class BS_Warrior : MonoBehaviour {
 		m_usingUltimate = false;
 		m_normalShield.SetActive(true);
 		m_ultimateShield.SetActive(false);
-	}
-
-	public void OnMouseOverMovement() {
-		m_toolTipCanvas.enabled = true;
-		m_abilityDescriptionTitle.text = "Charge";
-		m_abilityDescription.text = m_chargeDescription;
-	}
-
-	public void OnMouseOverAbility() {
-		m_toolTipCanvas.enabled = true;
-		m_abilityDescriptionTitle.text = "Whirlwind";
-		m_abilityDescription.text = m_whirlwindDescription;
-	}
-
-	public void OnMouseOverUltimate() {
-		m_toolTipCanvas.enabled = true;
-		m_abilityDescriptionTitle.text = "Shield Wall";
-		m_abilityDescription.text = m_ultimateDescription;
-	}
-
-	public void OnMouseOverPassive() {
-		m_toolTipCanvas.enabled = true;
-		m_abilityDescriptionTitle.text = "Iron Man";
-		m_abilityDescription.text = m_passiveDescription;
-	}
-
-	public void HideToolTipCanvas() {
-		m_toolTipCanvas.enabled = false;
 	}
 
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){	
