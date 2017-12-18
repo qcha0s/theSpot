@@ -13,6 +13,7 @@ public class FollowCamera : MonoBehaviour {
 	
 	public float heightDamping = 2.0f;
 	public float rotationDamping = 3.0f;
+	public Vector3 m_pivotOffset = new Vector3();
 
 	// Place the script in the Camera-Control group in the component menu
 	[AddComponentMenu("Camera-Control/Smooth Follow")]
@@ -46,9 +47,6 @@ public class FollowCamera : MonoBehaviour {
 		transform.position = new Vector3(transform.position.x,currentHeight,transform.position.z);
 	
 		// Always look at the target
-		transform.LookAt(target);
-
-	
-		
+		transform.LookAt(target.position + m_pivotOffset);
 	}
 }
