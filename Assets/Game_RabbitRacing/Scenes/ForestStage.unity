@@ -412,6 +412,7 @@ MonoBehaviour:
   height: 5
   heightDamping: 2
   rotationDamping: 3
+  m_pivotOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1388945582
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lockRot: 0
-  m_lockPos: 16
+  m_lockPos: 19
 --- !u!33 &1566859447
 MeshFilter:
   m_ObjectHideFlags: 0
