@@ -11,7 +11,7 @@ public class MinimapMarker : MonoBehaviour {
 	void Update()
 	{
 		// Rotation along y and z axes is reset to 0 every frame
-     	transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, m_lockRot, m_lockRot);
+     	transform.rotation = Quaternion.Euler(m_lockRot, m_lockRot, m_lockRot);
 		// Position along y axis is reset to 19 every frame
 		transform.position = new Vector3 (transform.position.x, m_lockPos, transform.position.z);
 	}
