@@ -5,6 +5,7 @@ using UnityEngine;
 public class BS_Mage : MonoBehaviour {
 
 	public GameObject fireBallPrefab;
+	public GameObject polyPrefab;
 	public Transform spellSpawn;
 
 	private Animator m_animationController;
@@ -34,6 +35,7 @@ public class BS_Mage : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
 			Debug.Log("pressed 3");
+			m_animationController.SetTrigger("isUltimate");
 		}
 	}
 
@@ -54,7 +56,7 @@ public class BS_Mage : MonoBehaviour {
 
 	void Polymorph() 	{
     // Create the Bullet from the Bullet Prefab
-    var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
+    var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
 
     // Add velocity to the bullet
     bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;

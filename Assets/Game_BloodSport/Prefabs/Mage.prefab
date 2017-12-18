@@ -604,7 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350696074906002}
   m_Layer: 0
-  m_Name: fireBallSpawn
+  m_Name: spellSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270249944289024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.747223, y: 9.998169, z: 17.110107}
+  m_LocalPosition: {x: 43.559452, y: 9.998169, z: 52.17187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4262288432298242}
@@ -2465,6 +2465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b7aeb36868dd45b31a80aa68ff70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_maxHealth: 1000
   m_currentHealth: 0
   m_damageReduction: 1
   m_healthBar: {fileID: 114785137060613460}
@@ -2677,12 +2678,14 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: []
+  m_weaponHitBoxes: {fileID: 0}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
   m_turnSpeed: 250
   m_moveBackwardsMultiplier: 0.75
+  m_hasDealtDamage: 0
+  m_disableMovement: 0
 --- !u!114 &114922475483649838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2696,7 +2699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBallPrefab: {fileID: 1105812798509924, guid: a9d10e5300cf2914c8da418e54322bc1,
     type: 2}
-  fireBallSpawn: {fileID: 4350696074906002}
+  polyPrefab: {fileID: 1099016234636218, guid: 8a36784863dddf845a22cd2616b9a5dd, type: 2}
+  spellSpawn: {fileID: 4350696074906002}
 --- !u!114 &114924026254468010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3190,7 +3194,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270231946522880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 234.41458, y: 210.00183, z: -17.110107}
+  m_LocalPosition: {x: 234.41458, y: 210.00183, z: -52.17187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224427935752119124}
