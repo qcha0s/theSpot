@@ -8,8 +8,8 @@ public abstract class BaseHealth : MonoBehaviour {
 	public bool IsDead { get{ return m_isDead; }}
 	public float Health {get{ return m_currentHealth; }}
 
-	private float m_currentHealth;
-	private bool m_isDead = false;
+	protected float m_currentHealth;
+	protected bool m_isDead = false;
 
 	private void Start() {
 		m_currentHealth = m_maxHealth;
