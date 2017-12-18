@@ -732,6 +732,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1651203575500360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4472722185425900}
+  m_Layer: 0
+  m_Name: ultSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1659119534356568
 GameObject:
   m_ObjectHideFlags: 1
@@ -1203,6 +1218,7 @@ Transform:
   - {fileID: 4693428668794896}
   - {fileID: 4350696074906002}
   - {fileID: 224586983107929568}
+  - {fileID: 4472722185425900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1623,6 +1639,19 @@ Transform:
   - {fileID: 4887365111204816}
   m_Father: {fileID: 4531817267536854}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4472722185425900
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651203575500360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.106, y: 1.105, z: 1.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4011545948566042}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4494322926751720
 Transform:
@@ -2700,7 +2729,10 @@ MonoBehaviour:
   fireBallPrefab: {fileID: 1105812798509924, guid: a9d10e5300cf2914c8da418e54322bc1,
     type: 2}
   polyPrefab: {fileID: 1099016234636218, guid: 8a36784863dddf845a22cd2616b9a5dd, type: 2}
+  ultimatePrefab: {fileID: 1043374010941776, guid: 6193badafdce20e41aa87f86fa7d16ab,
+    type: 2}
   spellSpawn: {fileID: 4350696074906002}
+  ultPos: {fileID: 0}
 --- !u!114 &114924026254468010
 MonoBehaviour:
   m_ObjectHideFlags: 1
