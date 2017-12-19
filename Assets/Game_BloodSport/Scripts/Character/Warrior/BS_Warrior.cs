@@ -16,6 +16,8 @@ public class BS_Warrior : MonoBehaviour {
 	public float m_whirlwindCD = 5.0f;
 	public float m_chargeCD = 10.0f;
 	public float m_ultimateDuration = 5.0f;
+	public int m_ultimateHitChargeAmount = 5;
+	public int m_damageMultiplier = 1;
 
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
