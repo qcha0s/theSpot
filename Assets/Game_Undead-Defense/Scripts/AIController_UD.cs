@@ -11,6 +11,7 @@ public class AIController_UD : MonoBehaviour {
 	private NavWaypointAI_UD m_movement;
 	// private WEAPONSCRIPT m_weapon;
 	// private ANIMATIONSCRIPT m_anim;
+	public Animator anim;
 	private m_states m_currentState = m_states.MOVING_TO_WP;
 	private Transform m_target;
 	private bool m_isAttacking = false;
@@ -39,7 +40,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.ATTACKING:
-
+				
 			break;
 			case m_states.STUNNED:
 
@@ -76,20 +77,20 @@ public class AIController_UD : MonoBehaviour {
 			
 			break;
 			case m_states.CHASING_PLAYER:
-
+				anim.SetBool("Attack", false);
 			break;
 			case m_states.ATTACKING:
-
+				anim.SetBool("Attack", false);
 			break;
 			case m_states.STUNNED:
-
+				
 			break;
 			case m_states.SLOWED:
 
 			break;
 			case m_states.DEAD:
-
-			break;
+			anim.SetBool("Dead", false);
+			break; 
 			default:
 				Debug.LogError("Unknown state");
 			break;
@@ -108,13 +109,13 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.Move();
 			break;
 			case m_states.CHASING_PLAYER:
-
+				anim.SetBool("Attack", true);
 			break;
 			case m_states.ATTACKING:
-
+				anim.SetBool("Attack", true);
 			break;
 			case m_states.STUNNED:
-
+				anim.SetTrigger("Hit");
 			break;
 			case m_states.SLOWED:
 
@@ -125,6 +126,7 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.Reset();
 				m_currentState = m_states.MOVING_TO_WP;
 				m_health.Die();
+				anim.SetBool("Dead", true);
 			break;
 			default:
 				Debug.LogError("Unknown state");
