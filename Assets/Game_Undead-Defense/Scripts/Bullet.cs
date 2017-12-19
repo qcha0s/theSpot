@@ -21,26 +21,26 @@ public class Bullet : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		Debug.Log("Hit");
-
-		// GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
-		// Destroy(partInst, 2f);
-
-		if (m_splashRad > 0f) {
-			Explode();
-		} else {
-			BaseHealth targetHealth = other.GetComponent<BaseHealth>();
-			if (targetHealth != null) {
-				targetHealth.TakeDamage(m_damage);
+		if (other.gameObject.activeInHierarchy) {
+			// GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
+			// Destroy(partInst, 2f);
+			if (m_splashRad > 0f) {
+				Explode();
+			} else {
+				BaseHealth targetHealth = other.GetComponent<BaseHealth>();
+				if (targetHealth != null) {
+					targetHealth.TakeDamage(m_damage);
+				}
 			}
+			gameObject.SetActive(false);
 		}
-		gameObject.SetActive(false);
 //		StartCoroutine(Deactivate());
 	}
 
 	void Explode () {
 		Collider[] colliders = Physics.OverlapSphere(transform.position, m_splashRad);
 		for (int i = 0; i < colliders.Length; i++) {
+			Debug.Log("hit " + colliders[i].gameObject.name);
 			BaseHealth targetInRange = colliders[i].GetComponent<BaseHealth>();
 			if (targetInRange != null) {
 				targetInRange.TakeDamage(m_damage);

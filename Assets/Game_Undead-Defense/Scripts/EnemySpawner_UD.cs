@@ -10,6 +10,8 @@ public class EnemySpawner_UD : MonoBehaviour {
 	public static EnemySpawner_UD Instance { get{ return m_instance;}}
 	public bool m_hasFlyingUnits = false;
 	public bool m_hasBossUnits = false;
+	public int m_enemyClusterAmount = 10;
+	public int m_enemySpawnRate = 1;
 
 	private static EnemySpawner_UD m_instance = null;
 
@@ -36,10 +38,10 @@ public class EnemySpawner_UD : MonoBehaviour {
 		for (int i = 0; i < m_WPContainers.Length; i++) {
 			m_WPContainers[i].GetWayPoints();
 		}
-		SpawnEnemies(1);
+		WaveManager.instance.Spawner = this;
 	}
 
-	public int SpawnEnemies(int waveNumber = 1) {
+	public int SpawnEnemies(int waveNumber) {
 		int numEnemiesSpawned = 0;
 		numEnemiesSpawned += SpawnSkeletons(waveNumber);
 		numEnemiesSpawned += SpawnFlyingUnits(waveNumber);
@@ -48,14 +50,18 @@ public class EnemySpawner_UD : MonoBehaviour {
 	}
 
 	public int SpawnSkeletons(int waveNumber) {
-		int numToSpawn = waveNumber * 10;
-		for (int i = 0; i < numToSpawn; i++) {
-			GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyNormal);
-			WPContainer enemyWPs = m_WPContainers[UnityEngine.Random.Range(0,m_WPContainers.Length)];
-			enemy.SetActive(true);
-			enemy.transform.position = enemyWPs.StartPoint.position;
-			enemy.GetComponent<NavMeshAgent>().Warp(enemyWPs.StartPoint.position);
-			enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWPs.Waypoints);
+		int numToSpawn = 10 + ((waveNumber-1) * 5);
+		int numSpawned = 0;
+		for (int i = 0; i < m_WPContainers.Length; i++) {
+			int spawnAmount = 0;
+			if (i < m_WPContainers.Length-1) {
+				spawnAmount = numToSpawn/m_WPContainers.Length;
+				numSpawned += spawnAmount;
+				StartCoroutine(SpawnSkele(spawnAmount,m_WPContainers[i]));
+			} else {
+				spawnAmount = numToSpawn - numSpawned;
+				StartCoroutine(SpawnSkele(spawnAmount,m_WPContainers[i]));
+			}
 		}
 		return numToSpawn;
 	}
@@ -64,13 +70,17 @@ public class EnemySpawner_UD : MonoBehaviour {
 		int numToSpawn = 0;
 		if (m_hasFlyingUnits) {
 			numToSpawn = ((waveNumber/3) + (waveNumber/3 * waveNumber % 3)) * 5;
-			for (int i = 0; i < numToSpawn; i++) {
-				GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyFlying);
-				WPContainer enemyWPs = m_WPContainers[UnityEngine.Random.Range(0,m_WPContainers.Length-1)];
-				enemy.SetActive(true);
-				enemy.transform.position = enemyWPs.StartPoint.position;
-				enemy.GetComponent<NavMeshAgent>().Warp(enemyWPs.StartPoint.position);
-				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWPs.Waypoints);
+			int numSpawned = 0;
+			for (int i = 0; i < m_WPContainers.Length; i++) {
+				int spawnAmount = 0;
+				if (i < m_WPContainers.Length-1) {
+					spawnAmount = numToSpawn/m_WPContainers.Length;
+					numSpawned += spawnAmount;
+					StartCoroutine(SpawnFlyer(spawnAmount,m_WPContainers[i]));
+				} else {
+					spawnAmount = numToSpawn - numSpawned;
+					StartCoroutine(SpawnFlyer(spawnAmount,m_WPContainers[i]));
+				}
 			}
 		}
 		return numToSpawn;
@@ -80,16 +90,75 @@ public class EnemySpawner_UD : MonoBehaviour {
 		int numToSpawn = 0;
 		if (m_hasBossUnits) {
 			numToSpawn = waveNumber/5;
-			for (int i = 0; i < numToSpawn; i++) {
-				GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyBoss);
-				WPContainer enemyWPs = m_WPContainers[UnityEngine.Random.Range(0,m_WPContainers.Length-1)];
-				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWPs.Waypoints);
-				enemy.SetActive(true);
-				enemy.transform.position = enemyWPs.StartPoint.position;
-				enemy.GetComponent<NavMeshAgent>().Warp(enemyWPs.StartPoint.position);
-				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWPs.Waypoints);
+			int numSpawned = 0;
+			for (int i = 0; i < m_WPContainers.Length; i++) {
+				int spawnAmount = 0;
+				if (i < m_WPContainers.Length-1) {
+					spawnAmount = numToSpawn/m_WPContainers.Length;
+					numSpawned += spawnAmount;
+					StartCoroutine(SpawnBossMan(spawnAmount,m_WPContainers[i]));
+				} else {
+					spawnAmount = numToSpawn - numSpawned;
+					StartCoroutine(SpawnBossMan(spawnAmount,m_WPContainers[i]));
+				}
 			}
 		}
 		return numToSpawn;
+	}
+
+	IEnumerator SpawnSkele(int numToSpawn, WPContainer enemyWP) {
+		int numSpawned = 0;
+		while (numSpawned < numToSpawn) {
+			for (int i = 0; i < m_enemyClusterAmount; i++) {
+				GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyNormal);
+				enemy.SetActive(true);
+				enemy.transform.position = enemyWP.StartPoint.position;
+				enemy.GetComponent<NavMeshAgent>().Warp(enemyWP.StartPoint.position);
+				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWP.Waypoints);
+				numSpawned+=1;
+				if (numSpawned == numToSpawn) {
+					break;
+				}
+			}
+			yield return new WaitForSeconds(m_enemySpawnRate);
+		}
+	}
+
+	IEnumerator SpawnFlyer(int numToSpawn, WPContainer enemyWP) {
+		int numSpawned = 0;
+		while (numSpawned < numToSpawn) {
+			for (int i = 0; i < m_enemyClusterAmount; i++) {
+				GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyFlying);
+				enemy.SetActive(true);
+				Vector3 EnemyPos = enemyWP.StartPoint.position;
+				EnemyPos.y += 3;
+				enemy.transform.position = EnemyPos;
+				enemy.GetComponent<NavMeshAgent>().Warp(EnemyPos);
+				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWP.Waypoints);
+				numSpawned+=1;
+				if (numSpawned == numToSpawn) {
+					break;
+				}
+			}
+			yield return new WaitForSeconds(m_enemySpawnRate);
+		}
+	}
+
+	IEnumerator SpawnBossMan(int numToSpawn, WPContainer enemyWP) {
+		int numSpawned = 0;
+		while (numSpawned < numToSpawn) {
+			for (int i = 0; i < m_enemyClusterAmount; i++) {
+				GameObject enemy = PoolManager_UD.Instance.GetObject((int)UD_Objects.EnemyBoss);
+				enemy.SetActive(true);
+				enemy.transform.position = enemyWP.StartPoint.position;
+				enemy.GetComponent<NavMeshAgent>().Warp(enemyWP.StartPoint.position);
+				enemy.GetComponent<NavWaypointAI_UD>().SetWaypoints(enemyWP.Waypoints);
+				numSpawned+=1;
+				if (numSpawned == numToSpawn) {
+					break;
+				}
+			}
+			yield return new WaitForSeconds(m_enemySpawnRate);
+		}
 	}
 }

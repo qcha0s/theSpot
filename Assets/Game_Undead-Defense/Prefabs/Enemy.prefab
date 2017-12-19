@@ -387,15 +387,15 @@ GameObject:
   - component: {fileID: 195841091293233580}
   - component: {fileID: 114024512575644666}
   - component: {fileID: 114042452703570258}
-  - component: {fileID: 136279549461109284}
   - component: {fileID: 54527102474906124}
+  - component: {fileID: 65800544260565348}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1641340482432402
 GameObject:
   m_ObjectHideFlags: 1
@@ -766,7 +766,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566978607458666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 189.31413, y: 2.866, z: 113.10288}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4029666417293688}
@@ -1107,7 +1107,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 60425c8e19b4daf41b113cd643309bac, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1149,6 +1149,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65800544260565348
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566978607458666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42167664, y: 0.8989029, z: 0.5859337}
+  m_Center: {x: -0.036179543, y: 0.016126633, z: 0.060102463}
 --- !u!95 &95525562061860018
 Animator:
   serializedVersion: 3
@@ -1177,6 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac2026d885d0b42a67a1a19f8f8508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_goldValue: 10
 --- !u!114 &114042452703570258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1189,8 +1202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 4
-  m_wpOffset: {x: 4, y: 4}
-  m_minWaypointDistance: 2
+  m_wpOffset: {x: 1.5, y: 1.5}
+  m_minWaypointDistance: 4
   m_wpContainer: {fileID: 0}
 --- !u!114 &114711677774955110
 MonoBehaviour:
@@ -1205,19 +1218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_isPlayer: 0
---- !u!136 &136279549461109284
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566978607458666}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137830592916450084
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

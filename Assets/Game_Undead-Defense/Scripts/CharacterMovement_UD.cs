@@ -9,6 +9,11 @@ public class CharacterMovement_UD : MonoBehaviour {
 	public float m_raycastDistance = 10f;
 
 	private BaseMovement_UD m_movement;
+	private Animator m_anim;
+
+	private void Awake() {
+		m_anim = GetComponent<Animator>();
+	}
 
 	void Start () {
 		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
@@ -17,7 +22,10 @@ public class CharacterMovement_UD : MonoBehaviour {
 	
 	void Update () {
 		Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
-		m_movement.Move(movement.normalized);
+		Vector3 speed = m_movement.Move(movement.normalized);
+		speed = transform.InverseTransformVector(speed);
+		m_anim.SetFloat("forward", speed.z);
+		m_anim.SetFloat("right", speed.x);
 		RotateWithCursor();
 	}
 

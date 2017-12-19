@@ -24,13 +24,8 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav = GetComponent<NavMeshAgent>();
     }
 
-    // private void Update() {
-    //     nav.SetDestination(m_targetPos);
-    // }
-
     private void Start() {
         nav.speed = m_speed;
-//        GetWayPoints();
     }
 
     public void Move() {
@@ -52,33 +47,24 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_wpReached = false;
     }
 
-    public void GetWayPoints() {
-        Transform[] potentialWaypoints = m_wpContainer.GetComponentsInChildren<Transform>();
-        Transform[] waypoints = new Transform[ (potentialWaypoints.Length - 1) ];
-        for (int i = 1; i < potentialWaypoints.Length; i++ ) {
-            waypoints[i - 1] = potentialWaypoints[i];
-        }
-        SetWaypoints(waypoints);
-    }
-
     private void ChasePlayer() {
       
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            m_targetPos = other.transform.position;
-            m_chasingPlayer = true;
-            nav.SetDestination(m_targetPos);  
-        }
-    }
+    // private void OnTriggerEnter(Collider other) {
+    //     if (other.tag == "Player") {
+    //         m_targetPos = other.transform.position;
+    //         m_chasingPlayer = true;
+    //         nav.SetDestination(m_targetPos);  
+    //     }
+    // }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
-            m_chasingPlayer = false;
-            m_wpReached = true;
-        }
-    }
+    // private void OnTriggerExit(Collider other) {
+    //     if (other.tag == "Player") {
+    //         m_chasingPlayer = false;
+    //         m_wpReached = true;
+    //     }
+    // }
 
     private void CheckDistanceToWP() {
         if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
@@ -102,6 +88,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
 	}
 
     public void SetWaypoints(Transform[] waypoints) {
+        m_wpReached = false;
         m_waypoints = waypoints;
         m_curWaypoint = 0;
         m_lastWP = waypoints.Length - 1;
@@ -110,8 +97,10 @@ public class NavWaypointAI_UD : MonoBehaviour {
 //        StartCoroutine(StartMovement());   
     }
 
-    IEnumerator StartMovement() {
-        yield return new WaitForSeconds(1);
-        nav.SetDestination(m_targetPos);
+    public void Reset() {
+        m_curWaypoint = 0;
+        transform.position = Vector3.zero;
+        nav.Warp(Vector3.zero);
+        nav.ResetPath();
     }
 }
