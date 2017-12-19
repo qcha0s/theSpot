@@ -128,7 +128,7 @@ public class GameManager_UD : MonoBehaviour
             case GameState.Loading:
                 break;
             case GameState.Play:
-                UpdatePlay();
+                //UpdatePlay();
                 break;
         }
     }
@@ -195,7 +195,7 @@ public class GameManager_UD : MonoBehaviour
         //TODO:change level
         m_currentGameMode = GameMode.Normal;
         ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
 
     }
 
@@ -204,15 +204,17 @@ public class GameManager_UD : MonoBehaviour
         //TODO:change level
         m_currentGameMode = GameMode.Survival;
         ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
     }
 
-    void LoadLevel(int scene)
+    void LoadLevel(string scene)
     {   
-        SceneManager.LoadScene(m_mapSceneName[scene]);
+        SceneManager.LoadScene(scene);
         //don't instantiate objects here	
 
     }
+    
+    //Once the map loads
     public void MapReady()
     {
         Instantiate(m_poolManager);
@@ -333,5 +335,23 @@ public class GameManager_UD : MonoBehaviour
     public void AddGold(int amount) {
         m_currentGold += amount;
         UpdateGold();
+    }
+
+
+    public void GameWin(){
+        ShowMouse();
+        ChangeState(GameState.Win);
+        //TODO:do checks for unlocks
+    }
+
+    public void GameLose(){
+        ShowMouse();
+        ChangeState(GameState.Lose);
+    }
+    public void ButtonMainMenu(){
+        ChangeState(GameState.Loading);
+        LoadLevel("MainMenu_UD");
+        ChangeState(GameState.Intro);
+        m_currentIntroTimer = 0.0f;
     }
 }
