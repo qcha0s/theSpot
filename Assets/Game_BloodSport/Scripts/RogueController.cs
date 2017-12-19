@@ -17,7 +17,9 @@ public class RogueController : MonoBehaviour {
 	public float m_walkSpeed = 4.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
-	
+	public bool m_hasDealtDamage = false;
+	public bool m_disableMovement = false;
+
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
 	private bool m_grounded = false;
@@ -41,18 +43,16 @@ public class RogueController : MonoBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-		
+		if(m_weaponHitBoxes != null) {
+			m_weaponHitBoxes.enabled = false;
+		}
 	}
 
 	void Update(){
+		if(!m_disableMovement) {
 		 //currentBaseState = m_animationController.GetCurrentAnimatorStateInfo(0);
 		m_moveStatus = "idle";
 		
-		
-	
-		
-		
-
 		if(m_grounded){
 			//if player is steering with the right mouse button .. A/D will strafe
 			if(Input.GetMouseButton(1)){
@@ -140,25 +140,7 @@ public class RogueController : MonoBehaviour {
 			//m_weaponHitBox.enabled = false;
 		}
 
-		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
-			m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(true);
-			m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
-			m_poisonOnCD = true;
-			StartCoroutine(CoolDownSystem(m_sprintCD,"Poison"));
-			StartCoroutine(StartPoison());
-		}
-
-		if(Input.GetKey(KeyCode.Alpha2) && !m_sprintOnCD ){
 		
-			if(m_sprinting == false ){
-					m_sprinting = true;
-					m_sprintOnCD = true;
-					StartCoroutine(CoolDownSystem(m_sprintCD,"Sprint"));
-					StartCoroutine(StartSprint());
-			} 
-			
-			
-		}
 	if(m_sprinting){
 		m_animationController.SetBool("isSprinting",true);
 		m_isWalking = !m_walkByDefault;
@@ -166,11 +148,10 @@ public class RogueController : MonoBehaviour {
 	else{
 		m_animationController.SetBool("isSprinting",false);
 		m_isWalking = m_walkByDefault;
-	}
-		if(Input.GetKey(KeyCode.Alpha3) && m_UltActive){
-			m_targetGUI.SetActive(true);
 		}
+		
 
+		}
 	}
 	
 	public void ShadowStep(Transform targetLocation){
@@ -179,26 +160,6 @@ public class RogueController : MonoBehaviour {
 		gameObject.SetActive(true);
 		m_targetGUI.SetActive(false);
 	}
-	IEnumerator StartSprint(){
-		yield return new WaitForSeconds(4);
-		m_sprinting = false;
-		
-	}
-	IEnumerator StartPoison(){
-		yield return new WaitForSeconds(3);
-		m_weapons[0].GetComponent<RogueWeaponScript>().SetPoison(false);
-		m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(false);
-	}
-	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
-		
-		yield return new WaitForSeconds(cooldownvalue);
-		if(Ability == "Sprint"){
-			m_sprintOnCD = false;
-		}
-		if(Ability == "Poison"){
-			m_poisonOnCD = false;
-		}
-		
-	}
+	
 	
 }
