@@ -9,12 +9,19 @@ public const float MAX_PROGRESS = 100.0f;
 	public string m_ult;
 
 	private float chargeRate = 1f;
+	private BS_Warrior m_warriorScript;
+	private BS_Mage m_mageScript;
+	private RogueController m_rogueScript;
 	
+	void Awake() {
+		m_warriorScript = GetComponent<BS_Warrior>();
+		m_rogueScript = GetComponent<RogueController>();
+		m_mageScript = GetComponent<BS_Mage>();
+	}
 
 	void start() {
-		
 		m_currentProgress = 0;
-
+		Debug.Log(m_warriorScript == null);
 	}
 
 	public void Update() {
@@ -37,13 +44,13 @@ public const float MAX_PROGRESS = 100.0f;
 				Debug.Log("archer");
 				break;
 				case ("Mage"):
-				Debug.Log("mage");
+				//m_mageScript.Ultimate();
 				break;
 				case ("Warrior"):
-				Debug.Log("warrior");
+				m_warriorScript.Ultimate();
 				break;
 				case ("Rougue"):
-				Debug.Log("rougue");
+				//m_rogueScript.ShadowStep();
 				break;
 				default:
 				Debug.Log("no class");
@@ -54,9 +61,9 @@ public const float MAX_PROGRESS = 100.0f;
 			Debug.Log("finish him!");
 		
 	}
-public void Charge(int charger){
-m_currentProgress += charger;
-}
+	public void Charge(int charger){
+		m_currentProgress += charger;
+	}
 	
 
 	public void MaxOut(int amount) {
