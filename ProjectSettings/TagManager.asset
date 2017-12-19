@@ -8,6 +8,7 @@ TagManager:
   - puck
   - enemy
   - Interact
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -17,11 +18,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemies_UD
+  - Projectiles_UD
+  - EnemySensors_UD
+  - Player_UD
+  - Terrain_UD
   - 
   - 
   - 
