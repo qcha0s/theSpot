@@ -22,7 +22,6 @@ public class TooltipCanvas : MonoBehaviour {
 	}
 
 	public void OnMouseOverMovement() {
-		Debug.Log("hjkl");
 		m_toolTipCanvas.enabled = true;
 		m_abilityDescriptionTitle.text = m_movementTitle;
 		m_abilityDescription.text = m_movementDescription;
