@@ -8,24 +8,26 @@ public class IceHazard : MonoBehaviour {
     [SerializeField]private float m_timerLength = 5f;
     [SerializeField]private float m_timerTimePassed = 0f;
     [SerializeField]private bool m_runTimer = false;
-    private BaseKartMovement m_baseKartMovement;
+    private CharacterControllerKart m_KartController;
+    private InputHandler m_inputHandler;
+    private float m_thisMinTurnRadius;
+    private float m_thisMaxTurnRadius;
 
 
-    void  OnDrawGizmos() {
-        //TODO remove after testing
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position, 1);
-    }
+    
 
     void Awake() {
-        m_baseKartMovement = GetComponent<BaseKartMovement>();
+        m_KartController = GetComponent<CharacterControllerKart>();
+        m_inputHandler = GetComponent<InputHandler>();
     }
 
 
     void OnTriggerEnter(Collider other) {
                if(other.tag == "Player") {
+                   other.gameObject.GetComponent<InputHandler>().enabled = false;
                    m_runTimer = true;
-                  //
+                   m_inputHandler.enabled = false;
+                  
             Debug.Log("Hit");
         }
     }
@@ -36,9 +38,7 @@ public class IceHazard : MonoBehaviour {
             if (m_timerTimePassed >= m_timerLength) {
                 m_timerTimePassed = 0f;
                 m_runTimer = false;
-                //m_baseKartMovement.m_physicMaterial.dynamicFriction = 1;
-                //m_baseKartMovement.GetComponent<Collider>().material.dynamicFriction = 1;
-                Destroy(gameObject);
+                m_inputHandler.enabled = true;
             }
         }
   }
