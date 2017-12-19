@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour {
 		scored_Red = false;
 		IsOvertime = false;
 		IsRegular = true;
-		hockey_Time = 10;
+		hockey_Time = 60;
 		countRed.text = "Score: " + score_Red.ToString();
 		countBlue.text = "Score: " + score_Blue.ToString();
 		countTime.text = "Time: " + hockey_Time.ToString();
