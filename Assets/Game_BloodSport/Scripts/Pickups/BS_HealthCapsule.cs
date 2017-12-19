@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BS_HealthPickup : MonoBehaviour {
+public class BS_HealthCapsule : MonoBehaviour {
 
 	public const float MAX_HEALTH = 1000.0f;
 
