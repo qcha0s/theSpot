@@ -44,7 +44,7 @@ public class RogueController : MonoBehaviour {
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		if(m_weaponHitBoxes != null) {
-			m_weaponHitBoxes.enabled = false;
+			//m_weaponHitBoxes.enabled = false;
 		}
 	}
 
