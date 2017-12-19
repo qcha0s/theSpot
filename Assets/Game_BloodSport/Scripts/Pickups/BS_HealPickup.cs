@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BS_Heal : MonoBehaviour {
+public class BS_HealPickup : MonoBehaviour {
 	private BS_Health playerHealth; 
 void OnTriggerEnter(Collider other){
 		

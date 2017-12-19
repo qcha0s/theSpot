@@ -9,6 +9,7 @@ public const float MAX_PROGRESS = 100.0f;
 	public string m_ult;
 
 	private float chargeRate = 1f;
+	private BS_Warrior m_warriorScript;
 	
 
 	void start() {
@@ -40,7 +41,7 @@ public const float MAX_PROGRESS = 100.0f;
 				Debug.Log("mage");
 				break;
 				case ("Warrior"):
-				Debug.Log("warrior");
+				m_warriorScript.Ultimate();
 				break;
 				case ("Rougue"):
 				Debug.Log("rougue");

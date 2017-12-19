@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxUlt : MonoBehaviour {
+public class MaxUltPickup : MonoBehaviour {
 
 private BS_Ultimate ultimate;
 	void OnTriggerEnter(Collider other){

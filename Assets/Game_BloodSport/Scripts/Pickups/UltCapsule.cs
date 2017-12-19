@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltPickup : MonoBehaviour {
+public class UltCapsule : MonoBehaviour {
 
 	public const float MAX_HEALTH = 1000.0f;
 
