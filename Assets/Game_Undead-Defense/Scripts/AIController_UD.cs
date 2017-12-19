@@ -11,13 +11,12 @@ public class AIController_UD : MonoBehaviour {
 	private NavWaypointAI_UD m_movement;
 	// private WEAPONSCRIPT m_weapon;
 	// private ANIMATIONSCRIPT m_anim;
-	Animator anim;
+	public Animator anim;
 	private m_states m_currentState = m_states.MOVING_TO_WP;
 	private Transform m_target;
 	private bool m_isAttacking = false;
 
 	private void Start() {
-		anim = GetComponent <Animator> ();
 		m_health = GetComponent<Health_UD>();
 		m_movement = GetComponent<NavWaypointAI_UD>();
 	}
