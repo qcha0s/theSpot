@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BS_HealthPickup : MonoBehaviour {
+public class UltCapsule : MonoBehaviour {
 
 	public const float MAX_HEALTH = 1000.0f;
 
 	public float m_currentHealth;
-	public GameObject healthballPrefab;
+	public GameObject ultballPrefab;
 
-	private Transform HealthballSpawn;
+	private Transform UltballSpawn;
 
 
 	void start() {
@@ -27,9 +27,9 @@ public class BS_HealthPickup : MonoBehaviour {
 		Debug.Log("rip");
 		if(m_currentHealth <= 0) {
 			m_currentHealth = 0;
-			HealthballSpawn = gameObject.transform;
+			UltballSpawn = gameObject.transform;
 			 
-			GameObject Healthball = (GameObject)Instantiate (healthballPrefab,HealthballSpawn.position,HealthballSpawn.rotation);
+			GameObject Ultball = (GameObject)Instantiate (ultballPrefab,UltballSpawn.position,UltballSpawn.rotation);
 
 			Destroy(gameObject);
 
