@@ -44,7 +44,7 @@ public class BS_Hunter : MonoBehaviour {
 	void ArrowFire() {
 
 		m_ArrowHandler = GameObject.Instantiate(m_Arrow, m_ArrowSpawn.transform.position, m_ArrowSpawn.transform.rotation);
-		m_ArrowHandler.transform.Rotate(Vector3.left * 90);
+		//m_ArrowHandler.transform.Rotate(Vector3.left * 90);
 
 		m_ArrowRB = m_ArrowHandler.GetComponent<Rigidbody>();
 		m_ArrowRB.AddForce(transform.forward * m_ArrowVelocity);
@@ -54,15 +54,15 @@ public class BS_Hunter : MonoBehaviour {
 
 
 	}
-
+	// Ice arrow does more damage than normal arrow
 	void IceArrow() {
 
 	}
-
+	// flame arrow  does damage over time to the target
 	void FlameArrow() {
 
 	}
-
+	// ultimate create a volley of arrows that drop on enemies and do increased damage
 	void Ultimate() {
 
 	}
