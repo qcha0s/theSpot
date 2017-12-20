@@ -38,8 +38,8 @@ public class BS_Warrior : MonoBehaviour {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
 			Charge();
-		} else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
-			Ultimate();
+		// } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
+		// 	Ultimate();
 		}
 
 		if(m_charging) {
