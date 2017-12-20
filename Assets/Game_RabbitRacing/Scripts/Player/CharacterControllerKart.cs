@@ -79,6 +79,18 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
             return m_forwardSpeed;
         }
     }
+
+    public float MinTurnRadius {
+        get { return m_minTurnRadius; }
+        set { m_minTurnRadius = value; }
+    }
+
+    public float MaxTurnRadius {
+        get { return m_maxTurnRadius; }
+        set { m_maxTurnRadius = value; }
+    }
+    
+
     #endregion
     #region Public Methods
     public void Gas(float amount){

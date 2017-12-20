@@ -8,6 +8,14 @@ public class AIHandler : MonoBehaviour {
 	private void Awake() {
 		m_baseKartMovement = GetComponent<BaseKartMovement>();
 	}
+	public Vector3 Destination{
+		get{
+			return m_Destination;
+		}
+		set{
+			m_Destination = value;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
