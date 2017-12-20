@@ -5,6 +5,6 @@ using UnityEngine;
 public class ObjectiveHealth_UD : BaseHealth {
 
 	public override void Die() {
-		
+		GameManager_UD.instance.GameLose();
 	}
 }

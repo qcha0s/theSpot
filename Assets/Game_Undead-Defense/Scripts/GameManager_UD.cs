@@ -59,9 +59,6 @@ public class GameManager_UD : MonoBehaviour
     //0 - locked
     //1 - unlocked - normal
     //2 - unlocked - survival
-    int m_map1 = 1;
-    int m_map2 = 0;
-    int m_map3 = 0;
 
 	int[] m_TowerUnlockState = new int[3];
 
@@ -89,17 +86,25 @@ public class GameManager_UD : MonoBehaviour
 
         m_currentIntroTimer = 0.0f;
 
-        m_mapUnlockState[0] = 1;
-        m_mapUnlockState[1] = 0;
-        m_mapUnlockState[2] = 0;
+        m_mapUnlockState[0] = PlayerPrefs.GetInt("Map1");
+        m_mapUnlockState[1] = PlayerPrefs.GetInt("Map2");
+        m_mapUnlockState[2] = PlayerPrefs.GetInt("Map3");
 
-        m_map1 = PlayerPrefs.GetInt("Map1");
-        m_map2 = PlayerPrefs.GetInt("Map2");
-        m_map3 = PlayerPrefs.GetInt("Map3");
+		m_TowerUnlockState[0] = PlayerPrefs.GetInt("Tower1");
+		m_TowerUnlockState[1] = PlayerPrefs.GetInt("Tower2");
+		m_TowerUnlockState[2] = PlayerPrefs.GetInt("Tower3");
 
-		m_TowerUnlockState[0] = 1;
-		m_TowerUnlockState[1] = 0;
-		m_TowerUnlockState[2] = 0;
+        Debug.Log(m_mapUnlockState[0]);
+        Debug.Log(m_mapUnlockState[1]);
+        Debug.Log(m_mapUnlockState[2]);
+
+        Debug.Log(m_TowerUnlockState[0]);
+        Debug.Log(m_TowerUnlockState[1]);
+        Debug.Log(m_TowerUnlockState[2]);
+
+        if (m_mapUnlockState[0] == 0){
+            ResetStats();            
+        }
 
         ShowMouse();
 
@@ -128,7 +133,7 @@ public class GameManager_UD : MonoBehaviour
             case GameState.Loading:
                 break;
             case GameState.Play:
-                UpdatePlay();
+                //UpdatePlay();
                 break;
         }
     }
@@ -195,7 +200,7 @@ public class GameManager_UD : MonoBehaviour
         //TODO:change level
         m_currentGameMode = GameMode.Normal;
         ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
 
     }
 
@@ -204,15 +209,17 @@ public class GameManager_UD : MonoBehaviour
         //TODO:change level
         m_currentGameMode = GameMode.Survival;
         ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
     }
 
-    void LoadLevel(int scene)
+    void LoadLevel(string scene)
     {   
-        SceneManager.LoadScene(m_mapSceneName[scene]);
+        SceneManager.LoadScene(scene);
         //don't instantiate objects here	
 
     }
+    
+    //Once the map loads
     public void MapReady()
     {
         Instantiate(m_poolManager);
@@ -300,7 +307,8 @@ public class GameManager_UD : MonoBehaviour
 
     void UpdateGold()
     {
-        m_goldText.text = "Currency: " + m_currentGold;
+        //m_goldText.text = "Currency: " + m_currentGold;
+        m_goldText.text = m_currentGold.ToString("0");
         Debug.Log(m_goldText.text);
     }
 
@@ -333,5 +341,83 @@ public class GameManager_UD : MonoBehaviour
     public void AddGold(int amount) {
         m_currentGold += amount;
         UpdateGold();
+    }
+
+
+    public void GameWin(){
+        ShowMouse();
+        ChangeState(GameState.Win);
+        if (m_currentGameMode == GameMode.Normal){
+            //selected level - map
+            //0 - 1
+            //1 - 2
+            //2 - 3
+            Debug.Log("selected level:"+m_currentSelectedLevel);
+            switch(m_currentSelectedLevel){
+                case 0:
+                    m_mapUnlockState[0] = 2;
+                    PlayerPrefs.SetInt("Map1",2);
+
+                    m_mapUnlockState[1] = 1;
+                    PlayerPrefs.SetInt("Map2",1);
+                    break;
+                case 1:
+                    m_mapUnlockState[1] = 2;
+                    PlayerPrefs.SetInt("Map2",2);
+
+                    m_mapUnlockState[2] = 1;
+                    PlayerPrefs.SetInt("Map3",1);
+                    
+                    m_TowerUnlockState[1] = 1;
+                    PlayerPrefs.SetInt("Tower2",1);
+                break;
+                case 2:
+                    m_mapUnlockState[2] = 2;
+                    PlayerPrefs.SetInt("Map3",2);
+                    
+                    m_TowerUnlockState[2] = 1;
+                    PlayerPrefs.SetInt("Tower3",1);
+                break;
+            }
+        }
+        //TODO:do checks for unlocks
+    }
+
+    public void GameLose(){
+        ShowMouse();
+        ChangeState(GameState.Lose);
+        //track survived waves in surivival
+    }
+    public void ButtonMainMenu(){
+        ChangeState(GameState.Loading);
+        LoadLevel("MainMenu_UD");
+        ChangeState(GameState.Intro);
+        m_currentIntroTimer = 0.0f;
+        ChangeSelectedLevel();
+    }
+
+    public void ButtonReset(){
+        ResetStats();
+        ChangeSelectedLevel();
+    }
+
+    void ResetStats(){
+        m_mapUnlockState[0] = 1;
+        m_mapUnlockState[1] = 0;
+        m_mapUnlockState[2] = 0;
+
+        m_TowerUnlockState[0] = 1;
+		m_TowerUnlockState[1] = 0;
+		m_TowerUnlockState[2] = 0;
+
+        PlayerPrefs.SetInt("Map1",1);
+        PlayerPrefs.SetInt("Map2",0);
+        PlayerPrefs.SetInt("Map3",0);
+
+        PlayerPrefs.SetInt("Tower1",1);
+        PlayerPrefs.SetInt("Tower2",0);
+        PlayerPrefs.SetInt("Tower3",0);
+
+        //TODO:reset waves survived
     }
 }
