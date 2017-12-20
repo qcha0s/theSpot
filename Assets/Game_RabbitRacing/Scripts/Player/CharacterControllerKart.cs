@@ -204,11 +204,12 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
         m_isForceApplied = false;
+        DriftNerf();
     }
 
     void DriftNerf(){
         if(m_isDrifting == true){
-             m_forwardSpeed = m_forwardSpeed - 5f;
+             m_forwardSpeed = m_forwardSpeed - 1f;
         }
     }
     #endregion
