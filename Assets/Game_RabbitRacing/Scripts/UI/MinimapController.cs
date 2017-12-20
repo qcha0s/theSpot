@@ -41,6 +41,11 @@ public class MinimapController : MonoBehaviour {
         foreach (MapIcon mi in mapIcons) {
             Vector3 screenPos = mapCamera.WorldToViewportPoint(mi.owner.transform.position);
             mi.icon.transform.SetParent(transform);
+
+            RectTransform rt = GetComponent<RectTransform>();
+            screenPos.x = screenPos.x * rt.rect.height;
+            screenPos.y = screenPos.y * rt.rect.height;
+
             screenPos.z = 0;
             mi.icon.transform.position = screenPos;
         }
