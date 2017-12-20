@@ -17,9 +17,9 @@ public class Boost : MonoBehaviour, Item{
     {
         runTimer = true;
         m_baseKartMovement = GetComponent<CharacterControllerKart>();
-        m_speed = m_baseKartMovement.m_maxSpeed;
+        m_speed = m_baseKartMovement.m_forwardSpeed;
         m_acc = m_baseKartMovement.m_acceleration;
-        m_baseKartMovement.m_maxSpeed *= 1.5f;
+        m_baseKartMovement.m_forwardSpeed *= 1.5f;
         m_baseKartMovement.m_acceleration *= 1.5f;
     }
 
@@ -33,7 +33,7 @@ public class Boost : MonoBehaviour, Item{
             {
                 timerTimePassed = 0f;
                 runTimer = false;
-                m_baseKartMovement.m_maxSpeed = m_speed;
+                m_baseKartMovement.m_forwardSpeed = m_speed;
                 m_baseKartMovement.m_acceleration = m_acc;
                 Destroy(gameObject);
             }

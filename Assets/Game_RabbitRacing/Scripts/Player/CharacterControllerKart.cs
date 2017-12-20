@@ -29,7 +29,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     private bool m_isGrounded = false;
     private bool m_isTurning = false;
     private float m_currentTurnRadius = 0f;
-    private float m_forwardSpeed = 0f;
+    public float m_forwardSpeed = 0f; //test for boost
 	private float m_rayCastDistance;
     private float m_yVelocity = 0;
 	private Vector3 m_surfaceNormal = Vector3.up;
