@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StateGameTrackSel : GameState {
 
@@ -15,5 +16,10 @@ public class StateGameTrackSel : GameState {
 	public void QuitGame() {
 		Application.Quit();
 	}
+
+    //Choose map
+    public void loadScene() {
+        SceneManager.LoadScene("Scene_01");
+    }
 
 }
