@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 224714112563646558}
   - component: {fileID: 222299555710460354}
   - component: {fileID: 114194961974787452}
-  - component: {fileID: 114419459011897358}
   - component: {fileID: 114919685676969996}
   m_Layer: 5
   m_Name: Passive
@@ -946,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224673287186895504}
   - component: {fileID: 222144176571906152}
-  - component: {fileID: 114516053208815084}
+  - component: {fileID: 114229623094803792}
   m_Layer: 5
   m_Name: UIImage
   m_TagString: Untagged
@@ -1316,7 +1315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270249944289024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99, y: 0, z: 3.14}
+  m_LocalPosition: {x: 285.4143, y: 157.65146, z: -237.71754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4262288432298242}
@@ -2443,6 +2442,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114229623094803792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792240545690856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5fec05422d17bff40babe69acc0c51ae, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114358119621343112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3790,7 +3816,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979203281221450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 312.9, y: 169.84, z: -17.110107}
+  m_LocalPosition: {x: 312.9, y: 169.84, z: 238.7577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224673287186895504}
