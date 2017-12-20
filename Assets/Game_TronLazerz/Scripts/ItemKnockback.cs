@@ -13,7 +13,9 @@ public class ItemKnockback : MonoBehaviour {
           // calculate force vector
             Vector3 m_force = transform.position - other.transform.position;
             gameObject.GetComponent<Rigidbody>().AddForce(m_force, ForceMode.Impulse);
-         }
+
+            FindObjectOfType<AudioManager>().Play("PuckHit");
+        }
      
     }
 
