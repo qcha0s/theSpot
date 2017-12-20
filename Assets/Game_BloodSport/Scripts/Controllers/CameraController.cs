@@ -66,6 +66,7 @@ public class CameraController : MonoBehaviour {
 	}		
 
 	void LateUpdate(){
+		 transform.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)), Vector3.up);
 		//automove button pressed
 		if(Input.GetButton("Toggle Move")){
 			m_mouseSideButton = !m_mouseSideButton;
