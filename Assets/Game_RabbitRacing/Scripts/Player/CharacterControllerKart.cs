@@ -38,6 +38,15 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
 
     #endregion
     #region Accessors
+
+    public float ForwardSpeed {
+        get {
+            return m_forwardSpeed;
+        }
+        set { m_forwardSpeed = value; }
+    }
+
+
     public float MaxSpeed{
         get{
             return m_maxSpeed;
