@@ -9,49 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1277556037568488}
+  m_RootGameObject: {fileID: 1778592857301282}
   m_IsPrefabParent: 1
---- !u!1 &1277556037568488
+--- !u!1 &1778592857301282
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4815000752770486}
-  - component: {fileID: 114303687279790374}
+  - component: {fileID: 4089960860935988}
+  - component: {fileID: 114524231820529392}
   m_Layer: 0
-  m_Name: BoxRespawn
+  m_Name: BoostPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4815000752770486
+--- !u!4 &4089960860935988
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277556037568488}
+  m_GameObject: {fileID: 1778592857301282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 159.7122, y: 8.002199, z: 60.15558}
+  m_LocalPosition: {x: 137.09436, y: 8.919418, z: 85.340256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114303687279790374
+--- !u!114 &114524231820529392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277556037568488}
+  m_GameObject: {fileID: 1778592857301282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a25e25cdfa82614eb538a71eabbc45f, type: 3}
+  m_Script: {fileID: 11500000, guid: d060f08f862c5774a854519d6f345b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_item: {fileID: 0}
-  m_spawnTime: 4
-  m_spawnPrefab: {fileID: 4108574530691246, guid: 6101ec6904421ae48a599897d8029aee,
-    type: 2}

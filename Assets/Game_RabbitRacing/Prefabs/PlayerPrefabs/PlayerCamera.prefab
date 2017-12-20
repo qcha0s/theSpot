@@ -78,6 +78,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!81 &81501817170262890
 AudioListener:
   m_ObjectHideFlags: 1
@@ -101,6 +102,7 @@ MonoBehaviour:
   height: 1
   heightDamping: 2
   rotationDamping: 6
+  m_pivotOffset: {x: 0, y: 1.5, z: 0}
 --- !u!124 &124035714852161590
 Behaviour:
   m_ObjectHideFlags: 1
