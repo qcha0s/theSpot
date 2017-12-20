@@ -117,15 +117,9 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetTrigger("Jump");
 		}
 	
-		//is the player attacking
-		AnimatorStateInfo currentupperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
 		
-		if(currentupperTorsoState.fullPathHash == m_attackState){
-			//for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-			// 	m_weaponHitBoxes[i].enabled = true;
-			// }
-			Debug.Log(currentupperTorsoState.fullPathHash);
-		}
+		
+		
 		if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking", true);
 			if(m_weaponHitBoxes != null) {
