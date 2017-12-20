@@ -123,6 +123,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         if(Speed < m_bestTurnSpeed){
             m_isDrifting = false;
         }
+        
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
@@ -191,6 +192,12 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
         m_isForceApplied = false;
+    }
+
+    void DriftNerf(){
+        if(m_isDrifting == true){
+             m_forwardSpeed = m_forwardSpeed - 5f;
+        }
     }
     #endregion
 }
