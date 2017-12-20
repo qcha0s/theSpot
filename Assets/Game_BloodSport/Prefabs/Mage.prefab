@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 114739957503870074}
   - component: {fileID: 114922475483649838}
   - component: {fileID: 114744782833754410}
+  - component: {fileID: 114507926092005194}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -1279,7 +1280,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270249944289024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.559452, y: 9.998169, z: 52.17187}
+  m_LocalPosition: {x: 16.747223, y: 9.998169, z: 17.110107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4262288432298242}
@@ -2557,6 +2558,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114507926092005194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270249944289024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7d7aec069a122489b3664de5817962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 1270249944289024}
+  m_sheep: {fileID: 1113917957179462, guid: 62872b6813474fe42bc1114cc362cad2, type: 2}
 --- !u!114 &114546055874331428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3617,7 +3631,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979203281221450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 312.9, y: 169.84, z: -52.17187}
+  m_LocalPosition: {x: 312.9, y: 169.84, z: -17.110107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224863375862705108}
