@@ -22,6 +22,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private void Awake () {
         nav = GetComponent<NavMeshAgent>();
+        nav.autoTraverseOffMeshLink = true;
     }
 
     private void Start() {
