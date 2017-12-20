@@ -1,160 +1,244 @@
-﻿// Converted from UnityScript to C# at http://www.M2H.nl/files/js_to_c.php - by Mike Hergaarden
-// Do test the code! You usually need to change a few small bits.
-
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public enum GameState { Intro, Menu, Play, Win, Lose, OverTime }
+
+public class GameManager : MonoBehaviour
+{
+
+public static GameManager instance;
+
+public GameState m_currentState;
+
+public GameObject[] m_gameStates;
+public GameObject[] m_paddle;
+public GameObject m_pauseMenu;
+public Dropdown m_dropdownPaddle;
+public int m_paddleSelected;
+
+public GameObject m_timer;
+//public GameObject m_controlsUI;
+
+float m_introTimer = 1.0f;
+//public int m_paddleSelected = 0;//must be public for spawning
+int m_RinkSelected = 0;
+GameObject m_currentPlayer = null;
+
+bool m_paused = false;
+
+//bool m_showControls = false;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        for (int i = 0; i < m_gameStates.Length; i++)
+        {
+            m_gameStates[i].SetActive(false);
+        }
+        Debug.Log((int)GameState.Intro);
+        m_currentState = GameState.Intro;
+        m_gameStates[(int)GameState.Intro].SetActive(true);
+        m_introTimer = 2.0f;
+       // GamePaused();
+
+    }
+
+    void Update()
+    {
+        switch (m_currentState)
+        {
+            case GameState.Intro:
+
+                UpdateIntro();
+                break;
+            case GameState.Menu:
+                UnlockMouse();
+                break;
+            case GameState.Play:
+                UpdatePlay();
+                break;
+            case GameState.Win:
+                UnlockMouse();
+                break;
+            case GameState.Lose:
+                UnlockMouse();
+                break;
+			case GameState.OverTime:
+                UnlockMouse();
+                break;
+        }
 
 
-public  Animator CameraObject;
-GameObject PanelControls;
-GameObject PanelVideo;
-GameObject PanelGame;
-GameObject PanelKeyBindings;
-GameObject PanelMovement;
-GameObject PanelCombat;
-GameObject PanelGeneral;
-GameObject hoverSound;
-GameObject sfxhoversound;
-GameObject clickSound;
-GameObject areYouSure;
+    }
 
-// campaign button sub menu
-GameObject continueBtn;
-GameObject newGameBtn;
-GameObject loadGameBtn;
+    void UpdateIntro()
+    {
+        if (m_introTimer <= 0.0f)
+        {
+            //  Debug.Log("Change to MENU");
+            ChangeGameState(GameState.Menu);
+        }
+        else
+        {
+            m_introTimer -= Time.deltaTime;
+        }
+    }
 
-// highlights
-GameObject lineGame;
-GameObject lineVideo;
-GameObject lineControls;
-GameObject lineKeyBindings;
-GameObject lineMovement;
-GameObject lineCombat;
-GameObject lineGeneral;
+    void UpdatePlay()
+    {UnPause();
+        m_timer.GetComponent<DigitalCountdown>();
+        // if (m_gameTimer > 0.0f)
+        // {
+        //     m_gameTimer -= Time.deltaTime;
+        //     if (m_gameTimer < 0)
+        //     {
+        //         m_gameTimer = 0;
+        //         GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>().PlayerDie();
+        //         ChangeGameState(GameState.Lose);
+        //     }
+        //     m_gameTimerText.text = Mathf.Floor((m_gameTimer / 60)).ToString("0") + ":" + Mathf.Floor((m_gameTimer % 60)).ToString("00");
+        // }
+        // if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        // {
+        //     Debug.Log("escape");
+        //     Debug.Log(m_paused);
+        //     if (m_paused)
+        //     {
+        //         UnPause();
+        //     }
+        //     else
+        //     {
+        //         Pause();
+        //     }
+        // }
 
-void  PlayCampaign (){
-	areYouSure.gameObject.SetActive(false);
-	continueBtn.gameObject.SetActive(true);
-	newGameBtn.gameObject.SetActive(true);
-	loadGameBtn.gameObject.SetActive(true);
-}
+    }
 
-void  DisablePlayCampaign (){
-	continueBtn.gameObject.SetActive(false);
-	newGameBtn.gameObject.SetActive(false);
-	loadGameBtn.gameObject.SetActive(false);
-}
+    public void StartGameBtn(string sceneName){
+        SceneManager.LoadScene(sceneName);
+    }
 
-void  Position2 (){
-	DisablePlayCampaign();
-	CameraObject.SetFloat("Animate",1);
-}
+    void ChangeGameState(GameState newState)
+    {
+        m_gameStates[(int)m_currentState].SetActive(false);
+        m_currentState = newState;
+        m_gameStates[(int)m_currentState].SetActive(true);
+    }
 
-void  Position1 (){
-	CameraObject.SetFloat("Animate",0);
-}
+    public void MenuButtonPlay()
+    {
+        ChangeGameState(GameState.Play);
+        SceneManager.LoadScene(m_RinkSelected);
+       // m_gameTimer = m_gameLength;
+        LockMouse();
+        m_pauseMenu.SetActive(false);
+    }
 
-void  GamePanel (){
-	PanelControls.gameObject.SetActive(false);
-	PanelVideo.gameObject.SetActive(false);
-	PanelGame.gameObject.SetActive(true);
-	PanelKeyBindings.gameObject.SetActive(false);
+   /* public void ChangePaddle()
+    {
+        //Debug.Log("Menu changed char");
+        m_paddleSelected = m_dropdownPaddle.value;
+    }*/
 
-	lineGame.gameObject.SetActive(true);
-	lineControls.gameObject.SetActive(false);
-	lineVideo.gameObject.SetActive(false);
-	lineKeyBindings.gameObject.SetActive(false);
-}
+    public void ChangeLevel()
+    {
+        // Debug.Log("Menu changed level");
+       // m_levelSelected = m_dropdownLevel.value + 1;
+    }
+	public void GameOverTime(){
+		if(m_currentState == GameState.OverTime){
+			Debug.Log("gamedrawNeedsOT");
+			ChangeGameState(GameState.OverTime);
+		}
+	}
 
-void  VideoPanel (){
-	PanelControls.gameObject.SetActive(false);
-	PanelVideo.gameObject.SetActive(true);
-	PanelGame.gameObject.SetActive(false);
-	PanelKeyBindings.gameObject.SetActive(false);
+    public void GameLose()
+    {
+        Debug.Log(m_currentState);
+        if (m_currentState == GameState.Play)
+        {
+            Debug.Log("Game Over");
+            ChangeGameState(GameState.Lose);
+        }
 
-	lineGame.gameObject.SetActive(false);
-	lineControls.gameObject.SetActive(false);
-	lineVideo.gameObject.SetActive(true);
-	lineKeyBindings.gameObject.SetActive(false);
-}
+    }
 
-void  ControlsPanel (){
-	PanelControls.gameObject.SetActive(true);
-	PanelVideo.gameObject.SetActive(false);
-	PanelGame.gameObject.SetActive(false);
-	PanelKeyBindings.gameObject.SetActive(false);
+    public void GameWin()
+    {
+        Debug.Log(m_currentState);
+        if (m_currentState == GameState.Play)
+        {
+            Debug.Log("Win");
+            ChangeGameState(GameState.Win);
+        }
 
-	lineGame.gameObject.SetActive(false);
-	lineControls.gameObject.SetActive(true);
-	lineVideo.gameObject.SetActive(false);
-	lineKeyBindings.gameObject.SetActive(false);
-}
+    }
 
-void  KeyBindingsPanel (){
-	PanelControls.gameObject.SetActive(false);
-	PanelVideo.gameObject.SetActive(false);
-	PanelGame.gameObject.SetActive(false);
-	PanelKeyBindings.gameObject.SetActive(true);
-	lineGame.gameObject.SetActive(false);
-	lineControls.gameObject.SetActive(false);
-	lineVideo.gameObject.SetActive(true);
-	lineKeyBindings.gameObject.SetActive(true);
-}
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene(0);
+        ChangeGameState(GameState.Menu);
+        
 
-void  MovementPanel (){
-	PanelMovement.gameObject.SetActive(true);
-	PanelCombat.gameObject.SetActive(false);
-	PanelGeneral.gameObject.SetActive(false);
+    }
 
-	lineMovement.gameObject.SetActive(true);
-	lineCombat.gameObject.SetActive(false);
-	lineGeneral.gameObject.SetActive(false);
-}
+    public void SetPlayer(GameObject player)
+    {
+        m_currentPlayer = player;
+    }
 
-void  CombatPanel (){
-	PanelMovement.gameObject.SetActive(false);
-	PanelCombat.gameObject.SetActive(true);
-	PanelGeneral.gameObject.SetActive(false);
-	lineMovement.gameObject.SetActive(false);
-	lineCombat.gameObject.SetActive(true);
-	lineGeneral.gameObject.SetActive(false);
-}
+    void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_paused = false;
+    }
 
-void  GeneralPanel (){
-	PanelMovement.gameObject.SetActive(false);
-	PanelCombat.gameObject.SetActive(false);
-	PanelGeneral.gameObject.SetActive(true);
+    void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        m_paused = true;
+    }
 
-	lineMovement.gameObject.SetActive(false);
-	lineCombat.gameObject.SetActive(false);
-	lineGeneral.gameObject.SetActive(true);
-}
+    public bool GamePaused()
+    {
+        return m_paused;
+    }
 
-void  PlayHover (){
-	hoverSound.GetComponent<AudioSource>().Play();
-}
+    void Pause()
+    {
+        Debug.Log("timescale 0");
+        Time.timeScale = 0.0f;
+        UnlockMouse();
+//        GameObject.Find("theme").GetComponent<AudioSource>().Pause();
+        m_pauseMenu.SetActive(true);
+    }
 
-void  PlaySFXHover (){
-	sfxhoversound.GetComponent<AudioSource>().Play();
-}
+    public void UnPause()
+    {
+        Debug.Log("timescale 1");
+        Time.timeScale = 1.0f;
+        LockMouse();
+       // GameObject.Find("theme").GetComponent<AudioSource>().UnPause();
+        m_pauseMenu.SetActive(false);
+    }
 
-void  PlayClick (){
-	clickSound.GetComponent<AudioSource>().Play();
-}
+    public void ToggleControlsUI(){
+        // m_showControls = !m_showControls;
 
-void  AreYouSure (){
-	areYouSure.gameObject.SetActive(true);
-	DisablePlayCampaign();
-}
-
-void  No (){
-	areYouSure.gameObject.SetActive(false);
-}
-
-void  Yes (){
-	Application.Quit();
-}
-
+        // m_controlsUI.SetActive(m_showControls);
+        
+    }
 }
