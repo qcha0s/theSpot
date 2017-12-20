@@ -490,8 +490,8 @@ MonoBehaviour:
   m_maxReverseSpeed: 5
   m_maxSpeed: 25
   m_maxTurnRadius: 50
-  m_minDriftRadius: 1
-  m_minTurnRadius: 8
+  m_minDriftRadius: 5
+  m_minTurnRadius: 10
   m_rayCastEpsilon: 0.2
   m_speedEpsilon: 0.1
   m_surfaceNormalRotationSpeed: 20
