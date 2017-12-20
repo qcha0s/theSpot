@@ -9,6 +9,10 @@ public class BS_Hunter : MonoBehaviour {
 	GameObject m_ArrowHandler;
 	Rigidbody m_ArrowRB;
 
+	public GameObject m_Ultimate;
+	public GameObject m_IceArrow;
+	public GameObject m_FlameArrow;
+
 	private float m_ArrowVelocity = 500;
 
 
@@ -24,7 +28,16 @@ public class BS_Hunter : MonoBehaviour {
 	void Update () {
 
 		if(Input.GetButtonDown("Fire1")) {
-			ArrowFire();
+			ArrowFire();	
+		}
+		if(Input.GetButtonDown("Alpha01")) {
+			IceArrow();
+		}
+		if(Input.GetButtonDown("Alpha02")) {
+			FlameArrow();
+		}
+		if(Input.GetButtonDown("Alpha03")) {
+			Ultimate();
 		}
 	}
 
@@ -41,4 +54,18 @@ public class BS_Hunter : MonoBehaviour {
 
 
 	}
+
+	void IceArrow() {
+
+	}
+
+	void FlameArrow() {
+
+	}
+
+	void Ultimate() {
+
+	}
+
+
 }
