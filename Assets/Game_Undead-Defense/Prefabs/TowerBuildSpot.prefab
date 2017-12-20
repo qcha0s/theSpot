@@ -35,8 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224666414013208510}
   - component: {fileID: 223303116871801368}
-  - component: {fileID: 114461142018481494}
-  - component: {fileID: 114792384203133240}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -157,7 +155,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800863487141356}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -188,32 +186,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoveredMat: {fileID: 2100000, guid: 2a42345fd2c4cb74e90e0e7b43258078, type: 2}
-  m_arrowTower: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
+  m_arrowTower: {fileID: 1177519200155272, guid: e3d276d02d33dbc47a12929757c63069,
     type: 2}
   m_floatingImage: {fileID: 1746071787476040}
   m_spawnTransform: {fileID: 4127418296559798}
   m_hasTower: 0
---- !u!114 &114461142018481494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746071787476040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!114 &114701127276366846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,22 +218,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114792384203133240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746071787476040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!222 &222299653199370990
 CanvasRenderer:
   m_ObjectHideFlags: 1
