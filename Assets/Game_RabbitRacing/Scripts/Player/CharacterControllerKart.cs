@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent( typeof( CharacterController ) )]
 public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     #region Public Variables
-    public bool m_gluedToGround = true;
+    public bool m_gluedToGround = false;
     public float m_acceleration = 8f;
     public float m_bestTurnSpeed = 15f;
     public float m_brakeAcceleration = 20f;
@@ -212,5 +212,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
              m_forwardSpeed = m_forwardSpeed - 1f;
         }
     }
+
+   
     #endregion
 }
