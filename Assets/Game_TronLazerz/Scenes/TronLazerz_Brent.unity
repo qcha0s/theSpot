@@ -162,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 3566914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.45}
+  m_LocalPosition: {x: 0, y: 0.5, z: -9.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -815,7 +815,7 @@ Prefab:
     - target: {fileID: 54278373527050494, guid: d68b06cf67176f34f8e341fa86aba81a,
         type: 2}
       propertyPath: m_Constraints
-      value: 120
+      value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 135976045497678036, guid: d68b06cf67176f34f8e341fa86aba81a,
         type: 2}
@@ -1130,4 +1130,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3566916}
-  speed: 2
+  speed: 4
