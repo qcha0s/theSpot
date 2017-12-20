@@ -145,11 +145,11 @@ bool m_paused = false;
         m_pauseMenu.SetActive(false);
     }
 
-    public void ChangePaddle()
+   /* public void ChangePaddle()
     {
         //Debug.Log("Menu changed char");
         m_paddleSelected = m_dropdownPaddle.value;
-    }
+    }*/
 
     public void ChangeLevel()
     {
