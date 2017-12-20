@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent( typeof( CharacterController ) )]
 public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     #region Public Variables
-    public bool m_gluedToGround = true;
+    public bool m_gluedToGround = false;
     public float m_acceleration = 8f;
     public float m_bestTurnSpeed = 15f;
     public float m_brakeAcceleration = 20f;
@@ -29,7 +29,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
     private bool m_isGrounded = false;
     private bool m_isTurning = false;
     private float m_currentTurnRadius = 0f;
-    private float m_forwardSpeed = 0f;
+    public float m_forwardSpeed = 0f; //test for boost
 	private float m_rayCastDistance;
     private float m_yVelocity = 0;
 	private Vector3 m_surfaceNormal = Vector3.up;
@@ -144,6 +144,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         if(Speed < m_bestTurnSpeed){
             m_isDrifting = false;
         }
+        
     }
     public float GetTurnAmountForTurnRadius(float turnRadius){
         float underSteerFactor = 0f;
@@ -212,6 +213,15 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement {
         m_isGrounded = (m_characterController.Move(m_velocity * Time.deltaTime) & CollisionFlags.Below) != 0;
         RotateToTurn();
         m_isForceApplied = false;
+        DriftNerf();
     }
+
+    void DriftNerf(){
+        if(m_isDrifting == true){
+             m_forwardSpeed = m_forwardSpeed - 1f;
+        }
+    }
+
+   
     #endregion
 }

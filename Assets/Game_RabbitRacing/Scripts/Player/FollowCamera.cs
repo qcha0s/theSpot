@@ -6,13 +6,13 @@ public class FollowCamera : MonoBehaviour {
 
 	public Transform target;
 	
-	public float distance = 10.0f;
+	public float distance = 4.5f;
 	
-	public float height = 5.0f;
+	public float height = 2.0f;
 	
 	
 	public float heightDamping = 2.0f;
-	public float rotationDamping = 3.0f;
+	public float rotationDamping = 6.0f;
 	public Vector3 m_pivotOffset = new Vector3();
 
 	// Place the script in the Camera-Control group in the component menu

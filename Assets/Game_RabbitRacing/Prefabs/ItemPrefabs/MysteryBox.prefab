@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33991081699019984}
   - component: {fileID: 65652808563373182}
   - component: {fileID: 23322701233086100}
-  - component: {fileID: 114259579708293462}
+  - component: {fileID: 114514915952970960}
   m_Layer: 0
   m_Name: MysteryBox
   m_TagString: Untagged
@@ -52,7 +52,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -68,7 +67,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -96,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114259579708293462
+--- !u!114 &114514915952970960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,9 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779861109277140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b7adf434c5cdf49b162e9138ecf9b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d2326ffbbfce4c846bfb1c949e570611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 5
-  BoxRespawn: {fileID: 4815000752770486, guid: 6f7dd349ea0319f428b7465152b213d7, type: 2}
-  PowerUps: []
+  PowerUps:
+  - {fileID: 4089960860935988, guid: b6132833353ec734ca60e97386e1d2d7, type: 2}
+  - {fileID: 4896527908408716, guid: f42bf67725c8c384ab52bd3365855b72, type: 2}
