@@ -117,8 +117,7 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetTrigger("Jump");
 		}
 	
-		//is the player attacking
-		AnimatorStateInfo currentupperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
+		
 		
 		
 		if(Input.GetMouseButtonDown(0)){

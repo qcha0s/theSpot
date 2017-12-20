@@ -25,6 +25,14 @@ public class BS_Rogue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		Debug.Log(m_sprintOnCD);
+		if(m_characterController.m_walkByDefault == false){
+			m_animator.SetBool("IsSprinting",true);
+		}
+		else{
+			m_animator.SetBool("IsSprinting",false);
+		}
 		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			Poison();
 		}
@@ -36,12 +44,10 @@ public class BS_Rogue : MonoBehaviour {
 		}
 	}
 	public void Sprint(){
-		if(m_sprinting == false ){
-				m_sprinting = true;
 				m_sprintOnCD = true;
 				StartCoroutine(CoolDownSystem(m_sprintCD,"Sprint"));
 				StartCoroutine(StartSprint());
-			} 
+			
 	}
 
 	public void Poison(){
@@ -59,7 +65,9 @@ public class BS_Rogue : MonoBehaviour {
 		m_targetGUI.SetActive(false);
 	}
 	IEnumerator StartSprint(){
+		m_characterController.m_walkByDefault=false;
 		yield return new WaitForSeconds(4);
+		m_characterController.m_walkByDefault=true;
 		
 		
 	}

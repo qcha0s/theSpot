@@ -127,11 +127,7 @@ public class RogueController : MonoBehaviour {
 		}
 
 
-	
-		
-		
-	
-		if(Input.GetMouseButtonDown(0)){
+	if(Input.GetMouseButtonDown(0)){
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
 		}
@@ -140,6 +136,10 @@ public class RogueController : MonoBehaviour {
 			//m_weaponHitBox.enabled = false;
 		}
 
+		
+		
+	
+		
 		
 	if(m_sprinting){
 		m_animationController.SetBool("isSprinting",true);
