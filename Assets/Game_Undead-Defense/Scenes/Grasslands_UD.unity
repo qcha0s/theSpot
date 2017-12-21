@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -555,6 +555,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1709674715434172, guid: e742f59b346334946af89e3fe18f80e1,
         type: 2}
+    - target: {fileID: 218973502384430874, guid: 74b7f3d37e16d6b4db4fea9295d8ecd6,
+        type: 2}
+      propertyPath: m_TreeDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 218973502384430874, guid: 74b7f3d37e16d6b4db4fea9295d8ecd6,
+        type: 2}
+      propertyPath: m_DetailObjectDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74b7f3d37e16d6b4db4fea9295d8ecd6, type: 2}
   m_IsPrefabParent: 0
@@ -709,7 +719,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
