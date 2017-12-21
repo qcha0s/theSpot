@@ -8,22 +8,29 @@ public class AIController_UD : MonoBehaviour {
 	public float m_chasingTime = 5f;
 	public float m_baseOffset = 3f;
 	public float m_attackRate = 2f;
+	public int numAttackAnimations = 1;
+	public Collider m_DamageBox;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
 	private NavWaypointAI_UD m_movement;
 	private Animator m_anim;
 	private Sensor_UD m_sensor;
+	private WeaponScript m_weapon;
 	private m_states m_currentState = m_states.MOVING_TO_WP;
 	private Transform m_target;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;
+	private int attackAnimInt;
+	private int attackState;
 
 	private void Start() {
-		m_anim = GetComponentInChildren<Animator>();
+		m_anim = GetComponent<Animator>();
 		m_health = GetComponent<Health_UD>();
 		m_movement = GetComponent<NavWaypointAI_UD>();
 		m_sensor = GetComponentInChildren<Sensor_UD>();
+		m_weapon = GetComponentInChildren<WeaponScript>();
+		attackAnimInt = Random.Range( 1, numAttackAnimations+1);
 	}
 
 	private void Update() {
@@ -53,7 +60,7 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.ChasePlayer(m_target);
 			break;
 			case m_states.ATTACKING:
-				
+
 			break;
 			case m_states.STUNNED:
 
@@ -95,7 +102,7 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.ATTACKING:
 				m_isAttacking = false;
-				m_anim.SetBool("Attack", false);
+				m_anim.SetInteger("AttackState", 0);
 			break;
 			case m_states.STUNNED:
 				
@@ -129,7 +136,8 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.ATTACKING:
 				m_isAttacking = true;
 				m_canAttack = false;
-				m_anim.SetBool("Attack", true);
+				m_anim.SetInteger("AttackState", attackAnimInt);
+				FaceTarget(m_target);
 			break;
 			case m_states.STUNNED:
 				m_anim.SetTrigger("Hit");
@@ -151,8 +159,11 @@ public class AIController_UD : MonoBehaviour {
 		}
 	}
 
+	private void CheckAttackState() {
+//		m_anim.GetCurrentAnimatorStateInfo
+	}
+
 	private void CheckForEnemies() {
-		Debug.Log(m_sensor.m_playerBase == null);
 		if (m_sensor.m_playerBase != null && m_target == null) {
 			m_target = m_sensor.m_playerBase.transform;
 			SetNewState(m_states.ATTACKING);
@@ -184,4 +195,25 @@ public class AIController_UD : MonoBehaviour {
 		}
 		SetNewState(m_states.MOVING_TO_WP);
 	}
+
+	private void FaceTarget(Transform target) {
+		Vector3 tempTargetPos = target.transform.position;
+		tempTargetPos.y = 0;
+		Vector3 tempPos = transform.position;
+		tempPos.y = 0;
+		Vector3 targetDir = tempTargetPos - tempPos;
+		Quaternion rotation = Quaternion.LookRotation(targetDir);
+		transform.rotation = rotation;
+	}
+
+	#region AnimationEventMethods
+	public void HitBoxOn() {
+		m_DamageBox.enabled = true;
+	}
+
+	public void HitBoxOff() {
+		m_DamageBox.enabled = false;
+		m_weapon.Clear();
+	}	
+	#endregion
 }

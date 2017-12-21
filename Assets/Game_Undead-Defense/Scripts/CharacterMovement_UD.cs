@@ -20,7 +20,7 @@ public class CharacterMovement_UD : MonoBehaviour {
 		m_movement = GetComponent<BaseMovement_UD>();
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 		Vector3 speed = m_movement.Move(movement.normalized);
 		speed = transform.InverseTransformVector(speed);
