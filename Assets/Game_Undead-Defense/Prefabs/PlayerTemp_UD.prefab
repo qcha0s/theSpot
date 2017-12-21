@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 114517238298671498}
   - component: {fileID: 95391475474914856}
   - component: {fileID: 137197827076896148}
+  - component: {fileID: 208788544049110652}
   m_Layer: 11
   m_Name: PlayerTemp_UD
   m_TagString: Player
@@ -1285,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4decd1abcf2c695428f5cab691625488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 400
+  m_speed: 300
 --- !u!114 &114224439428841572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1298,6 +1299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 100
+  m_healthyColour: {r: 0, g: 0, b: 0, a: 0}
+  m_deadColour: {r: 0, g: 0, b: 0, a: 0}
   m_isPlayer: 1
   healthBar: {fileID: 0}
 --- !u!114 &114517238298671498
@@ -1523,6 +1526,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.05437842, y: -0.15645647, z: 0.2659832}
     m_Extent: {x: 0.45766982, y: 0.9826678, z: 0.46322218}
   m_DirtyAABB: 0
+--- !u!208 &208788544049110652
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259560871961046}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222206696932537850
 CanvasRenderer:
   m_ObjectHideFlags: 1

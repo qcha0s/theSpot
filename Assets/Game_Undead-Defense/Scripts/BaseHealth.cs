@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class BaseHealth : MonoBehaviour {
 
 	public float m_maxHealth = 100f;
+	public Color m_healthyColour;
+	public Color m_deadColour;
 	public bool IsDead { get{ return m_isDead; }}
 	public float Health {get{ return m_currentHealth; }}
 

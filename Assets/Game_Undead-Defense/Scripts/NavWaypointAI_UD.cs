@@ -30,15 +30,14 @@ public class NavWaypointAI_UD : MonoBehaviour {
     }
 
     public void Move() {
-        if (m_chasingPlayer) {
-            ChasePlayer();
-        } else if (m_wpReached) {
+        if (m_wpReached) {
            MoveToWP();
         }
         CheckDistanceToWP();
     }
  
-    private void MoveToWP() {
+    public void MoveToWP() {
+        nav.isStopped = false;
         Vector3 tempWaypointPosition;
         tempWaypointPosition = m_waypoints[m_curWaypoint].position;
         tempWaypointPosition.x += Random.Range(-m_wpOffset.x,m_wpOffset.x);
@@ -48,24 +47,10 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_wpReached = false;
     }
 
-    private void ChasePlayer() {
-      
+    public void ChaseTarget(Transform m_target) {
+        nav.isStopped = false;
+        nav.SetDestination(m_target.position);
     }
-
-    // private void OnTriggerEnter(Collider other) {
-    //     if (other.tag == "Player") {
-    //         m_targetPos = other.transform.position;
-    //         m_chasingPlayer = true;
-    //         nav.SetDestination(m_targetPos);  
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider other) {
-    //     if (other.tag == "Player") {
-    //         m_chasingPlayer = false;
-    //         m_wpReached = true;
-    //     }
-    // }
 
     private void CheckDistanceToWP() {
         if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
