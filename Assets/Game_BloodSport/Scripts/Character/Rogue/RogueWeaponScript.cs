@@ -19,7 +19,7 @@ public class RogueWeaponScript : MonoBehaviour {
         m_RogueController = transform.root.GetComponent<BS_Rogue>();
     }
 	void OnTriggerEnter(Collider other){
-		if(other.tag == "Enemy" && !m_rpgController.m_hasDealtDamage){
+		if(other.tag == "target" && !m_rpgController.m_hasDealtDamage){
 			 Vector3 toTarget = (other.transform.position - transform.position).normalized;
              
             if(m_poisoned){

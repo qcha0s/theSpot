@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour {
 	}		
 
 	void LateUpdate(){
-		Debug.Log(m_target.rotation.y);
+		
 		if (Input.GetMouseButton(1))
         {
         	m_xDeg += Input.GetAxis("Mouse X") * m_xSpeed * 0.02f;
