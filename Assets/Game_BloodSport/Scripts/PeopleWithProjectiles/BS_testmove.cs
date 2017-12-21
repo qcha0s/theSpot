@@ -13,10 +13,31 @@ public class BS_testmove : MonoBehaviour {
 	//public GameObject bullet;
 	
     public Transform bulletSpawn;
+	public int multiplier = 1;
+	private float multiplyTimer = 0;
 	private BS_Ultimate m_Ulty;
 	// Use this for initialization
 	void Start () {
 		m_Ulty = GetComponent<BS_Ultimate>();
+	}
+
+	IEnumerator Mult() {
+		multiplier = 2;
+		yield return new WaitForSeconds(30);
+        multiplier = 1;
+		  
+		   
+			
+        
+		
+		//5seconds have passed
+		Debug.Log(":-)");
+	}
+
+
+	public void Multiply(){
+		StartCoroutine(Mult());
+		
 	}
 	
 	// Update is called once per frame

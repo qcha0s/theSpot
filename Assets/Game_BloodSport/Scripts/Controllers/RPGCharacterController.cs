@@ -17,6 +17,8 @@ public class RPGCharacterController : MonoBehaviour {
 	public bool m_hasDealtDamage = false;
 	public bool m_disableMovement = false;
 
+	
+
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
 	private bool m_grounded = false;
@@ -27,6 +29,8 @@ public class RPGCharacterController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
+	private int multiplier = 1;
+	
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
@@ -35,6 +39,25 @@ public class RPGCharacterController : MonoBehaviour {
 		if(m_weaponHitBoxes != null) {
 			m_weaponHitBoxes.enabled = false;
 		}
+	}
+
+	IEnumerator Mult() {
+		multiplier = 2;
+		yield return new WaitForSeconds(30);
+        multiplier = 1;
+		  
+		   
+			
+        
+		
+		//5seconds have passed
+		Debug.Log(":-)");
+	}
+
+
+	public void Multiply(){
+		StartCoroutine(Mult());
+		
 	}
 
 	void Update(){
