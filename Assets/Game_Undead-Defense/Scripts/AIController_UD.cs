@@ -9,7 +9,6 @@ public class AIController_UD : MonoBehaviour {
 	public float m_baseOffset = 3f;
 	public float m_attackRate = 2f;
 	public int numAttackAnimations = 1;
-	public Collider m_DamageBox;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
@@ -35,11 +34,8 @@ public class AIController_UD : MonoBehaviour {
 
 	private void Update() {
 		HandleHealth();
-		StateUpdate();
-	}
-
-	void FixedUpdate() {
 		CheckForEnemies();
+		StateUpdate();
 	}
 
 	private void StateUpdate() {
@@ -57,7 +53,7 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.Move();
 			break;
 			case m_states.CHASING_PLAYER:
-				m_movement.ChasePlayer(m_target);
+				m_movement.ChaseTarget(m_target);
 			break;
 			case m_states.ATTACKING:
 
@@ -137,7 +133,6 @@ public class AIController_UD : MonoBehaviour {
 				m_isAttacking = true;
 				m_canAttack = false;
 				m_anim.SetInteger("AttackState", attackAnimInt);
-				FaceTarget(m_target);
 			break;
 			case m_states.STUNNED:
 				m_anim.SetTrigger("Hit");
@@ -172,6 +167,9 @@ public class AIController_UD : MonoBehaviour {
 			m_target = m_sensor.GetFirstEnemy().transform;
 			SetNewState(m_states.CHASING_PLAYER);
 		}
+		if (m_target != null) {
+			FaceTarget(m_target);
+		}
 	}
 
 	public void StopAttacking() {
@@ -182,7 +180,7 @@ public class AIController_UD : MonoBehaviour {
 		}
 	}
 
-	IEnumerator CanDelayBeforeAttack() {
+	IEnumerator DelayBetweenAttacks() {
 		yield return new WaitForSeconds(m_attackRate);
 		m_canAttack = true;
 	}
@@ -208,11 +206,11 @@ public class AIController_UD : MonoBehaviour {
 
 	#region AnimationEventMethods
 	public void HitBoxOn() {
-		m_DamageBox.enabled = true;
+		m_weapon.m_dealDamage = true;
 	}
 
 	public void HitBoxOff() {
-		m_DamageBox.enabled = false;
+		m_weapon.m_dealDamage = false;
 		m_weapon.Clear();
 	}	
 	#endregion

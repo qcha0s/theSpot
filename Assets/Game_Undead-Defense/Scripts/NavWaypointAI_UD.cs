@@ -47,7 +47,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_wpReached = false;
     }
 
-    public void ChasePlayer(Transform m_target) {
+    public void ChaseTarget(Transform m_target) {
         nav.isStopped = false;
         nav.SetDestination(m_target.position);
     }
