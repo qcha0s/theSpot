@@ -143,7 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4753587364137640}
   - component: {fileID: 114196106361028054}
-  m_Layer: 8
+  - component: {fileID: 135362146933544602}
+  m_Layer: 13
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2281,7 +2282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_goldValue: 10
-  anim: {fileID: 95525562061860018}
+  m_chasingTime: 3
+  m_baseOffset: 10
+  m_attackRate: 2
 --- !u!114 &114042452703570258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2357,6 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isEnemy: 1
+  m_playerBase: {fileID: 0}
 --- !u!114 &114494786858432230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2410,6 +2414,18 @@ MonoBehaviour:
   m_maxHealth: 100
   m_isPlayer: 0
   healthBar: {fileID: 114170602216157836}
+--- !u!135 &135362146933544602
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102537722187550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137830592916450084
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
