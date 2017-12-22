@@ -88,4 +88,8 @@ public class WaveManager : MonoBehaviour
     {
         GameManager_UD.instance.UpdateWavesText(m_currentWave);
     }
+
+    public int GetCurrentWave(){
+        return m_currentWave;
+    }
 }

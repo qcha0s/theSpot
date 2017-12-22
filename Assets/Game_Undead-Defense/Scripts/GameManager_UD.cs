@@ -30,6 +30,7 @@ public class GameManager_UD : MonoBehaviour
     public GameObject m_lockImage;
     public GameObject m_normalButton;
     public GameObject m_survivalButton;
+    public Text m_highscoreText;
 
     public GameObject m_poolManager;
 
@@ -62,6 +63,8 @@ public class GameManager_UD : MonoBehaviour
 
 	int[] m_TowerUnlockState = new int[3];
 
+    int[] m_bestWave = new int [3];
+
     GameMode m_currentGameMode = GameMode.Normal;
 
     bool m_showMouse;
@@ -93,6 +96,10 @@ public class GameManager_UD : MonoBehaviour
 		m_TowerUnlockState[0] = PlayerPrefs.GetInt("Tower1");
 		m_TowerUnlockState[1] = PlayerPrefs.GetInt("Tower2");
 		m_TowerUnlockState[2] = PlayerPrefs.GetInt("Tower3");
+
+        m_bestWave[0] = PlayerPrefs.GetInt("BestWave1");
+        m_bestWave[1] = PlayerPrefs.GetInt("BestWave2");
+        m_bestWave[2] = PlayerPrefs.GetInt("BestWave3");
 
         Debug.Log(m_mapUnlockState[0]);
         Debug.Log(m_mapUnlockState[1]);
@@ -193,6 +200,8 @@ public class GameManager_UD : MonoBehaviour
                 break;
         }
         m_maps[m_currentSelectedLevel].SetActive(true);
+
+        m_highscoreText.text = "Best\n"+m_bestWave[m_currentSelectedLevel];
     }
 
     public void StartNormal()
@@ -410,6 +419,10 @@ public class GameManager_UD : MonoBehaviour
 		m_TowerUnlockState[1] = 0;
 		m_TowerUnlockState[2] = 0;
 
+        m_bestWave[0] = 0;
+        m_bestWave[1] = 0;
+        m_bestWave[2] = 0;
+
         PlayerPrefs.SetInt("Map1",1);
         PlayerPrefs.SetInt("Map2",0);
         PlayerPrefs.SetInt("Map3",0);
@@ -417,6 +430,10 @@ public class GameManager_UD : MonoBehaviour
         PlayerPrefs.SetInt("Tower1",1);
         PlayerPrefs.SetInt("Tower2",0);
         PlayerPrefs.SetInt("Tower3",0);
+
+        PlayerPrefs.SetInt("BestWave1",0);
+        PlayerPrefs.SetInt("BestWave2",0);
+        PlayerPrefs.SetInt("BestWave3",0);
 
         //TODO:reset waves survived
     }
