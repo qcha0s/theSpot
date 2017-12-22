@@ -238,6 +238,10 @@ public class GameManager_UD : MonoBehaviour
         //don't instantiate objects here	
 
     }
+
+    public void RestartLevel(){
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
+    }
     
     //Once the map loads
     public void MapReady()
@@ -247,9 +251,7 @@ public class GameManager_UD : MonoBehaviour
         UpdateGold();
         ChangeState(GameState.Play);
         HideMouse();
-        m_pauseUI.SetActive(false);
-        m_paused = false;
-        Time.timeScale = 1.0f;
+        ResumeGame();
 
     }
 
