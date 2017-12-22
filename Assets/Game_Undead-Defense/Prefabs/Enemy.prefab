@@ -2184,8 +2184,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.42167664, y: 0.8989029, z: 0.5859337}
-  m_Center: {x: -0.036179543, y: 0.016126633, z: 0.060102463}
+  m_Size: {x: 0.42167664, y: 2.5911145, z: 0.5859337}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65871951742232992
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2296,7 +2296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_goldValue: 10
   m_chasingTime: 3
-  m_baseOffset: 10
+  m_playerOffset: 2
   m_attackRate: 2
   numAttackAnimations: 1
 --- !u!114 &114042452703570258
@@ -2438,7 +2438,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137830592916450084
 SkinnedMeshRenderer:
@@ -2527,9 +2527,9 @@ NavMeshAgent:
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

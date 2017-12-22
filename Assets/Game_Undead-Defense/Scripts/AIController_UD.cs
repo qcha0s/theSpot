@@ -6,12 +6,9 @@ public class AIController_UD : MonoBehaviour {
 
 	public int m_goldValue = 10;
 	public float m_chasingTime = 5f;
-	public float m_baseOffset = 3f;
-	public float m_attackRate = 2f;
-	public int numAttackAnimations = 3;
-	public int numDeathAnimations = 1;
-	public int numHitAnimations = 2;
-	public int numWalkAnimations = 3;
+	public float m_playerOffset = 3f;
+	public float m_attackRate = 3f;
+	public int numAttackAnimations = 1;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
@@ -23,6 +20,7 @@ public class AIController_UD : MonoBehaviour {
 	private Transform m_target;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;
+	private bool m_chasingPlayer = false;
 	private int attackAnimInt;
 	private int deathAnimInt;
 	private int hitAnimInt;
@@ -49,10 +47,7 @@ public class AIController_UD : MonoBehaviour {
 	private void StateUpdate() {
 		switch (m_currentState) {
 			case m_states.IDLE:
-				if (m_movement.Velocity.magnitude > 0.5f) {
-					SetNewState(m_states.MOVING_TO_WP);
-				}
-				if (m_canAttack) {
+				if (m_canAttack && m_target != null) {
 					if (m_target.tag == "PlayerBase") {
 						SetNewState(m_states.ATTACKING);
 					} else {
@@ -65,6 +60,9 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.CHASING_PLAYER:
 				m_movement.ChaseTarget(m_target);
+				if (CanAttackPlayer()) {
+					SetNewState(m_states.ATTACKING);
+				}
 			break;
 			case m_states.ATTACKING:
 
@@ -103,9 +101,11 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.MOVING_TO_WP:
 				m_movement.StopMovement();
+				m_movement.enabled = false;			
 			break;
 			case m_states.CHASING_PLAYER:
-
+				m_movement.StopMovement();
+				m_movement.enabled = false;
 			break;
 			case m_states.ATTACKING:
 				m_isAttacking = false;
@@ -130,11 +130,10 @@ public class AIController_UD : MonoBehaviour {
 		m_currentState = newState;
 		switch (m_currentState) {
 			case m_states.IDLE:
-				if (m_canAttack) {
-					m_currentState = m_states.ATTACKING;
-				}
+
 			break;
 			case m_states.MOVING_TO_WP:
+				m_movement.enabled = true;
 				m_movement.MoveToWP();
 				//m_anim.SetInteger("WalkState", walkAnimInt);
 				//Debug.Log("walk anim : " + walkAnimInt);
@@ -143,12 +142,17 @@ public class AIController_UD : MonoBehaviour {
 				Debug.Log("walk anim : 3");
 			break;
 			case m_states.CHASING_PLAYER:
-				StartCoroutine(StopChasing());
+				m_movement.enabled = true;
+				if (!m_chasingPlayer) {
+					StartCoroutine(StopChasing());
+					m_chasingPlayer = true;
+				}
 			break;
 			case m_states.ATTACKING:
 				m_isAttacking = true;
 				m_canAttack = false;
 				m_anim.SetInteger("AttackState", attackAnimInt);
+				StartCoroutine(DelayBetweenAttacks());
 			break;
 			case m_states.STUNNED:
 				m_anim.SetTrigger("Hit");
@@ -188,11 +192,24 @@ public class AIController_UD : MonoBehaviour {
 		}
 	}
 
-	public void StopAttacking() {
-		if (m_target.tag == "PlayerBase") {
-			SetNewState(m_states.IDLE);
+	private bool CanAttackPlayer() {
+		bool retBool = false;
+		if (Vector3.Distance(transform.position, m_target.position) < m_playerOffset) {
+			retBool = true;
+		}
+		return retBool;
+	}
+
+	public void StopAttack() {
+		Debug.Log("Here");
+		if (m_target != null) {
+			if (m_target.tag == "PlayerBase") {
+				SetNewState(m_states.IDLE);
+			} else {
+				SetNewState(m_states.CHASING_PLAYER);
+			}
 		} else {
-			SetNewState(m_states.CHASING_PLAYER);
+			SetNewState(m_states.MOVING_TO_WP);
 		}
 	}
 
@@ -207,7 +224,11 @@ public class AIController_UD : MonoBehaviour {
 		while (m_currentState == m_states.ATTACKING) {
 			yield return null;
 		}
-		SetNewState(m_states.MOVING_TO_WP);
+		if (m_currentState == m_states.CHASING_PLAYER) {
+			m_target = null;
+			m_chasingPlayer = false;
+			SetNewState(m_states.MOVING_TO_WP);
+		}
 	}
 
 	private void FaceTarget(Transform target) {
@@ -228,6 +249,7 @@ public class AIController_UD : MonoBehaviour {
 	public void HitBoxOff() {
 		m_weapon.m_dealDamage = false;
 		m_weapon.Clear();
+		StopAttack();
 	}	
 	#endregion
 }

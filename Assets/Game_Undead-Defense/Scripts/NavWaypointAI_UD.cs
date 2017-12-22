@@ -55,8 +55,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
     private void CheckDistanceToWP() {
         if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
-//                Debug.Log("at Player's base");
-//              m_lastWP = 0;
             } else {
                 m_curWaypoint++;
                 m_wpReached = true;
@@ -65,7 +63,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
     }
 
     public void StopMovement() {
-        nav.isStopped = true;
         nav.velocity = Vector3.zero;
     }
 
@@ -80,7 +77,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_lastWP = waypoints.Length - 1;
         m_targetPos = m_waypoints[m_curWaypoint].position;  
         nav.SetDestination(m_targetPos);
-//        StartCoroutine(StartMovement());   
     }
 
     public void Reset() {
