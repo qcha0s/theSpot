@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 public class RogueController : MonoBehaviour {
-=======
-public class RPGCharacterController : MonoBehaviour {
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 	public string m_moveStatus = "idle";
 	public bool m_walkByDefault = true;
 	public float m_gravity = 20.0f;
 
 	public Collider[] m_weaponHitBoxes;
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 	public GameObject m_targetGUI;
 	public GameObject[] m_weapons;
-=======
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
@@ -24,11 +17,8 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_walkSpeed = 4.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 	public bool m_hasDealtDamage = false;
 	public bool m_disableMovement = false;
-=======
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
@@ -40,7 +30,6 @@ public class RPGCharacterController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 	private bool m_UltActive = true;
 	private bool m_sprintOnCD = false;
 	private bool m_poisonOnCD = false;
@@ -64,27 +53,6 @@ public class RPGCharacterController : MonoBehaviour {
 		 //currentBaseState = m_animationController.GetCurrentAnimatorStateInfo(0);
 		m_moveStatus = "idle";
 		
-=======
-
-
-
-	void Awake(){
-
-		m_controller = GetComponent<CharacterController>();
-		m_animationController = GetComponent<Animator>();
-		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
-		
-	}
-
-	void Update(){
-		m_moveStatus = "idle";
-		m_isWalking = m_walkByDefault;
-
-		if(Input.GetAxis("Run") != 0){
-			m_isWalking = !m_walkByDefault;
-		}
-
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 		if(m_grounded){
 			//if player is steering with the right mouse button .. A/D will strafe
 			if(Input.GetMouseButton(1)){
@@ -123,7 +91,6 @@ public class RPGCharacterController : MonoBehaviour {
 			m_moveDirection *= m_isWalking ? m_walkSpeed * m_speedMultiplier : m_runSpeed * m_speedMultiplier;
 
 			if(Input.GetButton("Jump")){
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 				m_jumping = true;
 				m_moveDirection.y = m_jumpSpeed;
 				m_animationController.SetBool("isJumping",true);
@@ -139,19 +106,6 @@ public class RPGCharacterController : MonoBehaviour {
 			}
 			m_animationController.SetFloat("Speed", m_moveDirection.z);
 			m_animationController.SetFloat("Direction", m_moveDirection.x);
-=======
-				m_animationController.SetTrigger("Jump");
-				m_moveDirection.y = m_jumpSpeed;
-			}
-
-			if(m_moveDirection.magnitude > 0.1f){
-				m_animationController.SetBool("isRunning",true);
-			}else{
-				m_animationController.SetBool("isRunning",false);
-			}
-			m_animationController.SetFloat("Forward", m_moveDirection.z);
-			m_animationController.SetFloat("Right", m_moveDirection.x);
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 
 			m_moveDirection = transform.TransformDirection(m_moveDirection);
 		}
@@ -170,28 +124,10 @@ public class RPGCharacterController : MonoBehaviour {
 
 		if(m_jumping){
 			m_moveStatus = "jump";
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 		}
 
 
 	if(Input.GetMouseButtonDown(0)){
-=======
-			m_animationController.SetTrigger("Jump");
-		}
-
-
-	
-		//is the player attacking
-		AnimatorStateInfo currentupperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
-		
-		if(currentupperTorsoState.fullPathHash == m_attackState){
-			// for(int i = 0;i < m_weaponHitBoxes.Length; i++){
-			// 	m_weaponHitBoxes[i].enabled = true;
-			// }
-			Debug.Log(currentupperTorsoState.fullPathHash);
-		}
-		if(Input.GetMouseButtonDown(0)){
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 			m_animationController.SetBool("isAttacking",true);
 			//m_weaponHitBox.enabled = true;
 		}
@@ -199,7 +135,6 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetBool("isAttacking",false);
 			//m_weaponHitBox.enabled = false;
 		}
-<<<<<<< HEAD:Assets/Game_BloodSport/Scripts/Character/Rogue/RogueController.cs
 
 		
 		
@@ -227,9 +162,4 @@ public class RPGCharacterController : MonoBehaviour {
 	}
 	
 	
-=======
-		
-
-	}
->>>>>>> undead-defense:Assets/BloodSport/BS_Scripts/RPGCharacterController.cs
 }
