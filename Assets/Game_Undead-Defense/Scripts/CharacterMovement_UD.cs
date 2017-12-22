@@ -9,7 +9,6 @@ public class CharacterMovement_UD : MonoBehaviour {
 	public float m_raycastDistance = 10f;
 
 	private BaseMovement_UD m_movement;
-	private Block_UD m_hoveredBlock;
 
 	void Start () {
 		Camera.main.GetComponent<BS_ThirdPersonCamera>().Target = transform;
