@@ -20,15 +20,5 @@ public class ItemSlot : MonoBehaviour {
 			item.GetComponent<Item>().Use(gameObject);
 			m_item = null;
 		}
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	}	
 }
