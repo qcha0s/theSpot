@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum GameState { Intro, Menu, Loading, Play, Win, Lose }
+public enum GameState_UD { Intro, Menu, Loading, Play, Win, Lose }
 public enum GameMode {Normal,Survival}
 public class GameManager_UD : MonoBehaviour {
 
