@@ -30,6 +30,9 @@ public class GameManager_UD : MonoBehaviour
     public GameObject m_lockImage;
     public GameObject m_normalButton;
     public GameObject m_survivalButton;
+    public Text m_highscoreText;
+
+    public GameObject m_pauseUI;
 
     public GameObject m_poolManager;
 
@@ -62,6 +65,8 @@ public class GameManager_UD : MonoBehaviour
 
 	int[] m_TowerUnlockState = new int[3];
 
+    int[] m_bestWave = new int [3];
+
     GameMode m_currentGameMode = GameMode.Normal;
 
     bool m_showMouse;
@@ -71,6 +76,8 @@ public class GameManager_UD : MonoBehaviour
     CharacterMovement_UD playerMovementScript;
 
     int m_currentGold = 0;
+
+    bool m_paused = false;
 
     void Awake()
     {
@@ -93,6 +100,10 @@ public class GameManager_UD : MonoBehaviour
 		m_TowerUnlockState[0] = PlayerPrefs.GetInt("Tower1");
 		m_TowerUnlockState[1] = PlayerPrefs.GetInt("Tower2");
 		m_TowerUnlockState[2] = PlayerPrefs.GetInt("Tower3");
+
+        m_bestWave[0] = PlayerPrefs.GetInt("BestWave1");
+        m_bestWave[1] = PlayerPrefs.GetInt("BestWave2");
+        m_bestWave[2] = PlayerPrefs.GetInt("BestWave3");
 
         Debug.Log(m_mapUnlockState[0]);
         Debug.Log(m_mapUnlockState[1]);
@@ -133,7 +144,7 @@ public class GameManager_UD : MonoBehaviour
             case GameState.Loading:
                 break;
             case GameState.Play:
-                //UpdatePlay();
+                UpdatePlay();
                 break;
         }
     }
@@ -153,7 +164,14 @@ public class GameManager_UD : MonoBehaviour
 
     void UpdatePlay()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if (!m_paused){
+                PauseGame();
+            }
+            else{
+                ResumeGame();
+            }
+        }
     }
 
     void ChangeState(GameState newState)
@@ -193,6 +211,8 @@ public class GameManager_UD : MonoBehaviour
                 break;
         }
         m_maps[m_currentSelectedLevel].SetActive(true);
+
+        m_highscoreText.text = "Best\n"+m_bestWave[m_currentSelectedLevel];
     }
 
     public void StartNormal()
@@ -227,6 +247,10 @@ public class GameManager_UD : MonoBehaviour
         UpdateGold();
         ChangeState(GameState.Play);
         HideMouse();
+        m_pauseUI.SetActive(false);
+        m_paused = false;
+        Time.timeScale = 1.0f;
+
     }
 
     public void ShowBuildTowerUI(BuildSpot_UD script)
@@ -394,6 +418,7 @@ public class GameManager_UD : MonoBehaviour
         ChangeState(GameState.Intro);
         m_currentIntroTimer = 0.0f;
         ChangeSelectedLevel();
+        Time.timeScale = 1.0f;
     }
 
     public void ButtonReset(){
@@ -410,6 +435,10 @@ public class GameManager_UD : MonoBehaviour
 		m_TowerUnlockState[1] = 0;
 		m_TowerUnlockState[2] = 0;
 
+        m_bestWave[0] = 0;
+        m_bestWave[1] = 0;
+        m_bestWave[2] = 0;
+
         PlayerPrefs.SetInt("Map1",1);
         PlayerPrefs.SetInt("Map2",0);
         PlayerPrefs.SetInt("Map3",0);
@@ -418,6 +447,24 @@ public class GameManager_UD : MonoBehaviour
         PlayerPrefs.SetInt("Tower2",0);
         PlayerPrefs.SetInt("Tower3",0);
 
+        PlayerPrefs.SetInt("BestWave1",0);
+        PlayerPrefs.SetInt("BestWave2",0);
+        PlayerPrefs.SetInt("BestWave3",0);
+
         //TODO:reset waves survived
+    }
+
+    void PauseGame(){
+        m_paused = true;
+        Time.timeScale = 0.0f;
+        ShowMouse();
+        m_pauseUI.SetActive(true);
+    }
+
+    public void ResumeGame(){
+        m_paused = false;
+        Time.timeScale = 1.0f;
+        HideMouse();
+        m_pauseUI.SetActive(false);
     }
 }
