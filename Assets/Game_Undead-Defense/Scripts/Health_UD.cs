@@ -11,7 +11,7 @@ public class Health_UD : BaseHealth {
 
 	void Update () {
 		if (!m_isPlayer) {	
-			healthBar.color = Color.Lerp(Color.red, Color.green, healthBar.fillAmount);
+			healthBar.color = Color.Lerp(m_deadColour, m_healthyColour, healthBar.fillAmount);
 		}
 	}
 

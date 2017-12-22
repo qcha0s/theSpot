@@ -38,6 +38,9 @@ public class Sensor_UD : MonoBehaviour {
 	private void OnTriggerExit(Collider other) {
 		BaseHealth exitEnemy = other.GetComponent<BaseHealth>();
 		m_targets.Remove(exitEnemy);
+		// if (exitEnemy == m_playerBase) {
+		// 	m_playerBase = null;
+		// }
 	}
 
 	public void ClearTargets() {
