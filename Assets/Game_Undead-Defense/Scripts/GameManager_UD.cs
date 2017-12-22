@@ -32,6 +32,8 @@ public class GameManager_UD : MonoBehaviour
     public GameObject m_survivalButton;
     public Text m_highscoreText;
 
+    public GameObject m_pauseUI;
+
     public GameObject m_poolManager;
 
     public GameObject m_buildTowerUI;
@@ -74,6 +76,8 @@ public class GameManager_UD : MonoBehaviour
     CharacterMovement_UD playerMovementScript;
 
     int m_currentGold = 0;
+
+    bool m_paused = false;
 
     void Awake()
     {
@@ -140,7 +144,7 @@ public class GameManager_UD : MonoBehaviour
             case GameState.Loading:
                 break;
             case GameState.Play:
-                //UpdatePlay();
+                UpdatePlay();
                 break;
         }
     }
@@ -160,7 +164,14 @@ public class GameManager_UD : MonoBehaviour
 
     void UpdatePlay()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if (!m_paused){
+                PauseGame();
+            }
+            else{
+                ResumeGame();
+            }
+        }
     }
 
     void ChangeState(GameState newState)
@@ -236,6 +247,10 @@ public class GameManager_UD : MonoBehaviour
         UpdateGold();
         ChangeState(GameState.Play);
         HideMouse();
+        m_pauseUI.SetActive(false);
+        m_paused = false;
+        Time.timeScale = 1.0f;
+
     }
 
     public void ShowBuildTowerUI(BuildSpot_UD script)
@@ -403,6 +418,7 @@ public class GameManager_UD : MonoBehaviour
         ChangeState(GameState.Intro);
         m_currentIntroTimer = 0.0f;
         ChangeSelectedLevel();
+        Time.timeScale = 1.0f;
     }
 
     public void ButtonReset(){
@@ -436,5 +452,19 @@ public class GameManager_UD : MonoBehaviour
         PlayerPrefs.SetInt("BestWave3",0);
 
         //TODO:reset waves survived
+    }
+
+    void PauseGame(){
+        m_paused = true;
+        Time.timeScale = 0.0f;
+        ShowMouse();
+        m_pauseUI.SetActive(true);
+    }
+
+    public void ResumeGame(){
+        m_paused = false;
+        Time.timeScale = 1.0f;
+        HideMouse();
+        m_pauseUI.SetActive(false);
     }
 }
