@@ -8,7 +8,10 @@ public class AIController_UD : MonoBehaviour {
 	public float m_chasingTime = 5f;
 	public float m_baseOffset = 3f;
 	public float m_attackRate = 2f;
-	public int numAttackAnimations = 1;
+	public int numAttackAnimations = 3;
+	public int numDeathAnimations = 1;
+	public int numHitAnimations = 2;
+	public int numWalkAnimations = 3;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
@@ -16,12 +19,14 @@ public class AIController_UD : MonoBehaviour {
 	private Animator m_anim;
 	private Sensor_UD m_sensor;
 	private WeaponScript m_weapon;
-	private m_states m_currentState = m_states.MOVING_TO_WP;
+	private m_states m_currentState = m_states.IDLE;
 	private Transform m_target;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;
 	private int attackAnimInt;
-	private int attackState;
+	private int deathAnimInt;
+	private int hitAnimInt;
+	private int walkAnimInt;
 
 	private void Start() {
 		m_anim = GetComponent<Animator>();
@@ -30,6 +35,9 @@ public class AIController_UD : MonoBehaviour {
 		m_sensor = GetComponentInChildren<Sensor_UD>();
 		m_weapon = GetComponentInChildren<WeaponScript>();
 		attackAnimInt = Random.Range( 1, numAttackAnimations+1);
+		deathAnimInt = Random.Range( 1, numDeathAnimations+1);
+		hitAnimInt = Random.Range( 1, numHitAnimations+1);
+		walkAnimInt = Random.Range( 1, numWalkAnimations+1);
 	}
 
 	private void Update() {
@@ -41,6 +49,9 @@ public class AIController_UD : MonoBehaviour {
 	private void StateUpdate() {
 		switch (m_currentState) {
 			case m_states.IDLE:
+				if (m_movement.Velocity.magnitude > 0.5f) {
+					SetNewState(m_states.MOVING_TO_WP);
+				}
 				if (m_canAttack) {
 					if (m_target.tag == "PlayerBase") {
 						SetNewState(m_states.ATTACKING);
@@ -94,7 +105,7 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.StopMovement();
 			break;
 			case m_states.CHASING_PLAYER:
-				m_anim.SetBool("Attack", false);
+
 			break;
 			case m_states.ATTACKING:
 				m_isAttacking = false;
@@ -107,7 +118,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.DEAD:
-				m_anim.SetBool("Dead", false);
+				m_anim.SetInteger("DeathState", 0);
 			break; 
 			default:
 				Debug.LogError("Unknown state");
@@ -125,6 +136,11 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.MOVING_TO_WP:
 				m_movement.MoveToWP();
+				//m_anim.SetInteger("WalkState", walkAnimInt);
+				//Debug.Log("walk anim : " + walkAnimInt);
+
+				m_anim.SetInteger("WalkState", 3);
+				Debug.Log("walk anim : 3");
 			break;
 			case m_states.CHASING_PLAYER:
 				StartCoroutine(StopChasing());
@@ -143,10 +159,10 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.DEAD:
 				GameManager_UD.instance.AddGold(m_goldValue);
 				WaveManager.instance.EnemyDied();
-				m_movement.Reset();
+				//m_movement.Reset();
 				m_currentState = m_states.MOVING_TO_WP;
 				m_health.Die();
-				m_anim.SetBool("Dead", true);
+				m_anim.SetInteger("DeathState", deathAnimInt);
 			break;
 			default:
 				Debug.LogError("Unknown state");
