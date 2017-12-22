@@ -95,7 +95,18 @@ public class BS_Rogue : MonoBehaviour {
 		m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(false);
 	}
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
-		
+			if(Ability == "Poison"){
+			Debug.Log("StartCD");
+			while(m_poisonOnCD){
+				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
+
+				if(m_CDMasks[0].fillAmount==0){
+					m_poisonOnCD = false;
+				}
+				yield return null;
+				
+			}
+		}
 		
 		if(Ability == "Sprint"){
 			while(m_sprintOnCD){
@@ -110,18 +121,7 @@ public class BS_Rogue : MonoBehaviour {
 			//yield return new WaitForSeconds(cooldownvalue);
 			//m_sprintOnCD = false;
 		}
-		if(Ability == "Poison"){
-			Debug.Log("StartCD");
-			while(m_poisonOnCD){
-				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
-
-				if(m_CDMasks[0].fillAmount==0){
-					m_poisonOnCD = false;
-				}
-				yield return null;
-				
-			}
-		}
+	
 		
 	}
 }

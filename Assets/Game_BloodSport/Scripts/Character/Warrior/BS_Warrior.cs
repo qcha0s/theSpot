@@ -25,7 +25,7 @@ public class BS_Warrior : MonoBehaviour {
 	private float m_previousTurnSpeed;
 	private bool m_whirlwindOnCD = false;
 	private bool m_ChargeOnCD = false;
-
+	public Image[] m_CDMasks;
 	void Start() {
 		m_animator = GetComponent<Animator>();
 		m_healthScript = GetComponent<BS_Health>();
@@ -33,6 +33,12 @@ public class BS_Warrior : MonoBehaviour {
 		m_shieldCollider.enabled = false;
 		m_previousTurnSpeed = m_characterController.m_turnSpeed;
 		m_ultimateShield.SetActive(false);
+		for(int i = 0; i < m_CDMasks.Length;i++){
+			m_CDMasks[i].fillAmount=0;
+			Color temp = m_CDMasks[i].color;
+			temp.a=0.7f;
+			m_CDMasks[i].color=temp;
+		}
 	}
 
 	void Update() {
@@ -51,6 +57,7 @@ public class BS_Warrior : MonoBehaviour {
 
 	public void Charge() {
 		if(!m_charging) {
+			m_CDMasks[1].fillAmount=1;
 			m_ChargeOnCD = true;
 			StartCoroutine(CoolDownSystem(m_chargeCD, "Charge"));
 			m_charging = true;
@@ -71,6 +78,7 @@ public class BS_Warrior : MonoBehaviour {
 
 	public void WhirlWind() {
 		if(!m_usingWhirlWind) {
+			m_CDMasks[0].fillAmount=1;
 			m_whirlwindOnCD = true;
 			StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 			m_usingWhirlWind = true;
@@ -106,10 +114,28 @@ public class BS_Warrior : MonoBehaviour {
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){	
 		yield return new WaitForSeconds(cooldownvalue);
 		if(Ability == "Whirlwind"){
-			m_whirlwindOnCD = false;
+			while(m_whirlwindOnCD){
+				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
+
+				if(m_CDMasks[0].fillAmount==0){
+					m_whirlwindOnCD = false;
+				}
+				yield return null;
+				
+			}
+			
 		}
 		if(Ability == "Charge"){
-			m_ChargeOnCD = false;
+			while(m_ChargeOnCD){
+				m_CDMasks[1].fillAmount-=Time.deltaTime/cooldownvalue;
+
+				if(m_CDMasks[1].fillAmount==0){
+					m_ChargeOnCD = false;
+				}
+				yield return null;
+				
+			}
+			
 		}
 		if(Ability == "Ultimate") {
 			ResetAfterUltimate();
