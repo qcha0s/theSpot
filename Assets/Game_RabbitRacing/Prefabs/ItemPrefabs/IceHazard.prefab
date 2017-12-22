@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 65112144275705462}
   - component: {fileID: 23128798626006098}
   - component: {fileID: 114554172541506962}
+  - component: {fileID: 114440363228721586}
+  - component: {fileID: 114566663045205962}
   m_Layer: 0
   m_Name: IceHazard
   m_TagString: Untagged
@@ -52,6 +54,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -67,6 +70,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -94,6 +98,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114440363228721586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624248381540862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 56
+    i1: 71
+    i2: 247
+    i3: 160
+    i4: 205
+    i5: 248
+    i6: 175
+    i7: 148
+    i8: 73
+    i9: 60
+    i10: 67
+    i11: 157
+    i12: 81
+    i13: 183
+    i14: 21
+    i15: 6
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114554172541506962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,3 +144,24 @@ MonoBehaviour:
   m_timerLength: 5
   m_timerTimePassed: 0
   m_runTimer: 0
+--- !u!114 &114566663045205962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624248381540862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1

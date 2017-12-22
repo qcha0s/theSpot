@@ -6,7 +6,7 @@ public class PlayerStatus : MonoBehaviour {
     [SerializeField] private float m_timerLength = 5f;
     [SerializeField] private float m_timerTimePassed = 0f;
     [SerializeField] private bool m_runTimer = false;
-    private CharacterControllerKart m_KartController;
+    private CharacterControllerKart m_kartController;
     private InputHandler m_inputHandler;
     private PlayerStatus m_playerStatus;
     [SerializeField] private bool m_isInvincible;
@@ -32,24 +32,25 @@ public class PlayerStatus : MonoBehaviour {
     }
 
     void Awake() {
-        m_KartController = GetComponent<CharacterControllerKart>();
+        m_kartController = GetComponent<CharacterControllerKart>();
         m_inputHandler = GetComponent<InputHandler>();
         m_playerStatus = GetComponent<PlayerStatus>();
     }
 
 
    void OnTriggerEnter(Collider other) {
-       if (other.tag == "Ice") {
+       if (other.CompareTag("Ice")) {
+           m_isIce = true;
          m_runTimer = true;
-         m_inputHandler.enabled = false;        
+         m_inputHandler.enabled = false;
+           
        }
-       if (other.tag == "Player" && other.gameObject.GetComponent<PlayerStatus>().IsInvincible == true)
-       {
-           ///reverse this paddy it might work
-           m_inputHandler.enabled = false;
-           m_isDisabled = true;
-           m_runTimer = true;
-        }
+//       if (other.CompareTag("Player") && other.gameObject.GetComponent<PlayerStatus>().IsInvincible = true)
+//       {
+//           m_inputHandler.enabled = false;
+//           m_isDisabled = true;
+//           m_runTimer = true;
+//        }
 
     }
 
@@ -63,12 +64,13 @@ public class PlayerStatus : MonoBehaviour {
                     if (m_isIce) {
                         m_runTimer = false;
                         m_inputHandler.enabled = true;
+                        m_isIce = false;
                     }
-                    if (m_isInvincible = true) {
+                    if (m_isInvincible == true) {
                         m_runTimer = false;
                         m_isInvincible = false;
                     }
-                    if (m_isDisabled = true) {
+                    if (m_isDisabled == true) {
                         m_runTimer = false;
                         m_isDisabled = false;
                     }

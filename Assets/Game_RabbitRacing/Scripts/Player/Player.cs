@@ -4,21 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class Player : NetworkBehaviour {
+public class Player : MonoBehaviour {
 
     public Image m_miniMapIcon;
 
-
-	// Use this for initialization
+    //public override void OnLocoalPlayer() {
+    //    tag = "Player";
+    //}
+	
+    
+    // Use this for initialization
 	void Start () {
 	    MinimapController.RegisterMapIcon(gameObject, m_miniMapIcon);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (!isLocalPlayer) {
-	        return;
-	    }
+	    //if (!isLocalPlayer) {
+	    //    return;
+	    //}
 	}
 
     void OnDestroy() {
