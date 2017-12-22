@@ -19,13 +19,5 @@ public class ItemSlot : MonoBehaviour {
 			m_item = null;
 		}
 	}
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
