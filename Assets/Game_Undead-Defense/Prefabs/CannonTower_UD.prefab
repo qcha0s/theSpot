@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009275095883210}
   - component: {fileID: 135427757146827674}
-  - component: {fileID: 114455678278558704}
+  - component: {fileID: 114765514081732680}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346162012623044}
   - component: {fileID: 95041224186176568}
+  - component: {fileID: 65197856153514936}
   m_Layer: 0
   m_Name: UD_CannonTower_Model
   m_TagString: Untagged
@@ -730,7 +731,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -764,7 +765,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -800,7 +801,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: f3071aa1388d5ab49a276b9f8c1d99fc, type: 2}
   - {fileID: 2100000, guid: 4a7c7b4b89269d34bb82d960856d9539, type: 2}
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -903,7 +904,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -937,7 +938,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -971,7 +972,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1039,7 +1040,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1073,7 +1074,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1107,7 +1108,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1143,7 +1144,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: f3071aa1388d5ab49a276b9f8c1d99fc, type: 2}
   - {fileID: 2100000, guid: 4a7c7b4b89269d34bb82d960856d9539, type: 2}
-  - {fileID: 2100000, guid: d4cdff39325059a489bae3d41ced4a29, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1303,6 +1304,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348279357894242}
   m_Mesh: {fileID: 4300000, guid: d6bc0dc3683be50468944d86577236ee, type: 3}
+--- !u!65 &65197856153514936
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1520751701349316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4, z: 4}
+  m_Center: {x: 0, y: 2, z: -0.36}
 --- !u!95 &95041224186176568
 Animator:
   serializedVersion: 3
@@ -1340,7 +1353,7 @@ MonoBehaviour:
   m_ammo: 1
   m_firePoint: {fileID: 4262888598513040}
   m_turret: {fileID: 4202621735514420}
---- !u!114 &114455678278558704
+--- !u!114 &114765514081732680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1348,9 +1361,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187123695021732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1209e8c93d0262643b5e58fe3a88ec4e, type: 3}
+  m_Script: {fileID: 11500000, guid: d940650c4fc1ea94da9bf4cedd453cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isEnemy: 0
+  m_playerBase: {fileID: 0}
 --- !u!135 &135427757146827674
 SphereCollider:
   m_ObjectHideFlags: 1

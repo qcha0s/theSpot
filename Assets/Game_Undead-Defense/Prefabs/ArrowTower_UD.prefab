@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4619300303597566}
   - component: {fileID: 95591697845406226}
+  - component: {fileID: 65785329376297078}
   m_Layer: 0
   m_Name: Arrow_Tower
   m_TagString: Untagged
@@ -585,8 +586,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4148315587043784}
-  - component: {fileID: 114052300785176706}
   - component: {fileID: 135957783360434584}
+  - component: {fileID: 114093583302198828}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -2198,6 +2199,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458811378623104}
   m_Mesh: {fileID: 4300036, guid: 665bb456de78e4e43ae5e16f18106e7f, type: 3}
+--- !u!65 &65785329376297078
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075202793823754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 2.5, z: 7.5}
 --- !u!95 &95591697845406226
 Animator:
   serializedVersion: 3
@@ -2215,7 +2228,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114052300785176706
+--- !u!114 &114093583302198828
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2223,7 +2236,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1981087970923930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1209e8c93d0262643b5e58fe3a88ec4e, type: 3}
+  m_Script: {fileID: 11500000, guid: d940650c4fc1ea94da9bf4cedd453cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_isEnemy: 0
@@ -2239,7 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cf7410fe316e74eb28ebb05b45871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_range: 50
+  m_range: 20
   m_fireRate: 1
   m_rotationSpeed: 30
   m_predictMovement: 1

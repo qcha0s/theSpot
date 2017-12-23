@@ -9,6 +9,9 @@ public class AIController_UD : MonoBehaviour {
 	public float m_playerOffset = 3f;
 	public float m_attackRate = 3f;
 	public int numAttackAnimations = 1;
+	public int numDeathAnimations = 1;
+	public int numWalkAnimations = 1;
+	public int numHitAnimations = 1;
 	
 	enum m_states {IDLE,MOVING_TO_WP,CHASING_PLAYER,ATTACKING,STUNNED,SLOWED,DEAD}
 	private Health_UD m_health;
@@ -16,7 +19,7 @@ public class AIController_UD : MonoBehaviour {
 	private Animator m_anim;
 	private Sensor_UD m_sensor;
 	private WeaponScript m_weapon;
-	private m_states m_currentState = m_states.IDLE;
+	private m_states m_currentState = m_states.MOVING_TO_WP;
 	private Transform m_target;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;

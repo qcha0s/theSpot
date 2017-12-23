@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum GameState_UD { Intro, Menu, Loading, Play, Win, Lose }
 public enum GameMode {Normal,Survival}
+public enum Tower {Arrow,Cannon,Tar}
 public class GameManager_UD : MonoBehaviour {
 
 
@@ -15,7 +16,7 @@ public class GameManager_UD : MonoBehaviour {
 
     public float m_introTimer = 3.0f;
 
-    public GameState m_currentState;
+    public GameState_UD m_currentState;
 
     public GameObject[] m_gameStates;
 
@@ -120,7 +121,7 @@ public class GameManager_UD : MonoBehaviour {
     }
     void Start()
     {
-        m_currentState = GameState.Intro;
+        m_currentState = GameState_UD.Intro;
         foreach (GameObject go in m_gameStates)
         {
             go.SetActive(false);
@@ -134,14 +135,14 @@ public class GameManager_UD : MonoBehaviour {
     {
         switch (m_currentState)
         {
-            case GameState.Intro:
+            case GameState_UD.Intro:
                 UpdateIntro();
                 break;
-            case GameState.Menu:
+            case GameState_UD.Menu:
                 break;
-            case GameState.Loading:
+            case GameState_UD.Loading:
                 break;
-            case GameState.Play:
+            case GameState_UD.Play:
                 UpdatePlay();
                 break;
         }
@@ -151,7 +152,7 @@ public class GameManager_UD : MonoBehaviour {
     {
         if (m_currentIntroTimer > m_introTimer)
         {
-            ChangeState(GameState.Menu);
+            ChangeState(GameState_UD.Menu);
         }
         else
         {
@@ -172,7 +173,7 @@ public class GameManager_UD : MonoBehaviour {
         }
     }
 
-    void ChangeState(GameState newState)
+    void ChangeState(GameState_UD newState)
     {
         m_gameStates[(int)m_currentState].SetActive(false);
         m_currentState = newState;
@@ -185,7 +186,7 @@ public class GameManager_UD : MonoBehaviour {
         m_maps[m_currentSelectedLevel].SetActive(false);
 
 
-        m_currentSelectedLevel = m_mapDropdown.value;
+//        m_currentSelectedLevel = m_mapDropdown.value;
 
         switch (m_mapUnlockState[m_currentSelectedLevel])
         {
@@ -217,7 +218,7 @@ public class GameManager_UD : MonoBehaviour {
     {
         //TODO:change level
         m_currentGameMode = GameMode.Normal;
-        ChangeState(GameState.Loading);
+        ChangeState(GameState_UD.Loading);
         LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
 
     }
@@ -226,7 +227,7 @@ public class GameManager_UD : MonoBehaviour {
     {
         //TODO:change level
         m_currentGameMode = GameMode.Survival;
-        ChangeState(GameState.Loading);
+        ChangeState(GameState_UD.Loading);
         LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
     }
 
@@ -247,7 +248,7 @@ public class GameManager_UD : MonoBehaviour {
         Instantiate(m_poolManager);
         m_currentGold = m_startGold[m_currentSelectedLevel];
         UpdateGold();
-        ChangeState(GameState.Play);
+        ChangeState(GameState_UD.Play);
         HideMouse();
         ResumeGame();
 
@@ -370,7 +371,7 @@ public class GameManager_UD : MonoBehaviour {
 
     public void GameWin(){
         ShowMouse();
-        ChangeState(GameState.Win);
+        ChangeState(GameState_UD.Win);
         if (m_currentGameMode == GameMode.Normal){
             //selected level - map
             //0 - 1
@@ -409,13 +410,13 @@ public class GameManager_UD : MonoBehaviour {
 
     public void GameLose(){
         ShowMouse();
-        ChangeState(GameState.Lose);
+        ChangeState(GameState_UD.Lose);
         //track survived waves in surivival
     }
     public void ButtonMainMenu(){
-        ChangeState(GameState.Loading);
+        ChangeState(GameState_UD.Loading);
         LoadLevel("MainMenu_UD");
-        ChangeState(GameState.Intro);
+        ChangeState(GameState_UD.Intro);
         m_currentIntroTimer = 0.0f;
         ChangeSelectedLevel();
         Time.timeScale = 1.0f;

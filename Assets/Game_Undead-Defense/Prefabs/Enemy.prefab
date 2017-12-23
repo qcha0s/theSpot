@@ -141,8 +141,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4753587364137640}
-  - component: {fileID: 114196106361028054}
   - component: {fileID: 135362146933544602}
+  - component: {fileID: 114963472754379818}
   m_Layer: 13
   m_Name: Sensor
   m_TagString: Untagged
@@ -2299,6 +2299,9 @@ MonoBehaviour:
   m_playerOffset: 2
   m_attackRate: 2
   numAttackAnimations: 1
+  numDeathAnimations: 1
+  numWalkAnimations: 1
+  numHitAnimations: 1
 --- !u!114 &114042452703570258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2312,7 +2315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 4
   m_wpOffset: {x: 1.5, y: 1.5}
-  m_minWaypointDistance: 4
+  m_minWaypointDistance: 2
   m_wpContainer: {fileID: 0}
 --- !u!114 &114162865391094768
 MonoBehaviour:
@@ -2376,19 +2379,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114196106361028054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102537722187550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1209e8c93d0262643b5e58fe3a88ec4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_isEnemy: 1
-  m_playerBase: {fileID: 0}
 --- !u!114 &114626972423209148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2428,6 +2418,19 @@ MonoBehaviour:
   m_deadColour: {r: 1, g: 0, b: 0, a: 0.24313726}
   m_isPlayer: 0
   healthBar: {fileID: 114170602216157836}
+--- !u!114 &114963472754379818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102537722187550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d940650c4fc1ea94da9bf4cedd453cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isEnemy: 1
+  m_playerBase: {fileID: 0}
 --- !u!135 &135362146933544602
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2529,7 +2532,7 @@ NavMeshAgent:
   m_AngularSpeed: 360
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
