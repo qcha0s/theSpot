@@ -2298,7 +2298,7 @@ MonoBehaviour:
   m_chasingTime: 3
   m_playerOffset: 2
   m_attackRate: 2
-  numAttackAnimations: 1
+  numAttackAnimations: 3
   numDeathAnimations: 1
   numWalkAnimations: 1
   numHitAnimations: 1
@@ -2441,7 +2441,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137830592916450084
 SkinnedMeshRenderer:

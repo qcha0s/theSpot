@@ -19,7 +19,7 @@ public class AIController_UD : MonoBehaviour {
 	private Animator m_anim;
 	private Sensor_UD m_sensor;
 	private WeaponScript m_weapon;
-	private m_states m_currentState = m_states.MOVING_TO_WP;
+	private m_states m_currentState = m_states.IDLE;
 	private Transform m_target;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;
@@ -28,6 +28,7 @@ public class AIController_UD : MonoBehaviour {
 	private int deathAnimInt;
 	private int hitAnimInt;
 	private int walkAnimInt;
+	private List<int> m_attackStates = new List<int>();
 
 	private void Start() {
 		m_anim = GetComponent<Animator>();
@@ -39,6 +40,9 @@ public class AIController_UD : MonoBehaviour {
 		deathAnimInt = Random.Range( 1, numDeathAnimations+1);
 		hitAnimInt = Random.Range( 1, numHitAnimations+1);
 		walkAnimInt = Random.Range( 1, numWalkAnimations+1);
+		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack1"));
+		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack2"));
+		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack3"));
 	}
 
 	private void Update() {
@@ -48,6 +52,7 @@ public class AIController_UD : MonoBehaviour {
 	}
 
 	private void StateUpdate() {
+		AnimatorStateInfo currentBaseLayerState = m_anim.GetCurrentAnimatorStateInfo(0);
 		switch (m_currentState) {
 			case m_states.IDLE:
 				if (m_canAttack && m_target != null) {
@@ -56,6 +61,8 @@ public class AIController_UD : MonoBehaviour {
 					} else {
 						SetNewState(m_states.CHASING_PLAYER);
 					}
+				} else if (m_movement.Velocity.magnitude > 0.5 && m_target == null) {
+					SetNewState(m_states.MOVING_TO_WP);
 				}
 			break;
 			case m_states.MOVING_TO_WP:
@@ -68,7 +75,7 @@ public class AIController_UD : MonoBehaviour {
 				}
 			break;
 			case m_states.ATTACKING:
-
+				HandleAnimationStates(currentBaseLayerState);
 			break;
 			case m_states.STUNNED:
 
@@ -104,11 +111,13 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.MOVING_TO_WP:
 				m_movement.StopMovement();
-				m_movement.enabled = false;			
+				m_movement.enabled = false;
+				m_anim.SetInteger("WalkState", 0);		
 			break;
 			case m_states.CHASING_PLAYER:
 				m_movement.StopMovement();
 				m_movement.enabled = false;
+				m_anim.SetInteger("WalkState", 0);
 			break;
 			case m_states.ATTACKING:
 				m_isAttacking = false;
@@ -138,21 +147,17 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.MOVING_TO_WP:
 				m_movement.enabled = true;
 				m_movement.MoveToWP();
-				//m_anim.SetInteger("WalkState", walkAnimInt);
-				//Debug.Log("walk anim : " + walkAnimInt);
-
-				m_anim.SetInteger("WalkState", 3);
-				Debug.Log("walk anim : 3");
+				m_anim.SetInteger("WalkState", walkAnimInt);
 			break;
 			case m_states.CHASING_PLAYER:
 				m_movement.enabled = true;
+				m_anim.SetInteger("WalkState", walkAnimInt);
 				if (!m_chasingPlayer) {
 					StartCoroutine(StopChasing());
 					m_chasingPlayer = true;
 				}
 			break;
 			case m_states.ATTACKING:
-				m_isAttacking = true;
 				m_canAttack = false;
 				m_anim.SetInteger("AttackState", attackAnimInt);
 				StartCoroutine(DelayBetweenAttacks());
@@ -166,9 +171,7 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.DEAD:
 				GameManager_UD.instance.AddGold(m_goldValue);
 				WaveManager.instance.EnemyDied();
-				//m_movement.Reset();
-				m_currentState = m_states.MOVING_TO_WP;
-				m_health.Die();
+				m_movement.Reset();
 				m_anim.SetInteger("DeathState", deathAnimInt);
 			break;
 			default:
@@ -179,6 +182,14 @@ public class AIController_UD : MonoBehaviour {
 
 	private void CheckAttackState() {
 //		m_anim.GetCurrentAnimatorStateInfo
+	}
+
+	private void HandleAnimationStates(AnimatorStateInfo animState) {
+		if (m_attackStates.Contains(animState.fullPathHash) && !m_isAttacking) {
+			m_isAttacking = true;
+		} else if (!m_attackStates.Contains(animState.fullPathHash) && m_isAttacking) {
+			SetNewState(m_states.IDLE);
+		}
 	}
 
 	private void CheckForEnemies() {
@@ -203,17 +214,13 @@ public class AIController_UD : MonoBehaviour {
 		return retBool;
 	}
 
-	public void StopAttack() {
-		Debug.Log("Here");
-		if (m_target != null) {
-			if (m_target.tag == "PlayerBase") {
-				SetNewState(m_states.IDLE);
-			} else {
-				SetNewState(m_states.CHASING_PLAYER);
-			}
-		} else {
-			SetNewState(m_states.MOVING_TO_WP);
+	IEnumerator ResetEnemy() {
+		for (float t = 0; t < 2; t += Time.deltaTime) {
+			yield return null;
 		}
+		m_health.Die();
+		m_anim.Rebind();
+		SetNewState(m_states.IDLE);
 	}
 
 	IEnumerator DelayBetweenAttacks() {
@@ -252,7 +259,6 @@ public class AIController_UD : MonoBehaviour {
 	public void HitBoxOff() {
 		m_weapon.m_dealDamage = false;
 		m_weapon.Clear();
-		StopAttack();
 	}	
 	#endregion
 }

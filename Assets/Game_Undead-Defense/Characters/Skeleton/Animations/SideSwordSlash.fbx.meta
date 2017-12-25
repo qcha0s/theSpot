@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fc48f8994daedd442b930252a757dac5
-timeCreated: 1513644398
+timeCreated: 1514175319
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -129,17 +129,33 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5172991
+        functionName: HitBoxOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 34ac2026d885d0b42a67a1a19f8f8508,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.64457786
+        functionName: HitBoxOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 34ac2026d885d0b42a67a1a19f8f8508,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -400,18 +416,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: SwordSlash(Clone)
+    - name: SideSwordSlash(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: default
-      parentName: SwordSlash(Clone)
+      parentName: SideSwordSlash(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: SwordSlash(Clone)
+      parentName: SideSwordSlash(Clone)
       position: {x: 0.00000023841858, y: 120.85427, z: 0.39005682}
       rotation: {x: -0.0000000029103828, y: 0.00000004656613, z: 0.000000005820766,
         w: 1}
@@ -580,7 +596,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: SH_CHest_Armor_A1
-      parentName: SwordSlash(Clone)
+      parentName: SideSwordSlash(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
