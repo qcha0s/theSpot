@@ -21,6 +21,7 @@ public class AIController_UD : MonoBehaviour {
 	private WeaponScript m_weapon;
 	private m_states m_currentState = m_states.IDLE;
 	private Transform m_target;
+	private bool m_startAnimDelay = false;
 	private bool m_canAttack = true;
 	private bool m_isAttacking = false;
 	private bool m_chasingPlayer = false;
@@ -36,10 +37,10 @@ public class AIController_UD : MonoBehaviour {
 		m_movement = GetComponent<NavWaypointAI_UD>();
 		m_sensor = GetComponentInChildren<Sensor_UD>();
 		m_weapon = GetComponentInChildren<WeaponScript>();
-		attackAnimInt = Random.Range( 1, numAttackAnimations+1);
 		deathAnimInt = Random.Range( 1, numDeathAnimations+1);
 		hitAnimInt = Random.Range( 1, numHitAnimations+1);
 		walkAnimInt = Random.Range( 1, numWalkAnimations+1);
+		m_movement.SetSpeed(walkAnimInt);
 		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack1"));
 		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack2"));
 		m_attackStates.Add(Animator.StringToHash("BaseLayer.Attack3"));
@@ -130,7 +131,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.DEAD:
-				m_anim.SetInteger("DeathState", 0);
+			
 			break; 
 			default:
 				Debug.LogError("Unknown state");
@@ -147,7 +148,12 @@ public class AIController_UD : MonoBehaviour {
 			case m_states.MOVING_TO_WP:
 				m_movement.enabled = true;
 				m_movement.MoveToWP();
-				m_anim.SetInteger("WalkState", walkAnimInt);
+				if (m_startAnimDelay) {
+					SetWalkAnim();
+				} else {
+					Invoke("SetWalkAnim",Random.Range(0.1f,1f));
+					m_startAnimDelay = true;
+				}
 			break;
 			case m_states.CHASING_PLAYER:
 				m_movement.enabled = true;
@@ -159,7 +165,7 @@ public class AIController_UD : MonoBehaviour {
 			break;
 			case m_states.ATTACKING:
 				m_canAttack = false;
-				m_anim.SetInteger("AttackState", attackAnimInt);
+				m_anim.SetInteger("AttackState", Random.Range( 1, numAttackAnimations+1));
 				StartCoroutine(DelayBetweenAttacks());
 			break;
 			case m_states.STUNNED:
@@ -178,10 +184,6 @@ public class AIController_UD : MonoBehaviour {
 				Debug.LogError("Unknown state");
 			break;
 		}
-	}
-
-	private void CheckAttackState() {
-//		m_anim.GetCurrentAnimatorStateInfo
 	}
 
 	private void HandleAnimationStates(AnimatorStateInfo animState) {
@@ -212,6 +214,10 @@ public class AIController_UD : MonoBehaviour {
 			retBool = true;
 		}
 		return retBool;
+	}
+
+	private void SetWalkAnim() {
+		m_anim.SetInteger("WalkState", walkAnimInt);
 	}
 
 	IEnumerator ResetEnemy() {

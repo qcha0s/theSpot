@@ -25,10 +25,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         nav.autoTraverseOffMeshLink = true;
     }
 
-    private void Start() {
-        nav.speed = m_speed;
-    }
-
     public void Move() {
         if (m_wpReached) {
            MoveToWP();
@@ -60,6 +56,10 @@ public class NavWaypointAI_UD : MonoBehaviour {
                 m_wpReached = true;
             }
         }
+    }
+
+    public void SetSpeed(int animIndex) {
+        nav.speed = (float)(m_speed - ((animIndex - 2) * 1));
     }
 
     public void StopMovement() {

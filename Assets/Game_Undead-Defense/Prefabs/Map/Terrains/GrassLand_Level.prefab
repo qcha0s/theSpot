@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4134955600905560}
-  - component: {fileID: 114679653637629716}
+  - component: {fileID: 114930991703982548}
   m_Layer: 0
   m_Name: Waypoints_1
   m_TagString: Untagged
@@ -982,7 +982,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4469425256317202}
-  - component: {fileID: 114688067912722250}
+  - component: {fileID: 114465274645520588}
   m_Layer: 0
   m_Name: Waypoints_2
   m_TagString: Untagged
@@ -3316,6 +3316,22 @@ MonoBehaviour:
   m_floatingImage: {fileID: 1265895296733302}
   m_spawnTransform: {fileID: 4057194230360316}
   m_hasTower: 0
+--- !u!114 &114465274645520588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710678845738210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21ef2c0bdf344c4088f20539053d866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_drawLines: 1
+  m_connectFirstToLast: 0
+  m_size: 2
+  m_color: {r: 1, g: 0, b: 0, a: 1}
+  m_type: 0
 --- !u!114 &114486609779446148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3517,22 +3533,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114679653637629716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325593962298060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544496c0d035b8d49af9c8641fe086ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_drawLines: 1
-  m_connectFirstToLast: 0
-  m_size: 2
-  m_color: {r: 0.19999981, g: 0, b: 1, a: 1}
-  m_type: 0
 --- !u!114 &114680140278491862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3550,22 +3550,6 @@ MonoBehaviour:
   m_floatingImage: {fileID: 1661878778050312}
   m_spawnTransform: {fileID: 4464290967118054}
   m_hasTower: 0
---- !u!114 &114688067912722250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1710678845738210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544496c0d035b8d49af9c8641fe086ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_drawLines: 1
-  m_connectFirstToLast: 0
-  m_size: 2
-  m_color: {r: 1, g: 0, b: 0, a: 1}
-  m_type: 0
 --- !u!114 &114710924967362874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3737,6 +3721,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114930991703982548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325593962298060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21ef2c0bdf344c4088f20539053d866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_drawLines: 1
+  m_connectFirstToLast: 0
+  m_size: 2
+  m_color: {r: 0.07586192, g: 0, b: 1, a: 1}
+  m_type: 0
 --- !u!114 &114945099174589108
 MonoBehaviour:
   m_ObjectHideFlags: 1
