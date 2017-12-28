@@ -115,4 +115,9 @@ public class Sensor_UD : MonoBehaviour {
 			}
 		}
 	}
+
+	public void RessetSensor() {
+		ClearTargets();
+		m_playerBase = null;
+	}
 }

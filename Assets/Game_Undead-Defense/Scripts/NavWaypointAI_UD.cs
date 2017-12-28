@@ -14,6 +14,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private Transform[] m_waypoints;
     private NavMeshAgent nav;
+    private Rigidbody m_rb;
     private int m_curWaypoint = 0;
     private int m_lastWP;
     private bool m_chasingPlayer = false;
@@ -22,6 +23,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private void Awake () {
         nav = GetComponent<NavMeshAgent>();
+        m_rb = GetComponent<Rigidbody>();
         nav.autoTraverseOffMeshLink = true;
     }
 
@@ -63,7 +65,11 @@ public class NavWaypointAI_UD : MonoBehaviour {
     }
 
     public void StopMovement() {
-        nav.velocity = Vector3.zero;
+        nav.isStopped = true;
+    }
+
+    public void StartMovement() {
+        nav.isStopped = false;
     }
 
     public void Slow (float prcnt) {
@@ -84,5 +90,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         transform.position = Vector3.zero;
         nav.Warp(Vector3.zero);
         nav.ResetPath();
+        nav.isStopped = false;
     }
 }
