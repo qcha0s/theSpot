@@ -19,7 +19,6 @@ public class TS_CharacterController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_player = GetComponent<CharacterController>();
-		
 	}
 
 	void Update() {
@@ -41,9 +40,5 @@ public class TS_CharacterController : MonoBehaviour {
 		m_eyes.transform.localRotation = Quaternion.Euler(m_rotationY, 0, 0);
 
 		m_player.Move (movement * Time.deltaTime);
-
-
-
-		
 	}
 }

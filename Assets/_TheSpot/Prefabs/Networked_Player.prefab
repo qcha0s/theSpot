@@ -283,9 +283,9 @@ GameObject:
   - component: {fileID: 54339885936886678}
   - component: {fileID: 82473876492539228}
   - component: {fileID: 114857495874985076}
-  - component: {fileID: 114999631919629036}
   - component: {fileID: 114494314751223472}
   - component: {fileID: 114232462183437998}
+  - component: {fileID: 114758131079463314}
   m_Layer: 0
   m_Name: Networked_Player
   m_TagString: Untagged
@@ -406,7 +406,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967293
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1050,6 +1050,7 @@ MonoBehaviour:
   m_nameText: {fileID: 114176411885739014}
   m_chatSystem: {fileID: 1778906651573464}
   m_EventSystem: {fileID: 1788368172267430}
+  m_glasses: {fileID: 1599590410213856}
 --- !u!114 &114539092822471738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,6 +1156,27 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114758131079463314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930910109701836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 4
+  m_SendInterval: 0.083333336
+  m_SyncRotationAxis: 2
+  m_RotationSyncCompression: 1
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.01
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114808788512565330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1305,18 +1327,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &114999631919629036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930910109701836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e845de0fd3a0242adcf218813e10b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_useHistoricalLerping: 1
 --- !u!124 &124943262458384590
 Behaviour:
   m_ObjectHideFlags: 1

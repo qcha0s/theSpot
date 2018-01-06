@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public abstract class TS_ChatInterface : NetworkBehaviour {
 
@@ -11,12 +12,18 @@ public abstract class TS_ChatInterface : NetworkBehaviour {
 	internal InputField m_input;
 	internal EventSystem m_system;
 	private bool m_inputFocused = false;
+	private FirstPersonController m_movement;
+
+	private void Start() {
+		m_movement = GetComponent<FirstPersonController>();
+	}
 
 	private void Update() {
 		if (isLocalPlayer) {
 			if (Input.GetKeyUp(KeyCode.Return) && !m_inputFocused) {
 				m_system.SetSelectedGameObject(m_input.gameObject, null);
 				m_inputFocused = true;
+				m_movement.enabled = false;
 			}
 		}
 	}
@@ -28,14 +35,13 @@ public abstract class TS_ChatInterface : NetworkBehaviour {
 	public void ClearChat() {
 		m_input.text = "";
 		m_system.SetSelectedGameObject(null, null);
+		m_movement.enabled = true;
 		StartCoroutine(ResetInputField());
 	}
 
 	internal void InitComponents() {
-		if (isLocalPlayer) {
-			m_input = GetComponentInChildren<InputField>();
-			m_system = GetComponentInChildren<EventSystem>();
-		}		
+		m_input = GetComponentInChildren<InputField>();
+		m_system = GetComponentInChildren<EventSystem>();	
 	}
 
 	IEnumerator ResetInputField() {

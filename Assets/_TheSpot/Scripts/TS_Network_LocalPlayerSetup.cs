@@ -17,6 +17,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 	public Text m_nameText;
 	public GameObject m_chatSystem;
 	public GameObject m_EventSystem;
+	public GameObject m_glasses;
 	private static Transform m_camTransform = null; //for billboard effect
 
 
@@ -33,6 +34,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		m_camTransform = m_cam.transform;
 		m_chatSystem.SetActive(true);
 		m_EventSystem.SetActive(true);
+		m_glasses.SetActive(false);
 	}
 
 	private void Update() {
