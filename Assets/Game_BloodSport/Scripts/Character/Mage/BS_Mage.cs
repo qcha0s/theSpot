@@ -42,14 +42,14 @@ public class BS_Mage : MonoBehaviour {
 	}
 
 	void Fire() 	{
-    // Create the Bullet from the Bullet Prefab
-    var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
+		// Create the Bullet from the Bullet Prefab
+		var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
 
-    // Add velocity to the bullet
-    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
-    // Destroy the bullet after 2 seconds
-    Destroy(bullet, 2.0f);
+		// Destroy the bullet after 2 seconds
+		Destroy(bullet, 2.0f);
 	}
 
 	void Blink() {
@@ -57,25 +57,25 @@ public class BS_Mage : MonoBehaviour {
 	}
 
 	void Polymorph() 	{
-    // Create the Bullet from the Bullet Prefab
-    var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
+		// Create the Bullet from the Bullet Prefab
+		var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
 
-    // Add velocity to the bullet
-    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
-    // Destroy the bullet after 2 seconds
-    Destroy(bullet, 2.0f);
+		// Destroy the bullet after 2 seconds
+		Destroy(bullet, 2.0f);
 	}
 
 	void Ultimate() 	{
     // Create the Bullet from the Bullet Prefab
-    var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
+		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
 
-    // Add velocity to the bullet
-    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
-    // Destroy the bullet after 2 seconds
-    Destroy(bullet, 2.0f);
+		// Destroy the bullet after 2 seconds
+		Destroy(bullet, 2.0f);
 	}
 	
 }
