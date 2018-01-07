@@ -5,6 +5,7 @@ using UnityEngine;
 public class PolyCollider : MonoBehaviour {
 	public GameObject m_player;
 	public GameObject m_sheep;
+	public bool m_isMage = false;
 
 	private bool isPoly = false;
 
@@ -14,16 +15,18 @@ public class PolyCollider : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		if(!isPoly) {
-			if(other.gameObject.name == "Polymorph(Clone)") {
-				isPoly = true;
-				m_player.SetActive(false);
-				m_sheep.SetActive(true);
+		if(!m_isMage) {
+			if(!isPoly) {
+				if(other.gameObject.name == "Polymorph(Clone)") {
+					isPoly = true;
+					m_player.SetActive(false);
+					m_sheep.SetActive(true);
+				}
+			} else {
+				isPoly = false;
+				m_player.SetActive(true);
+				m_sheep.SetActive(false);
 			}
-		} else {
-			isPoly = false;
-			m_player.SetActive(true);
-			m_sheep.SetActive(false);
 		}
 	}
 }
