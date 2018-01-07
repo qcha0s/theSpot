@@ -16,7 +16,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_moveBackwardsMultiplier = 0.75f;
 	public bool m_hasDealtDamage = false;
 	public bool m_disableMovement = false;
-
+	public BS_SoundManager m_soundMgr;
 	
 
 	//Internal Variables
@@ -31,6 +31,7 @@ public class RPGCharacterController : MonoBehaviour {
 	private int m_attackState;
 	private int multiplier = 1;
 	
+
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
@@ -108,6 +109,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 				if(Input.GetButton("Jump")){
 					m_animationController.SetTrigger("Jump");
+					m_soundMgr.PlayJump();
 					m_moveDirection.y = m_jumpSpeed;
 				}
 

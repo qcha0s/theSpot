@@ -299,6 +299,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1324207932283020
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4533050918813608}
+  m_Layer: 0
+  m_Name: ArrowSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1325513613128060
 GameObject:
   m_ObjectHideFlags: 1
@@ -1789,6 +1804,19 @@ Transform:
   m_Father: {fileID: 4145329348333334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4533050918813608
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324207932283020}
+  m_LocalRotation: {x: -0.00022556473, y: -0.00000004856564, z: 1.0957244e-11, w: 1}
+  m_LocalPosition: {x: -0.17066813, y: -0.025138427, z: -0.03450348}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738329192086110}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4541003036979646
 Transform:
   m_ObjectHideFlags: 1
@@ -2000,7 +2028,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1782957300821050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.029613, y: 2.4909267, z: -6.2959204}
+  m_LocalPosition: {x: 8.029613, y: 2.4909267, z: 2.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4786542223245324}
@@ -2051,6 +2079,7 @@ Transform:
   - {fileID: 4339475238500486}
   - {fileID: 4131730615151646}
   - {fileID: 4196195177738584}
+  - {fileID: 4533050918813608}
   m_Father: {fileID: 4521803412775696}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2306,7 +2335,7 @@ Animator:
   m_GameObject: {fileID: 1782957300821050}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e1e3b9bfc4521414294fd5aecd2b8478, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa14d162fb38d4246b336a6bf94258a8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2368,6 +2397,7 @@ MonoBehaviour:
   m_moveBackwardsMultiplier: 0.75
   m_hasDealtDamage: 0
   m_disableMovement: 0
+  m_soundMgr: {fileID: 0}
 --- !u!137 &137440398828309856
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

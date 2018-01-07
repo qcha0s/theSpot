@@ -10,6 +10,7 @@ public class BS_Rogue : MonoBehaviour {
 	public Image[] m_CDMasks;
 	public Material m_poisonMats;
 	public Material m_daggerBase;
+	public BS_SoundManager m_soundMgr;
 	private bool m_UltActive = true;
 	private bool m_sprintOnCD = false;
 	private bool m_poisonOnCD = false;
@@ -43,12 +44,14 @@ public class BS_Rogue : MonoBehaviour {
 			m_animator.SetBool("IsSprinting",false);
 		}
 		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
+			m_soundMgr.PlayPoison();
 			Poison();
 		}
 
 		 if(Input.GetKey(KeyCode.Alpha2) && !m_sprintOnCD ){
 			Sprint();
 		}else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			m_soundMgr.PlaySmoke();
 			m_targetGUI.SetActive(true);
 		}
 	}

@@ -27,16 +27,16 @@ public class BS_Hunter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetButtonDown("Fire1")) {
+		if(Input.GetMouseButtonDown(0)) {
 			ArrowFire();	
 		}
-		if(Input.GetButtonDown("Alpha01")) {
+		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			IceArrow();
 		}
-		if(Input.GetButtonDown("Alpha02")) {
-			FlameArrow();
+		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+			Disengage();
 		}
-		if(Input.GetButtonDown("Alpha03")) {
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			Ultimate();
 		}
 	}
@@ -59,7 +59,7 @@ public class BS_Hunter : MonoBehaviour {
 
 	}
 	// flame arrow  does damage over time to the target
-	void FlameArrow() {
+	void Disengage() {
 
 	}
 	// ultimate create a volley of arrows that drop on enemies and do increased damage
