@@ -9,4 +9,7 @@ public class TS_MenuManager : MonoBehaviour {
 		Debug.Log("name set to " + name);
 	}
 
+	public void StartGame() {
+		TS_CustomNetworkManager.Instance.HostOrJoin();
+	}
 }
