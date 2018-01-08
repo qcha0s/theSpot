@@ -6,6 +6,7 @@ public class TrackManager : MonoBehaviour {
 	public WayPoint m_startLine;
 	// Use this for initialization
 	void Awake () {
+		NumberWayPoints();
 	}
 	public void InitialSetupWayPoints(){
 		for(int i = 0; i < transform.childCount; i++){
