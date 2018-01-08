@@ -1,3 +1,4 @@
+
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
@@ -5,10 +6,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - paddle
-  - puck
-  - enemy
-  - Interact
-  - Ice
+  - Interactable
+  - PlayerBase
   layers:
   - Default
   - TransparentFX
@@ -18,12 +17,12 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - MinimapIcon
-  - 
-  - 
-  - 
-  - 
+  - Enemies_UD
+  - Projectiles_UD
+  - EnemySensors_UD
+  - Player_UD
+  - Terrain_UD
+  - PlayerSensors_UD
   - 
   - 
   - 

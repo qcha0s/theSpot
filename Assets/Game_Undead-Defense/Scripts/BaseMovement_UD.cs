@@ -12,12 +12,14 @@ public class BaseMovement_UD : MonoBehaviour {
 		m_rb = GetComponent<Rigidbody>();
 	}
 
-	public void Move(Vector3 direction) {
+	public Vector3 Move(Vector3 direction) {
 		if (direction.magnitude > 1) {
 			direction = direction.normalized;
 		}
 		direction *= (Time.deltaTime * m_speed);
 		direction = transform.TransformVector(direction);
-		m_rb.velocity = new Vector3 (direction.x,m_rb.velocity.y,direction.z);
+		Vector3 movement = new Vector3(direction.x,m_rb.velocity.y,direction.z);
+		m_rb.velocity = movement;
+		return movement;
 	}
 }
