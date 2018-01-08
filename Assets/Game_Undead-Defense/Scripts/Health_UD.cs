@@ -10,7 +10,8 @@ public class Health_UD : BaseHealth {
 	public Image healthBar;
 
 	void Update () {
-		if (!m_isPlayer) {	
+		if (!m_isPlayer) {
+			healthBar.fillAmount = Health/m_maxHealth;
 			healthBar.color = Color.Lerp(m_deadColour, m_healthyColour, healthBar.fillAmount);
 		}
 	}
@@ -19,13 +20,8 @@ public class Health_UD : BaseHealth {
 		if (!m_isPlayer) {
 			m_currentHealth = m_maxHealth;
 			m_isDead = false;
+			healthBar.color = m_healthyColour;
 			gameObject.SetActive(false);
-		}
-	}
-
-		void OnTriggerEnter(Collider other) {
-		if (!m_isPlayer) {	
-			healthBar.fillAmount = Health/m_maxHealth;
 		}
 	}
 }

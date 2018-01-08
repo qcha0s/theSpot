@@ -14,6 +14,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private Transform[] m_waypoints;
     private NavMeshAgent nav;
+    private Rigidbody m_rb;
     private int m_curWaypoint = 0;
     private int m_lastWP;
     private bool m_chasingPlayer = false;
@@ -22,11 +23,8 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private void Awake () {
         nav = GetComponent<NavMeshAgent>();
+        m_rb = GetComponent<Rigidbody>();
         nav.autoTraverseOffMeshLink = true;
-    }
-
-    private void Start() {
-        nav.speed = m_speed;
     }
 
     public void Move() {
@@ -55,8 +53,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
     private void CheckDistanceToWP() {
         if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
-//                Debug.Log("at Player's base");
-//              m_lastWP = 0;
             } else {
                 m_curWaypoint++;
                 m_wpReached = true;
@@ -64,9 +60,16 @@ public class NavWaypointAI_UD : MonoBehaviour {
         }
     }
 
+    public void SetSpeed(int animIndex) {
+        nav.speed = (float)(m_speed - ((animIndex - 2) * 1));
+    }
+
     public void StopMovement() {
         nav.isStopped = true;
-        nav.velocity = Vector3.zero;
+    }
+
+    public void StartMovement() {
+        nav.isStopped = false;
     }
 
     public void Slow (float prcnt) {
@@ -80,7 +83,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_lastWP = waypoints.Length - 1;
         m_targetPos = m_waypoints[m_curWaypoint].position;  
         nav.SetDestination(m_targetPos);
-//        StartCoroutine(StartMovement());   
     }
 
     public void Reset() {
@@ -88,5 +90,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         transform.position = Vector3.zero;
         nav.Warp(Vector3.zero);
         nav.ResetPath();
+        nav.isStopped = false;
     }
 }

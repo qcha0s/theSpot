@@ -11,7 +11,6 @@ public class WeaponScript : MonoBehaviour {
 	public List<BaseHealth> Targets{ get{ return m_targets; }}
 	
 	private void OnTriggerEnter(Collider other) {
-		Debug.Log("hit");
 		if (m_dealDamage) {
 			BaseHealth target = other.GetComponent<BaseHealth>();
 			if (!m_targets.Contains(target)) {
