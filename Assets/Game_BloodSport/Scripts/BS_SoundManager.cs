@@ -15,7 +15,7 @@ public class BS_SoundManager : MonoBehaviour {
 	public AudioClip warrior_ArmorHit;
 	public AudioClip warrior_Whirlwind;
 	public AudioClip warrior_Sword;
-
+	public AudioClip warrior_ChargeCry;
 
 	public AudioClip rogue_BackStab;
 	public AudioClip rogue_Poison;
@@ -51,6 +51,10 @@ public class BS_SoundManager : MonoBehaviour {
 	public void PlayArmorStrike(){
 		m_audioSource.PlayOneShot(warrior_ArmorHit);
 	}
+	public void PlayChargeCry(){
+		m_audioSource.PlayOneShot(warrior_ChargeCry);
+	}
+
 
 
 	public void PlayPoison(){
@@ -63,6 +67,10 @@ public class BS_SoundManager : MonoBehaviour {
 	public void PlayBackStab(){
 		m_audioSource.PlayOneShot(rogue_BackStab);
 	}
+	public void PlayDaggerSwipe(){
+		m_audioSource.PlayOneShot(rogue_Dagger);
+	}
+
 
 	public void PlayArrowHit(){
 		m_audioSource.PlayOneShot(archer_ArrowHit);

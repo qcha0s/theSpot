@@ -43,6 +43,10 @@ public class BS_Rogue : MonoBehaviour {
 		else{
 			m_animator.SetBool("IsSprinting",false);
 		}
+		if(Input.GetMouseButtonDown(0)&& !m_animator.GetBool("isAttacking")){
+			m_soundMgr.PlayDaggerSwipe();
+		}
+
 		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			m_soundMgr.PlayPoison();
 			Poison();
@@ -121,8 +125,7 @@ public class BS_Rogue : MonoBehaviour {
 				yield return null;
 				
 			}
-			//yield return new WaitForSeconds(cooldownvalue);
-			//m_sprintOnCD = false;
+			
 		}
 	
 		

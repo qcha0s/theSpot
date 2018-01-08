@@ -26,6 +26,7 @@ public class RogueWeaponScript : MonoBehaviour {
                 other.GetComponent<BS_Health>().TakeDotDamage(m_poisonDmg,m_poisonCount,m_totalPoisonTime);
             }
              if (Vector3.Dot(toTarget, other.transform.forward) > 0) {
+                 m_RogueController.m_soundMgr.PlayBackStab();
                  other.GetComponent<BS_Health>().TakeDamage(m_weapDmg*2);
              } else {
                  other.GetComponent<BS_Health>().TakeDamage(m_weapDmg);
