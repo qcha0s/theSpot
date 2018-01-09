@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent( typeof( BaseKartMovement ) )]
 public class AIHandler : MonoBehaviour {
-	private Vector3 m_Destination;
+	public Vector3 m_Destination;
 	private BaseKartMovement m_baseKartMovement;
 	private void Awake() {
 		m_baseKartMovement = GetComponent<BaseKartMovement>();
@@ -20,14 +20,12 @@ public class AIHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(m_Destination != null){
-			Vector3 localDestination = transform.InverseTransformPoint(m_Destination);
-			Vector2 localDestinationPlane = new Vector2(localDestination.x, localDestination.z);
-			Debug.Log(localDestination);
-			if(localDestinationPlane.y > 0){
-				float distance = localDestinationPlane.magnitude;
-				float sinOfAngle = localDestinationPlane.x / distance;
-				float desiredTurnRadius = distance * 0.5f / sinOfAngle;
+			Vector2 localPlaneDestination = ToLocalPlane(m_Destination);
+			if(localPlaneDestination.y > 0){
+				float desiredTurnRadius = CalculateTurnDirectionToDestination(localPlaneDestination);
 				float turnAmount = m_baseKartMovement.GetTurnAmountForTurnRadius(desiredTurnRadius);
+				Debug.Log("Radius: " + desiredTurnRadius);
+				Debug.Log("Turn: " + turnAmount);
 				if(Mathf.Abs(turnAmount) > 1){
 					m_baseKartMovement.Brake(1);
 				}
@@ -40,5 +38,16 @@ public class AIHandler : MonoBehaviour {
 				m_baseKartMovement.Brake(1);
 			}
 		}
+	}
+	float CalculateTurnDirectionToDestination(Vector2 localPlaneDestination){
+		float distance = localPlaneDestination.magnitude;
+		float sinOfAngle = localPlaneDestination.x / distance;
+		float desiredTurnRadius = distance * 0.5f / sinOfAngle;
+		return desiredTurnRadius;
+	}
+	Vector2 ToLocalPlane(Vector3 destination){
+		Vector3 localDestination = transform.InverseTransformPoint(destination);
+		Vector2 localDestinationPlane = new Vector2(localDestination.x, localDestination.z);
+		return localDestinationPlane;
 	}
 }

@@ -5,16 +5,16 @@ using UnityEditor;
 [CustomEditor(typeof(TrackManager))]
 public class TrackManagerEditor : Editor {
 	public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
+   {
+       DrawDefaultInspector();
         
-        TrackManager trackManager = (TrackManager)target;
-        if(GUILayout.Button("InitializeWayPoints"))
-        {
-            trackManager.InitialSetupWayPoints();
-        }
+       TrackManager trackManager = (TrackManager)target;
+       if(GUILayout.Button("InitializeWayPoints"))
+       {
+           trackManager.InitialSetupWayPoints();
+       }
 		if(GUILayout.Button("NumberWayPoints")){
 			trackManager.NumberWayPoints();
 		}
-    }
+   }
 }
