@@ -10,9 +10,15 @@ public class BS_Mage : MonoBehaviour {
 	public GameObject ultimatePrefab;
 	public Transform spellSpawn;
 	public Transform ultPos;
+<<<<<<< HEAD
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
+=======
+	public PolyManager m_polyScript;
+	public bool m_isMe;
+
+>>>>>>> bswarrior
 	private Animator m_animationController;
 	
 	
@@ -46,7 +52,6 @@ public class BS_Mage : MonoBehaviour {
 			m_animationController.SetTrigger("isAbility2");
 			Debug.Log("pressed 2");
 			m_animationController.SetTrigger("isBlinking");
-
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3) && m_ultActive) {
 			m_animationController.SetTrigger("isAbility3");
@@ -129,6 +134,15 @@ public class BS_Mage : MonoBehaviour {
 			
 		}
 	
+<<<<<<< HEAD
 		
+=======
+	void OnTriggerEnter(Collider other) {
+		if(!m_isMe) {
+			if(other.gameObject.name == "Polymorph(Clone)") {
+				m_polyScript.SetPoly();
+			}
+		}
+>>>>>>> bswarrior
 	}
 }
