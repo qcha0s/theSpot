@@ -43,6 +43,11 @@ public class BS_Rogue : MonoBehaviour {
 		else{
 			m_animator.SetBool("IsSprinting",false);
 		}
+		if(Input.GetMouseButtonDown(0)){
+			m_animator.SetBool("isAttacking", true);
+			m_weaponHitBoxes[0].enabled = true;
+			m_weaponHitBoxes[1].enabled = true;
+		}
 		if(Input.GetMouseButtonDown(0)&& !m_animator.GetBool("isAttacking")){
 			m_soundMgr.PlayDaggerSwipe();
 		}

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1297273587782614}
+  m_IsPrefabParent: 1
+--- !u!1 &1297273587782614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4519092927519302}
+  - component: {fileID: 114507195425346626}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4519092927519302
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297273587782614}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.974842, y: 0, z: 3.3623278}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114507195425346626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297273587782614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c811986b52379c24b98d3fb5c6e9062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioSource: {fileID: 0}
+  mage_BH: {fileID: 8300000, guid: a3fd162c25ca8044b9e35056c84e0229, type: 3}
+  mage_Fire: {fileID: 8300000, guid: d939191e71e9b664399059bae36b0309, type: 3}
+  mage_Poly: {fileID: 8300000, guid: 3046fdc7b0899da45b3cce7ce079b0fa, type: 3}
+  mage_Blink: {fileID: 8300000, guid: 8e30cf5a242470f478b0a25ff5c2b2c0, type: 3}
+  warrior_ChargeHit: {fileID: 8300000, guid: 03297bdcad49fc14eb7d7119374b868b, type: 3}
+  warrior_ArmorHit: {fileID: 8300000, guid: b0bdaa80f32dcf8449488956934c8052, type: 3}
+  warrior_Whirlwind: {fileID: 8300000, guid: cb920ff199a499c4498a4b75a50a37e1, type: 3}
+  warrior_Sword: {fileID: 8300000, guid: 59d5d8a493936914faee7e88e3210bda, type: 3}
+  warrior_ChargeCry: {fileID: 8300000, guid: a65419f73e9cd30498599c6d7bc92245, type: 3}
+  rogue_BackStab: {fileID: 8300000, guid: 605ecb82845881d428cd45f95fab5b96, type: 3}
+  rogue_Poison: {fileID: 8300000, guid: 10682d7ca1b92564693ee1100ccdc9bf, type: 3}
+  rogue_SmokeBomb: {fileID: 8300000, guid: eaa5599be37fa9b479bd88cb9966608c, type: 3}
+  rogue_Dagger: {fileID: 8300000, guid: b0c6cea600b78344c87ccccced7161a6, type: 3}
+  archer_ArrowHit: {fileID: 8300000, guid: 6981be34ad2c7674e916c85d3ecda69a, type: 3}
+  archer_ArrowShot: {fileID: 8300000, guid: 4165049a7158ed94ca5ec66668be4ed5, type: 3}
+  archer_Disengage: {fileID: 8300000, guid: 9426468832e01b9478f8f2f71251b96b, type: 3}
+  archer_IceImpact: {fileID: 8300000, guid: 534caeb1cdd2456428d48ca440c11da6, type: 3}
+  general_Jump: {fileID: 8300000, guid: bdf6cf688efa5ee46aea774e500b7555, type: 3}
+  general_BladeSwing: {fileID: 8300000, guid: 59d5d8a493936914faee7e88e3210bda, type: 3}

@@ -11,11 +11,11 @@ public const float MAX_PROGRESS = 100.0f;
 	private float chargeRate = 1f;
 	private BS_Warrior m_warriorScript;
 	private BS_Mage m_mageScript;
-	private RogueController m_rogueScript;
+	private BS_Rogue m_rogueScript;
 	
 	void Awake() {
 		m_warriorScript = GetComponent<BS_Warrior>();
-		m_rogueScript = GetComponent<RogueController>();
+		m_rogueScript = GetComponent<BS_Rogue>();
 		m_mageScript = GetComponent<BS_Mage>();
 	}
 

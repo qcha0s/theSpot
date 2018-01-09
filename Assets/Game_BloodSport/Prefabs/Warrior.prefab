@@ -3719,6 +3719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chargeSpeed: 10
   m_shieldCollider: {fileID: 65984383010797184}
+  m_swordCollider: {fileID: 65686198265398002}
   m_chargeTurnSpeed: 10
   m_charging: 0
   m_usingWhirlWind: 0
@@ -3730,6 +3731,7 @@ MonoBehaviour:
   m_ultimateDuration: 5
   m_ultimateHitChargeAmount: 5
   m_damageMultiplier: 1
+  m_soundMgr: {fileID: 0}
   m_CDMasks:
   - {fileID: 114835205527026788}
   - {fileID: 114674836129938884}
@@ -4592,7 +4594,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1315152731752112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -57.999996, z: 0}
+  m_LocalPosition: {x: 8.5, y: -145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224522095136623800}
@@ -4600,7 +4602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.5, y: -58}
+  m_AnchoredPosition: {x: 8.5, y: -145}
   m_SizeDelta: {x: 560.4, y: 114.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224522095136623800

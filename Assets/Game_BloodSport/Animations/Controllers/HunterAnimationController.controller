@@ -38,7 +38,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Disengage
+  - m_Name: Movement
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -140,7 +140,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Disengage
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102898299411610628}
@@ -206,7 +206,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Disengage
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102288020438661808}
@@ -440,16 +440,16 @@ AnimatorStateMachine:
     m_Position: {x: 264, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102937073319830150}
-    m_Position: {x: 144, y: 264, z: 0}
+    m_Position: {x: 264, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102288020438661808}
-    m_Position: {x: 180, y: -24, z: 0}
+    m_Position: {x: 240, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102805793465663048}
-    m_Position: {x: 420, y: -24, z: 0}
+    m_Position: {x: 468, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102248443002640668}
-    m_Position: {x: 468, y: 204, z: 0}
+    m_Position: {x: 504, y: 132, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

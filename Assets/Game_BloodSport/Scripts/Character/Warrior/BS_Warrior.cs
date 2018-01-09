@@ -7,6 +7,7 @@ public class BS_Warrior : MonoBehaviour {
 
 	public float m_chargeSpeed = 200.0f;
 	public Collider m_shieldCollider;
+	public Collider m_swordCollider;
 	public float m_chargeTurnSpeed = 50.0f;
 	public bool m_charging = false;
 	public bool m_usingWhirlWind = false;
@@ -42,9 +43,14 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	void Update() {
+		if(Input.GetMouseButtonDown(0)){
+			m_animator.SetBool("isAttacking", true);
+			m_swordCollider.enabled = true;
+			
+		}
 		if(Input.GetMouseButtonDown(0) && !m_animator.GetBool("isAttacking")) {
 			m_soundMgr.PlaySwordSwing();		
-			}
+		}
 		if (Input.GetKeyDown(KeyCode.Alpha1) && !m_usingUltimate && !m_whirlwindOnCD) {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
@@ -88,14 +94,14 @@ public class BS_Warrior : MonoBehaviour {
 			StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 			m_usingWhirlWind = true;
 			m_animator.SetBool("isWhirlwind", true);
-			m_characterController.m_weaponHitBoxes.enabled = true;
+			m_swordCollider.enabled = true;
 		}
 	}
 
 	public void ResetAfterWhirlWind() {
 		m_usingWhirlWind = false;
 		m_animator.SetBool("isWhirlwind", false);
-		m_characterController.m_weaponHitBoxes.enabled = false;
+		m_swordCollider.enabled = false;
 		m_characterController.m_hasDealtDamage = false;
 	}
 

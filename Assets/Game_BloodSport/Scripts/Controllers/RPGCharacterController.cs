@@ -6,7 +6,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public string m_moveStatus = "idle";
 	public bool m_walkByDefault = true;
 	public float m_gravity = 20.0f;
-	public Collider m_weaponHitBoxes;
+	
 
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
@@ -37,9 +37,9 @@ public class RPGCharacterController : MonoBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-		if(m_weaponHitBoxes != null) {
-			m_weaponHitBoxes.enabled = false;
-		}
+	
+		
+		
 	}
 
 	IEnumerator Mult() {
@@ -153,26 +153,11 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetTrigger("Jump");
 		}
 	
-		
-		
-		
-		if(Input.GetMouseButtonDown(0)){
-			m_animationController.SetBool("isAttacking", true);
-			if(m_weaponHitBoxes != null) {
-				m_weaponHitBoxes.enabled = true;
-			}
-		}
-		else if(Input.GetMouseButtonUp(0)){
-		//	m_animationController.SetBool("isAttacking",false);
-			//m_weaponHitBoxes.enabled = false;
-		}
 	}
 
 	public void EndAttack() {
 		m_animationController.SetBool("isAttacking", false);
-		if(m_weaponHitBoxes != null) {
-			m_weaponHitBoxes.enabled = false;
-		}
+		
 		m_hasDealtDamage = false;
 	}
 
