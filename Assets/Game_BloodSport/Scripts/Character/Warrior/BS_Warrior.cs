@@ -72,7 +72,7 @@ public class BS_Warrior : MonoBehaviour {
 			StartCoroutine(CoolDownSystem(m_chargeCD, "Charge"));
 			m_charging = true;
 			m_characterController.m_disableMovement = true;
-			m_animator.SetBool("isCharging", true);
+			m_animator.SetBool("Movement", true);
 			m_shieldCollider.enabled = true;
 			m_characterController.m_turnSpeed = m_chargeTurnSpeed;
 		}
@@ -81,7 +81,7 @@ public class BS_Warrior : MonoBehaviour {
 	public void ResetAfterCharge() {
 		m_charging = false;
 		m_characterController.m_disableMovement = false;
-		m_animator.SetBool("isCharging", false);
+		m_animator.SetBool("Movement", false);
 		m_shieldCollider.enabled = false;
 		m_characterController.m_turnSpeed = m_previousTurnSpeed;
 	}
@@ -93,14 +93,14 @@ public class BS_Warrior : MonoBehaviour {
 			m_whirlwindOnCD = true;
 			StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 			m_usingWhirlWind = true;
-			m_animator.SetBool("isWhirlwind", true);
+			m_animator.SetBool("Ability", true);
 			m_swordCollider.enabled = true;
 		}
 	}
 
 	public void ResetAfterWhirlWind() {
 		m_usingWhirlWind = false;
-		m_animator.SetBool("isWhirlwind", false);
+		m_animator.SetBool("Ability", false);
 		m_swordCollider.enabled = false;
 		m_characterController.m_hasDealtDamage = false;
 	}

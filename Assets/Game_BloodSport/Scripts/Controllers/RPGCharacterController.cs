@@ -118,7 +118,7 @@ public class RPGCharacterController : MonoBehaviour {
 					m_moveDirection.z = -m_jumpSpeed;
 					m_Disengage = false;
 				}
-				else{
+				else{	
 					m_animationController.SetBool("Disengage",false);
 				}
 				if(m_grounded){
