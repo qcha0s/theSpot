@@ -9,6 +9,8 @@ public class BS_Mage : MonoBehaviour {
 	public GameObject ultimatePrefab;
 	public Transform spellSpawn;
 	public Transform ultPos;
+	public PolyManager m_polyScript;
+	public bool m_isMe;
 
 	private Animator m_animationController;
 
@@ -32,7 +34,6 @@ public class BS_Mage : MonoBehaviour {
 			m_animationController.SetTrigger("isAbility2");
 			Debug.Log("pressed 2");
 			m_animationController.SetTrigger("isBlinking");
-
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
@@ -75,4 +76,11 @@ public class BS_Mage : MonoBehaviour {
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 	}
 	
+	void OnTriggerEnter(Collider other) {
+		if(!m_isMe) {
+			if(other.gameObject.name == "Polymorph(Clone)") {
+				m_polyScript.SetPoly();
+			}
+		}
+	}
 }
