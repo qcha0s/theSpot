@@ -590,6 +590,9 @@ GameObject:
   - component: {fileID: 114758377456725122}
   - component: {fileID: 114068016294678622}
   - component: {fileID: 114932473539204938}
+  - component: {fileID: 114023979328979480}
+  - component: {fileID: 114663776798873306}
+  - component: {fileID: 114936135442845450}
   m_Layer: 0
   m_Name: 'Rogue '
   m_TagString: Untagged
@@ -2821,6 +2824,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 2
+--- !u!114 &114023979328979480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339761006526142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 45
+    i1: 98
+    i2: 241
+    i3: 24
+    i4: 162
+    i5: 169
+    i6: 52
+    i7: 228
+    i8: 72
+    i9: 83
+    i10: 22
+    i11: 206
+    i12: 162
+    i13: 53
+    i14: 133
+    i15: 40
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114037176447966472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3492,6 +3527,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114663776798873306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339761006526142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95459078351727796}
+  m_ParameterSendBits: 127
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114677546849045562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4011,7 +4065,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 65145840112389482}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
@@ -4020,6 +4073,7 @@ MonoBehaviour:
   m_hasDealtDamage: 0
   m_disableMovement: 0
   m_soundMgr: {fileID: 0}
+  m_Disengage: 0
 --- !u!114 &114932774366768420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4055,6 +4109,27 @@ MonoBehaviour:
   m_Text: 'Choose A Target
 
 '
+--- !u!114 &114936135442845450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339761006526142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114969791211996796
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -353,13 +353,16 @@ GameObject:
   - component: {fileID: 114922475483649838}
   - component: {fileID: 114744782833754410}
   - component: {fileID: 114507926092005194}
+  - component: {fileID: 114238051270301946}
+  - component: {fileID: 114315160929659234}
+  - component: {fileID: 114235257288176002}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1293252746107954
 GameObject:
   m_ObjectHideFlags: 1
@@ -2613,6 +2616,78 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114235257288176002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270249944289024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114238051270301946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270249944289024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 164
+    i1: 13
+    i2: 103
+    i3: 165
+    i4: 171
+    i5: 92
+    i6: 151
+    i7: 196
+    i8: 73
+    i9: 30
+    i10: 225
+    i11: 244
+    i12: 51
+    i13: 154
+    i14: 23
+    i15: 64
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114315160929659234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270249944289024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95600988012703416}
+  m_ParameterSendBits: 63
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114358119621343112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3203,7 +3278,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 0}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4

@@ -131,6 +131,9 @@ GameObject:
   - component: {fileID: 114863253629189526}
   - component: {fileID: 114621204658263206}
   - component: {fileID: 114562651314072720}
+  - component: {fileID: 114258205114889182}
+  - component: {fileID: 114885656338989236}
+  - component: {fileID: 114926358477238494}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -3125,6 +3128,38 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114258205114889182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053176498594614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 12
+    i1: 233
+    i2: 215
+    i3: 238
+    i4: 167
+    i5: 72
+    i6: 125
+    i7: 4
+    i8: 123
+    i9: 86
+    i10: 248
+    i11: 13
+    i12: 250
+    i13: 88
+    i14: 51
+    i15: 95
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114295925922914142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3234,7 +3269,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 65686198265398002}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
@@ -3815,6 +3849,27 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &114885656338989236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053176498594614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 4
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114896113977166936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3843,6 +3898,25 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &114926358477238494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053176498594614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95648208462720272}
+  m_ParameterSendBits: 127
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114927615196245056
 MonoBehaviour:
   m_ObjectHideFlags: 1

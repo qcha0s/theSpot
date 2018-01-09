@@ -1133,13 +1133,16 @@ GameObject:
   - component: {fileID: 114835178945843828}
   - component: {fileID: 114057174505293198}
   - component: {fileID: 114745067700939664}
+  - component: {fileID: 114121902435681316}
+  - component: {fileID: 114767452011232700}
+  - component: {fileID: 114765424542047934}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1783910240453698
 GameObject:
   m_ObjectHideFlags: 1
@@ -2928,6 +2931,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114121902435681316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782957300821050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 64
+    i1: 222
+    i2: 16
+    i3: 117
+    i4: 230
+    i5: 250
+    i6: 25
+    i7: 116
+    i8: 250
+    i9: 149
+    i10: 153
+    i11: 203
+    i12: 95
+    i13: 247
+    i14: 69
+    i15: 220
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114140010946058060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3500,6 +3535,46 @@ MonoBehaviour:
     type: 2}
   m_FlameArrow: {fileID: 0}
   m_soundMgr: {fileID: 0}
+--- !u!114 &114765424542047934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782957300821050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114767452011232700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782957300821050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95292084725211202}
+  m_ParameterSendBits: 63
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114803054462456642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3557,7 +3632,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 0}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
