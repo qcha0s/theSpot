@@ -13,15 +13,13 @@ public class BS_Mage : MonoBehaviour {
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
-	public PolyManager m_polyScript;
-	public bool m_isMe;
 
 	private Animator m_animationController;
 	
 	
 	private bool m_PolyonCD;
 	private bool m_BlinkOnCD;
-	private float m_PolyCD=6f;
+	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
 	// Use this for initialization
 	void Start () {
@@ -126,15 +124,6 @@ public class BS_Mage : MonoBehaviour {
 					m_BlinkOnCD = false;
 				}
 				yield return null;
-			}
-		}
-	}
-	
-		
-	void OnTriggerEnter(Collider other) {
-		if(!m_isMe) {
-			if(other.gameObject.name == "Polymorph(Clone)") {
-				m_polyScript.SetPoly();
 			}
 		}
 	}
