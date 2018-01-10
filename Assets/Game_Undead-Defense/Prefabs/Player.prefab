@@ -673,7 +673,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4953122700715748}
   - component: {fileID: 95093707141274950}
-  - component: {fileID: 114704504004451440}
   - component: {fileID: 136105543759747976}
   - component: {fileID: 54879604823052320}
   - component: {fileID: 114819436350895532}
@@ -2294,7 +2293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461189857417012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 3}
+  m_LocalPosition: {x: 24.019468, y: 0, z: 17.872421}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224288614845898476}
@@ -2417,6 +2416,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rotationSpeed: 180
   m_raycastDistance: 10
+  m_arrow: {fileID: 54903581977021344, guid: 3ad6c8011f00c1c4aa28b9a7c494249e, type: 2}
+  m_firePoint: {fileID: 4618306693056072}
+  isFiring: 1
+  arrowSpeed: 70
 --- !u!114 &114117667244074014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2473,19 +2476,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114704504004451440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461189857417012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7629c59d1a7dc84895487f0bcf809b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_arrow: {fileID: 54903581977021344, guid: 3ad6c8011f00c1c4aa28b9a7c494249e, type: 2}
-  m_firePoint: {fileID: 4618306693056072}
 --- !u!114 &114708797712631864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3051,7 +3041,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111086886234572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 221.5, y: 183.5, z: -3}
+  m_LocalPosition: {x: 221.5, y: 183.5, z: -17.872421}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224293250409492510}
