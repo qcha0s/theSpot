@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 022a6b510ba6a6b4c9486fa0564b3ca6
-timeCreated: 1513906074
-licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -175,56 +173,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Akai_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: 3dfd7c094d5672842b14704c0cb40f3b, type: 2}
-=======
     second: {fileID: 2100000, guid: 09bab66c7385e8047afe6d1a7fb9a616, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Arrow_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: d1a700860a80214488a8b685b8a738b0, type: 2}
-=======
     second: {fileID: 2100000, guid: 04b239092c8c1f94bb2c1272ef07a3f4, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
-=======
     second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bow_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: 1f19f3517ec5ab9499468d05b4c5f29d, type: 2}
-=======
     second: {fileID: 2100000, guid: a739defec58d70b43b540dddda7445cf, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EyeSpec_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
-=======
     second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lashes_MAT
-<<<<<<< HEAD
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
-=======
     second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
   materials:
     importMaterials: 1
     materialName: 0
@@ -243,7 +217,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -278,19 +252,7 @@ ModelImporter:
       - time: 0.28414097
         functionName: ShootArrow
         data: 
-<<<<<<< HEAD
         objectReferenceParameter: {fileID: 11500000, guid: c7629c59d1a7dc84895487f0bcf809b5,
-=======
-        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.99779737
-        functionName: Moving
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
->>>>>>> 86f345e7ea5ad1b1f374bdf8f7cbd550e042ab0e
           type: 3}
         floatParameter: 0
         intParameter: 0
@@ -341,7 +303,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
