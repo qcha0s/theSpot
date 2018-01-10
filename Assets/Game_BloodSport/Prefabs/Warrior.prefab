@@ -131,13 +131,14 @@ GameObject:
   - component: {fileID: 114863253629189526}
   - component: {fileID: 114621204658263206}
   - component: {fileID: 114562651314072720}
+  - component: {fileID: 114533631619795840}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1060828606808380
 GameObject:
   m_ObjectHideFlags: 1
@@ -2411,7 +2412,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053176498594614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.974842, y: 0, z: 3.3623278}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4683600302389830}
@@ -3386,6 +3387,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114533631619795840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053176498594614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8440e5b7567c4408fce16e1c5c07fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_polyScript: {fileID: 0}
+  m_isMe: 0
 --- !u!114 &114562651314072720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3730,6 +3744,7 @@ MonoBehaviour:
   m_ultimateDuration: 5
   m_ultimateHitChargeAmount: 5
   m_damageMultiplier: 1
+  m_soundMgr: {fileID: 0}
   m_CDMasks:
   - {fileID: 114835205527026788}
   - {fileID: 114674836129938884}
@@ -4610,7 +4625,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916706841116508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 312.9, y: 169.84, z: -3.3623278}
+  m_LocalPosition: {x: 312.9, y: 169.84, z: -86.34986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224440311955590420}

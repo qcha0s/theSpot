@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 114987303937710640}
   - component: {fileID: 65877318536217670}
   - component: {fileID: 54011168464728072}
+  - component: {fileID: 114502065194039698}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -157,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870872240449512}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.98, y: 0.5322447, z: -0.8507843}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4392934742847476}
@@ -507,6 +508,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 1, z: 1.43}
   m_Center: {x: 0, y: 0, z: -0.15}
+--- !u!114 &114502065194039698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870872240449512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3e1d9ac8220cd46abfe3c345a30431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_polyScript: {fileID: 0}
 --- !u!114 &114987303937710640
 MonoBehaviour:
   m_ObjectHideFlags: 1
