@@ -27,13 +27,14 @@ public class TS_CustomNetworkManager : NetworkManager {
 	}
 
 	public void HostOrJoin() {
-		if (m_client == null) {
+		isHost = false;
+		// if (m_client == null) {
 			StartCoroutine(CheckForHost());
-		} else {
-			m_client.connection.Disconnect();
-			m_client = null;
-			StartCoroutine(CheckForHost());
-		}
+		// } else {
+		// 	m_client.connection.Disconnect();
+		// 	m_client = null;
+		// 	StartCoroutine(CheckForHost());
+		// }
 	}
 
 	private void StartupHost() {
@@ -45,8 +46,13 @@ public class TS_CustomNetworkManager : NetworkManager {
 	}
 
 	public void DisconnectFromGame() {
-		StopServer();
-		m_client.Shutdown();
+		if (isHost) {
+			Debug.Log("Host disconnected");
+			NetworkManager.singleton.StopHost();
+		} else {
+			Debug.Log("client disconnected");
+			NetworkManager.singleton.StopClient();
+		}
 	}
 
 	IEnumerator CheckForHost() {
@@ -56,6 +62,6 @@ public class TS_CustomNetworkManager : NetworkManager {
 			m_client.Disconnect();
 			isHost = true;
 			StartupHost();
-		}		
+		}
 	}
 }

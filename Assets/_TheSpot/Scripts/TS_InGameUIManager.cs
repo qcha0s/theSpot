@@ -25,8 +25,6 @@ public class TS_InGameUIManager : NetworkBehaviour {
     }
 
 	public void ExitGame() {
-        if (isServer) { 
-            TS_CustomNetworkManager.Instance.DisconnectFromGame();
-        }
+        TS_CustomNetworkManager.Instance.DisconnectFromGame();
     }
 }
