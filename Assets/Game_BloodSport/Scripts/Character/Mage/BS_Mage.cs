@@ -19,7 +19,7 @@ public class BS_Mage : MonoBehaviour {
 	private bool m_BlinkOnCD;
 	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
-	
+
 	// Use this for initialization
 	void Start () {
 		m_animationController = GetComponent<Animator>();
@@ -88,7 +88,7 @@ public class BS_Mage : MonoBehaviour {
 		
 	}
 
-	void Ultimate() 	{
+	public void Ultimate() 	{
 		//m_soundMgr.PlayBlackhole();
 		//m_soundMgr.PlayBlackhole();
     	// Create the Bullet from the Bullet Prefab
