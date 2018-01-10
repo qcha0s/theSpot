@@ -9,7 +9,8 @@ public class TS_CustomNetworkManager : NetworkManager {
 	public int m_netPort = 7777;
 
 	private static TS_CustomNetworkManager m_instance = null;
-	private bool isHost = false;
+	public bool isHost = false;
+	public NetworkClient m_client;
 
 	private void Awake() {
 		if (m_instance != null && m_instance != this) {
@@ -26,27 +27,33 @@ public class TS_CustomNetworkManager : NetworkManager {
 	}
 
 	public void HostOrJoin() {
-		StartCoroutine(CheckForHost());
+		if (m_client == null) {
+			StartCoroutine(CheckForHost());
+		} else {
+			m_client.connection.Disconnect();
+			m_client = null;
+			StartCoroutine(CheckForHost());
+		}
 	}
 
 	private void StartupHost() {
-		StartHost();
+		m_client = StartHost();
 	}
 
 	void SetPort() {
 		networkPort = m_netPort;
 	}
 
-	// public string SetIpAdress() {
-	// 	return 
-	// }
+	public void DisconnectFromGame() {
+		StopServer();
+		m_client.Shutdown();
+	}
 
 	IEnumerator CheckForHost() {
-		NetworkClient newClient = StartClient();
+		m_client = StartClient();
 		yield return new WaitForSeconds(3);
-		if (!newClient.connection.isReady) {
-			Debug.Log("not connected");
-			newClient.Disconnect();
+		if (!m_client.connection.isReady) {
+			m_client.Disconnect();
 			isHost = true;
 			StartupHost();
 		}		
