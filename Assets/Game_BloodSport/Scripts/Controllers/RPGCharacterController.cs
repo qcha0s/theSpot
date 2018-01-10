@@ -112,7 +112,7 @@ public class RPGCharacterController : MonoBehaviour {
 					m_Disengage = false;
 				}
 				else{	
-					m_animationController.SetBool("Disengage",false);
+					m_animationController.SetBool("Movement",false);
 				}
 				if(m_grounded){
 					m_Disengage =false;

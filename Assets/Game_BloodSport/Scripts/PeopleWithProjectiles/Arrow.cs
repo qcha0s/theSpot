@@ -18,6 +18,9 @@ public class Arrow : MonoBehaviour {
 			other.gameObject.GetComponent<BS_Health>().TakeDamage(m_ArrowDamage);
 			other.gameObject.GetComponent<BS_Health>().TakeDotDamage(m_fireDamage,m_fireCount,m_totalFireTime);
 		}
-		Destroy(gameObject);
+		if(other.name != this.name){
+			Destroy(gameObject);
+		}
+		
 	}
 }

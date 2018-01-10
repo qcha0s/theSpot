@@ -38,19 +38,18 @@ public class BS_Rogue : MonoBehaviour {
 
 		
 		if(m_characterController.m_walkByDefault == false){
-			m_animator.SetBool("IsSprinting",true);
+			m_animator.SetBool("Movement",true);
 		}
 		else{
-			m_animator.SetBool("IsSprinting",false);
+			m_animator.SetBool("Movement",false);
 		}
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(0) && !m_animator.GetBool("isAttacking")){
+			m_soundMgr.PlayDaggerSwipe();
 			m_animator.SetBool("isAttacking", true);
 			m_weaponHitBoxes[0].enabled = true;
 			m_weaponHitBoxes[1].enabled = true;
 		}
-		if(Input.GetMouseButtonDown(0)&& !m_animator.GetBool("isAttacking")){
-			m_soundMgr.PlayDaggerSwipe();
-		}
+		
 
 		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			m_soundMgr.PlayPoison();
@@ -60,8 +59,7 @@ public class BS_Rogue : MonoBehaviour {
 		 if(Input.GetKey(KeyCode.Alpha2) && !m_sprintOnCD ){
 			Sprint();
 		}else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			m_soundMgr.PlaySmoke();
-			m_targetGUI.SetActive(true);
+			
 		}
 	}
 	public void Sprint(){
@@ -84,7 +82,10 @@ public class BS_Rogue : MonoBehaviour {
 		
 		
 	}
-
+	public void UltTarget(){
+		m_soundMgr.PlaySmoke();
+		m_targetGUI.SetActive(true);
+	}
 	public void ShadowStep(Transform targetLocation){
 		gameObject.SetActive(false);
 		gameObject.transform.position = targetLocation.position;

@@ -15,10 +15,12 @@ public class BS_Hunter : MonoBehaviour {
 	public BS_SoundManager m_soundMgr;
 	private float m_ArrowVelocity = 500;
 	private bool m_ultActive = true;
+	private bool m_isUlting = false;
 	private Animator m_animationController;
 	private bool m_iceOnCD = false;
 	private bool m_disOnCD = false;
 	private float m_iceCD=6f;
+	private float m_ultarrowcount = 20;
 	private float m_DisCD = 10f;
 	private Vector3 m_DisengageVec = new Vector3(0,2f,-3f);
 
@@ -79,27 +81,39 @@ public class BS_Hunter : MonoBehaviour {
 	// flame arrow  does damage over time to the target
 	void Disengage() {
 		m_soundMgr.PlayDisengage();
-		m_animationController.SetBool("Disengage",true);
+		m_animationController.SetBool("Movement",true);
 		m_characterController.m_Disengage=true;
 		m_CDMasks[1].fillAmount = 1;
 		m_disOnCD = true;
 		StartCoroutine(CoolDownSystem(m_DisCD,"Disengage"));
 	}
 	// ultimate create a volley of arrows that drop on enemies and do increased damage
-	void Ultimate() {
-		m_animationController.SetTrigger("isUlting");
-		StartCoroutine("StartUlt");
-
-		
+	public void Ultimate() {
+		Debug.Log(" pressed ult");
+		m_animationController.SetBool("IsUlting",true);
+		StartCoroutine(StartUlt());
 	}
 	IEnumerator StartUlt(){
-		for(int i=0;i<=20;i++){
+		
+		m_isUlting = true;
+		while(m_isUlting){
+			m_characterController.m_disableMovement = true;
+			Quaternion m_randrotate = new Quaternion(m_ArrowHandler.rotation.w,m_ArrowHandler.rotation.x,Random.Range(-20,20),m_ArrowHandler.rotation.z);
 			m_soundMgr.PlayArrowShot();
-			var bullet = (GameObject)Instantiate (m_ArrowPrefab, m_ArrowHandler.position, new Quaternion(m_ArrowHandler.rotation.w,m_ArrowHandler.rotation.x,m_ArrowHandler.rotation.y,Random.Range(0,100)));
+			var bullet = (GameObject)Instantiate (m_ArrowPrefab, m_ArrowHandler.position,m_randrotate);
 			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 			Destroy(bullet, 2.0f);
+			m_ultarrowcount--;
+			Debug.Log(m_randrotate);
+			if(m_ultarrowcount == 0f){
+				m_isUlting = false;
+			}
+			yield return new WaitForSeconds(0.1f);
 		}
-		yield return new WaitForSeconds(4);
+		m_ultarrowcount = 20;
+		m_animationController.SetBool("IsUlting",false);
+		m_characterController.m_disableMovement = false;
+		yield return null;
 	}
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
 			if(Ability == "Ice"){

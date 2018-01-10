@@ -12,11 +12,13 @@ public const float MAX_PROGRESS = 100.0f;
 	private BS_Warrior m_warriorScript;
 	private BS_Mage m_mageScript;
 	private BS_Rogue m_rogueScript;
+	private BS_Hunter m_hunterScript;
 	
 	void Awake() {
 		m_warriorScript = GetComponent<BS_Warrior>();
 		m_rogueScript = GetComponent<BS_Rogue>();
 		m_mageScript = GetComponent<BS_Mage>();
+		m_hunterScript = GetComponent<BS_Hunter>();
 	}
 
 	void start() {
@@ -30,7 +32,7 @@ public const float MAX_PROGRESS = 100.0f;
 		
 		// chargeRate;
 		if(m_currentProgress >= MAX_PROGRESS && Input.GetKeyDown("3")) {
-		Activate();
+			Activate();
 		}
 	}
 
@@ -41,7 +43,7 @@ public const float MAX_PROGRESS = 100.0f;
 
 			switch(gameObject.name){
 				case ("Archer"):
-				Debug.Log("archer");
+				m_hunterScript.Ultimate();
 				break;
 				case ("Mage"):
 				m_mageScript.Ultimate();
@@ -50,7 +52,7 @@ public const float MAX_PROGRESS = 100.0f;
 				m_warriorScript.Ultimate();
 				break;
 				case ("Rougue"):
-				//m_rogueScript.ShadowStep();
+				m_rogueScript.UltTarget();
 				break;
 				default:
 				Debug.Log("no class");
