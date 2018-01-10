@@ -132,6 +132,9 @@ GameObject:
   - component: {fileID: 114621204658263206}
   - component: {fileID: 114562651314072720}
   - component: {fileID: 114533631619795840}
+  - component: {fileID: 114885656338989236}
+  - component: {fileID: 114926358477238494}
+  - component: {fileID: 114258205114889182}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -3128,7 +3131,7 @@ MonoBehaviour:
   delegates: []
 --- !u!114 &114258205114889182
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053176498594614}
@@ -3862,7 +3865,7 @@ MonoBehaviour:
   m_Text: New Text
 --- !u!114 &114885656338989236
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053176498594614}
@@ -3911,7 +3914,7 @@ MonoBehaviour:
   m_UseGraphicAlpha: 1
 --- !u!114 &114926358477238494
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053176498594614}
