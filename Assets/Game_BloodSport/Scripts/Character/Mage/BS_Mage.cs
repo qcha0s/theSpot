@@ -15,12 +15,11 @@ public class BS_Mage : MonoBehaviour {
 	public bool m_ultActive = false;
 
 	private Animator m_animationController;
-	
-	
 	private bool m_PolyonCD;
 	private bool m_BlinkOnCD;
 	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
+	
 	// Use this for initialization
 	void Start () {
 		m_animationController = GetComponent<Animator>();
