@@ -42,7 +42,7 @@ public const float MAX_PROGRESS = 100.0f;
 			m_currentProgress = 0;
 
 			switch(gameObject.name){
-				case ("Archer"):
+				case ("Hunter"):
 				m_hunterScript.Ultimate();
 				break;
 				case ("Mage"):
