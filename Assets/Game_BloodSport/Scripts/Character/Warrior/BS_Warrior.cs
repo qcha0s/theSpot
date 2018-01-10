@@ -52,8 +52,8 @@ public class BS_Warrior : MonoBehaviour {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
 			Charge();
-		// } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
-		// 	Ultimate();
+		 } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
+		 	Ultimate();
 		}
 
 		if(m_charging) {
@@ -62,7 +62,7 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void Charge() {
-		m_soundMgr.PlayChargeCry();
+		//m_soundMgr.PlayChargeCry();
 		if(!m_charging) {
 			m_CDMasks[1].fillAmount = 1;
 			m_ChargeOnCD = true;
@@ -84,7 +84,7 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void WhirlWind() {
-		m_soundMgr.PlayWhirlwind();
+		//m_soundMgr.PlayWhirlwind();
 		if(!m_usingWhirlWind) {
 			m_CDMasks[0].fillAmount = 1;
 			m_whirlwindOnCD = true;
