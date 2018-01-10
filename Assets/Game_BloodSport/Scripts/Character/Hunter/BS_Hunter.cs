@@ -14,7 +14,7 @@ public class BS_Hunter : MonoBehaviour {
 	public GameObject m_FlameArrow;
 	public BS_SoundManager m_soundMgr;
 	private float m_ArrowVelocity = 500;
-
+	private bool m_ultActive = true;
 	private Animator m_animationController;
 	private bool m_iceOnCD = false;
 	private bool m_disOnCD = false;
@@ -52,7 +52,7 @@ public class BS_Hunter : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha2) && !m_disOnCD) {
 			Disengage();
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+		if(Input.GetKeyDown(KeyCode.Alpha3) && m_ultActive) {
 			Ultimate();
 		}
 	}
@@ -87,11 +87,20 @@ public class BS_Hunter : MonoBehaviour {
 	}
 	// ultimate create a volley of arrows that drop on enemies and do increased damage
 	void Ultimate() {
-		for(int i=0;i<=10;i++){
-			m_soundMgr.PlayArrowShot();
-		}
-	}
+		m_animationController.SetTrigger("isUlting");
+		StartCoroutine("StartUlt");
 
+		
+	}
+	IEnumerator StartUlt(){
+		for(int i=0;i<=20;i++){
+			m_soundMgr.PlayArrowShot();
+			var bullet = (GameObject)Instantiate (m_ArrowPrefab, m_ArrowHandler.position, new Quaternion(m_ArrowHandler.rotation.w,m_ArrowHandler.rotation.x,m_ArrowHandler.rotation.y,Random.Range(0,100)));
+			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+			Destroy(bullet, 2.0f);
+		}
+		yield return new WaitForSeconds(4);
+	}
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
 			if(Ability == "Ice"){
 			
