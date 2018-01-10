@@ -24,4 +24,15 @@ public class Health_UD : BaseHealth {
 			gameObject.SetActive(false);
 		}
 	}
+
+	public override void TakeDamage(float damage) {
+		if (!m_isDead) {
+			m_currentHealth -= damage;
+			if (m_currentHealth <= 0) {
+				m_currentHealth = 0;
+			}
+
+			GameManager_UD.instance.UpdatePlayerHPBar( m_currentHealth / m_maxHealth);
+		}
+	}
 }

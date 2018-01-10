@@ -471,4 +471,8 @@ public class GameManager_UD : MonoBehaviour {
         HideMouse();
         m_pauseUI.SetActive(false);
     }
+
+    public void UpdatePlayerHPBar(float percentage){
+        m_playerHealthBar.fillAmount = percentage;
+    }
 }
