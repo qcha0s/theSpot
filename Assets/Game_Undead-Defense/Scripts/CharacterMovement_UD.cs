@@ -18,6 +18,8 @@ public class CharacterMovement_UD : MonoBehaviour {
 	public Transform m_firePoint;
 	public bool isFiring = true;
 	public float arrowSpeed;
+	private float fireSpeed = 1;
+	private float fireRate = 2;
 
 	private void Awake() {
 		m_anim = GetComponent<Animator>();
@@ -32,11 +34,15 @@ public class CharacterMovement_UD : MonoBehaviour {
 
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)) {
-			isFiring = true;
-			m_anim.SetTrigger("isReady");
-			m_anim.SetTrigger("isAim");
-			m_anim.SetTrigger("isShoot");
+			if(fireRate <= 0) {
+				isFiring = true;
+				m_anim.SetTrigger("isReady");
+				m_anim.SetTrigger("isAim");
+				m_anim.SetTrigger("isShoot");
+				fireRate = 2;
+			}
 		}
+		fireRate -= Time.deltaTime * fireSpeed;
 	}
 	
 	void FixedUpdate () {
