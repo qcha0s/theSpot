@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSlot : MonoBehaviour {
-	public Transform m_item;
+	public Transform m_item; //BUG: Can't instantiate transform. Must instantiate a prefab.
 	public Transform GetItem(){
 		return m_item;
 	}
@@ -15,9 +15,10 @@ public class ItemSlot : MonoBehaviour {
 	public void UseItem(){
 		if(m_item != null){
 			Transform item = Instantiate(m_item, transform.position + transform.forward, transform.rotation);
+			item.name = "InstantiatedItem";
+			Debug.Log(item.name);
 			item.GetComponent<Item>().Use(gameObject);
 			m_item = null;
 		}
-	}
-	
+	}	
 }
