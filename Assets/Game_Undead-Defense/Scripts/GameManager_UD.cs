@@ -35,6 +35,8 @@ public class GameManager_UD : MonoBehaviour {
 
     public GameObject m_poolManager;
 
+    public Image m_playerHealthBar;
+
     public GameObject m_buildTowerUI;
 
 	public Button[] m_buildTowerButtons;
@@ -247,6 +249,7 @@ public class GameManager_UD : MonoBehaviour {
     {
         Instantiate(m_poolManager);
         m_currentGold = m_startGold[m_currentSelectedLevel];
+
         UpdateGold();
         ChangeState(GameState_UD.Play);
         HideMouse();
