@@ -44,7 +44,7 @@ public const float MAX_PROGRESS = 100.0f;
 				Debug.Log("archer");
 				break;
 				case ("Mage"):
-				//m_mageScript.Ultimate();
+				m_mageScript.Ultimate();
 				break;
 				case ("Warrior"):
 				m_warriorScript.Ultimate();

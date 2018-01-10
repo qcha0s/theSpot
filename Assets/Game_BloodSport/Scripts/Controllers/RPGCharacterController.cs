@@ -46,19 +46,12 @@ public class RPGCharacterController : MonoBehaviour {
 		multiplier = 2;
 		yield return new WaitForSeconds(30);
         multiplier = 1;
-		  
-		   
-			
-        
-		
 		//5seconds have passed
 		Debug.Log(":-)");
 	}
 
-
 	public void Multiply(){
 		StartCoroutine(Mult());
-		
 	}
 
 	void Update(){
@@ -161,12 +154,9 @@ public class RPGCharacterController : MonoBehaviour {
 		m_hasDealtDamage = false;
 	}
 
-	
-
 	IEnumerator SlowDown(){
 		m_slowdown=2;
 		yield return new WaitForSeconds(3);
 		m_slowdown=0;
 	}
-	
 }

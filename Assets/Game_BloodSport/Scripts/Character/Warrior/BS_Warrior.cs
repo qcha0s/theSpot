@@ -20,6 +20,7 @@ public class BS_Warrior : MonoBehaviour {
 	public int m_ultimateHitChargeAmount = 5;
 	public int m_damageMultiplier = 1;
 	public BS_SoundManager m_soundMgr;
+
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
 	private Animator m_animator;
@@ -27,6 +28,7 @@ public class BS_Warrior : MonoBehaviour {
 	private bool m_whirlwindOnCD = false;
 	private bool m_ChargeOnCD = false;
 	public Image[] m_CDMasks;
+
 	void Start() {
 		m_animator = GetComponent<Animator>();
 		m_healthScript = GetComponent<BS_Health>();
@@ -34,11 +36,12 @@ public class BS_Warrior : MonoBehaviour {
 		m_shieldCollider.enabled = false;
 		m_previousTurnSpeed = m_characterController.m_turnSpeed;
 		m_ultimateShield.SetActive(false);
-		for(int i = 0; i < m_CDMasks.Length;i++){
-			m_CDMasks[i].fillAmount=0;
+
+		for(int i = 0; i < m_CDMasks.Length; i++){
+			m_CDMasks[i].fillAmount = 0;
 			Color temp = m_CDMasks[i].color;
-			temp.a=0.7f;
-			m_CDMasks[i].color=temp;
+			temp.a = 0.7f; // TODO: DYLAN WHY THE MAGIC NUMBER
+			m_CDMasks[i].color = temp;
 		}
 	}
 
@@ -55,8 +58,8 @@ public class BS_Warrior : MonoBehaviour {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
 			Charge();
-		// } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
-		// 	Ultimate();
+		 } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
+		 	Ultimate();
 		}
 
 		if(m_charging) {
@@ -65,9 +68,9 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void Charge() {
-		m_soundMgr.PlayChargeCry();
+		//m_soundMgr.PlayChargeCry();
 		if(!m_charging) {
-			m_CDMasks[1].fillAmount=1;
+			m_CDMasks[1].fillAmount = 1;
 			m_ChargeOnCD = true;
 			StartCoroutine(CoolDownSystem(m_chargeCD, "Charge"));
 			m_charging = true;
@@ -87,9 +90,9 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void WhirlWind() {
-		m_soundMgr.PlayWhirlwind();
+		//m_soundMgr.PlayWhirlwind();
 		if(!m_usingWhirlWind) {
-			m_CDMasks[0].fillAmount=1;
+			m_CDMasks[0].fillAmount = 1;
 			m_whirlwindOnCD = true;
 			StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 			m_usingWhirlWind = true;
@@ -126,21 +129,20 @@ public class BS_Warrior : MonoBehaviour {
 		yield return new WaitForSeconds(cooldownvalue);
 		if(Ability == "Whirlwind"){
 			while(m_whirlwindOnCD){
-				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
+				m_CDMasks[0].fillAmount -= Time.deltaTime / cooldownvalue;
 
-				if(m_CDMasks[0].fillAmount==0){
+				if(m_CDMasks[0].fillAmount == 0){
 					m_whirlwindOnCD = false;
 				}
 				yield return null;
-				
 			}
-			
 		}
+
 		if(Ability == "Charge"){
 			while(m_ChargeOnCD){
-				m_CDMasks[1].fillAmount-=Time.deltaTime/cooldownvalue;
+				m_CDMasks[1].fillAmount -= Time.deltaTime / cooldownvalue;
 
-				if(m_CDMasks[1].fillAmount==0){
+				if(m_CDMasks[1].fillAmount == 0){
 					m_ChargeOnCD = false;
 				}
 				yield return null;
