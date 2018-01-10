@@ -175,32 +175,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Akai_MAT
-    second: {fileID: 2100000, guid: 3dfd7c094d5672842b14704c0cb40f3b, type: 2}
+    second: {fileID: 2100000, guid: 09bab66c7385e8047afe6d1a7fb9a616, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Arrow_MAT
-    second: {fileID: 2100000, guid: d1a700860a80214488a8b685b8a738b0, type: 2}
+    second: {fileID: 2100000, guid: 04b239092c8c1f94bb2c1272ef07a3f4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bow_MAT
-    second: {fileID: 2100000, guid: 1f19f3517ec5ab9499468d05b4c5f29d, type: 2}
+    second: {fileID: 2100000, guid: a739defec58d70b43b540dddda7445cf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EyeSpec_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lashes_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -254,7 +254,15 @@ ModelImporter:
       - time: 0.28414097
         functionName: ShootArrow
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c7629c59d1a7dc84895487f0bcf809b5,
+        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99779737
+        functionName: Moving
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
           type: 3}
         floatParameter: 0
         intParameter: 0
