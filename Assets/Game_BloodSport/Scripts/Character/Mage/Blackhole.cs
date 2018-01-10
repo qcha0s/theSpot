@@ -18,7 +18,7 @@ public class Blackhole : MonoBehaviour {
 				Vector3 forceDirection = transform.position - collider.transform.position;
 
 				// apply the force on target towards center
-				collider.GetComponent<CharacterController>().Move(forceDirection* m_pullForce * Time.fixedDeltaTime);
+				collider.GetComponent<CharacterController>().Move(forceDirection * m_pullForce * Time.fixedDeltaTime);
 			}
 		}
 	}
