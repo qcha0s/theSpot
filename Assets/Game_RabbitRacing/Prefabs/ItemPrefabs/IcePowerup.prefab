@@ -19,8 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4056693734416266}
-  - component: {fileID: 114931572154546452}
-  - component: {fileID: 114161796498522492}
+  - component: {fileID: 114874144061103172}
   m_Layer: 0
   m_Name: IcePowerup
   m_TagString: Untagged
@@ -41,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114161796498522492
+--- !u!114 &114874144061103172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,48 +48,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1548714473724954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e48723501ec5d9e4b8198e0be06da4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114931572154546452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1548714473724954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 244
-    i1: 43
-    i2: 246
-    i3: 119
-    i4: 37
-    i5: 200
-    i6: 195
-    i7: 132
-    i8: 171
-    i9: 82
-    i10: 189
-    i11: 51
-    i12: 101
-    i13: 133
-    i14: 91
-    i15: 114
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_hazardSpawnpoint: {fileID: 4623623083335962, guid: 3614f754b9fb3a74f9e0aa39e055efdf,
+    type: 2}
+  m_iceHazard: {fileID: 1924549792065924, guid: 3847f7a0cdf8af94493c439d51b71506,
+    type: 2}
