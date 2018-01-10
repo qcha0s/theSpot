@@ -47,7 +47,6 @@ public class RPGCharacterController : MonoBehaviour {
 		yield return new WaitForSeconds(30);
         multiplier = 1;
 		  
-		   
 			
         
 		

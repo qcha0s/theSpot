@@ -36,21 +36,17 @@ public class BS_Mage : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.F)) {
 			m_animationController.SetTrigger("isAttacking");
-			Debug.Log("pressed F");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1) && !m_PolyonCD) {
 			m_animationController.SetTrigger("isAbility1");
-			Debug.Log("pressed 1");
 			m_animationController.SetTrigger("isPoly");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha2) && !m_BlinkOnCD) {
 			m_animationController.SetTrigger("isAbility2");
-			Debug.Log("pressed 2");
 			m_animationController.SetTrigger("isBlinking");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3) && !m_ultActive) {
 			m_animationController.SetTrigger("isAbility3");
-			Debug.Log("pressed 3");
 			m_animationController.SetTrigger("isUltimate");
 		}
 	}
