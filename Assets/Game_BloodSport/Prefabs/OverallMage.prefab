@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 114339941837254314}
   - component: {fileID: 114437532547143442}
   - component: {fileID: 114537747166267622}
-  - component: {fileID: 114097041099782824}
+  - component: {fileID: 114449597578543042}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Player
@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1194152230261540
 GameObject:
   m_ObjectHideFlags: 1
@@ -1591,7 +1591,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178329455937288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105.11673, y: 10.158755, z: 81.98646}
+  m_LocalPosition: {x: 9.552347, y: 0.39816856, z: 2.9336512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343243042740140}
@@ -3330,6 +3330,19 @@ MonoBehaviour:
   m_ultimateDescription: Spawns a black hole that pulls enemies towards the center
   m_passiveDescription: Deal 10% more damage
   m_toolTipCanvas: {fileID: 223013278433592006}
+--- !u!114 &114449597578543042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114923414361736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a079e6a3f708d34f8e8c6850aca6e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentProgress: 0
+  m_ult: 
 --- !u!114 &114460570281855170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4621,7 +4634,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500376451848344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 312.9, y: 169.84, z: -81.98646}
+=======
+  m_LocalPosition: {x: 312.9, y: 169.84, z: -5.194925}
+>>>>>>> BloodSportgameplay
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224292713884851366}

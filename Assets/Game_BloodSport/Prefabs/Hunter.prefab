@@ -1167,6 +1167,8 @@ GameObject:
   - component: {fileID: 114835178945843828}
   - component: {fileID: 114057174505293198}
   - component: {fileID: 114745067700939664}
+  - component: {fileID: 114057037645083826}
+  - component: {fileID: 114199761745108504}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -2418,8 +2420,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1782957300821050}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.029613, y: 2.4909267, z: -0.09}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.89426327, z: 0.061936885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4786542223245324}
@@ -2821,6 +2823,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114057037645083826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782957300821050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a079e6a3f708d34f8e8c6850aca6e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentProgress: 0
+  m_ult: 
 --- !u!114 &114057174505293198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2993,6 +3008,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114199761745108504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782957300821050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8440e5b7567c4408fce16e1c5c07fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_polyScript: {fileID: 0}
+  m_isMe: 0
 --- !u!114 &114226463615841778
 MonoBehaviour:
   m_ObjectHideFlags: 1
