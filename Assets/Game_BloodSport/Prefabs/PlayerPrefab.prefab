@@ -602,6 +602,10 @@ GameObject:
   - component: {fileID: 114033599938983876}
   - component: {fileID: 114322174341648036}
   - component: {fileID: 114618404550640944}
+  - component: {fileID: 114230699519782934}
+  - component: {fileID: 114022154642098860}
+  - component: {fileID: 114867540404027874}
+  - component: {fileID: 114724240820586744}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -12897,6 +12901,25 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114022154642098860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101854270337280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4977049726851324}
+  m_ChildIndex: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114024443560929892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14221,6 +14244,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3
+--- !u!114 &114230699519782934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101854270337280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4359726204150302}
+  m_ChildIndex: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114232721334687268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16349,6 +16391,22 @@ MonoBehaviour:
     your allies.
   m_passiveDescription: Damage decreased by 10%.
   m_toolTipCanvas: {fileID: 223707980239354762}
+--- !u!114 &114724240820586744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101854270337280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9cfde6372b831479c81963bb72a092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_chosenChar: 0
+  m_mage: {fileID: 1913439500037554}
+  m_warrior: {fileID: 1864752700588582}
+  m_rogue: {fileID: 1334161526833434}
+  m_hunter: {fileID: 1761241301258092}
 --- !u!114 &114728828916550374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17215,6 +17273,25 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Text
+--- !u!114 &114867540404027874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101854270337280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4794479581240098}
+  m_ChildIndex: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114869276624290686
 MonoBehaviour:
   m_ObjectHideFlags: 1
