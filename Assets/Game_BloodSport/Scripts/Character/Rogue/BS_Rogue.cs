@@ -26,11 +26,11 @@ public class BS_Rogue : MonoBehaviour {
 		m_animator = GetComponent<Animator>();
 		m_healthScript = GetComponent<BS_Health>();
 		m_characterController = GetComponent<RPGCharacterController>();
-		for(int i = 0; i < m_CDMasks.Length;i++){
-			m_CDMasks[i].fillAmount=0;
+		for(int i = 0; i < m_CDMasks.Length; i++){
+			m_CDMasks[i].fillAmount = 0;
 			Color temp = m_CDMasks[i].color;
-			temp.a=0.7f;
-			m_CDMasks[i].color=temp;
+			temp.a = m_characterController.m_cdTransparency;
+			m_CDMasks[i].color = temp;
 		}
 	}
 	

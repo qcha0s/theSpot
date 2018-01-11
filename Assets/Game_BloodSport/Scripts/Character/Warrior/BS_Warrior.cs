@@ -40,7 +40,7 @@ public class BS_Warrior : MonoBehaviour {
 		for(int i = 0; i < m_CDMasks.Length; i++){
 			m_CDMasks[i].fillAmount = 0;
 			Color temp = m_CDMasks[i].color;
-			temp.a = 0.7f; // TODO: DYLAN WHY THE MAGIC NUMBER
+			temp.a = m_characterController.m_cdTransparency;
 			m_CDMasks[i].color = temp;
 		}
 	}
