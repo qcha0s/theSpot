@@ -31,8 +31,9 @@ public class Health_UD : BaseHealth {
 			if (m_currentHealth <= 0) {
 				m_currentHealth = 0;
 			}
-
-			GameManager_UD.instance.UpdatePlayerHPBar( m_currentHealth / m_maxHealth);
+			if (m_isPlayer){
+				GameManager_UD.instance.UpdatePlayerHPBar( m_currentHealth / m_maxHealth);
+			}
 		}
 	}
 }
