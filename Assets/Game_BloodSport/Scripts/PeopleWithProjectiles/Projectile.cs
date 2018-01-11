@@ -5,9 +5,11 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
 	// Use this for initialization
-	void OnCollisionEnter(Collision other) {
+	void OnTriggerEnter(Collider other) {
 		if(!(other.gameObject.name == "Mage")) {
-			Destroy(this.gameObject);
+			if(other.gameObject.tag == "Player") {
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }

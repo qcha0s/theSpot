@@ -26,7 +26,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isCharging
+  - m_Name: Movement
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -38,13 +38,19 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isWhirlwind
+  - m_Name: Ability
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isUlting
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isRunning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -198,7 +204,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102567396451233516}
@@ -246,7 +252,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102708678104501046}
@@ -270,7 +276,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isWhirlwind
+    m_ConditionEvent: Ability
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102680344616249790}
@@ -366,7 +372,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isWhirlwind
+    m_ConditionEvent: Ability
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102567396451233516}
@@ -390,7 +396,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102742600975060784}
@@ -414,7 +420,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isWhirlwind
+    m_ConditionEvent: Ability
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102542677997853284}
@@ -438,7 +444,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: Movement
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102885279446964564}
@@ -462,7 +468,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isWhirlwind
+    m_ConditionEvent: Ability
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102742600975060784}
@@ -760,16 +766,16 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102742600975060784}
-    m_Position: {x: 300, y: 120, z: 0}
+    m_Position: {x: 288, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102885279446964564}
-    m_Position: {x: 588, y: 252, z: 0}
+    m_Position: {x: 288, y: 36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102542677997853284}
-    m_Position: {x: 300, y: 252, z: 0}
+    m_Position: {x: 288, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102437365499751076}
-    m_Position: {x: 588, y: 120, z: 0}
+    m_Position: {x: 516, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

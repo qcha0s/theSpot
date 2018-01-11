@@ -6,17 +6,17 @@ public class RPGCharacterController : MonoBehaviour {
 	public string m_moveStatus = "idle";
 	public bool m_walkByDefault = true;
 	public float m_gravity = 20.0f;
-	public Collider m_weaponHitBoxes;
+	
 
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
 	public float m_runSpeed = 10.0f;
-	public float m_walkSpeed = 4.0f;
+	public float m_walkSpeed = 1.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
 	public bool m_hasDealtDamage = false;
 	public bool m_disableMovement = false;
-
+	public BS_SoundManager m_soundMgr;
 	
 
 	//Internal Variables
@@ -30,34 +30,28 @@ public class RPGCharacterController : MonoBehaviour {
 	private CharacterController m_controller;
 	private int m_attackState;
 	private int multiplier = 1;
-	
+	private int m_slowdown = 0;
+	public bool m_Disengage;
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-		if(m_weaponHitBoxes != null) {
-			m_weaponHitBoxes.enabled = false;
-		}
+	
+		
+		
 	}
 
 	IEnumerator Mult() {
 		multiplier = 2;
 		yield return new WaitForSeconds(30);
         multiplier = 1;
-		  
-		   
-			
-        
-		
 		//5seconds have passed
 		Debug.Log(":-)");
 	}
 
-
 	public void Multiply(){
 		StartCoroutine(Mult());
-		
 	}
 
 	void Update(){
@@ -104,13 +98,25 @@ public class RPGCharacterController : MonoBehaviour {
 					m_speedMultiplier = 1f;
 				}
 
-				m_moveDirection *= m_isWalking ? m_walkSpeed * m_speedMultiplier : m_runSpeed * m_speedMultiplier;
+				m_moveDirection *= m_isWalking ? m_walkSpeed * m_speedMultiplier-m_slowdown : m_runSpeed * m_speedMultiplier;
 
 				if(Input.GetButton("Jump")){
 					m_animationController.SetTrigger("Jump");
+					m_soundMgr.PlayJump();
 					m_moveDirection.y = m_jumpSpeed;
+					
 				}
-
+				if(m_Disengage){
+					m_moveDirection.y = m_jumpSpeed;
+					m_moveDirection.z = -m_jumpSpeed;
+					m_Disengage = false;
+				}
+				else{	
+					m_animationController.SetBool("Movement",false);
+				}
+				if(m_grounded){
+					m_Disengage =false;
+				}
 				if(m_moveDirection.magnitude > 0.1f){
 					m_animationController.SetBool("isRunning",true);
 				}else{
@@ -140,26 +146,17 @@ public class RPGCharacterController : MonoBehaviour {
 			m_animationController.SetTrigger("Jump");
 		}
 	
-		
-		
-		
-		if(Input.GetMouseButtonDown(0)){
-			m_animationController.SetBool("isAttacking", true);
-			if(m_weaponHitBoxes != null) {
-				m_weaponHitBoxes.enabled = true;
-			}
-		}
-		else if(Input.GetMouseButtonUp(0)){
-		//	m_animationController.SetBool("isAttacking",false);
-			//m_weaponHitBoxes.enabled = false;
-		}
 	}
 
 	public void EndAttack() {
 		m_animationController.SetBool("isAttacking", false);
-		if(m_weaponHitBoxes != null) {
-			m_weaponHitBoxes.enabled = false;
-		}
+		
 		m_hasDealtDamage = false;
+	}
+
+	IEnumerator SlowDown(){
+		m_slowdown=2;
+		yield return new WaitForSeconds(3);
+		m_slowdown=0;
 	}
 }
