@@ -6,9 +6,9 @@ using UnityEngine.Networking;
 
 public class ScoreManager : NetworkBehaviour {
 
-	//[SyncVar (hook="UpdateBlueText")]
+	[SyncVar (hook="UpdateBlueText")]
 	public int score_Blue;
-	//[SyncVar (hook="UpdateRedText")]
+	[SyncVar (hook="UpdateRedText")]
 	public int score_Red;
 
 	public int ScoreToWin;
@@ -52,12 +52,12 @@ public class ScoreManager : NetworkBehaviour {
 	
 		
 	}
-	private void UpdateRedText(){
-		countRed.text = "Score: " + score_Red.ToString();
+	private void UpdateRedText(int score){
+		countRed.text = "Score: " + score.ToString();
 	}
 
-	private void UpdateBlueText(){
-		countBlue.text = "Score: " + score_Blue.ToString();
+	private void UpdateBlueText(int score){
+		countBlue.text = "Score: " + score.ToString();
 	}
 	
 
@@ -159,12 +159,12 @@ public class ScoreManager : NetworkBehaviour {
 		NetworkServer.Spawn(obj);
 
 	}
-	// [Command]
-	// private void CmdUpdateScore(bool scored_Red){
-	// 	if(scored_Red){
-	// 		score_Red = score_Red + 1;
-	// 	}else{
-	// 		score_Blue = score_Blue + 1;
-	// 	}
-	// }
+	
+	private void CmdUpdateScore(bool scored_Red){
+		if(scored_Red){
+			score_Red = score_Red + 1;
+		}else{
+			score_Blue = score_Blue + 1;
+		}
+	}
 }
