@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 114737910862553714}
   - component: {fileID: 114888395187156450}
   - component: {fileID: 114534359539495406}
+  - component: {fileID: 114921257717063108}
   m_Layer: 0
   m_Name: 'Rogue '
   m_TagString: Untagged
@@ -4813,6 +4814,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114921257717063108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074016285638186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a079e6a3f708d34f8e8c6850aca6e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentProgress: 0
+  m_ult: 
 --- !u!135 &135139443032922466
 SphereCollider:
   m_ObjectHideFlags: 1

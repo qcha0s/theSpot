@@ -398,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1261142154062354
 GameObject:
   m_ObjectHideFlags: 1
@@ -3784,7 +3784,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 65027997164902672}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
@@ -4315,6 +4314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chargeSpeed: 10
   m_shieldCollider: {fileID: 65011994571044966}
+  m_swordCollider: {fileID: 0}
   m_chargeTurnSpeed: 10
   m_charging: 0
   m_usingWhirlWind: 0
@@ -5159,7 +5159,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950326154384520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -57.999996, z: 0}
+  m_LocalPosition: {x: 8.5, y: -140, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224422140210938728}
@@ -5167,7 +5167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.5, y: -58}
+  m_AnchoredPosition: {x: 8.5, y: -140}
   m_SizeDelta: {x: 560.4, y: 114.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224518035438168344
