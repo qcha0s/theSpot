@@ -46,9 +46,9 @@ public static class MultiplayersBuildAndRun {
 
 	static void PerformOSXBuild (int playerCount)
 	{
-		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.StandaloneOSXUniversal);
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.StandaloneOSX);
 		for (int i = 1; i <= playerCount; i++) {
-			BuildPipeline.BuildPlayer (GetScenePaths (), "Builds/OSX/" + GetProjectName () + i.ToString() + ".app", BuildTarget.StandaloneOSXUniversal, BuildOptions.AutoRunPlayer);
+			BuildPipeline.BuildPlayer (GetScenePaths (), "Builds/OSX/" + GetProjectName () + i.ToString() + ".app", BuildTarget.StandaloneOSX, BuildOptions.AutoRunPlayer);
 		}
 
 	}
