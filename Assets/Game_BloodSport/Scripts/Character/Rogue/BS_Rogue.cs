@@ -37,10 +37,10 @@ public class BS_Rogue : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(m_characterController.m_walkByDefault == false){
-			m_animator.SetBool("Movement",true);
+			m_animator.SetBool("Movement", true);
 		}
 		else{
-			m_animator.SetBool("Movement",false);
+			m_animator.SetBool("Movement", false);
 		}
 		if(Input.GetMouseButtonDown(0) && !m_animator.GetBool("isAttacking")){
 			m_soundMgr.PlayDaggerSwipe();
@@ -56,10 +56,11 @@ public class BS_Rogue : MonoBehaviour {
 			Sprint();
 		}
 	}
+
 	public void Sprint(){
 		m_sprintOnCD = true;
 		m_CDMasks[1].fillAmount=1;
-		StartCoroutine(CoolDownSystem(m_sprintCD,"Sprint"));
+		StartCoroutine(CoolDownSystem(m_sprintCD, "Sprint"));
 		StartCoroutine(StartSprint());
 	}
 
@@ -70,7 +71,7 @@ public class BS_Rogue : MonoBehaviour {
 		m_weapons[1].GetComponent<RogueWeaponScript>().SetPoison(true);
 		m_CDMasks[0].fillAmount=1;
 		m_poisonOnCD = true;
-		StartCoroutine(CoolDownSystem(m_poisonCD,"Poison"));
+		StartCoroutine(CoolDownSystem(m_poisonCD, "Poison"));
 		StartCoroutine(StartPoison());
 	}
 
@@ -87,9 +88,9 @@ public class BS_Rogue : MonoBehaviour {
 	}
 
 	IEnumerator StartSprint(){
-		m_characterController.m_walkByDefault=false;
+		m_characterController.m_walkByDefault = false;
 		yield return new WaitForSeconds(4);
-		m_characterController.m_walkByDefault=true;
+		m_characterController.m_walkByDefault = true;
 	}
 
 	IEnumerator StartPoison(){
@@ -102,10 +103,9 @@ public class BS_Rogue : MonoBehaviour {
 
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
 		if(Ability == "Poison"){
-			Debug.Log("StartCD");
 			while(m_poisonOnCD){
-				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
-				if(m_CDMasks[0].fillAmount==0){
+				m_CDMasks[0].fillAmount -= Time.deltaTime / cooldownvalue;
+				if(m_CDMasks[0].fillAmount == 0){
 					m_poisonOnCD = false;
 				}
 				yield return null;
@@ -114,9 +114,8 @@ public class BS_Rogue : MonoBehaviour {
 		
 		if(Ability == "Sprint"){
 			while(m_sprintOnCD){
-				m_CDMasks[1].fillAmount-=Time.deltaTime/cooldownvalue;
-
-				if(m_CDMasks[1].fillAmount==0){
+				m_CDMasks[1].fillAmount -= Time.deltaTime / cooldownvalue;
+				if(m_CDMasks[1].fillAmount == 0){
 					m_sprintOnCD = false;
 				}
 				yield return null;
