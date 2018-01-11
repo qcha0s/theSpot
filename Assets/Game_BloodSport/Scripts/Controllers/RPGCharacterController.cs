@@ -98,7 +98,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 				if(Input.GetButton("Jump")){
 					m_animationController.SetTrigger("Jump");
-					m_soundMgr.PlayJump();
+					//m_soundMgr.PlayJump();
 					m_moveDirection.y = m_jumpSpeed;
 					
 				}

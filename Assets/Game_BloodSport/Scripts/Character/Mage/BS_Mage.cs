@@ -28,7 +28,7 @@ public class BS_Mage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetMouseButton(0)) {
+		if(Input.GetMouseButtonDown(0)) {
 			m_animationController.SetTrigger("isAttacking");
 			Debug.Log("pressed F");
 		}
