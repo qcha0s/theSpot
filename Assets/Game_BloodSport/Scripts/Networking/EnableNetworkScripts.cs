@@ -13,7 +13,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 
 	void Start() {
 		if(isLocalPlayer) {
-			
 			switch(m_chosenChar) {
 				case 0:
 					m_mage.GetComponent<BS_Mage>().enabled = true;
