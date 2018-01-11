@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 114515774694512516}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3784,7 +3784,6 @@ MonoBehaviour:
   m_moveStatus: idle
   m_walkByDefault: 1
   m_gravity: 20
-  m_weaponHitBoxes: {fileID: 65027997164902672}
   m_jumpSpeed: 8
   m_runSpeed: 10
   m_walkSpeed: 4
@@ -4315,6 +4314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chargeSpeed: 10
   m_shieldCollider: {fileID: 65011994571044966}
+  m_swordCollider: {fileID: 65027997164902672}
   m_chargeTurnSpeed: 10
   m_charging: 0
   m_usingWhirlWind: 0
