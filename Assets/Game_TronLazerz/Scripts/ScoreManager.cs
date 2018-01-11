@@ -60,6 +60,7 @@ public class ScoreManager : NetworkBehaviour {
 		countBlue.text = "Score: " + score.ToString();
 	}
 	
+	
 
 	void RespawnPuck(){
 		
@@ -132,11 +133,11 @@ public class ScoreManager : NetworkBehaviour {
 	}
 
 	void BlueWins(){
-		Debug.Log("blue");
+		countTime.text = "Blue Wins";
 	}
 
 	void RedWins(){
-		Debug.Log("red");
+		countTime.text = "Red Wins";
 	}
 
 	
