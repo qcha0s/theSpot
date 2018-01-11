@@ -10,7 +10,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	public GameObject m_warrior;
 	public GameObject m_rogue;
 	public GameObject m_hunter;
-	public NetworkAnimator m_networkAnimator;
 
 	void Start() {
 		if(isLocalPlayer) {

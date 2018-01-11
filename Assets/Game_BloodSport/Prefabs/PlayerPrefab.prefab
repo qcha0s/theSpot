@@ -607,7 +607,6 @@ GameObject:
   - component: {fileID: 114724240820586744}
   - component: {fileID: 114012617359070126}
   - component: {fileID: 95621895565550528}
-  - component: {fileID: 114534452464702460}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -15731,25 +15730,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &114534452464702460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101854270337280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
-  m_ParameterSendBits: 0
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
 --- !u!114 &114541106532147868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16498,7 +16478,6 @@ MonoBehaviour:
   m_warrior: {fileID: 1864752700588582}
   m_rogue: {fileID: 1334161526833434}
   m_hunter: {fileID: 1761241301258092}
-  m_networkAnimator: {fileID: 0}
 --- !u!114 &114728828916550374
 MonoBehaviour:
   m_ObjectHideFlags: 1
