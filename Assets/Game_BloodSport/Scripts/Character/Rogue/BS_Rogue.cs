@@ -11,7 +11,7 @@ public class BS_Rogue : MonoBehaviour {
 	public Material m_poisonMats;
 	public Material m_daggerBase;
 	public BS_SoundManager m_soundMgr;
-	
+
 	private bool m_UltActive = true;
 	private bool m_sprintOnCD = false;
 	private bool m_poisonOnCD = false;
@@ -101,11 +101,10 @@ public class BS_Rogue : MonoBehaviour {
 	}
 
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
-			if(Ability == "Poison"){
+		if(Ability == "Poison"){
 			Debug.Log("StartCD");
 			while(m_poisonOnCD){
 				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
-
 				if(m_CDMasks[0].fillAmount==0){
 					m_poisonOnCD = false;
 				}
