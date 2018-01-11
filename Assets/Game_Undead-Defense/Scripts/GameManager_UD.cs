@@ -474,5 +474,15 @@ public class GameManager_UD : MonoBehaviour {
 
     public void UpdatePlayerHPBar(float percentage){
         m_playerHealthBar.fillAmount = percentage;
+
+        if(percentage <= 0.25f){
+            m_playerHealthBar.color = Color.red;
+        }
+        else if(percentage <= 0.5f){
+            m_playerHealthBar.color = Color.yellow;
+        }
+        else{
+            m_playerHealthBar.color = Color.green;
+        }
     }
 }

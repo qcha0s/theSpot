@@ -646,12 +646,22 @@ Prefab:
     - target: {fileID: 224225123692553742, guid: f51249d53ebce3845be15461acfc7691,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 521.08307
+      value: 482.08304
       objectReference: {fileID: 0}
     - target: {fileID: 224225123692553742, guid: f51249d53ebce3845be15461acfc7691,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 264.99286
+      value: 303.49286
+      objectReference: {fileID: 0}
+    - target: {fileID: 224073134021264914, guid: f51249d53ebce3845be15461acfc7691,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 224073134021264914, guid: f51249d53ebce3845be15461acfc7691,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f51249d53ebce3845be15461acfc7691, type: 2}
@@ -1085,7 +1095,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4428129411914926, guid: 4310b438abbf5b54a9b7879492b2db1f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 46.5
       objectReference: {fileID: 0}
     - target: {fileID: 4428129411914926, guid: 4310b438abbf5b54a9b7879492b2db1f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1114,7 +1124,7 @@ Prefab:
     - target: {fileID: 20160247731410974, guid: 4310b438abbf5b54a9b7879492b2db1f,
         type: 2}
       propertyPath: far clip plane
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 20160247731410974, guid: 4310b438abbf5b54a9b7879492b2db1f,
         type: 2}
@@ -1881,16 +1891,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 224058765509450668, guid: ed14d5ed39a14704c90974e235af4e45,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 540.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 224058765509450668, guid: ed14d5ed39a14704c90974e235af4e45,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 263.5
-      objectReference: {fileID: 0}
     - target: {fileID: 224965727702558998, guid: ed14d5ed39a14704c90974e235af4e45,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1899,46 +1899,21 @@ Prefab:
     - target: {fileID: 224965727702558998, guid: ed14d5ed39a14704c90974e235af4e45,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 205.03963
-      objectReference: {fileID: 0}
-    - target: {fileID: 65844341645832448, guid: ed14d5ed39a14704c90974e235af4e45,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856143513404710, guid: ed14d5ed39a14704c90974e235af4e45, type: 2}
-      propertyPath: m_Name
-      value: PlayerBase
+      value: 734.00415
       objectReference: {fileID: 0}
     - target: {fileID: 224058765509450668, guid: ed14d5ed39a14704c90974e235af4e45,
         type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -58.36
+      propertyPath: m_LocalPosition.x
+      value: 501.72
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 54941534459561480, guid: ed14d5ed39a14704c90974e235af4e45, type: 2}
+    - target: {fileID: 224058765509450668, guid: ed14d5ed39a14704c90974e235af4e45,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 302
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed14d5ed39a14704c90974e235af4e45, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1824742334 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1856143513404710, guid: ed14d5ed39a14704c90974e235af4e45,
-    type: 2}
-  m_PrefabInternal: {fileID: 1824742333}
---- !u!54 &1824742335
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1824742334}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1894310054
 GameObject:
   m_ObjectHideFlags: 0
