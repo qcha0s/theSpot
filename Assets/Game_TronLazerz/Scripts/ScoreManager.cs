@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : NetworkBehaviour {
 
+	//[SyncVar (hook="UpdateBlueText")]
 	public int score_Blue;
+	//[SyncVar (hook="UpdateRedText")]
 	public int score_Red;
 
 	public int ScoreToWin;
@@ -17,16 +20,14 @@ public class ScoreManager : MonoBehaviour {
 
 	public bool IsRegular;
 
-	public Rigidbody red_puck;
-	public Rigidbody blue_puck;
-	public Rigidbody green_puck;
+	public GameObject green_puck;
 
 	public float hockey_Time;
 	public float m_overtime;
 	public float m_wholeAmount;
 
 	public Text countRed;
-	public Text backRed;
+
 	public Text countBlue;
 	
 	public Text countTime;
@@ -47,33 +48,39 @@ public class ScoreManager : MonoBehaviour {
 		countRed.text = "Score: " + score_Red.ToString();
 		countBlue.text = "Score: " + score_Blue.ToString();
 		countTime.text = "Time: " + hockey_Time.ToString();
+		
 	
 		
 	}
+	private void UpdateRedText(){
+		countRed.text = "Score: " + score_Red.ToString();
+	}
+
+	private void UpdateBlueText(){
+		countBlue.text = "Score: " + score_Blue.ToString();
+	}
+	
 
 	void RespawnPuck(){
-			Rigidbody clone;
-
-			if(IsRegular == true){           
-				if(score_Blue > score_Red){
-					clone = Instantiate(blue_puck, transform.position, transform.rotation) as Rigidbody;
-				}
-				if(score_Blue < score_Red){
-					clone = Instantiate(red_puck, transform.position, transform.rotation) as Rigidbody;
-				}
-				if(score_Blue == score_Red){
-					clone = Instantiate(green_puck, transform.position, transform.rotation) as Rigidbody;
-				}
-			}
 		
+		GameObject clone = null;
+		if(isServer){
+			if(IsRegular == true){           
+				clone = Instantiate(green_puck, transform.position, transform.rotation);
+				CmdSpawnObject(clone);					
+			}
+		}
 	}
+
+	
 	void Overtime(){
 		hockey_Time = hockey_Time + m_overtime;
 		if(IsOvertime == true){
-		Rigidbody clone; 
-		clone = Instantiate(blue_puck, transform.position, transform.rotation) as Rigidbody;
-		clone = Instantiate(red_puck, transform.position, transform.rotation) as Rigidbody;
-		
+			GameObject clone; 
+			clone = Instantiate(green_puck, transform.position, transform.rotation);
+			CmdSpawnObject(clone);
+			clone = Instantiate(green_puck, transform.position, transform.rotation);
+			CmdSpawnObject(clone);
 		
 		//IsOvertime = false;
 		}
@@ -84,45 +91,44 @@ public class ScoreManager : MonoBehaviour {
 		hockey_Time = hockey_Time -= Time.deltaTime;
 		m_wholeAmount = Mathf.Round(hockey_Time);		
 		countTime.text = "Time: " + m_wholeAmount.ToString();
-			if(IsRegular == false){
-				countTime.text = "OVERTIME"; 
-			}
-		HockeyEndTimer();
+		if(IsRegular == false){
+			countTime.text = "OVERTIME"; 
+		}
+	HockeyEndTimer();
 	}
 
 	void HockeyEndTimer(){
-			if(hockey_Time <= 0 && score_Red > score_Blue){
-				RedWins();
-			}
-			if(hockey_Time <= 0 && score_Blue > score_Red){
-				BlueWins();
-			}
-			if(hockey_Time <= 0 && score_Blue == score_Red){
-				IsOvertime = true;
-				IsRegular = false;
-				Overtime();
-			}
+		if(hockey_Time <= 0 && score_Red > score_Blue){
+			RedWins();
+		}
+		if(hockey_Time <= 0 && score_Blue > score_Red){
+			BlueWins();
+		}
+		if(hockey_Time <= 0 && score_Blue == score_Red){
+			IsOvertime = true;
+			IsRegular = false;
+			Overtime();
+		}
 	}
 
 	void RedScore() {
-		Debug.Log(score_Red);
 		score_Red = score_Red + 1;
 		countRed.text = "Score: " + score_Red.ToString();		
 		scored_Red = false;
-			if(score_Red >= ScoreToWin){
-				RedWins();
-			}
+		if(score_Red >= ScoreToWin){
+		RedWins();
+		}
 	}
 
+
+
 	void BlueScore() {
-		
 		score_Blue = score_Blue + 1;
 		countBlue.text = "Score: " + score_Blue.ToString();
 		scored_Blue = false;
-		Debug.Log(score_Blue);
-			if(score_Blue >= ScoreToWin){
-				BlueWins();
-			}
+		if(score_Blue >= ScoreToWin){
+			BlueWins();
+		}
 	}
 
 	void BlueWins(){
@@ -147,4 +153,18 @@ public class ScoreManager : MonoBehaviour {
 		HockeyTimer();
 		
 	}
+
+	[Command]
+	private void CmdSpawnObject(GameObject obj){
+		NetworkServer.Spawn(obj);
+
+	}
+	// [Command]
+	// private void CmdUpdateScore(bool scored_Red){
+	// 	if(scored_Red){
+	// 		score_Red = score_Red + 1;
+	// 	}else{
+	// 		score_Blue = score_Blue + 1;
+	// 	}
+	// }
 }
