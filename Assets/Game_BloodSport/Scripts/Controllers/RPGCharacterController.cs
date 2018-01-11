@@ -6,18 +6,18 @@ public class RPGCharacterController : MonoBehaviour {
 	public string m_moveStatus = "idle";
 	public bool m_walkByDefault = true;
 	public float m_gravity = 20.0f;
-	
 
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
 	public float m_runSpeed = 10.0f;
 	public float m_walkSpeed = 1.0f;
 	public float m_turnSpeed = 250.0f;
+	public float m_cdTransparency = 0.7f;
 	public float m_moveBackwardsMultiplier = 0.75f;
 	public bool m_hasDealtDamage = false;
 	public bool m_disableMovement = false;
 	public BS_SoundManager m_soundMgr;
-	
+	public bool m_Disengage;
 
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
@@ -31,15 +31,11 @@ public class RPGCharacterController : MonoBehaviour {
 	private int m_attackState;
 	private int multiplier = 1;
 	private int m_slowdown = 0;
-	public bool m_Disengage;
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-	
-		
-		
 	}
 
 	IEnumerator Mult() {

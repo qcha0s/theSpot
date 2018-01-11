@@ -13,21 +13,22 @@ public class BS_Mage : MonoBehaviour {
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
-
+	public RPGCharacterController m_characterController;
 	private Animator m_animationController;
 	private bool m_PolyonCD;
 	private bool m_BlinkOnCD;
 	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
+	
 
 	// Use this for initialization
 	void Start () {
 		m_animationController = GetComponent<Animator>();
-		for(int i = 0; i < m_CDMasks.Length;i++){
-			m_CDMasks[i].fillAmount=0;
+		for(int i = 0; i < m_CDMasks.Length; i++){
+			m_CDMasks[i].fillAmount = 0;
 			Color temp = m_CDMasks[i].color;
-			temp.a=0.7f;
-			m_CDMasks[i].color=temp;
+			temp.a = m_characterController.m_cdTransparency;
+			m_CDMasks[i].color = temp;
 		}
 	}
 	
