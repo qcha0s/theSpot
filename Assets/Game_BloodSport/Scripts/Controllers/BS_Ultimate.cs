@@ -21,52 +21,40 @@ public const float MAX_PROGRESS = 100.0f;
 		m_hunterScript = GetComponent<BS_Hunter>();
 	}
 
-	void start() {
+	void Start() {
 		m_currentProgress = 0;
-		Debug.Log(m_warriorScript == null);
 	}
 
 	public void Update() {
-		
-		//m_currentProgress += Time.deltaTime;
-		
-		// chargeRate;
 		if(m_currentProgress >= MAX_PROGRESS && Input.GetKeyDown("3")) {
-			Activate();
+				Activate();
 		}
 	}
 
 	public void Activate() {
-		Debug.Log("rip");
-		
-			m_currentProgress = 0;
-
-			switch(gameObject.name){
-				case ("Hunter"):
-				m_hunterScript.Ultimate();
-				break;
-				case ("Mage"):
-				m_mageScript.Ultimate();
-				break;
-				case ("Warrior"):
-				m_warriorScript.Ultimate();
-				break;
-				case ("Rougue"):
-				m_rogueScript.UltTarget();
-				break;
-				default:
-				Debug.Log("no class");
-				break;
-			}
-			
-			// TODO: add what happens when they die
-			Debug.Log("finish him!");
-		
+		m_currentProgress = 0;
+		switch(gameObject.name){
+			case ("Hunter"):
+			m_hunterScript.Ultimate();
+			break;
+			case ("Mage"):
+			m_mageScript.Ultimate();
+			break;
+			case ("Warrior"):
+			m_warriorScript.Ultimate();
+			break;
+			case ("Rougue"):
+			m_rogueScript.UltTarget();
+			break;
+			default:
+			Debug.Log("no class");
+			break;
+		}
 	}
+
 	public void Charge(int charger){
 		m_currentProgress += charger;
 	}
-	
 
 	public void MaxOut(int amount) {
 		m_currentProgress += amount;
