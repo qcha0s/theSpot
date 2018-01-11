@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 135834640901422584}
   - component: {fileID: 54706887269097072}
   - component: {fileID: 114157555742442898}
-  - component: {fileID: 114868017404654340}
+  - component: {fileID: 114077460716086520}
+  - component: {fileID: 114270719275045584}
   m_Layer: 0
   m_Name: Puck1_Green
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554327276504614}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,6 +60,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 2
+--- !u!114 &114077460716086520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554327276504614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.05
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114157555742442898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412368aa9e361fa4fba6e8e60ce220ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114868017404654340
+--- !u!114 &114270719275045584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -78,17 +100,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1554327276504614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dde9b5fd29abc846912609e24c1a181, type: 3}
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 57314fdb12adaa244a8fafe22dc5f237, type: 3}
-  - {fileID: 8300000, guid: c934e941724af5245b62f66d02e5b081, type: 3}
-  - {fileID: 8300000, guid: def48cc7221913c44b5f11ebef5c5813, type: 3}
-  - {fileID: 8300000, guid: 0eb38b4e7614cf643a06772cbc53664f, type: 3}
-  minPitch: 0.95
-  maxPitch: 1.05
-  m_sm: {fileID: 0}
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 134
+    i1: 44
+    i2: 0
+    i3: 238
+    i4: 151
+    i5: 82
+    i6: 40
+    i7: 164
+    i8: 106
+    i9: 187
+    i10: 64
+    i11: 250
+    i12: 223
+    i13: 4
+    i14: 251
+    i15: 220
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!135 &135834640901422584
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -136,7 +171,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6577076d75e213f4892521c3555c9247, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.741}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
