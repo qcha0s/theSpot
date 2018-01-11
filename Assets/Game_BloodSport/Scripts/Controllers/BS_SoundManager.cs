@@ -5,7 +5,7 @@ using UnityEngine;
 public class BS_SoundManager : MonoBehaviour {
 
 	public AudioSource m_audioSource;
-
+	public GameObject m_playerPrefab;
 	public AudioClip mage_BH;
 	public AudioClip mage_Fire;
 	public AudioClip mage_Poly;
@@ -29,6 +29,10 @@ public class BS_SoundManager : MonoBehaviour {
 
 	public AudioClip general_Jump;
 	public AudioClip general_BladeSwing;
+
+	void Start(){
+		//m_audioSource = m_playerPrefab.
+	}
 	public void PlayBlackhole(){
 		m_audioSource.PlayOneShot(mage_BH);
 	}

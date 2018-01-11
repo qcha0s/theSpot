@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate(){
 		
-		if (Input.GetMouseButton(1))
+		if (Input.GetMouseButton(1) && !m_target.GetComponent<RPGCharacterController>().m_disableMovement)
         {
         	m_xDeg += Input.GetAxis("Mouse X") * m_xSpeed * 0.02f;
         	m_yDeg -= Input.GetAxis("Mouse Y") * m_ySpeed * 0.02f;
