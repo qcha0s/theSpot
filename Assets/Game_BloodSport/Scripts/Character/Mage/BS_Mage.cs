@@ -10,94 +10,85 @@ public class BS_Mage : MonoBehaviour {
 	public GameObject ultimatePrefab;
 	public Transform spellSpawn;
 	public Transform ultPos;
+	public PolyManager m_polyScript;
+	public bool m_isMe;
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
-	public RPGCharacterController m_characterController;
+	
 	private Animator m_animationController;
 	private bool m_PolyonCD;
 	private bool m_BlinkOnCD;
 	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
-	
-
 	// Use this for initialization
 	void Start () {
 		m_animationController = GetComponent<Animator>();
-		for(int i = 0; i < m_CDMasks.Length; i++){
-			m_CDMasks[i].fillAmount = 0;
-			Color temp = m_CDMasks[i].color;
-			temp.a = m_characterController.m_cdTransparency;
-			m_CDMasks[i].color = temp;
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetMouseButtonDown(0)) {
+		if(Input.GetKeyDown(KeyCode.F)) {
 			m_animationController.SetTrigger("isAttacking");
+			Debug.Log("pressed F");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha1) && !m_PolyonCD) {
+		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			m_animationController.SetTrigger("isAbility1");
+			Debug.Log("pressed 1");
 			m_animationController.SetTrigger("isPoly");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha2) && !m_BlinkOnCD) {
+		if(Input.GetKeyDown(KeyCode.Alpha2)) {
 			m_animationController.SetTrigger("isAbility2");
+			Debug.Log("pressed 2");
 			m_animationController.SetTrigger("isBlinking");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha3) && !m_ultActive) {
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			m_animationController.SetTrigger("isAbility3");
+			Debug.Log("pressed 3");
 			m_animationController.SetTrigger("isUltimate");
 		}
 	}
 
 	void Fire() 	{
-		//m_soundMgr.PlayFire();
-    	// Create the Bullet from the Bullet Prefab
-    	var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
+		// Create the Bullet from the Bullet Prefab
+		var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
 
-    	// Add velocity to the bullet
-	 	bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
 	}
 
 	void Blink() {
-		//m_soundMgr.PlayBlink();
 		transform.position += transform.rotation * Vector3.forward * 5;
-		m_BlinkOnCD = true;
-		m_CDMasks[1].fillAmount = 1;
-		StartCoroutine(CoolDownSystem(m_BlinkCD,"Blink"));
-
 	}
 
-	void Polymorph() {
-
-		//m_soundMgr.PlayBlackhole();
-		//m_soundMgr.PlayPoly();
+	void Polymorph() 	{
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
 
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-		m_PolyonCD = true;
-		m_CDMasks[0].fillAmount = 1;
-		StartCoroutine(CoolDownSystem(m_PolyCD,"Poly"));
+
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
-		
 	}
 
-	public void Ultimate() 	{
-		//m_soundMgr.PlayBlackhole();
-		//m_soundMgr.PlayBlackhole();
-    	// Create the Bullet from the Bullet Prefab
+	void Ultimate() 	{
+    // Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
 
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 	}
+<<<<<<< HEAD
+	
+	void OnTriggerEnter(Collider other) {
+		if(!m_isMe) {
+			if(other.gameObject.name == "Polymorph(Clone)") {
+				m_polyScript.SetPoly();
+=======
 
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability) {
 		if(Ability == "Poly") {
@@ -120,6 +111,7 @@ public class BS_Mage : MonoBehaviour {
 					m_BlinkOnCD = false;
 				}
 				yield return null;
+>>>>>>> bloodsport
 			}
 		}
 	}
