@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 135834640901422584}
   - component: {fileID: 54706887269097072}
   - component: {fileID: 114157555742442898}
+  - component: {fileID: 114868017404654340}
   m_Layer: 0
   m_Name: Puck1_Green
   m_TagString: Player
@@ -50,7 +51,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554327276504614}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.5
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -69,6 +70,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412368aa9e361fa4fba6e8e60ce220ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114868017404654340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554327276504614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde9b5fd29abc846912609e24c1a181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 57314fdb12adaa244a8fafe22dc5f237, type: 3}
+  - {fileID: 8300000, guid: c934e941724af5245b62f66d02e5b081, type: 3}
+  - {fileID: 8300000, guid: def48cc7221913c44b5f11ebef5c5813, type: 3}
+  - {fileID: 8300000, guid: 0eb38b4e7614cf643a06772cbc53664f, type: 3}
+  minPitch: 0.95
+  maxPitch: 1.05
+  m_sm: {fileID: 0}
 --- !u!135 &135834640901422584
 SphereCollider:
   m_ObjectHideFlags: 1

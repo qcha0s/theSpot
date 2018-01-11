@@ -31,8 +31,9 @@ public class ScoreManager : MonoBehaviour {
 	
 	public Text countTime;
 	
-
-
+	//Audio
+	public bool m_goal = false;
+	public bool m_win = false;
 
 
 	// Use this for initialization
@@ -50,6 +51,16 @@ public class ScoreManager : MonoBehaviour {
 	
 		
 	}
+
+    public bool IsGoal(){
+        return m_goal;
+    }
+
+    public void Goal(bool goal){
+        m_goal = goal;
+    }
+
+
 
 	void RespawnPuck(){
 			Rigidbody clone;
@@ -115,7 +126,6 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	void BlueScore() {
-		
 		score_Blue = score_Blue + 1;
 		countBlue.text = "Score: " + score_Blue.ToString();
 		scored_Blue = false;
@@ -126,10 +136,12 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	void BlueWins(){
+		m_win = true;
 		Debug.Log("blue");
 	}
 
 	void RedWins(){
+		m_win = true;
 		Debug.Log("red");
 	}
 
