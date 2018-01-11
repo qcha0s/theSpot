@@ -15,6 +15,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 	private Camera m_cam;
 	private TS_Network_Chat m_chat;
 	private TS_InGameUIManager m_UI;
+	private RayCastInteraction_UD m_interaction;
 	public Text m_nameText;
 	public GameObject m_chatSystem;
 	public GameObject m_EventSystem;
@@ -29,11 +30,13 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		m_cam = GetComponentInChildren<Camera>();
 		m_chat = GetComponentInChildren<TS_Network_Chat>();
 		m_UI = GetComponent<TS_InGameUIManager>();
+		m_interaction = GetComponent<RayCastInteraction_UD>();
 		m_movement.enabled = true;
 		m_audio.enabled = true;
 		m_cam.enabled = true;
 		m_chat.enabled = true;
 		m_UI.enabled = true;
+		m_interaction.enabled = true;
 		m_camTransform = m_cam.transform;
 		m_chatSystem.SetActive(true);
 		m_EventSystem.SetActive(true);

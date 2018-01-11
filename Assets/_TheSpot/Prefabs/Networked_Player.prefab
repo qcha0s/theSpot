@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 114232462183437998}
   - component: {fileID: 114758131079463314}
   - component: {fileID: 114661981383741878}
+  - component: {fileID: 114622688636173670}
   m_Layer: 0
   m_Name: Networked_Player
   m_TagString: Untagged
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114272985025503366}
   m_HandleRect: {fileID: 224880780266215910}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 11
   m_OnValueChanged:
@@ -1203,6 +1204,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114622688636173670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930910109701836}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cef22bb01fe8e429e98bda76a06977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_raycastDistance: 20
 --- !u!114 &114661981383741878
 MonoBehaviour:
   m_ObjectHideFlags: 1

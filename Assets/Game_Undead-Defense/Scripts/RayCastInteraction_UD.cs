@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class RayCastInteraction_UD : MonoBehaviour {
 
-	public Transform m_imagePos;
 	public float m_raycastDistance = 20f;
 	private InteractableObject_UD m_object;
 
 	private void Update() {
-		DrawCursor();
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
 			if (m_object != null) {			
@@ -17,11 +15,6 @@ public class RayCastInteraction_UD : MonoBehaviour {
 				m_object.Interact();
 			}
 		}
-	}
-
-	void DrawCursor() {
-		Vector2 point = new Vector2(Screen.width*0.5f, Screen.height*0.5f);
-		m_imagePos.position = point;
 	}
 
 	void RayCastForBlock() {
