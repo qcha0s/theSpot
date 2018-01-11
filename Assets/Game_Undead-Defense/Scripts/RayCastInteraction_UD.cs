@@ -37,11 +37,9 @@ public class RayCastInteraction_UD : MonoBehaviour {
 					m_object = newObj;
 					m_object.OnBeginRaycast();
 				}
-			} 
-			// else if (m_object != null) {
-			//  	NormalizeObject();
-			// 	 Debug.Log("here");
-			// }
+			} else if (m_object != null) {
+			 	NormalizeObject();
+			}
 		} else if (m_object != null) {
 			NormalizeObject();
 		}
