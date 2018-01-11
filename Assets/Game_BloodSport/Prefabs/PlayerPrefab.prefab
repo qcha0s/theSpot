@@ -5988,6 +5988,8 @@ GameObject:
   - component: {fileID: 114211792839504298}
   - component: {fileID: 114840081345234868}
   - component: {fileID: 114402601228062452}
+  - component: {fileID: 114613994551087034}
+  - component: {fileID: 114076333535115900}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -13317,6 +13319,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_polyScript: {fileID: 0}
+--- !u!114 &114076333535115900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913439500037554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95178128225403164}
+  m_ParameterSendBits: 255
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114078025865510886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15918,6 +15939,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114613994551087034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913439500037554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 50
+    i1: 56
+    i2: 217
+    i3: 25
+    i4: 104
+    i5: 174
+    i6: 230
+    i7: 148
+    i8: 42
+    i9: 78
+    i10: 199
+    i11: 29
+    i12: 58
+    i13: 21
+    i14: 193
+    i15: 120
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114615309513557618
 MonoBehaviour:
   m_ObjectHideFlags: 1
