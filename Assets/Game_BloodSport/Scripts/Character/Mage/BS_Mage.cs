@@ -75,20 +75,21 @@ public class BS_Mage : MonoBehaviour {
 		Destroy(bullet, 2.0f);
 	}
 
-	void Ultimate() 	{
-    // Create the Bullet from the Bullet Prefab
+	public void Ultimate() 	{
+   	 	// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
 
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 	}
-<<<<<<< HEAD
 	
 	void OnTriggerEnter(Collider other) {
 		if(!m_isMe) {
 			if(other.gameObject.name == "Polymorph(Clone)") {
 				m_polyScript.SetPoly();
-=======
+			}
+		}
+	}
 
 	IEnumerator CoolDownSystem(float cooldownvalue, string Ability) {
 		if(Ability == "Poly") {
@@ -111,7 +112,6 @@ public class BS_Mage : MonoBehaviour {
 					m_BlinkOnCD = false;
 				}
 				yield return null;
->>>>>>> bloodsport
 			}
 		}
 	}
