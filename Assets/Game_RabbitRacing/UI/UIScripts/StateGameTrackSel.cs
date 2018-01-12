@@ -18,8 +18,8 @@ public class StateGameTrackSel : GameState {
 	}
 
     //Choose map
-    public void loadScene() {
-        SceneManager.LoadScene("Scene_01");
-    }
+    //public void loadScene() {
+    //    SceneManager.LoadScene("Scene_01");
+    //}
 
 }

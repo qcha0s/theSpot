@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 
 
     public StateManager m_stateManager;
-	private GameState m_currentState; 
+	private GameState m_currentState;
+	
 	public StateGamePlay m_stateGamePlay { get; set; }
 	public StateGameWon m_stateGameWon { get; set; }
 	
