@@ -188,7 +188,7 @@ public class GameManager_UD : MonoBehaviour {
         m_maps[m_currentSelectedLevel].SetActive(false);
 
 
-//        m_currentSelectedLevel = m_mapDropdown.value;
+        m_currentSelectedLevel = m_mapDropdown.value;
 
         switch (m_mapUnlockState[m_currentSelectedLevel])
         {
