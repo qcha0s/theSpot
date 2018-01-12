@@ -11,6 +11,7 @@ public class TS_CustomNetworkManager : NetworkManager {
 	private static TS_CustomNetworkManager m_instance = null;
 	public bool isHost = false;
 	public NetworkClient m_client;
+	public GameObject LocalPlayer;
 
 	private void Awake() {
 		if (m_instance != null && m_instance != this) {
@@ -53,6 +54,10 @@ public class TS_CustomNetworkManager : NetworkManager {
 			Debug.Log("client disconnected");
 			NetworkManager.singleton.StopClient();
 		}
+	}
+
+	public void PauseConnection() {
+
 	}
 
 	IEnumerator CheckForHost() {

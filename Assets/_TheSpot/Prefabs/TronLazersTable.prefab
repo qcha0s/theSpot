@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 23167460043538786}
   - component: {fileID: 114616827015439970}
   - component: {fileID: 65638183848777426}
+  - component: {fileID: 114385715028314674}
   m_Layer: 0
   m_Name: TronLazersTable
   m_TagString: Interactable
@@ -2231,6 +2232,38 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114385715028314674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414099390661502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 184
+    i1: 32
+    i2: 109
+    i3: 199
+    i4: 181
+    i5: 168
+    i6: 82
+    i7: 132
+    i8: 203
+    i9: 160
+    i10: 235
+    i11: 67
+    i12: 106
+    i13: 207
+    i14: 218
+    i15: 158
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114616827015439970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2243,6 +2276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverMenu: {fileID: 224938212734223088}
+  m_sceneInt: 0
 --- !u!114 &114658313567055270
 MonoBehaviour:
   m_ObjectHideFlags: 1

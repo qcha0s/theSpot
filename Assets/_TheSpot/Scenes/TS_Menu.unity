@@ -151,25 +151,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224226991084461784, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224226991084461784, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 224731470485086120, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 225
+      objectReference: {fileID: 0}
     - target: {fileID: 224582562247116354, guid: 8eb41cc59efaebf479c47daed44c8742,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 465.5
+      value: 448
       objectReference: {fileID: 0}
     - target: {fileID: 224582562247116354, guid: 8eb41cc59efaebf479c47daed44c8742,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 262
+      value: 252
       objectReference: {fileID: 0}
     - target: {fileID: 224731470485086120, guid: 8eb41cc59efaebf479c47daed44c8742,
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224731470485086120, guid: 8eb41cc59efaebf479c47daed44c8742,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 225.13425
       objectReference: {fileID: 0}
     - target: {fileID: 224517815195352576, guid: 8eb41cc59efaebf479c47daed44c8742,
         type: 2}
@@ -179,7 +189,7 @@ Prefab:
     - target: {fileID: 224517815195352576, guid: 8eb41cc59efaebf479c47daed44c8742,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 225.13425
+      value: 225
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb41cc59efaebf479c47daed44c8742, type: 2}
@@ -215,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083d0ba84421a74449c452ce462dafa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_joinGameButton: {fileID: 0}
 --- !u!114 &1495321750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +326,7 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   m_netPort: 7777
   isHost: 0
+  LocalPlayer: {fileID: 0}
 --- !u!4 &1495321752
 Transform:
   m_ObjectHideFlags: 0
