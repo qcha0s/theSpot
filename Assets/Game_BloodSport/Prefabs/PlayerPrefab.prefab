@@ -3346,7 +3346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1524286877402400
 GameObject:
   m_ObjectHideFlags: 1
@@ -7343,7 +7343,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942901877068394}
-  m_LocalRotation: {x: -0.000048526636, y: 0.010815449, z: 0.9999377, w: -0.0027556054}
+  m_LocalRotation: {x: -0.000048526636, y: 0.010815452, z: 0.9999377, w: -0.002755606}
   m_LocalPosition: {x: 0.10894524, y: -0.06271942, z: 0.029071217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16427,6 +16427,11 @@ MonoBehaviour:
   m_warrior: {fileID: 1864752700588582}
   m_rogue: {fileID: 1334161526833434}
   m_hunter: {fileID: 1761241301258092}
+  HunterAnim: {fileID: 1088246567198808, guid: b4f27aa64c98b31479b1d2432dd853db, type: 2}
+  MageAnim: {fileID: 1733363714286036, guid: b95000d66c2987745aef6cc308ecd493, type: 2}
+  RogueAnim: {fileID: 1937542793378424, guid: be65704ec9e30254fb437af7cee2d178, type: 2}
+  WarriorAnim: {fileID: 1051818304574436, guid: b26956ff84c3e4048a1acaaa38596309,
+    type: 2}
   m_overallMage: {fileID: 1518680676785216}
   m_overallWarrior: {fileID: 1196175333518706}
   m_overallRogue: {fileID: 1366080353081634}
