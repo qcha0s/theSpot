@@ -3346,7 +3346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1524286877402400
 GameObject:
   m_ObjectHideFlags: 1
@@ -5983,7 +5983,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4402139698030702}
-  - component: {fileID: 95178128225403164}
   - component: {fileID: 143490500086158526}
   - component: {fileID: 114953923198020604}
   - component: {fileID: 114950567569614582}
@@ -12805,23 +12804,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95178128225403164
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1913439500037554}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1ae04709140d06d43a665ccfb5428460, type: 3}
-  m_Controller: {fileID: 9100000, guid: a2c32f87761f23d45bc04b8a5bcdea97, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95340643349231984
 Animator:
   serializedVersion: 3
@@ -12847,8 +12829,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101854270337280}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 1ae04709140d06d43a665ccfb5428460, type: 3}
+  m_Controller: {fileID: 9100000, guid: a2c32f87761f23d45bc04b8a5bcdea97, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -14694,7 +14676,7 @@ MonoBehaviour:
   m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
+  m_Animator: {fileID: 95621895565550528}
   m_ParameterSendBits: 255
   param0: 
   param1: 
@@ -16449,6 +16431,7 @@ MonoBehaviour:
   m_overallWarrior: {fileID: 1196175333518706}
   m_overallRogue: {fileID: 1366080353081634}
   m_overallHunter: {fileID: 1266663154198766}
+  m_netAnim: {fileID: 0}
 --- !u!114 &114728828916550374
 MonoBehaviour:
   m_ObjectHideFlags: 1

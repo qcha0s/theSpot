@@ -23,13 +23,15 @@ public class BS_Mage : MonoBehaviour {
 	private float m_BlinkCD = 6f;
 	// Use this for initialization
 	void Start () {
-		m_animationController = GetComponent<Animator>();
+		m_animationController = transform.root.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetMouseButtonDown(0)) {
 			m_animationController.SetTrigger("isAttacking");
+			AnimationEvent ae = new AnimationEvent();
+			ae.messageOptions = SendMessageOptions.DontRequireReceiver;
 			Debug.Log("pressed mouse button");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -49,10 +51,10 @@ public class BS_Mage : MonoBehaviour {
 		}
 	}
 
-	void Fire() 	{
+	void Fire() {
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
-
+		
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
@@ -64,7 +66,7 @@ public class BS_Mage : MonoBehaviour {
 		transform.position += transform.rotation * Vector3.forward * 5;
 	}
 
-	void Polymorph() 	{
+	void Polymorph() {
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
 
@@ -75,7 +77,7 @@ public class BS_Mage : MonoBehaviour {
 		Destroy(bullet, 2.0f);
 	}
 
-	public void Ultimate() 	{
+	public void Ultimate() {
    	 	// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
 

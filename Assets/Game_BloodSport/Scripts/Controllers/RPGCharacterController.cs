@@ -34,7 +34,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
-		m_animationController = GetComponent<Animator>();
+		m_animationController = transform.root.GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 	}
 
