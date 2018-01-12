@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
+using System;
 
 public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 
@@ -16,15 +17,24 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 	private TS_Network_Chat m_chat;
 	private TS_InGameUIManager m_UI;
 	private RayCastInteraction_UD m_interaction;
+	[SyncVar]
+	private int m_activeIndex = -1;
 	public Text m_nameText;
 	public GameObject m_chatSystem;
 	public GameObject m_EventSystem;
 	public GameObject m_glasses;
+	[Serializable]
+	public class Character {
+		[SerializeField]
+		public Avatar m_avatar;
+		[SerializeField]
+		public GameObject m_character;
+	}
+	public Character[] m_characters;
 	private static Transform m_camTransform = null; //for billboard effect
 
 
 	public override void OnStartLocalPlayer() {
-		CmdTellServerMyName(PlayerPrefs.GetString("PlayerName"));
 		m_movement = GetComponent<FirstPersonController>();
 		m_audio = GetComponentInChildren<AudioListener>();
 		m_cam = GetComponentInChildren<Camera>();
@@ -42,6 +52,9 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		m_EventSystem.SetActive(true);
 		m_glasses.SetActive(false);
 		TS_CustomNetworkManager.Instance.LocalPlayer = gameObject;
+		m_activeIndex = UnityEngine.Random.Range(0,m_characters.Length);
+		CmdTellServerMySecrets(m_activeIndex,PlayerPrefs.GetString("PlayerName"));
+		ActivateGameObject();
 	}
 
 	private void Update() {
@@ -55,7 +68,12 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 				m_nameText.text = m_PlayerName;				
 			}
 		}
-		
+		if (!isLocalPlayer) {
+			if (m_activeIndex >= 0 && !m_characters[m_activeIndex].m_character.activeInHierarchy) {
+				m_characters[m_activeIndex].m_character.SetActive(true);
+				GetComponent<Animator>().avatar = m_characters[m_activeIndex].m_avatar;				
+			}
+		}
 		RotateTextToFaceCamera();
 	}
 
@@ -68,8 +86,14 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		}
 	}
 
+	private void ActivateGameObject() {
+		m_characters[m_activeIndex].m_character.SetActive(true);
+		GetComponent<Animator>().avatar = m_characters[m_activeIndex].m_avatar;
+	}
+
 	[Command]
-	void CmdTellServerMyName(string name){
+	void CmdTellServerMySecrets(int index, string name) {
+		m_activeIndex = index;
 		m_PlayerName = name;
 	}
 }
