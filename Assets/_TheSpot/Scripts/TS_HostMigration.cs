@@ -131,7 +131,7 @@ public class TS_HostMigration : MonoBehaviour {
     }
 
     private void Start() {
-     // this.Reset(-1);
+    	this.Reset(-1);
     }
 	// Reset the migration manager and sets the ClientsScene's ReconnectId
 	public void Reset(int reconnectId) {
