@@ -72,7 +72,7 @@ GameObject:
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4268201822728274}
   - component: {fileID: 114366247774052382}
+  - component: {fileID: 135794470746231282}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -186,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4981934635838198}
   - component: {fileID: 95820246493740264}
+  - component: {fileID: 65704018735028158}
   m_Layer: 0
   m_Name: UD_Tower_Cauldron
   m_TagString: Untagged
@@ -369,7 +371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003084574508298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.93, y: 0, z: 11.81}
+  m_LocalPosition: {x: 44.2, y: 0, z: 92.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4925591859229084}
@@ -735,6 +737,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1110858147739050}
   m_Mesh: {fileID: 4300014, guid: 72c487ee606f3b0428e893bc1520d69d, type: 3}
+--- !u!65 &65704018735028158
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806674227293428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.4, y: 4.7, z: 3.37}
+  m_Center: {x: -0.5, y: 2.36, z: -7.23}
 --- !u!95 &95820246493740264
 Animator:
   serializedVersion: 3
@@ -763,8 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cf7410fe316e74eb28ebb05b45871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_range: 50
-  m_fireRate: 1
+  m_range: 10
+  m_fireRate: 10
   m_rotationSpeed: 30
   m_predictMovement: 1
   m_towerType: 2
@@ -783,5 +797,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d940650c4fc1ea94da9bf4cedd453cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isEnemy: 1
+  m_isEnemy: 0
   m_playerBase: {fileID: 0}
+--- !u!135 &135794470746231282
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479213600717486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
