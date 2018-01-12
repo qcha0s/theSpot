@@ -22,9 +22,9 @@ public class InputHandler : MonoBehaviour {
 		}
 		m_kartMovement.Turn(Input.GetAxis("Horizontal"));
 
-		if(Input.GetButtonDown("Fire1")){
- 			m_itemSlot.UseItem();
-		}
+		//if(Input.GetButtonDown("Fire1")){
+ 			//m_itemSlot.UseItem();
+		//}
 
 		m_kartMovement.SetDrift(Input.GetButton("Jump"));
 	}
