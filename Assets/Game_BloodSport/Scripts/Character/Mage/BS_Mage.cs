@@ -30,7 +30,7 @@ public class BS_Mage : MonoBehaviour {
 	void Update () {
 		if(Input.GetMouseButtonDown(0)) {
 			m_animationController.SetTrigger("isAttacking");
-			Debug.Log("pressed F");
+			Debug.Log("pressed mouse button");
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			m_animationController.SetTrigger("isAbility1");
