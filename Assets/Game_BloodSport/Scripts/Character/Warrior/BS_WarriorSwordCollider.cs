@@ -12,9 +12,9 @@ public class BS_WarriorSwordCollider : MonoBehaviour {
 	private BS_Ultimate m_ultimateScript;
 
 	void Start() {
-		m_rpgController = transform.root.GetComponent<RPGCharacterController>();
-		m_warriorController = transform.root.GetComponent<BS_Warrior>();
-		m_ultimateScript = transform.root.GetComponent<BS_Ultimate>();
+		m_rpgController = transform.GetComponentInParent<RPGCharacterController>();
+		m_warriorController = transform.GetComponentInParent<BS_Warrior>();
+		m_ultimateScript = transform.GetComponentInParent<BS_Ultimate>();
 	}	
 
 	void OnTriggerEnter(Collider other) {

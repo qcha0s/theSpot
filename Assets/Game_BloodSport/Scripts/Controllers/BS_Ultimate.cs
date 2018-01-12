@@ -55,7 +55,7 @@ public const float MAX_PROGRESS = 100.0f;
 			m_warriorScript.Ultimate();
 			break;
 			case ("Rogue"):
-			Debug.Log("Ult Rogue");
+			Debug.Log("Rogue Ults");
 			m_rogueScript.UltTarget();
 			break;
 			default:
