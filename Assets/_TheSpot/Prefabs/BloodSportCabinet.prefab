@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 23103936958320300}
   - component: {fileID: 114364578234889860}
   - component: {fileID: 65236473191524998}
+  - component: {fileID: 114236630561412308}
   m_Layer: 0
   m_Name: BloodSportCabinet
   m_TagString: Interactable
@@ -2215,6 +2216,38 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Blood Sport
+--- !u!114 &114236630561412308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126604658844844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 150
+    i1: 230
+    i2: 23
+    i3: 170
+    i4: 19
+    i5: 159
+    i6: 118
+    i7: 20
+    i8: 105
+    i9: 251
+    i10: 52
+    i11: 87
+    i12: 145
+    i13: 135
+    i14: 62
+    i15: 200
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114256646122436394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2243,6 +2276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverMenu: {fileID: 224152949000893046}
+  m_sceneInt: 0
 --- !u!114 &114537821768234530
 MonoBehaviour:
   m_ObjectHideFlags: 1

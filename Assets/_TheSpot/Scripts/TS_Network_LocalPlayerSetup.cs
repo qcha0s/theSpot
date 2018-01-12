@@ -41,6 +41,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		m_chatSystem.SetActive(true);
 		m_EventSystem.SetActive(true);
 		m_glasses.SetActive(false);
+		TS_CustomNetworkManager.Instance.LocalPlayer = gameObject;
 	}
 
 	private void Update() {
@@ -54,6 +55,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 				m_nameText.text = m_PlayerName;				
 			}
 		}
+		
 		RotateTextToFaceCamera();
 	}
 

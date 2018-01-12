@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using UnityStandardAssets.Characters.FirstPerson;
 
-public class TS_ArcadeConsoleInteraction : MonoBehaviour, InteractableObject_UD {
+
+public class TS_ArcadeConsoleInteraction : NetworkBehaviour, InteractableObject_UD {
 
 	public RectTransform m_hoverMenu;
+	public int m_sceneInt = 0;
 	private float m_scaleBigTime = 0.5f;
 	private float m_scaleSmallTime = 0.5f;
 	private bool m_scalingUp = false;
 	private bool m_scalingDown = false;
 
 	void InteractableObject_UD.Interact() {
-		Debug.Log("interacting with " + gameObject.name);
+		Debug.Log("Interacting");
+		if (isServer) {
+			TS_CustomNetworkManager.Instance.LocalPlayer.GetComponent<FirstPersonController>().enabled = false;	
+			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);	
+		} else {
+			TS_CustomNetworkManager.Instance.LocalPlayer.GetComponent<FirstPersonController>().enabled = false;		
+			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);		
+		}
 	}
 
 	void InteractableObject_UD.OnBeginRaycast() {

@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 23150274109255314}
   - component: {fileID: 114437452054351344}
   - component: {fileID: 65887154770361380}
+  - component: {fileID: 114827601600952318}
   m_Layer: 0
   m_Name: RabbitRacingCabinet
   m_TagString: Interactable
@@ -2237,6 +2238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverMenu: {fileID: 224533451154171316}
+  m_sceneInt: 0
 --- !u!114 &114576821997290548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2293,6 +2295,38 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 100
+--- !u!114 &114827601600952318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962731062474930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 100
+    i1: 247
+    i2: 125
+    i3: 148
+    i4: 92
+    i5: 25
+    i6: 138
+    i7: 4
+    i8: 73
+    i9: 222
+    i10: 230
+    i11: 212
+    i12: 154
+    i13: 2
+    i14: 194
+    i15: 251
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114879000686598684
 MonoBehaviour:
   m_ObjectHideFlags: 1
