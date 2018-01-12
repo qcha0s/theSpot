@@ -9,6 +9,9 @@ public class Arrow : MonoBehaviour {
 	private float m_totalFireTime = 2;
 	private float m_ArrowDamage=40;
 	void OnTriggerEnter(Collider other){
+		if(other.gameObject.tag == "pickup" ){
+			other.gameObject.GetComponent<BS_Pickup>().TakeDamage(m_ArrowDamage);
+		}
 		if(other.gameObject.name == "Warrior"){
 			other.gameObject.GetComponent<RPGCharacterController>().m_soundMgr.PlayArmorStrike();
 		}

@@ -15,7 +15,8 @@ public class BS_Mage : MonoBehaviour {
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
-	
+
+	private RPGCharacterController m_characterController;
 	private Animator m_animationController;
 	private bool m_PolyonCD;
 	private bool m_BlinkOnCD;
@@ -23,7 +24,18 @@ public class BS_Mage : MonoBehaviour {
 	private float m_BlinkCD = 6f;
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
 		m_animationController = transform.root.GetComponent<Animator>();
+=======
+		m_characterController = GetComponent<RPGCharacterController>();
+		m_animationController = GetComponent<Animator>();
+		for(int i = 0; i < m_CDMasks.Length; i++){
+			m_CDMasks[i].fillAmount = 0;
+			Color temp = m_CDMasks[i].color;
+			temp.a = m_characterController.m_cdTransparency;
+			m_CDMasks[i].color = temp;
+		}
+>>>>>>> origin/BloodSportgameplay
 	}
 	
 	// Update is called once per frame
@@ -34,21 +46,17 @@ public class BS_Mage : MonoBehaviour {
 			ae.messageOptions = SendMessageOptions.DontRequireReceiver;
 			Debug.Log("pressed mouse button");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha1)) {
+		if(Input.GetKeyDown(KeyCode.Alpha1) && !m_PolyonCD) {
 			m_animationController.SetTrigger("isAbility1");
 			Debug.Log("pressed 1");
 			m_animationController.SetTrigger("isPoly");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+		if(Input.GetKeyDown(KeyCode.Alpha2) && !m_BlinkOnCD) {
 			m_animationController.SetTrigger("isAbility2");
 			Debug.Log("pressed 2");
 			m_animationController.SetTrigger("isBlinking");
 		}
-		if(Input.GetKeyDown(KeyCode.Alpha3)) {
-			m_animationController.SetTrigger("isAbility3");
-			Debug.Log("pressed 3");
-			m_animationController.SetTrigger("isUltimate");
-		}
+		
 	}
 
 	void Fire() {
@@ -64,6 +72,9 @@ public class BS_Mage : MonoBehaviour {
 
 	void Blink() {
 		transform.position += transform.rotation * Vector3.forward * 5;
+		m_BlinkOnCD = true;
+		m_CDMasks[1].fillAmount = 1;
+		StartCoroutine(CoolDownSystem(m_BlinkCD,"Blink"));
 	}
 
 	void Polymorph() {
@@ -72,7 +83,9 @@ public class BS_Mage : MonoBehaviour {
 
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
+		m_PolyonCD = true;
+		m_CDMasks[0].fillAmount = 1;
+		StartCoroutine(CoolDownSystem(m_PolyCD,"Poly"));
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
 	}

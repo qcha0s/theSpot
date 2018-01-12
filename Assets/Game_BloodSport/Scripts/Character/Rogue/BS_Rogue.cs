@@ -76,6 +76,7 @@ public class BS_Rogue : MonoBehaviour {
 	}
 
 	public void UltTarget(){
+		Debug.Log("Activate Ult");
 		m_soundMgr.PlaySmoke();
 		m_targetGUI.SetActive(true);
 	}

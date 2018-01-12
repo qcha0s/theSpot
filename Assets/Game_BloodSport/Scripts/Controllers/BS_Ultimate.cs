@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BS_Ultimate : MonoBehaviour {
 public const float MAX_PROGRESS = 100.0f;
 
 	public float m_currentProgress;
 	public string m_ult;
-
+	public Image m_ultMask;
+	public Text m_ultText;
 	private float chargeRate = 1f;
 	private BS_Warrior m_warriorScript;
 	private BS_Mage m_mageScript;
@@ -23,9 +25,18 @@ public const float MAX_PROGRESS = 100.0f;
 
 	void Start() {
 		m_currentProgress = 0;
+		
 	}
 
 	public void Update() {
+		if(m_currentProgress >= MAX_PROGRESS){
+			m_ultMask.fillAmount = 0;
+			m_ultText.enabled = false;
+		}
+		else{
+			m_ultMask.fillAmount = 1;
+			m_ultText.enabled = true;
+		}
 		if(m_currentProgress >= MAX_PROGRESS && Input.GetKeyDown("3")) {
 				Activate();
 		}
@@ -43,7 +54,8 @@ public const float MAX_PROGRESS = 100.0f;
 			case ("Warrior"):
 			m_warriorScript.Ultimate();
 			break;
-			case ("Rougue"):
+			case ("Rogue"):
+			Debug.Log("Rogue Ults");
 			m_rogueScript.UltTarget();
 			break;
 			default:
