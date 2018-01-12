@@ -134,7 +134,30 @@ public class TS_HostMigration : MonoBehaviour {
      // this.Reset(-1);
     }
 	// Reset the migration manager and sets the ClientsScene's ReconnectId
-
+	public void Reset(int reconnectId) {
+		this.m_OldServerConnectionID = -1;
+		this.m_WaitingToBecomeNewHost = false;
+		this.m_WaitingReconnectToNewHost = false;
+		this.m_DisconnectedFromHost = false;
+		this.m_HostWasShutDown = false;
+		ClientScene.SetReconnectId(reconnectId, this.m_Peers);
+		if(!((Object) NetworkManager.singleton != (Object) null))
+		return;
+		//NetworkManager.singleton.SetupMigrationManager(this);
+	}
+	internal void AssignAuthorityCallback(NetworkConnection conn, NetworkIdentity uv, bool authorityState) {
+		PeerAuthorityMessage authorityMessage = new PeerAuthorityMessage();
+		authorityMessage.connectionId = conn.connectionId;
+		authorityMessage.netId = uv.netId;
+		authorityMessage.authorityState = authorityState;
+		if (LogFilter.logDebug)
+			Debug.Log((object) ("AssignAuthorityCallback send for netId" + (object) uv.netId));
+		for (int index = 0; index < NetworkServer.connections.Count; ++index) {
+			NetworkConnection connection = NetworkServer.connections[index];
+			if(connection != null)
+				connection.Send((short) 17, (MessageBase) authorityMessage);
+		}
+	}
 
 
 
