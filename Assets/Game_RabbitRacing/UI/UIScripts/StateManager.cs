@@ -10,6 +10,8 @@ public class StateManager : MonoBehaviour {
 	private GameStates m_activeState; 
 	private int m_numStates;
 
+	
+
 	void Awake() {
 		m_numStates = m_gameStates.Length;
 		
