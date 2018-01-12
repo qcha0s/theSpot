@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class RayCastInteraction_UD : MonoBehaviour {
 
-	public Transform m_imagePos;
+	public enum GameMode {TheSpot, Undead_Defense}
 	public float m_raycastDistance = 20f;
 	private InteractableObject_UD m_object;
+	public GameMode m_gameMode = GameMode.Undead_Defense;
 
 	private void Update() {
-		DrawCursor();
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
-			if (m_object != null) {			
-				GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
+			if (m_object != null) {	
+				if (m_gameMode == GameMode.Undead_Defense) {
+					GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
+				}
 				m_object.Interact();
 			}
 		}
-	}
-
-	void DrawCursor() {
-		Vector2 point = new Vector2(Screen.width*0.5f, Screen.height*0.5f);
-		m_imagePos.position = point;
 	}
 
 	void RayCastForBlock() {
@@ -40,10 +37,9 @@ public class RayCastInteraction_UD : MonoBehaviour {
 					m_object = newObj;
 					m_object.OnBeginRaycast();
 				}
-			} 
-			// else if (m_object != null) {
-			// 	NormalizeObject();
-			// }
+			} else if (m_object != null) {
+			 	NormalizeObject();
+			}
 		} else if (m_object != null) {
 			NormalizeObject();
 		}

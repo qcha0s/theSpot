@@ -11,11 +11,9 @@ public class TS_Network_Chat : TS_ChatInterface{
 	private const short m_chatMessage = 131; //identifier, can seperate these to do PMs and group messages and stuff
 	private string m_playerName;
 
-	private void Start() {
-		if (isClient) {
-			NetworkManager.singleton.client.RegisterHandler(m_chatMessage, ReceiveMessage); //if network receives message with code (m_chatmessage) will do method 'receivemessage'
-		}
-		InitComponents();	
+	public override void OnStartLocalPlayer() {
+		InitComponents();
+		NetworkManager.singleton.client.RegisterHandler(m_chatMessage, ReceiveMessage); //if network receives message with code (m_chatmessage) will do method 'receivemessage'
 		if (NetworkServer.active) {
 			NetworkServer.RegisterHandler(m_chatMessage, ServerReceiveMessage);
 		}

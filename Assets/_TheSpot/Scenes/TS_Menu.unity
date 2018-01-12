@@ -161,6 +161,26 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 262
       objectReference: {fileID: 0}
+    - target: {fileID: 224731470485086120, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224731470485086120, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 225.13425
+      objectReference: {fileID: 0}
+    - target: {fileID: 224517815195352576, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224517815195352576, guid: 8eb41cc59efaebf479c47daed44c8742,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 225.13425
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb41cc59efaebf479c47daed44c8742, type: 2}
   m_IsPrefabParent: 0
@@ -173,9 +193,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1495321752}
-  - component: {fileID: 1495321751}
   - component: {fileID: 1495321750}
   - component: {fileID: 1495321749}
+  - component: {fileID: 1495321751}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -202,7 +222,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1495321748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 227461547, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
@@ -214,13 +234,12 @@ MonoBehaviour:
 --- !u!114 &1495321751
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114677773187638456, guid: b8949d7fdd8444042b952135983e3ac8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1495321748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -822479833, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 80e7b3209e983cf48b481ce63a98e5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -237,9 +256,9 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: TS_Menu
-  m_OnlineScene: Jason's Networked Scene
+  m_OnlineScene: TS_Main
   m_SpawnPrefabs: []
-  m_CustomConfig: 1
+  m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
     m_PacketSize: 1440
@@ -281,11 +300,11 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 0500000000000000
+  m_Channels: 
   m_UseWebSockets: 0
-  m_UseSimulator: 1
-  m_SimulatedLatency: 50
-  m_PacketLossPercentage: 1
+  m_UseSimulator: 0
+  m_SimulatedLatency: 1
+  m_PacketLossPercentage: 0
   m_MaxBufferedPackets: 16
   m_AllowFragmentation: 1
   m_MatchHost: mm.unet.unity3d.com
@@ -294,6 +313,8 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  m_netPort: 7777
+  isHost: 0
 --- !u!4 &1495321752
 Transform:
   m_ObjectHideFlags: 0

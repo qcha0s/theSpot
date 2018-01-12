@@ -24,9 +24,6 @@ public class TS_Network_TransformSync : NetworkBehaviour {
 	private float rotFastLerpRate = 20f;
 	public bool m_useHistoricalLerping = false;
 
-	private void Start() {
-	}
-
 	void FixedUpdate() {
 		TransmitTransform();
 	}
