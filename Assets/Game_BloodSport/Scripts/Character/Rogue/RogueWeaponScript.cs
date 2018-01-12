@@ -15,7 +15,7 @@ public class RogueWeaponScript : MonoBehaviour {
 
 
     void Start(){
-        m_rpgController = transform.root.GetComponent<RPGCharacterController>();
+        m_rpgController = transform.GetComponentInParent<RPGCharacterController>();
         m_RogueController = transform.root.GetComponent<BS_Rogue>();
     }
 	void OnTriggerEnter(Collider other){

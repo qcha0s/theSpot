@@ -10,7 +10,6 @@ public class BS_Hunter : MonoBehaviour {
 	public Image[] m_CDMasks;
 	public GameObject m_Ultimate;
 	public GameObject m_IceArrowPrefab;
-	public GameObject m_FlameArrow;
 	public BS_SoundManager m_soundMgr;
 
 	private float m_ArrowVelocity = 500;
