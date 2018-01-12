@@ -249,7 +249,7 @@ public class GameManager_UD : MonoBehaviour {
     {
         Instantiate(m_poolManager);
         m_currentGold = m_startGold[m_currentSelectedLevel];
-
+        UpdatePlayerHPBar(1);
         UpdateGold();
         ChangeState(GameState_UD.Play);
         HideMouse();
@@ -415,6 +415,11 @@ public class GameManager_UD : MonoBehaviour {
         ShowMouse();
         ChangeState(GameState_UD.Lose);
         //track survived waves in surivival
+        if (m_currentGameMode == GameMode.Survival){
+            if (WaveManager.instance.GetCurrentWave() - 1 > m_bestWave[m_currentSelectedLevel]){
+                PlayerPrefs.SetInt("Bestwave"+m_currentSelectedLevel.ToString(),WaveManager.instance.GetCurrentWave() - 1);
+            }
+        }
     }
     public void ButtonMainMenu(){
         ChangeState(GameState_UD.Loading);
@@ -474,5 +479,15 @@ public class GameManager_UD : MonoBehaviour {
 
     public void UpdatePlayerHPBar(float percentage){
         m_playerHealthBar.fillAmount = percentage;
+
+        if(percentage <= 0.25f){
+            m_playerHealthBar.color = Color.red;
+        }
+        else if(percentage <= 0.5f){
+            m_playerHealthBar.color = Color.yellow;
+        }
+        else{
+            m_playerHealthBar.color = Color.green;
+        }
     }
 }
