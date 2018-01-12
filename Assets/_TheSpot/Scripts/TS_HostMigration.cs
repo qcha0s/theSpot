@@ -98,7 +98,7 @@ public class TS_HostMigration : MonoBehaviour {
 			return this.m_PendingPlayers;
 		}
 	}
-	// reconnecting the pending client
+	// adding the pending client
 	private void AddPendingPlayer(GameObject obj, int connectionId, NetworkInstanceId netId, short playerControllerId) {
 		if (!this.m_PendingPlayers.ContainsKey(connectionId))
 		this.m_PendingPlayers[connectionId] = new NetworkMigrationManager.ConnectionPendingPlayers(){
@@ -110,6 +110,30 @@ public class TS_HostMigration : MonoBehaviour {
 			obj = obj
 		});
 	}
+	// finding the pending
+	private GameObject FindPendingPlayer(int connectionId, NetworkInstanceId netId, short playerControllerId) {
+      if (this.m_PendingPlayers.ContainsKey(connectionId)) {
+
+        using (List<NetworkMigrationManager.PendingPlayerInfo>.Enumerator enumerator = this.m_PendingPlayers[connectionId].players.GetEnumerator()){
+          while (enumerator.MoveNext()) {
+
+            NetworkMigrationManager.PendingPlayerInfo current = enumerator.Current;
+            if (current.netId == netId && (int) current.playerControllerId == (int) playerControllerId)
+              return current.obj;
+          }
+        }
+      }
+      return (GameObject) null;
+    }
+
+    private void RemovePendingPlayer(int connectionId) {
+      this.m_PendingPlayers.Remove(connectionId);
+    }
+
+    private void Start() {
+     // this.Reset(-1);
+    }
+	// Reset the migration manager and sets the ClientsScene's ReconnectId
 
 
 
