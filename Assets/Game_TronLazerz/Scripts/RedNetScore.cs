@@ -7,7 +7,7 @@ public class RedNetScore : MonoBehaviour {
 	public ScoreManager m_sm;
 
 	void Awake(){
-			m_sm = GetComponent<ScoreManager>();
+			m_sm = GetComponentInParent<ScoreManager>();
 		}
 		
 	void OnTriggerEnter(Collider other){

@@ -10,7 +10,7 @@ public class LocalPlayerSetUp : NetworkBehaviour {
 	// Use this for initialization
 	public override void OnStartLocalPlayer(){
 		GetComponent<TronPlayerMovement>().enabled=true;
-		if(isServer || isClient){
+		if(isServer){
 			SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
 			renderer.color =  Color.blue;
 		}else{

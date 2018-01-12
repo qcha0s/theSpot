@@ -7,8 +7,9 @@ public class BlueNetScore : MonoBehaviour {
 public ScoreManager m_sm;
 
 	void Awake(){
-			m_sm = GetComponent<ScoreManager>();
-		}	
+		m_sm = GetComponentInParent<ScoreManager>();
+		Debug.Log(m_sm == null);
+	}	
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "goal"){
