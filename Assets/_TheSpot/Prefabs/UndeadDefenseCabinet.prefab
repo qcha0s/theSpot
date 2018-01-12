@@ -123,9 +123,12 @@ GameObject:
   - component: {fileID: 4360256147737224}
   - component: {fileID: 33775624875949718}
   - component: {fileID: 23204714096082022}
+  - component: {fileID: 114184244400536518}
+  - component: {fileID: 114852316054477684}
+  - component: {fileID: 65648282873101312}
   m_Layer: 0
   m_Name: UndeadDefenseCabinet
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +350,7 @@ GameObject:
   - component: {fileID: 114006920117289114}
   m_Layer: 0
   m_Name: InteractionCanvas
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -700,8 +703,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308868985036250}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 13.67, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4957046255276424}
@@ -721,7 +724,7 @@ Transform:
   - {fileID: 224421599505096048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4428313873569736
 Transform:
   m_ObjectHideFlags: 1
@@ -2168,6 +2171,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706583969152868}
   m_Mesh: {fileID: 4300000, guid: 344e0888a6435b94685032a6bdff2c35, type: 3}
+--- !u!65 &65648282873101312
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308868985036250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2000005, y: 2.453561, z: 1.504095}
+  m_Center: {x: -0.0035025189, y: 1.2371637, z: 0.12759638}
 --- !u!114 &114006920117289114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,6 +2199,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114184244400536518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308868985036250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8f696653f11cd4583a49470394a51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hoverMenu: {fileID: 224421599505096048}
 --- !u!114 &114320394702787002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2250,7 +2277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.684}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2298,6 +2325,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Undead Defense
+--- !u!114 &114852316054477684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308868985036250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8f696653f11cd4583a49470394a51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hoverMenu: {fileID: 224421599505096048}
 --- !u!222 &222285117175249736
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2354,7 +2393,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.8, y: 1.5}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224421599505096048
 RectTransform:
@@ -2363,8 +2402,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680864862193264}
   m_LocalRotation: {x: -0.08889421, y: 0, z: 0, w: 0.9960411}
-  m_LocalPosition: {x: 0, y: 2.67, z: 0.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.592, z: 0.529}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224236190314099424}
   m_Father: {fileID: 4360256147737224}
@@ -2372,8 +2411,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -10.2, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.67}
-  m_SizeDelta: {x: 1.8, y: 1.5}
+  m_AnchoredPosition: {x: -0, y: 1.592}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224454925837523812
 RectTransform:
@@ -2383,7 +2422,7 @@ RectTransform:
   m_GameObject: {fileID: 1278427209630636}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 1}
   m_Children: []
   m_Father: {fileID: 224236190314099424}
   m_RootOrder: 1
@@ -2401,7 +2440,7 @@ RectTransform:
   m_GameObject: {fileID: 1801543748633794}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.099999905, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.09, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 224236190314099424}
   m_RootOrder: 0
