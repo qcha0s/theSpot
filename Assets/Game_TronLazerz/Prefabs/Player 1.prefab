@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 54792029233579788}
   - component: {fileID: 135734979056547256}
   - component: {fileID: 114740167477860928}
+  - component: {fileID: 122875974462928968}
   m_Layer: 0
   m_Name: Paddle_Red
   m_TagString: paddle
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8905c482913df2f4fa20505274988fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
 --- !u!114 &114199425155649430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +198,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 54872405197122928}
   speed: 2
+--- !u!122 &122875974462928968
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228509010970200}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_Size: 0.8
 --- !u!135 &135734979056547256
 SphereCollider:
   m_ObjectHideFlags: 1

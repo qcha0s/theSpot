@@ -21,10 +21,11 @@ public class ScoreManager : NetworkBehaviour {
 	public bool IsRegular;
 
 	public GameObject green_puck;
-
+	
 	public float hockey_Time;
 	public float m_overtime;
-	public float m_wholeAmount;
+	[SyncVar (hook="UpdateTimeText")]
+	public int m_wholeAmount;
 
 	public Text countRed;
 
@@ -36,6 +37,8 @@ public class ScoreManager : NetworkBehaviour {
 	public bool m_goal = false;
 	public bool m_win = false;
 
+	bool m_over = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -46,17 +49,37 @@ public class ScoreManager : NetworkBehaviour {
 		IsOvertime = false;
 		IsRegular = true;
 		hockey_Time = 60;
+		m_over= false;
 		countRed.text = "Score: " + score_Red.ToString();
 		countBlue.text = "Score: " + score_Blue.ToString();
 		countTime.text = "Time: " + hockey_Time.ToString();
-		
+		RespawnPuck();
 	
-		
+	}
+
+	public void ResetGame () {
+		Debug.Log("Reset");
+		score_Blue = 0;
+		score_Red = 0;
+		scored_Blue = false;
+		scored_Red = false;
+		IsOvertime = false;
+		IsRegular = true;
+		hockey_Time = 10;
+		countRed.text = "Score: " + score_Red.ToString();
+		countBlue.text = "Score: " + score_Blue.ToString();
+		countTime.text = "Time: " + hockey_Time.ToString();
+	
 	}
 	private void UpdateRedText(int score){
 		countRed.text = "Score: " + score.ToString();
 	}
-
+	private void UpdateTimeText(int time){
+		countTime.text = "Time: " + time.ToString();
+	}
+	private void UpdateBlueText(int score){
+		countBlue.text = "Score: " + score.ToString();
+	}
     public bool IsGoal(){
         return m_goal;
     }
@@ -66,11 +89,13 @@ public class ScoreManager : NetworkBehaviour {
     }
 
 
-
-
-	private void UpdateBlueText(int score){
-		countBlue.text = "Score: " + score.ToString();
+	void OnClientStart(NetworkPlayer other){
+		Debug.Log("rrrr");
+		ResetGame();
 	}
+
+
+
 	
 	
 
@@ -102,12 +127,11 @@ public class ScoreManager : NetworkBehaviour {
 
 	void HockeyTimer(){
 		hockey_Time = hockey_Time -= Time.deltaTime;
-		m_wholeAmount = Mathf.Round(hockey_Time);		
-		countTime.text = "Time: " + m_wholeAmount.ToString();
+		m_wholeAmount = (int)Mathf.Round(hockey_Time);		
 		if(IsRegular == false){
 			countTime.text = "OVERTIME"; 
 		}
-	HockeyEndTimer();
+		HockeyEndTimer();
 	}
 
 	void HockeyEndTimer(){
@@ -117,7 +141,7 @@ public class ScoreManager : NetworkBehaviour {
 		if(hockey_Time <= 0 && score_Blue > score_Red){
 			BlueWins();
 		}
-		if(hockey_Time <= 0 && score_Blue == score_Red){
+		if(hockey_Time <= 0 && score_Blue == score_Red && !IsOvertime){
 			IsOvertime = true;
 			IsRegular = false;
 			Overtime();
@@ -145,11 +169,21 @@ public class ScoreManager : NetworkBehaviour {
 	}
 
 	void BlueWins(){
-		countTime.text = "Blue Wins";
+		countTime.text = "Red Wins";
+		m_over = true;
 	}
 
 	void RedWins(){
-		countTime.text = "Red Wins";
+		countTime.text = "Blue Wins";
+		m_over = true;
+	}
+
+	void gameEnd(){
+		if(m_over){
+		//	Time.timeScale = 0;
+			Start();
+		}
+		
 	}
 
 	
@@ -164,6 +198,7 @@ public class ScoreManager : NetworkBehaviour {
 			RespawnPuck();
 		}
 		HockeyTimer();
+		gameEnd();
 		
 	}
 

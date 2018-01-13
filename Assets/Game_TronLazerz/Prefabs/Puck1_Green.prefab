@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114077460716086520}
   - component: {fileID: 114270719275045584}
   - component: {fileID: 96896207817949600}
+  - component: {fileID: 122016299959643096}
   m_Layer: 0
   m_Name: Puck1_Green
   m_TagString: Player
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554327276504614}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.07}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +97,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.5
@@ -153,7 +154,7 @@ TrailRenderer:
     textureMode: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 1
+  m_Autodestruct: 0
 --- !u!114 &114077460716086520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.05
+  m_SendInterval: 0.03448276
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -218,6 +219,17 @@ MonoBehaviour:
     i15: 220
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!122 &122016299959643096
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554327276504614}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279041792
+  m_Size: 0.8
 --- !u!135 &135834640901422584
 SphereCollider:
   m_ObjectHideFlags: 1

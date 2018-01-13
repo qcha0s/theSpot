@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TronLazerz;
 
 public enum GameState { Intro, Menu, Play, Win, Lose, OverTime }
 
@@ -16,7 +17,7 @@ public GameState m_currentState;
 public GameObject[] m_gameStates;
 public GameObject[] m_paddle;
 public GameObject m_pauseMenu;
-public Dropdown m_dropdownPaddle;
+public TronLazerz.Dropdown m_dropdownPaddle;
 public int m_paddleSelected;
 
 public GameObject m_timer;

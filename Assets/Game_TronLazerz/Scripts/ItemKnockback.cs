@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
-public class ItemKnockback : NetworkBehaviour {
+
+public class ItemKnockback : MonoBehaviour {
 
     private bool m_hit = false;
 

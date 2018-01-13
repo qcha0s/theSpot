@@ -8,7 +8,7 @@ public ScoreManager m_sm;
 
 	void Awake(){
 		m_sm = GetComponentInParent<ScoreManager>();
-		Debug.Log(m_sm == null);
+		
 	}	
 
 	void OnTriggerEnter(Collider other){
