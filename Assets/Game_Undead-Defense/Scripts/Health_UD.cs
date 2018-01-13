@@ -73,7 +73,9 @@ public class Health_UD : BaseHealth
                     m_currentRespawnTime = 0.0f;
                 }
             }
-			GameManager_UD.instance.UpdatePlayerHPBar(m_currentHealth / m_maxHealth);
+			if (m_isPlayer){
+				GameManager_UD.instance.UpdatePlayerHPBar(m_currentHealth / m_maxHealth);
+			}
 
         }
     }

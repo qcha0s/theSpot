@@ -412,7 +412,13 @@ public class GameManager_UD : MonoBehaviour {
     }
 
     public void GameLose(){
+        
+        HideBuildTowerUI();
         ShowMouse();
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<BaseMovement_UD>().enabled = false;
+        player.GetComponent<CharacterMovement_UD>().enabled = false;
+        player.GetComponent<RayCastInteraction_UD>().enabled = false;
         ChangeState(GameState_UD.Lose);
         //track survived waves in surivival
         if (m_currentGameMode == GameMode.Survival){
@@ -420,6 +426,7 @@ public class GameManager_UD : MonoBehaviour {
                 PlayerPrefs.SetInt("Bestwave"+m_currentSelectedLevel.ToString(),WaveManager.instance.GetCurrentWave() - 1);
             }
         }
+
     }
     public void ButtonMainMenu(){
         ChangeState(GameState_UD.Loading);

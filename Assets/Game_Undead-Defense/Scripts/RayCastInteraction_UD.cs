@@ -8,12 +8,15 @@ public class RayCastInteraction_UD : MonoBehaviour {
 	public float m_raycastDistance = 20f;
 	private InteractableObject_UD m_object;
 
+	void Start(){
+		GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
+	}
+
 	private void Update() {
 		DrawCursor();
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
 			if (m_object != null) {			
-				GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
 				m_object.Interact();
 			}
 		}
