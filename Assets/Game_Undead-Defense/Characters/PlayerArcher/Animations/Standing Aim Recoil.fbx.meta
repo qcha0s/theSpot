@@ -252,7 +252,15 @@ ModelImporter:
       - time: 0.28414097
         functionName: ShootArrow
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c7629c59d1a7dc84895487f0bcf809b5,
+        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99766356
+        functionName: Moving
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: de43fa73b01fbeb4faef62720351eee7,
           type: 3}
         floatParameter: 0
         intParameter: 0
