@@ -22,80 +22,17 @@ public class BS_Mage : MonoBehaviour {
 	private bool m_BlinkOnCD;
 	private float m_PolyCD = 6f;
 	private float m_BlinkCD = 6f;
+	private NetworkedMage networkedMage;
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
 		m_animationController = transform.root.GetComponent<Animator>();
-=======
 		m_characterController = GetComponent<RPGCharacterController>();
-		m_animationController = GetComponent<Animator>();
 		for(int i = 0; i < m_CDMasks.Length; i++){
 			m_CDMasks[i].fillAmount = 0;
 			Color temp = m_CDMasks[i].color;
 			temp.a = m_characterController.m_cdTransparency;
 			m_CDMasks[i].color = temp;
 		}
->>>>>>> origin/BloodSportgameplay
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetMouseButtonDown(0)) {
-			m_animationController.SetTrigger("isAttacking");
-			AnimationEvent ae = new AnimationEvent();
-			ae.messageOptions = SendMessageOptions.DontRequireReceiver;
-			Debug.Log("pressed mouse button");
-		}
-		if(Input.GetKeyDown(KeyCode.Alpha1) && !m_PolyonCD) {
-			m_animationController.SetTrigger("isAbility1");
-			Debug.Log("pressed 1");
-			m_animationController.SetTrigger("isPoly");
-		}
-		if(Input.GetKeyDown(KeyCode.Alpha2) && !m_BlinkOnCD) {
-			m_animationController.SetTrigger("isAbility2");
-			Debug.Log("pressed 2");
-			m_animationController.SetTrigger("isBlinking");
-		}
-		
-	}
-
-	void Fire() {
-		// Create the Bullet from the Bullet Prefab
-		var bullet = (GameObject)Instantiate (fireBallPrefab, spellSpawn.position, spellSpawn.rotation);
-		
-		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
-		// Destroy the bullet after 2 seconds
-		Destroy(bullet, 2.0f);
-	}
-
-	void Blink() {
-		transform.position += transform.rotation * Vector3.forward * 5;
-		m_BlinkOnCD = true;
-		m_CDMasks[1].fillAmount = 1;
-		StartCoroutine(CoolDownSystem(m_BlinkCD,"Blink"));
-	}
-
-	void Polymorph() {
-		// Create the Bullet from the Bullet Prefab
-		var bullet = (GameObject)Instantiate (polyPrefab, spellSpawn.position, spellSpawn.rotation);
-
-		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-		m_PolyonCD = true;
-		m_CDMasks[0].fillAmount = 1;
-		StartCoroutine(CoolDownSystem(m_PolyCD,"Poly"));
-		// Destroy the bullet after 2 seconds
-		Destroy(bullet, 2.0f);
-	}
-
-	public void Ultimate() {
-   	 	// Create the Bullet from the Bullet Prefab
-		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
-
-		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 	}
 	
 	void OnTriggerEnter(Collider other) {

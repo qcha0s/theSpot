@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 114012617359070126}
   - component: {fileID: 95621895565550528}
   - component: {fileID: 114304364869733826}
+  - component: {fileID: 114129442412406772}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -13576,6 +13577,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114129442412406772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101854270337280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a58a73f906a3d4b8cc6d12942f7251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mage: {fileID: 114211792839504298}
 --- !u!114 &114132503160639398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13597,7 +13610,6 @@ MonoBehaviour:
   m_Ultimate: {fileID: 1914038945399258, guid: d9d7282ea29631744990a4e9590dc0f6, type: 2}
   m_IceArrowPrefab: {fileID: 1914038945399258, guid: d9d7282ea29631744990a4e9590dc0f6,
     type: 2}
-  m_FlameArrow: {fileID: 0}
   m_soundMgr: {fileID: 0}
 --- !u!114 &114135145919499682
 MonoBehaviour:
@@ -14112,6 +14124,10 @@ MonoBehaviour:
   - {fileID: 114809432573579584}
   m_soundMgr: {fileID: 0}
   m_ultActive: 0
+  m_PolyonCD: 0
+  m_BlinkOnCD: 0
+  m_PolyCD: 6
+  m_BlinkCD: 6
 --- !u!114 &114216418261465600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14751,6 +14767,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentProgress: 0
   m_ult: 
+  m_ultMask: {fileID: 0}
+  m_ultText: {fileID: 0}
 --- !u!114 &114322174341648036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16422,7 +16440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9cfde6372b831479c81963bb72a092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_chosenChar: 0
   m_mage: {fileID: 1913439500037554}
   m_warrior: {fileID: 1864752700588582}
   m_rogue: {fileID: 1334161526833434}
@@ -16652,6 +16669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentProgress: 0
   m_ult: 
+  m_ultMask: {fileID: 0}
+  m_ultText: {fileID: 0}
 --- !u!114 &114758621193651028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16819,6 +16838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentProgress: 0
   m_ult: 
+  m_ultMask: {fileID: 0}
+  m_ultText: {fileID: 0}
 --- !u!114 &114803460212887220
 MonoBehaviour:
   m_ObjectHideFlags: 1

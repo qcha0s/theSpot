@@ -14,8 +14,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	public GameObject MageAnim;
 	public GameObject RogueAnim;
 	public GameObject WarriorAnim;
-
-
 	public GameObject m_overallMage;
 	public GameObject m_overallWarrior;
 	public GameObject m_overallRogue;
@@ -32,7 +30,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 		m_netAnim = this.GetComponent<NetworkAnimator>();
 	}
 	
-
 	public override void OnStartLocalPlayer() {
 		//m_netAnim.enabled = true;
 		switch(m_chosenChar) {
@@ -104,11 +101,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 				m_overallMage.SetActive(true);
 				break;
 		}
-	}
-
-	void Update() {
-		Debug.Log(m_currAnimator.gameObject.name);
-		Debug.Log(m_netAnim == null);
 	}
 
 	public void SetAnimator() {
