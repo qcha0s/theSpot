@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 199506186680996646}
   - component: {fileID: 54033668637534284}
   - component: {fileID: 136748143271361874}
+  - component: {fileID: 114723139238973260}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Untagged
@@ -131,6 +132,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114723139238973260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043374010941776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f05c4bd00ab8b43825ef4b9425ba8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pullRadius: 10
+  m_pullForce: 200
 --- !u!135 &135695068238055782
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -216,7 +230,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -576796929
+  randomSeed: -35128451
   InitialModule:
     serializedVersion: 3
     enabled: 1
