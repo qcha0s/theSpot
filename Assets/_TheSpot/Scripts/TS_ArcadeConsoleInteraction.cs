@@ -18,6 +18,7 @@ public class TS_ArcadeConsoleInteraction : NetworkBehaviour, InteractableObject_
 
 	void InteractableObject_UD.Interact() {
 		Debug.Log("Interacting");
+		TS_SoundManager.Instance.StopMusic();
 		if (isServer) {
 			TS_CustomNetworkManager.Instance.LocalPlayer.GetComponent<FirstPersonController>().enabled = false;	
 			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);	
