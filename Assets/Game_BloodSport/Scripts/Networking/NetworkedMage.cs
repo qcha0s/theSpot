@@ -6,13 +6,11 @@ using UnityEngine.Networking;
 public class NetworkedMage : NetworkBehaviour {
 
 	public BS_Mage mage;
+	public GameObject m_mage;
 
 
 	private NetworkAnimator m_networkAnimator;
 	private Animator m_animator;
-	//private bool isAttacking = false;
-	//private bool isPoly = false;
-	//private bool isBlinking = false;
 
 	void Start() {
 		m_networkAnimator = GetComponent<NetworkAnimator>();
@@ -22,15 +20,21 @@ public class NetworkedMage : NetworkBehaviour {
 	void Update(){
 		if(Input.GetMouseButtonDown(0)) {
 			NetworkSyncTrigger("isAttacking");
-			//isAttacking = true;
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1) && !mage.m_PolyonCD) {
-			NetworkSyncTrigger("isPoly");
-			//isPoly = true;
+			if(!mage.m_PolyonCD) {
+				mage.m_PolyonCD = true;
+				NetworkSyncTrigger("isPoly");
+			}
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha2) && !mage.m_BlinkOnCD) {
-			NetworkSyncTrigger("isBlinking");
-			//isBlinking = true;
+			if(!mage.m_BlinkOnCD) {
+				mage.m_BlinkOnCD = true;
+				NetworkSyncTrigger("isBlinking");
+			}
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			NetworkSyncTrigger("isUltimate");
 		}
 	}
 
@@ -64,12 +68,9 @@ public class NetworkedMage : NetworkBehaviour {
 	}
 
  	void Blink() {
-		if(isLocalPlayer) {
-			transform.position += transform.rotation * Vector3.forward * 5;
-			mage.m_BlinkOnCD = true;
-			mage.m_CDMasks[1].fillAmount = 1;
-			StartCoroutine(mage.CoolDownSystem(mage.m_BlinkCD,"Blink"));
-		}
+		m_mage.transform.position += m_mage.transform.rotation * Vector3.forward * 5;
+		mage.m_CDMasks[1].fillAmount = 1;
+		StartCoroutine(mage.CoolDownSystem(mage.m_BlinkCD, "Blink"));
 	}
 
 	[Command]
@@ -79,9 +80,11 @@ public class NetworkedMage : NetworkBehaviour {
 
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-		mage.m_PolyonCD = true;
 		mage.m_CDMasks[0].fillAmount = 1;
-		StartCoroutine(mage.CoolDownSystem(mage.m_PolyCD,"Poly"));
+		StartCoroutine(mage.CoolDownSystem(mage.m_PolyCD, "Poly"));
+
+		NetworkServer.Spawn(bullet);
+
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
 	}
@@ -92,11 +95,21 @@ public class NetworkedMage : NetworkBehaviour {
 		}
 	}
 
-	// 	public void Ultimate() {
-	//    	 	// Create the Bullet from the Bullet Prefab
-	// 		var bullet = (GameObject)Instantiate (ultimatePrefab, ultPos.position, ultPos.rotation);
+	[Command]
+	void CmdUltimate() {
+		// Create the Bullet from the Bullet Prefab
+		var bullet = (GameObject)Instantiate (mage.ultimatePrefab, mage.ultPos.position, mage.ultPos.rotation);
 
-	// 		// Add velocity to the bullet
-	// 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-	// 	}
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+
+		NetworkServer.Spawn(bullet);
+
+	}
+
+	public void Ultimate() {
+		if(isLocalPlayer) {
+			CmdUltimate();
+		}
+	}
 }

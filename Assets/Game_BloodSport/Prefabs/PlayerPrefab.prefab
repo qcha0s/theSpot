@@ -13589,6 +13589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mage: {fileID: 114211792839504298}
+  m_mage: {fileID: 1913439500037554}
 --- !u!114 &114132503160639398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14118,11 +14119,11 @@ MonoBehaviour:
   spellSpawn: {fileID: 4506786466639302}
   ultPos: {fileID: 4618435265021680}
   m_polyScript: {fileID: 114186751334324732}
-  m_isMe: 0
   m_CDMasks:
   - {fileID: 114753778673088348}
   - {fileID: 114809432573579584}
   m_soundMgr: {fileID: 0}
+  m_isMe: 0
   m_ultActive: 0
   m_PolyonCD: 0
   m_BlinkOnCD: 0

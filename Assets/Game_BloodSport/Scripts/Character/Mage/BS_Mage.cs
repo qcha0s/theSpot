@@ -11,17 +11,17 @@ public class BS_Mage : MonoBehaviour {
 	public Transform spellSpawn;
 	public Transform ultPos;
 	public PolyManager m_polyScript;
-	public bool m_isMe;
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
+	public bool m_isMe;
 	public bool m_ultActive = false;
+	public bool m_PolyonCD;
+	public bool m_BlinkOnCD;
+	public float m_PolyCD = 6f;
+	public float m_BlinkCD = 6f;
 
 	private RPGCharacterController m_characterController;
 	private Animator m_animationController;
-	private bool m_PolyonCD;
-	private bool m_BlinkOnCD;
-	private float m_PolyCD = 6f;
-	private float m_BlinkCD = 6f;
 	private NetworkedMage networkedMage;
 	// Use this for initialization
 	void Start () {
@@ -43,9 +43,8 @@ public class BS_Mage : MonoBehaviour {
 		}
 	}
 
-	IEnumerator CoolDownSystem(float cooldownvalue, string Ability) {
+	public IEnumerator CoolDownSystem(float cooldownvalue, string Ability) {
 		if(Ability == "Poly") {
-		
 			while(m_PolyonCD) {
 				m_CDMasks[0].fillAmount -= Time.deltaTime / cooldownvalue;
 
