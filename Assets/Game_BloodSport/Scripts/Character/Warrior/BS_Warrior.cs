@@ -18,7 +18,7 @@ public class BS_Warrior : MonoBehaviour {
 	public float m_ultimateDuration = 5.0f;
 	public int m_ultimateHitChargeAmount = 5;
 	public int m_damageMultiplier = 1;
-
+	public BS_SoundManager m_soundMgr;
 	private BS_Health m_healthScript;
 	private RPGCharacterController m_characterController;
 	private Animator m_animator;
@@ -42,6 +42,9 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	void Update() {
+		if(Input.GetMouseButtonDown(0) && !m_animator.GetBool("isAttacking")) {
+			m_soundMgr.PlaySwordSwing();		
+			}
 		if (Input.GetKeyDown(KeyCode.Alpha1) && !m_usingUltimate && !m_whirlwindOnCD) {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
@@ -56,6 +59,7 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void Charge() {
+		m_soundMgr.PlayChargeCry();
 		if(!m_charging) {
 			m_CDMasks[1].fillAmount=1;
 			m_ChargeOnCD = true;
@@ -77,6 +81,7 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void WhirlWind() {
+		m_soundMgr.PlayWhirlwind();
 		if(!m_usingWhirlWind) {
 			m_CDMasks[0].fillAmount=1;
 			m_whirlwindOnCD = true;
