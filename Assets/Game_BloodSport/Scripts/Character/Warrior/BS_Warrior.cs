@@ -58,9 +58,7 @@ public class BS_Warrior : MonoBehaviour {
 			WhirlWind();
 		} else if(Input.GetKeyDown(KeyCode.Alpha2) && !m_usingUltimate && !m_ChargeOnCD) {
 			Charge();
-		 } else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_usingUltimate) {
-		 	Ultimate();
-		}
+		 }
 
 		if(m_charging) {
 			transform.position += transform.forward * Time.deltaTime * m_chargeSpeed;
@@ -68,11 +66,11 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void Charge() {
-		//m_soundMgr.PlayChargeCry();
+		m_soundMgr.PlayChargeCry();
+		m_CDMasks[1].fillAmount = 1;
+		m_ChargeOnCD = true;
+		StartCoroutine(CoolDownSystem(m_chargeCD, "Charge"));
 		if(!m_charging) {
-			m_CDMasks[1].fillAmount = 1;
-			m_ChargeOnCD = true;
-			StartCoroutine(CoolDownSystem(m_chargeCD, "Charge"));
 			m_charging = true;
 			m_characterController.m_disableMovement = true;
 			m_animator.SetBool("Movement", true);
@@ -90,11 +88,11 @@ public class BS_Warrior : MonoBehaviour {
 	}
 
 	public void WhirlWind() {
-		//m_soundMgr.PlayWhirlwind();
+		m_soundMgr.PlayWhirlwind();
+		m_CDMasks[0].fillAmount = 1;
+		m_whirlwindOnCD = true;
+		StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 		if(!m_usingWhirlWind) {
-			m_CDMasks[0].fillAmount = 1;
-			m_whirlwindOnCD = true;
-			StartCoroutine(CoolDownSystem(m_whirlwindCD, "Whirlwind"));
 			m_usingWhirlWind = true;
 			m_animator.SetBool("Ability", true);
 			m_swordCollider.enabled = true;

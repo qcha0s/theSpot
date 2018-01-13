@@ -12,14 +12,14 @@ public const float MAX_PROGRESS = 100.0f;
 	public Text m_ultText;
 	private float chargeRate = 1f;
 	private BS_Warrior m_warriorScript;
-	private BS_Mage m_mageScript;
+	private NetworkedMage m_mageScript;
 	private BS_Rogue m_rogueScript;
 	private BS_Hunter m_hunterScript;
 	
 	void Awake() {
 		m_warriorScript = GetComponent<BS_Warrior>();
 		m_rogueScript = GetComponent<BS_Rogue>();
-		m_mageScript = GetComponent<BS_Mage>();
+		m_mageScript = GetComponent<NetworkedMage>();
 		m_hunterScript = GetComponent<BS_Hunter>();
 	}
 
@@ -49,13 +49,13 @@ public const float MAX_PROGRESS = 100.0f;
 			m_hunterScript.Ultimate();
 			break;
 			case ("Mage"):
-			m_mageScript.Ultimate();
+			//m_mageScript.Ultimate();
 			break;
 			case ("Warrior"):
 			m_warriorScript.Ultimate();
 			break;
 			case ("Rogue"):
-			Debug.Log("Ult Rogue");
+			Debug.Log("Rogue Ults");
 			m_rogueScript.UltTarget();
 			break;
 			default:

@@ -34,7 +34,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 	void Awake(){
 		m_controller = GetComponent<CharacterController>();
-		m_animationController = GetComponent<Animator>();
+		m_animationController = transform.root.GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 	}
 
@@ -98,7 +98,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 				if(Input.GetButton("Jump")){
 					m_animationController.SetTrigger("Jump");
-					m_soundMgr.PlayJump();
+					//m_soundMgr.PlayJump();
 					m_moveDirection.y = m_jumpSpeed;
 					
 				}
@@ -108,7 +108,7 @@ public class RPGCharacterController : MonoBehaviour {
 					m_Disengage = false;
 				}
 				else{	
-					m_animationController.SetBool("Movement",false);
+					m_animationController.SetBool("Movement",false);	
 				}
 				if(m_grounded){
 					m_Disengage =false;
