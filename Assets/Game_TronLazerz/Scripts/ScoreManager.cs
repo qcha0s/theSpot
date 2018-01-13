@@ -63,10 +63,7 @@ public class ScoreManager : NetworkBehaviour {
 
     public void Goal(bool goal){
         m_goal = goal;
-    }
-
-
-
+	}
 
 	private void UpdateBlueText(int score){
 		countBlue.text = "Score: " + score.ToString();
