@@ -159,6 +159,11 @@ public class TS_HostMigration : MonoBehaviour {
 		}
 	}
 
+	public void Initialize(NetworkClient networkClient, MatchInfo newMatchInfo) {
+		//if(LogFilter.FilterLevel.Developer)
+		Debug.Log((object) "NetworkMigrationManager Initialize");
+
+	}
 
 
 }
