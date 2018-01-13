@@ -9,7 +9,7 @@ public class TronNetworkManager : NetworkManager {
 
 	void OnPlayerConnected(NetworkPlayer player){
 		Debug.Log("my name is DA WAE");
-		m_sm.ResetGame();
+		
 	}
 
 }

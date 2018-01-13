@@ -10,6 +10,7 @@ public class ScoreManager : NetworkBehaviour {
 	public int score_Blue;
 	[SyncVar (hook="UpdateRedText")]
 	public int score_Red;
+	
 
 	public int ScoreToWin;
 
@@ -57,20 +58,9 @@ public class ScoreManager : NetworkBehaviour {
 	
 	}
 
-	public void ResetGame () {
-		Debug.Log("Reset");
-		score_Blue = 0;
-		score_Red = 0;
-		scored_Blue = false;
-		scored_Red = false;
-		IsOvertime = false;
-		IsRegular = true;
-		hockey_Time = 10;
-		countRed.text = "Score: " + score_Red.ToString();
-		countBlue.text = "Score: " + score_Blue.ToString();
-		countTime.text = "Time: " + hockey_Time.ToString();
 	
-	}
+	
+	
 	private void UpdateRedText(int score){
 		countRed.text = "Score: " + score.ToString();
 	}
@@ -91,7 +81,7 @@ public class ScoreManager : NetworkBehaviour {
 
 	void OnClientStart(NetworkPlayer other){
 		Debug.Log("rrrr");
-		ResetGame();
+		
 	}
 
 

@@ -10,6 +10,8 @@ public class LocalPlayerSetUp : NetworkBehaviour {
 	private bool colorSet = false;
 	 SpriteRenderer m_sr;
 
+
+
 	 
 
 	// Use this for initialization
@@ -17,10 +19,12 @@ public class LocalPlayerSetUp : NetworkBehaviour {
 		GetComponent<TronPlayerMovement>().enabled=true;
 		if(isServer){
 			CmdTellServerTeam(1);
+			
 		}else{
+			
 			CmdTellServerTeam(2);
 		}
-		
+	NetworkManager.singleton.GetComponent<NetworkManagerHUD>().showGUI = false;
 	}
 
 	[Command]
@@ -42,6 +46,7 @@ public class LocalPlayerSetUp : NetworkBehaviour {
 				renderer.color =  Color.blue;
 			}
 			colorSet = true;
+			
 		}
 	}
 }
