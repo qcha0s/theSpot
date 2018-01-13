@@ -373,7 +373,13 @@ public class GameManager_UD : MonoBehaviour {
 
 
     public void GameWin(){
+        HideBuildTowerUI();
         ShowMouse();
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<BaseMovement_UD>().enabled = false;
+        player.GetComponent<CharacterMovement_UD>().enabled = false;
+        player.GetComponent<RayCastInteraction_UD>().enabled = false;
+        Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
         ChangeState(GameState_UD.Win);
         if (m_currentGameMode == GameMode.Normal){
             //selected level - map
@@ -419,6 +425,7 @@ public class GameManager_UD : MonoBehaviour {
         player.GetComponent<BaseMovement_UD>().enabled = false;
         player.GetComponent<CharacterMovement_UD>().enabled = false;
         player.GetComponent<RayCastInteraction_UD>().enabled = false;
+        Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
         ChangeState(GameState_UD.Lose);
         //track survived waves in surivival
         if (m_currentGameMode == GameMode.Survival){
@@ -474,6 +481,7 @@ public class GameManager_UD : MonoBehaviour {
         m_paused = true;
         Time.timeScale = 0.0f;
         ShowMouse();
+        HideBuildTowerUI();
         m_pauseUI.SetActive(true);
     }
 
