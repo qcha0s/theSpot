@@ -13,15 +13,27 @@ public class Health_UD : BaseHealth
     public float m_respawnTime = 3.0f;
 
     float m_currentRespawnTime = 4.0f;
+    private bool onRegenHealth;
 
     void Update()
     {
+
+        if (m_isPlayer){
+			Debug.Log("health = " + m_currentHealth);
+			if((m_currentHealth < 100 && onRegenHealth == false)){
+				onRegenHealth = true;
+				StartCoroutine(UpdateHealth());
+			} else if(m_currentHealth >= 100){
+				StopCoroutine(UpdateHealth());
+			    m_currentHealth = m_maxHealth;
+	    	}
+        }
+
         if (!m_isPlayer)
         {
             healthBar.fillAmount = Health / m_maxHealth;
             healthBar.color = Color.Lerp(m_deadColour, m_healthyColour, healthBar.fillAmount);
-        }
-        else
+        } else
         {
             if (m_isDead)
             {
@@ -42,6 +54,13 @@ public class Health_UD : BaseHealth
             }
         }
     }
+
+    	IEnumerator UpdateHealth() {
+		m_currentHealth += 1;
+		yield return new WaitForSeconds(1);
+		onRegenHealth = false;
+        GameManager_UD.instance.UpdatePlayerHPBar(m_currentHealth / m_maxHealth);
+	}
 
     public override void Die()
     {
