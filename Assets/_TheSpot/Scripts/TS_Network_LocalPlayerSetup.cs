@@ -10,6 +10,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 
 	[SyncVar]
 	public string m_PlayerName = null;
+	public Camera PlayerCamera { get{ return m_cam; } }
 	private NetworkInstanceId m_playerNetID;
 	private FirstPersonController m_movement;
 	private AudioListener m_audio;
@@ -51,7 +52,7 @@ public class TS_Network_LocalPlayerSetup : NetworkBehaviour {
 		m_chatSystem.SetActive(true);
 		m_EventSystem.SetActive(true);
 		m_glasses.SetActive(false);
-		TS_CustomNetworkManager.Instance.LocalPlayer = gameObject;
+		TS_CustomNetworkManager.Instance.m_localPlayer = gameObject;
 		m_activeIndex = UnityEngine.Random.Range(0,m_characters.Length);
 		CmdTellServerMySecrets(m_activeIndex,PlayerPrefs.GetString("PlayerName"));
 		ActivateGameObject();

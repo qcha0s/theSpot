@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class TS_CustomNetworkManager : NetworkManager {
 
@@ -11,7 +12,7 @@ public class TS_CustomNetworkManager : NetworkManager {
 	private static TS_CustomNetworkManager m_instance = null;
 	public bool isHost = false;
 	public NetworkClient m_client;
-	public GameObject LocalPlayer;
+	public GameObject m_localPlayer;
 
 	private void Awake() {
 		if (m_instance != null && m_instance != this) {
@@ -29,13 +30,7 @@ public class TS_CustomNetworkManager : NetworkManager {
 
 	public void HostOrJoin() {
 		isHost = false;
-		// if (m_client == null) {
-			StartCoroutine(CheckForHost());
-		// } else {
-		// 	m_client.connection.Disconnect();
-		// 	m_client = null;
-		// 	StartCoroutine(CheckForHost());
-		// }
+		StartCoroutine(CheckForHost());
 	}
 
 	private void StartupHost() {
@@ -56,8 +51,18 @@ public class TS_CustomNetworkManager : NetworkManager {
 		}
 	}
 
-	public void PauseConnection() {
+	public void DisablePlayer() {
+		TS_SoundManager.Instance.StopMusic();
+//		m_localPlayer.GetComponentInChildren<Camera>().enabled = false;
+		m_localPlayer.GetComponentInChildren<AudioListener>().enabled = false;
+		m_localPlayer.GetComponent<FirstPersonController>().enabled = false;	
+	}
 
+	public void EnablePlayer() {
+		TS_SoundManager.Instance.StartMusic();
+//		m_localPlayer.GetComponentInChildren<Camera>().enabled = true;
+		m_localPlayer.GetComponentInChildren<AudioListener>().enabled = true;
+		m_localPlayer.GetComponent<FirstPersonController>().enabled = true;			
 	}
 
 	IEnumerator CheckForHost() {

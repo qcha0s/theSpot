@@ -15,17 +15,14 @@ public class TS_ArcadeConsoleInteraction : NetworkBehaviour, InteractableObject_
 	private float m_scaleSmallTime = 0.5f;
 	private bool m_scalingUp = false;
 	private bool m_scalingDown = false;
+	private bool m_canInteract = true;
 
 	void InteractableObject_UD.Interact() {
-		Debug.Log("Interacting");
-		TS_SoundManager.Instance.StopMusic();
-		if (isServer) {
-			TS_CustomNetworkManager.Instance.LocalPlayer.GetComponent<FirstPersonController>().enabled = false;	
-			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);	
-		} else {
-			TS_CustomNetworkManager.Instance.LocalPlayer.GetComponent<FirstPersonController>().enabled = false;		
-			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);		
-		}
+		if (m_canInteract) {
+			TS_CustomNetworkManager.Instance.DisablePlayer();
+			SceneManager.LoadScene(m_sceneInt, LoadSceneMode.Additive);
+			StartCoroutine(AllowInteraction());
+		}	
 	}
 
 	void InteractableObject_UD.OnBeginRaycast() {
@@ -68,5 +65,11 @@ public class TS_ArcadeConsoleInteraction : NetworkBehaviour, InteractableObject_
 			yield return null;
 		}
 		m_scalingDown = false;
+	}
+
+	IEnumerator AllowInteraction() {
+		m_canInteract = false;
+		yield return new WaitForSeconds(2);
+		m_canInteract = true;
 	}
 }
