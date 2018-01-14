@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e38bae1353cba204abe778630dfe1227
-timeCreated: 1514619307
+guid: 339f37e1a9c62e340985ea74110f2833
+timeCreated: 1515805777
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -163,7 +163,7 @@ ModelImporter:
     4300006: Erika_Archer_Eyes_Mesh
     4300008: Erika_Archer_Eyelashes_Mesh
     4300010: Erika_Archer_Body_Mesh
-    7400000: ArcherRunBack
+    7400000: RunBack
     9500000: //RootNode
     13700000: Erika_Archer_Body_Mesh
     13700002: Erika_Archer_Bow_Mesh
@@ -175,32 +175,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Akai_MAT
-    second: {fileID: 2100000, guid: 3dfd7c094d5672842b14704c0cb40f3b, type: 2}
+    second: {fileID: 2100000, guid: 09bab66c7385e8047afe6d1a7fb9a616, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Arrow_MAT
-    second: {fileID: 2100000, guid: d1a700860a80214488a8b685b8a738b0, type: 2}
+    second: {fileID: 2100000, guid: 04b239092c8c1f94bb2c1272ef07a3f4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bow_MAT
-    second: {fileID: 2100000, guid: 1f19f3517ec5ab9499468d05b4c5f29d, type: 2}
+    second: {fileID: 2100000, guid: a739defec58d70b43b540dddda7445cf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EyeSpec_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lashes_MAT
-    second: {fileID: 2100000, guid: cbdd842fb2f437e4894664407634015a, type: 2}
+    second: {fileID: 2100000, guid: 3d463142742b75d4da9699c62b1d7c93, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -228,7 +228,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ArcherRunBack
+      name: RunBack
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 20
