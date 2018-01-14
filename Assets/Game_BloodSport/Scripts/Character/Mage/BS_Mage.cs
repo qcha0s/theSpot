@@ -10,15 +10,12 @@ public class BS_Mage : MonoBehaviour {
 	public GameObject ultimatePrefab;
 	public Transform spellSpawn;
 	public Transform ultPos;
-<<<<<<< HEAD
 	public Image[] m_CDMasks;
 	public BS_SoundManager m_soundMgr;
 	public bool m_ultActive = false;
-=======
 	public PolyManager m_polyScript;
 	public bool m_isMe;
 
->>>>>>> bswarrior
 	private Animator m_animationController;
 	
 	
@@ -107,9 +104,8 @@ public class BS_Mage : MonoBehaviour {
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 	}
-		IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
-			if(Ability == "Poly"){
-			
+	IEnumerator CoolDownSystem(float cooldownvalue, string Ability){
+		if(Ability == "Poly"){
 			while(m_PolyonCD){
 				m_CDMasks[0].fillAmount-=Time.deltaTime/cooldownvalue;
 
@@ -117,10 +113,8 @@ public class BS_Mage : MonoBehaviour {
 					m_PolyonCD = false;
 				}
 				yield return null;
-				
 			}
 		}
-		
 		if(Ability == "Blink"){
 			while(m_BlinkOnCD){
 				m_CDMasks[1].fillAmount-=Time.deltaTime/cooldownvalue;
@@ -129,20 +123,15 @@ public class BS_Mage : MonoBehaviour {
 					m_BlinkOnCD = false;
 				}
 				yield return null;
-				
 			}
-			
 		}
-	
-<<<<<<< HEAD
+	}
 		
-=======
-	void OnTriggerEnter(Collider other) {
+	private void OnTriggerEnter(Collider other) {
 		if(!m_isMe) {
 			if(other.gameObject.name == "Polymorph(Clone)") {
 				m_polyScript.SetPoly();
 			}
 		}
->>>>>>> bswarrior
 	}
 }

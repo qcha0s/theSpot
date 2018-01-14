@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BS_Rogue : MonoBehaviour {
+public class BS_RogueOLD : MonoBehaviour {
 	public Collider[] m_weaponHitBoxes;
 	public GameObject m_targetGUI;
 	public GameObject[] m_weapons;
