@@ -21,6 +21,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement
     public float m_speedEpsilon = 0.1f;
     public float m_surfaceNormalRotationSpeed = 20f;
     public float m_turnDeadZone = 0.3f;
+    public Animator m_animator;
     public LayerMask m_groundLayer;
     public Vector3 m_gravityDirection = -Vector3.up;
     #endregion
@@ -33,6 +34,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement
     private float m_forwardSpeed = 0f; //test for boost\
     private float m_rayCastDistance;
     private float m_yVelocity = 0;
+    
     private Vector3 m_surfaceNormal = Vector3.up;
     private Vector3 m_velocity;
     private CharacterController m_characterController;
@@ -129,6 +131,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement
         {
             m_isForceApplied = true;
             m_forwardSpeed += amount * m_acceleration * Time.deltaTime;
+            m_animator.SetFloat("Speed", m_forwardSpeed);
             m_forwardSpeed = Mathf.Min(m_forwardSpeed, m_maxSpeed);
         }
     }
@@ -200,6 +203,7 @@ public class CharacterControllerKart : MonoBehaviour, BaseKartMovement
     #region Private & Protected Methods
     void Awake()
     {
+       
         m_characterController = GetComponent<CharacterController>();
         m_rayCastDistance = m_characterController.height * 0.5f + m_rayCastEpsilon;
         m_velocity = new Vector3();

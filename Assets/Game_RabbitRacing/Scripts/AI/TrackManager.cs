@@ -22,13 +22,11 @@ public class TrackManager : MonoBehaviour {
 		if(root == m_startLine && wayPointNumber != m_startLineNumber){
 			return;
 		}
-		root.WayPointNumber = wayPointNumber;
-		foreach(WayPoint wayPoint in root.m_nextWayPoints){
-			RecursiveNumberWayPoints(wayPoint, wayPointNumber+1);
+		else if(root.WayPointNumber == -1 || wayPointNumber < root.WayPointNumber){
+			root.WayPointNumber = wayPointNumber;
+			foreach(WayPoint wayPoint in root.m_nextWayPoints){
+				RecursiveNumberWayPoints(wayPoint, wayPointNumber+1);
+			}
 		}
-	}
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

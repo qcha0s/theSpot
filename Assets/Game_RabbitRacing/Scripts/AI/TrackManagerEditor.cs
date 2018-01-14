@@ -9,12 +9,12 @@ public class TrackManagerEditor : Editor {
        DrawDefaultInspector();
         
        TrackManager trackManager = (TrackManager)target;
-       if(GUILayout.Button("InitializeWayPoints"))
-       {
-           trackManager.InitialSetupWayPoints();
-       }
-		if(GUILayout.Button("NumberWayPoints")){
-			trackManager.NumberWayPoints();
-		}
+        if(GUILayout.Button("InitializeWayPoints"))
+        {
+            trackManager.InitialSetupWayPoints();
+        }
+        if(GUILayout.Button("NumberWayPoints")){
+            trackManager.NumberWayPoints();
+        }
    }
 }

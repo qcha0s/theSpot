@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: c7d53a22448594846b8a866b438dbab6
-timeCreated: 1515611748
+guid: e8cda2459f4e9c448a124cb6734cfd02
+timeCreated: 1515803210
 licenseType: Pro
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: group
     100002: group1
@@ -327,112 +327,10 @@ ModelImporter:
     13700000: pasted__pCube90
     13700002: pasted__pCube97
     13700004: polySurface6
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Black
-    second: {fileID: 2100000, guid: d8a66ad4a4ba126458bfe2b9caac94c2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Black2
-    second: {fileID: 2100000, guid: d8a66ad4a4ba126458bfe2b9caac94c2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Brown6
-    second: {fileID: 2100000, guid: e27820ebb4f5c11469224ed549f711ed, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Eyes
-    second: {fileID: 2100000, guid: 712c6cee1ad5abd4aa65aa7f0201aa74, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Grey3
-    second: {fileID: 2100000, guid: e5d108b42126f634c9468db6247ea2be, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Headlights2
-    second: {fileID: 2100000, guid: 96d01049dbf9906448073a5017913378, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun1
-    second: {fileID: 2100000, guid: 4047a6376bcacb34a93cbe2a33743271, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun2
-    second: {fileID: 2100000, guid: 3002e4c6aab1d3448bb9c56b436e3e9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun3
-    second: {fileID: 2100000, guid: 26b8b51c4fdcaa6479af51d32f6256fd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun5
-    second: {fileID: 2100000, guid: ae4c7f974fbd6724aa98c4335213d497, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun6
-    second: {fileID: 2100000, guid: 9f6af6e8dd85e2b4480462f53dae9219, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun7
-    second: {fileID: 2100000, guid: 0da55662ce111364c8fea0772d7c41d1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun8
-    second: {fileID: 2100000, guid: d8a66ad4a4ba126458bfe2b9caac94c2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Hun9
-    second: {fileID: 2100000, guid: 28fa63d6fb11d18448f8c79918ede26c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Licence3
-    second: {fileID: 2100000, guid: 2014f873accc852408637c1cb508a483, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Metal
-    second: {fileID: 2100000, guid: 938bb30f302b6c148983d9836fb0936a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Metal2
-    second: {fileID: 2100000, guid: 938bb30f302b6c148983d9836fb0936a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Orange
-    second: {fileID: 2100000, guid: 1199609fb9d8f0643846871e9f8cabfa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__White
-    second: {fileID: 2100000, guid: aac5814ecfd66034d947ec114c8f98a1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__Yellow
-    second: {fileID: 2100000, guid: 28fa63d6fb11d18448f8c79918ede26c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -445,7 +343,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -457,7 +354,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.333
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
