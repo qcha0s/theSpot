@@ -4,14 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneSelector : MonoBehaviour {
 private int levelSelector;
-public GameObject raceButton;
+public GameObject charSelButton;
 public GameObject forestPreview;
 public GameObject snowPreview;
 public GameObject desertPreview;
 
     void Start(){
         levelSelector = -1;
-        raceButton.SetActive(false);
+        charSelButton.SetActive(false);
         forestPreview.SetActive(false);
         snowPreview.SetActive(false);
         desertPreview.SetActive(false);
@@ -23,7 +23,7 @@ public GameObject desertPreview;
         forestPreview.SetActive(true);
         snowPreview.SetActive(false);
         desertPreview.SetActive(false);
-        raceButton.SetActive(true);
+        charSelButton.SetActive(true);
     }
 
     public void trackTwo(){
@@ -31,7 +31,7 @@ public GameObject desertPreview;
         snowPreview.SetActive(true);
         forestPreview.SetActive(false);
         desertPreview.SetActive(false);
-        raceButton.SetActive(true);
+        charSelButton.SetActive(true);
     }
 
     public void trackThree(){
@@ -39,7 +39,7 @@ public GameObject desertPreview;
         desertPreview.SetActive(true);
         forestPreview.SetActive(false);
         snowPreview.SetActive(false);
-        raceButton.SetActive(true);
+        charSelButton.SetActive(true);
     }
 
     public void loadLevel(){

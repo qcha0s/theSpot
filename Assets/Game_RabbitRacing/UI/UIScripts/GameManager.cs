@@ -79,6 +79,9 @@ public class GameManager : MonoBehaviour
 		m_stateManager.ChangeState(newState);
 	}
 	
+	public void EndRace(){
+		
+	}
 
 
 }
