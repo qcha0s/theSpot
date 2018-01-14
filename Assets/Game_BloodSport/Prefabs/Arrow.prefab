@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914038945399258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.0658503, y: 0, z: 1.9194349}
+  m_LocalPosition: {x: 58.69305, y: 5.400004, z: 86.27242}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4419598218216754}
@@ -560,7 +560,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40db0965a38defc4399afeb419ef04bd, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -607,7 +607,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eaaba2b31124876438eef20897024748, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -654,7 +654,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40db0965a38defc4399afeb419ef04bd, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -701,7 +701,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eaaba2b31124876438eef20897024748, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -748,7 +748,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40db0965a38defc4399afeb419ef04bd, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -795,7 +795,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9fb7b9e2547eaab41aa601dad0f6bd1b, type: 2}
+  - {fileID: 2100000, guid: da312d220abdac949a2cce5f65431ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -888,7 +888,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1635660856
+  randomSeed: -700710749
   InitialModule:
     serializedVersion: 3
     enabled: 1
