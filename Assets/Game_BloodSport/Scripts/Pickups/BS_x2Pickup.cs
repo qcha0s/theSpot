@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class BS_x2Pickup : MonoBehaviour {
 
-	private int multiplyTimer = 0;
-    private BS_testmove activeMultiplier;
+	private int multiplyTimer = 4;
+    private RPGCharacterController m_playerscript;
 	
       void Update(){
 	
 	}
     void OnTriggerEnter (Collider other)
     {
-		activeMultiplier = other.GetComponent<BS_testmove>();
-		if(activeMultiplier == null){
+		m_playerscript = other.GetComponent<RPGCharacterController>();
+		if(m_playerscript == null){
 			return;
 		}else{
-		activeMultiplier.Multiply();
-		Destroy(gameObject);
+			m_playerscript.Multiply(multiplyTimer);
+			Destroy(gameObject);
 		}
 		
 		

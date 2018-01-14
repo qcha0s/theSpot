@@ -48,6 +48,7 @@ public class BS_Rogue : MonoBehaviour {
 			m_weaponHitBoxes[0].enabled = true;
 			m_weaponHitBoxes[1].enabled = true;
 		}
+		
 		if(Input.GetKey(KeyCode.Alpha1) && !m_poisonOnCD){
 			m_soundMgr.PlayPoison();
 			Poison();

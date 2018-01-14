@@ -18,7 +18,6 @@ public class BS_Warrior : MonoBehaviour {
 	public float m_chargeCD = 10.0f;
 	public float m_ultimateDuration = 5.0f;
 	public int m_ultimateHitChargeAmount = 5;
-	public int m_damageMultiplier = 1;
 	public BS_SoundManager m_soundMgr;
 
 	private BS_Health m_healthScript;

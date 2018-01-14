@@ -18,6 +18,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public bool m_disableMovement = false;
 	public BS_SoundManager m_soundMgr;
 	public bool m_Disengage;
+	public int multiplier = 1;
 
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
@@ -29,7 +30,6 @@ public class RPGCharacterController : MonoBehaviour {
 	private bool m_mouseSideDown;
 	private CharacterController m_controller;
 	private int m_attackState;
-	private int multiplier = 1;
 	private int m_slowdown = 0;
 
 	void Awake(){
@@ -38,20 +38,19 @@ public class RPGCharacterController : MonoBehaviour {
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 	}
 
-	IEnumerator Mult() {
+	IEnumerator Mult(int multiplyBy) {
 		multiplier = 2;
-		yield return new WaitForSeconds(30);
+		yield return new WaitForSeconds(multiplyBy);
         multiplier = 1;
-		//5seconds have passed
-		Debug.Log(":-)");
 	}
 
-	public void Multiply(){
-		StartCoroutine(Mult());
+	public void Multiply(int multiplyBy){
+		StartCoroutine(Mult(multiplyBy));
 	}
 
 	void Update(){
 		if(!m_disableMovement) {
+			
 			m_moveStatus = "idle";
 			m_isWalking = m_walkByDefault;
 
@@ -146,7 +145,6 @@ public class RPGCharacterController : MonoBehaviour {
 
 	public void EndAttack() {
 		m_animationController.SetBool("isAttacking", false);
-		
 		m_hasDealtDamage = false;
 	}
 
@@ -155,4 +153,5 @@ public class RPGCharacterController : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		m_slowdown=0;
 	}
+	
 }
