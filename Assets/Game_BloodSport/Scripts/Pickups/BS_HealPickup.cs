@@ -13,8 +13,6 @@ void OnTriggerEnter(Collider other){
 
 
 		}else{
-			Debug.Log("heal");
-			Debug.Log(playerHealth == null);
 			playerHealth.Heal(100);
 			Destroy(gameObject);
 		}
