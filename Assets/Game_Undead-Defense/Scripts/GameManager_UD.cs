@@ -165,7 +165,7 @@ public class GameManager_UD : MonoBehaviour {
 
     void UpdatePlay()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
             if (!m_paused){
                 PauseGame();
             }
@@ -427,6 +427,7 @@ public class GameManager_UD : MonoBehaviour {
         player.GetComponent<RayCastInteraction_UD>().enabled = false;
         Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
         ChangeState(GameState_UD.Lose);
+        
         //track survived waves in surivival
         if (m_currentGameMode == GameMode.Survival){
             if (WaveManager.instance.GetCurrentWave() - 1 > m_bestWave[m_currentSelectedLevel]){
@@ -480,8 +481,8 @@ public class GameManager_UD : MonoBehaviour {
     void PauseGame(){
         m_paused = true;
         Time.timeScale = 0.0f;
-        ShowMouse();
         HideBuildTowerUI();
+        ShowMouse();
         m_pauseUI.SetActive(true);
     }
 
