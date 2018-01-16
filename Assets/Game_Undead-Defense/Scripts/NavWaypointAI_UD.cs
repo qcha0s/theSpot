@@ -14,6 +14,7 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private Transform[] m_waypoints;
     private NavMeshAgent nav;
+    private Rigidbody m_rb;
     private int m_curWaypoint = 0;
     private int m_lastWP;
     private bool m_chasingPlayer = false;
@@ -22,22 +23,19 @@ public class NavWaypointAI_UD : MonoBehaviour {
  
     private void Awake () {
         nav = GetComponent<NavMeshAgent>();
-    }
-
-    private void Start() {
-        nav.speed = m_speed;
+        m_rb = GetComponent<Rigidbody>();
+        nav.autoTraverseOffMeshLink = true;
     }
 
     public void Move() {
-        if (m_chasingPlayer) {
-            ChasePlayer();
-        } else if (m_wpReached) {
+        if (m_wpReached) {
            MoveToWP();
         }
         CheckDistanceToWP();
     }
  
-    private void MoveToWP() {
+    public void MoveToWP() {
+        nav.isStopped = false;
         Vector3 tempWaypointPosition;
         tempWaypointPosition = m_waypoints[m_curWaypoint].position;
         tempWaypointPosition.x += Random.Range(-m_wpOffset.x,m_wpOffset.x);
@@ -47,30 +45,14 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_wpReached = false;
     }
 
-    private void ChasePlayer() {
-      
+    public void ChaseTarget(Transform m_target) {
+        nav.isStopped = false;
+        nav.SetDestination(m_target.position);
     }
-
-    // private void OnTriggerEnter(Collider other) {
-    //     if (other.tag == "Player") {
-    //         m_targetPos = other.transform.position;
-    //         m_chasingPlayer = true;
-    //         nav.SetDestination(m_targetPos);  
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider other) {
-    //     if (other.tag == "Player") {
-    //         m_chasingPlayer = false;
-    //         m_wpReached = true;
-    //     }
-    // }
 
     private void CheckDistanceToWP() {
         if (Vector3.Distance(transform.position, m_targetPos) <= m_minWaypointDistance) {
             if (m_curWaypoint == m_lastWP){
-                Debug.Log("at Player's base");
-//              m_lastWP = 0;
             } else {
                 m_curWaypoint++;
                 m_wpReached = true;
@@ -78,9 +60,16 @@ public class NavWaypointAI_UD : MonoBehaviour {
         }
     }
 
+    public void SetSpeed(int animIndex) {
+        nav.speed = (float)(m_speed - ((animIndex - 2) * 1));
+    }
+
     public void StopMovement() {
         nav.isStopped = true;
-        nav.velocity = Vector3.zero;
+    }
+
+    public void StartMovement() {
+        nav.isStopped = false;
     }
 
     public void Slow (float prcnt) {
@@ -94,7 +83,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         m_lastWP = waypoints.Length - 1;
         m_targetPos = m_waypoints[m_curWaypoint].position;  
         nav.SetDestination(m_targetPos);
-//        StartCoroutine(StartMovement());   
     }
 
     public void Reset() {
@@ -102,5 +90,6 @@ public class NavWaypointAI_UD : MonoBehaviour {
         transform.position = Vector3.zero;
         nav.Warp(Vector3.zero);
         nav.ResetPath();
+        nav.isStopped = false;
     }
 }

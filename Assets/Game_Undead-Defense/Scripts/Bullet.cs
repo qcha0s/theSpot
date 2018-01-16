@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.activeInHierarchy) {
-			// GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
-			// Destroy(partInst, 2f);
+			 GameObject partInst = Instantiate(impactParticle, transform.position, transform.rotation);
+			 Destroy(partInst, 2f);
 			if (m_splashRad > 0f) {
 				Explode();
 			} else {

@@ -5,10 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - paddle
-  - puck
-  - enemy
-  - Interact
   - Interactable
+  - PlayerBase
   layers:
   - Default
   - TransparentFX
@@ -23,7 +21,7 @@ TagManager:
   - EnemySensors_UD
   - Player_UD
   - Terrain_UD
-  - 
+  - PlayerSensors_UD
   - 
   - 
   - 

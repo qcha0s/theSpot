@@ -5,19 +5,19 @@ using UnityEngine;
 public class RayCastInteraction_UD : MonoBehaviour {
 
 	public Transform m_imagePos;
-	public float m_raycastDistance = 10f;
+	public float m_raycastDistance = 20f;
 	private InteractableObject_UD m_object;
+
+	void Start(){
+		GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
+	}
 
 	private void Update() {
 		DrawCursor();
 		RayCastForBlock();
 		if (Input.GetAxis("Interact") > 0) {
-			if (m_object != null) {
-				
-				GameManager_UD.instance.SetPlayerMovementScript(GetComponent<CharacterMovement_UD>());
+			if (m_object != null) {			
 				m_object.Interact();
-				
-				
 			}
 		}
 	}
@@ -33,19 +33,20 @@ public class RayCastInteraction_UD : MonoBehaviour {
 		Vector3 forward = Camera.main.transform.forward * m_raycastDistance;
 		Debug.DrawRay(startPos, forward, Color.blue);
 		if (Physics.Raycast(startPos,forward, out hit,m_raycastDistance)) {
-//			Debug.Log(hit.collider.name);
 			if (hit.collider.tag == "Interactable") {
 				InteractableObject_UD newObj = hit.collider.GetComponent<InteractableObject_UD>();
 				if (m_object == null) {
 					m_object = newObj;
+					m_object.OnBeginRaycast();
 				} else if (newObj != m_object) {
 					m_object.OnEndRaycast();
 					m_object = newObj;
+					m_object.OnBeginRaycast();
 				}
-				m_object.OnBeginRaycast();
-			} else if (m_object != null) {
-				NormalizeObject();
-			}
+			} 
+			// else if (m_object != null) {
+			// 	NormalizeObject();
+			// }
 		} else if (m_object != null) {
 			NormalizeObject();
 		}

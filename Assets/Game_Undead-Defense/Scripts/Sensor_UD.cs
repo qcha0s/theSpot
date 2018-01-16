@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Sensor_UD : MonoBehaviour {
 
+	public bool m_isEnemy = false;
+	[HideInInspector]
+	public BaseHealth m_playerBase = null;
+
 	private List<BaseHealth> m_targets = new List<BaseHealth>();
 	public List<BaseHealth> Targets{ get{ return m_targets; }}
 	private SphereCollider m_cldr;
@@ -18,13 +22,25 @@ public class Sensor_UD : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		BaseHealth newTarget = other.GetComponent<BaseHealth>();
-		if (newTarget.gameObject.activeInHierarchy) {
-			m_targets.Add(other.GetComponent<BaseHealth>());
+		if (!m_isEnemy) {
+			if (newTarget.gameObject.activeInHierarchy && !newTarget.IsDead) {
+				m_targets.Add(newTarget);
+			}
+		} else {
+			if (other.tag == "Player") {
+				m_targets.Add(newTarget);
+			} else if (other.tag == "PlayerBase") {
+				m_playerBase = newTarget;
+			}
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
-		m_targets.Remove(other.GetComponent<BaseHealth>());
+		BaseHealth exitEnemy = other.GetComponent<BaseHealth>();
+		m_targets.Remove(exitEnemy);
+		// if (exitEnemy == m_playerBase) {
+		// 	m_playerBase = null;
+		// }
 	}
 
 	public void ClearTargets() {
@@ -98,5 +114,10 @@ public class Sensor_UD : MonoBehaviour {
 				m_targets.Remove(m_targets[i]);
 			}
 		}
+	}
+
+	public void RessetSensor() {
+		ClearTargets();
+		m_playerBase = null;
 	}
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum GameState { Intro, Menu, Loading, Play, Win, Lose }
-public enum GameMode { Normal, Survival }
-public enum Tower { Arrow, Cannon, Tar }
-public class GameManager_UD : MonoBehaviour
-{
+public enum GameState_UD { Intro, Menu, Loading, Play, Win, Lose }
+public enum GameMode {Normal,Survival}
+public enum Tower {Arrow,Cannon,Tar}
+public class GameManager_UD : MonoBehaviour {
 
 
 
@@ -17,7 +16,7 @@ public class GameManager_UD : MonoBehaviour
 
     public float m_introTimer = 3.0f;
 
-    public GameState m_currentState;
+    public GameState_UD m_currentState;
 
     public GameObject[] m_gameStates;
 
@@ -30,8 +29,13 @@ public class GameManager_UD : MonoBehaviour
     public GameObject m_lockImage;
     public GameObject m_normalButton;
     public GameObject m_survivalButton;
+    public Text m_highscoreText;
+
+    public GameObject m_pauseUI;
 
     public GameObject m_poolManager;
+
+    public Image m_playerHealthBar;
 
     public GameObject m_buildTowerUI;
 
@@ -59,11 +63,10 @@ public class GameManager_UD : MonoBehaviour
     //0 - locked
     //1 - unlocked - normal
     //2 - unlocked - survival
-    int m_map1 = 1;
-    int m_map2 = 0;
-    int m_map3 = 0;
 
 	int[] m_TowerUnlockState = new int[3];
+
+    int[] m_bestWave = new int [3];
 
     GameMode m_currentGameMode = GameMode.Normal;
 
@@ -74,6 +77,8 @@ public class GameManager_UD : MonoBehaviour
     CharacterMovement_UD playerMovementScript;
 
     int m_currentGold = 0;
+
+    bool m_paused = false;
 
     void Awake()
     {
@@ -89,24 +94,36 @@ public class GameManager_UD : MonoBehaviour
 
         m_currentIntroTimer = 0.0f;
 
-        m_mapUnlockState[0] = 1;
-        m_mapUnlockState[1] = 0;
-        m_mapUnlockState[2] = 0;
+        m_mapUnlockState[0] = PlayerPrefs.GetInt("Map1");
+        m_mapUnlockState[1] = PlayerPrefs.GetInt("Map2");
+        m_mapUnlockState[2] = PlayerPrefs.GetInt("Map3");
 
-        m_map1 = PlayerPrefs.GetInt("Map1");
-        m_map2 = PlayerPrefs.GetInt("Map2");
-        m_map3 = PlayerPrefs.GetInt("Map3");
+		m_TowerUnlockState[0] = PlayerPrefs.GetInt("Tower1");
+		m_TowerUnlockState[1] = PlayerPrefs.GetInt("Tower2");
+		m_TowerUnlockState[2] = PlayerPrefs.GetInt("Tower3");
 
-		m_TowerUnlockState[0] = 1;
-		m_TowerUnlockState[1] = 0;
-		m_TowerUnlockState[2] = 0;
+        m_bestWave[0] = PlayerPrefs.GetInt("BestWave1");
+        m_bestWave[1] = PlayerPrefs.GetInt("BestWave2");
+        m_bestWave[2] = PlayerPrefs.GetInt("BestWave3");
+
+        Debug.Log(m_mapUnlockState[0]);
+        Debug.Log(m_mapUnlockState[1]);
+        Debug.Log(m_mapUnlockState[2]);
+
+        Debug.Log(m_TowerUnlockState[0]);
+        Debug.Log(m_TowerUnlockState[1]);
+        Debug.Log(m_TowerUnlockState[2]);
+
+        if (m_mapUnlockState[0] == 0){
+            ResetStats();            
+        }
 
         ShowMouse();
 
     }
     void Start()
     {
-        m_currentState = GameState.Intro;
+        m_currentState = GameState_UD.Intro;
         foreach (GameObject go in m_gameStates)
         {
             go.SetActive(false);
@@ -120,14 +137,14 @@ public class GameManager_UD : MonoBehaviour
     {
         switch (m_currentState)
         {
-            case GameState.Intro:
+            case GameState_UD.Intro:
                 UpdateIntro();
                 break;
-            case GameState.Menu:
+            case GameState_UD.Menu:
                 break;
-            case GameState.Loading:
+            case GameState_UD.Loading:
                 break;
-            case GameState.Play:
+            case GameState_UD.Play:
                 UpdatePlay();
                 break;
         }
@@ -137,7 +154,7 @@ public class GameManager_UD : MonoBehaviour
     {
         if (m_currentIntroTimer > m_introTimer)
         {
-            ChangeState(GameState.Menu);
+            ChangeState(GameState_UD.Menu);
         }
         else
         {
@@ -148,10 +165,17 @@ public class GameManager_UD : MonoBehaviour
 
     void UpdatePlay()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
+            if (!m_paused){
+                PauseGame();
+            }
+            else{
+                ResumeGame();
+            }
+        }
     }
 
-    void ChangeState(GameState newState)
+    void ChangeState(GameState_UD newState)
     {
         m_gameStates[(int)m_currentState].SetActive(false);
         m_currentState = newState;
@@ -188,14 +212,16 @@ public class GameManager_UD : MonoBehaviour
                 break;
         }
         m_maps[m_currentSelectedLevel].SetActive(true);
+
+        m_highscoreText.text = "Best\n"+m_bestWave[m_currentSelectedLevel];
     }
 
     public void StartNormal()
     {
         //TODO:change level
         m_currentGameMode = GameMode.Normal;
-        ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        ChangeState(GameState_UD.Loading);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
 
     }
 
@@ -203,23 +229,32 @@ public class GameManager_UD : MonoBehaviour
     {
         //TODO:change level
         m_currentGameMode = GameMode.Survival;
-        ChangeState(GameState.Loading);
-        LoadLevel(m_currentSelectedLevel);
+        ChangeState(GameState_UD.Loading);
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
     }
 
-    void LoadLevel(int scene)
+    void LoadLevel(string scene)
     {   
-        SceneManager.LoadScene(m_mapSceneName[scene]);
+        SceneManager.LoadScene(scene);
         //don't instantiate objects here	
 
     }
+
+    public void RestartLevel(){
+        LoadLevel(m_mapSceneName[m_currentSelectedLevel]);
+    }
+    
+    //Once the map loads
     public void MapReady()
     {
         Instantiate(m_poolManager);
         m_currentGold = m_startGold[m_currentSelectedLevel];
+        UpdatePlayerHPBar(1);
         UpdateGold();
-        ChangeState(GameState.Play);
+        ChangeState(GameState_UD.Play);
         HideMouse();
+        ResumeGame();
+
     }
 
     public void ShowBuildTowerUI(BuildSpot_UD script)
@@ -300,7 +335,8 @@ public class GameManager_UD : MonoBehaviour
 
     void UpdateGold()
     {
-        m_goldText.text = "Currency: " + m_currentGold;
+        //m_goldText.text = "Currency: " + m_currentGold;
+        m_goldText.text = m_currentGold.ToString("0");
         Debug.Log(m_goldText.text);
     }
 
@@ -333,5 +369,141 @@ public class GameManager_UD : MonoBehaviour
     public void AddGold(int amount) {
         m_currentGold += amount;
         UpdateGold();
+    }
+
+
+    public void GameWin(){
+        HideBuildTowerUI();
+        ShowMouse();
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<BaseMovement_UD>().enabled = false;
+        player.GetComponent<CharacterMovement_UD>().enabled = false;
+        player.GetComponent<RayCastInteraction_UD>().enabled = false;
+        Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
+        ChangeState(GameState_UD.Win);
+        if (m_currentGameMode == GameMode.Normal){
+            //selected level - map
+            //0 - 1
+            //1 - 2
+            //2 - 3
+            Debug.Log("selected level:"+m_currentSelectedLevel);
+            switch(m_currentSelectedLevel){
+                case 0:
+                    m_mapUnlockState[0] = 2;
+                    PlayerPrefs.SetInt("Map1",2);
+
+                    m_mapUnlockState[1] = 1;
+                    PlayerPrefs.SetInt("Map2",1);
+                    break;
+                case 1:
+                    m_mapUnlockState[1] = 2;
+                    PlayerPrefs.SetInt("Map2",2);
+
+                    m_mapUnlockState[2] = 1;
+                    PlayerPrefs.SetInt("Map3",1);
+                    
+                    m_TowerUnlockState[1] = 1;
+                    PlayerPrefs.SetInt("Tower2",1);
+                break;
+                case 2:
+                    m_mapUnlockState[2] = 2;
+                    PlayerPrefs.SetInt("Map3",2);
+                    
+                    m_TowerUnlockState[2] = 1;
+                    PlayerPrefs.SetInt("Tower3",1);
+                break;
+            }
+        }
+        //TODO:do checks for unlocks
+    }
+
+    public void GameLose(){
+        
+        HideBuildTowerUI();
+        ShowMouse();
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<BaseMovement_UD>().enabled = false;
+        player.GetComponent<CharacterMovement_UD>().enabled = false;
+        player.GetComponent<RayCastInteraction_UD>().enabled = false;
+        Camera.main.GetComponent<BS_ThirdPersonCamera>().enabled = false;
+        ChangeState(GameState_UD.Lose);
+        
+        //track survived waves in surivival
+        if (m_currentGameMode == GameMode.Survival){
+            if (WaveManager.instance.GetCurrentWave() - 1 > m_bestWave[m_currentSelectedLevel]){
+                PlayerPrefs.SetInt("Bestwave"+m_currentSelectedLevel.ToString(),WaveManager.instance.GetCurrentWave() - 1);
+            }
+        }
+
+    }
+    public void ButtonMainMenu(){
+        ChangeState(GameState_UD.Loading);
+        LoadLevel("MainMenu_UD");
+        ChangeState(GameState_UD.Intro);
+        m_currentIntroTimer = 0.0f;
+        ChangeSelectedLevel();
+        Time.timeScale = 1.0f;
+    }
+
+    public void ButtonReset(){
+        ResetStats();
+        ChangeSelectedLevel();
+    }
+
+    void ResetStats(){
+        m_mapUnlockState[0] = 1;
+        m_mapUnlockState[1] = 0;
+        m_mapUnlockState[2] = 0;
+
+        m_TowerUnlockState[0] = 1;
+		m_TowerUnlockState[1] = 0;
+		m_TowerUnlockState[2] = 0;
+
+        m_bestWave[0] = 0;
+        m_bestWave[1] = 0;
+        m_bestWave[2] = 0;
+
+        PlayerPrefs.SetInt("Map1",1);
+        PlayerPrefs.SetInt("Map2",0);
+        PlayerPrefs.SetInt("Map3",0);
+
+        PlayerPrefs.SetInt("Tower1",1);
+        PlayerPrefs.SetInt("Tower2",0);
+        PlayerPrefs.SetInt("Tower3",0);
+
+        PlayerPrefs.SetInt("BestWave1",0);
+        PlayerPrefs.SetInt("BestWave2",0);
+        PlayerPrefs.SetInt("BestWave3",0);
+
+        //TODO:reset waves survived
+    }
+
+    void PauseGame(){
+        m_paused = true;
+        Time.timeScale = 0.0f;
+        HideBuildTowerUI();
+        ShowMouse();
+        m_pauseUI.SetActive(true);
+    }
+
+    public void ResumeGame(){
+        m_paused = false;
+        Time.timeScale = 1.0f;
+        HideMouse();
+        m_pauseUI.SetActive(false);
+    }
+
+    public void UpdatePlayerHPBar(float percentage){
+        m_playerHealthBar.fillAmount = percentage;
+
+        if(percentage <= 0.25f){
+            m_playerHealthBar.color = Color.red;
+        }
+        else if(percentage <= 0.5f){
+            m_playerHealthBar.color = Color.yellow;
+        }
+        else{
+            m_playerHealthBar.color = Color.green;
+        }
     }
 }

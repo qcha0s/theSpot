@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: fdc27d8a5bffd964e86bce10091249ae
-timeCreated: 1490184244
-licenseType: Store
+guid: 2fa4833248a9e104ea1e483a63483a2b
+timeCreated: 1513129322
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -9,11 +9,15 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: dagger
-    4300002: Cube
-  externalObjects: {}
+    4300000: Cube
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 6a59662fa7975d348842af81d905c1a4, type: 2}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -44,10 +48,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

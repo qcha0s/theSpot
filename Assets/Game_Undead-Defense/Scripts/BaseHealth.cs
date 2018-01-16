@@ -5,14 +5,19 @@ using UnityEngine;
 public abstract class BaseHealth : MonoBehaviour {
 
 	public float m_maxHealth = 100f;
+	public Color m_healthyColour;
+	public Color m_deadColour;
 	public bool IsDead { get{ return m_isDead; }}
 	public float Health {get{ return m_currentHealth; }}
+	private Animator m_anim;
 
-	protected float m_currentHealth;
+	public float m_currentHealth;
 	protected bool m_isDead = false;
 
 	private void Start() {
 		m_currentHealth = m_maxHealth;
+
+		m_anim = GetComponent<Animator>();
 	}
 
 	public virtual void TakeDamage(float damage) {
@@ -27,6 +32,9 @@ public abstract class BaseHealth : MonoBehaviour {
 	public bool CheckIfDead() {
 		if (m_currentHealth <= 0) {
 			m_isDead = true;
+			if (m_anim != null){
+				m_anim.SetBool("isDead", true);
+			}
 		}
 		return m_isDead;
 	}
