@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Health_UD : BaseHealth {
 
+	private SoundManager_UD m_sound;
+
 	public bool m_isPlayer = false;
 
 	public override void Die() {
@@ -14,3 +16,4 @@ public class Health_UD : BaseHealth {
 		}
 	}
 }
+

@@ -14,10 +14,12 @@ public class AIController_UD : MonoBehaviour {
 	private m_states m_currentState = m_states.MOVING_TO_WP;
 	private Transform m_target;
 	private bool m_isAttacking = false;
+	private SoundManager_UD m_sound;
 
 	private void Start() {
 		m_health = GetComponent<Health_UD>();
 		m_movement = GetComponent<NavWaypointAI_UD>();
+		m_sound = GetComponent<SoundManager_UD>();
 	}
 
 	private void Update() {
@@ -111,7 +113,7 @@ public class AIController_UD : MonoBehaviour {
 
 			break;
 			case m_states.ATTACKING:
-
+				m_sound.PlaySound(1);
 			break;
 			case m_states.STUNNED:
 
@@ -125,6 +127,7 @@ public class AIController_UD : MonoBehaviour {
 				m_movement.Reset();
 				m_currentState = m_states.MOVING_TO_WP;
 				m_health.Die();
+				m_sound.PlaySound(0);
 			break;
 			default:
 				Debug.LogError("Unknown state");

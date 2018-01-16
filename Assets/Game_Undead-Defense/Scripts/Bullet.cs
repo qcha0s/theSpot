@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 	private Rigidbody m_rb;
+	private SoundManager_UD m_sound;
 	public float m_splashRad = 0f;
 	public Rigidbody RBody { get{ return m_rb;} }
 	public float m_speed = 70f;
@@ -14,6 +15,7 @@ public class Bullet : MonoBehaviour {
 
 	private void Awake() {
 		m_rb = GetComponent<Rigidbody>();
+		m_sound = GetComponent<SoundManager_UD>();
 	}
 	
 	void Update () {
@@ -58,5 +60,10 @@ public class Bullet : MonoBehaviour {
 			yield return null;
 		}
 		gameObject.SetActive(false);
+	}
+
+	private void OnEnable() {
+		m_sound.PlayShootSound();
+		Debug.Log("Hello Hello");
 	}
 }
