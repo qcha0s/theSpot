@@ -6,7 +6,9 @@ TagManager:
   tags:
   - paddle
   - Interactable
-  - PlayerBase
+  - target
+  - projectile
+  - pickup
   layers:
   - Default
   - TransparentFX
@@ -16,12 +18,12 @@ TagManager:
   - UI
   - 
   - 
-  - Enemies_UD
-  - Projectiles_UD
-  - EnemySensors_UD
-  - Player_UD
-  - Terrain_UD
-  - PlayerSensors_UD
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

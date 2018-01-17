@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface InteractableObject_UD {
+public abstract class InteractableObject_UD : MonoBehaviour {
 
-	void Interact();
-	void OnBeginRaycast();
-	void OnEndRaycast();
+	public abstract void Interact();
+	public abstract void OnBeginRaycast();
+	public abstract void OnEndRaycast();
 }

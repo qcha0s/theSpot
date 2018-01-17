@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4207762715248894}
   - component: {fileID: 212070368000851732}
+  - component: {fileID: 114113861658544580}
   - component: {fileID: 54333411550606644}
   - component: {fileID: 135751171299385590}
-  - component: {fileID: 114021827426027944}
   m_Layer: 0
   m_Name: Paddle_Red
   m_TagString: paddle
@@ -58,7 +58,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 2
---- !u!114 &114021827426027944
+--- !u!114 &114113861658544580
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,18 +66,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174592498536786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8f62595f2cba1418c302c2a003101a, type: 3}
+  m_Script: {fileID: 11500000, guid: 712133d61d1c8e545bddda8ae790017e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 50
+  speed: 40
 --- !u!135 &135751171299385590
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174592498536786}
-  m_Material: {fileID: 13400000, guid: 538cc45af11e5324786723d6a3ded3a7, type: 2}
+  m_Material: {fileID: 13400000, guid: cccae7f6294d6db4abd34a7f85c19809, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 619bf6ef0f974814eba589422255777d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ddfc02fe3caf0e4d91d57c16b2d4ac9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
