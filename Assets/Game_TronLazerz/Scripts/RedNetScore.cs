@@ -6,10 +6,15 @@ public class RedNetScore : MonoBehaviour {
 
 	public ScoreManager m_sm;
 
+	void Awake(){
+			m_sm = GetComponentInParent<ScoreManager>();
+		}
+		
 	void OnTriggerEnter(Collider other){
-		if(gameObject.tag == "Player"){
-			Destroy(gameObject);
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "goal"){
+			Destroy(other.gameObject);
 			m_sm.scored_Blue = true;
+			m_sm.m_goal = true;
 		}
 	}
 }
