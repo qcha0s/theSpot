@@ -14,6 +14,7 @@ public class BS_testmove : MonoBehaviour {
 	
     public Transform bulletSpawn;
 	public int multiplier = 1;
+	public Rigidbody rb;
 	private float multiplyTimer = 0;
 	private BS_Ultimate m_Ulty;
 	// Use this for initialization
@@ -48,11 +49,11 @@ public class BS_testmove : MonoBehaviour {
 			Destroy(bullet, 2.0f);
 				}
 		if(Input.GetAxis("Vertical")!=0){
-			transform.position += transform.forward * 20 * Input.GetAxis("Vertical") * Time.deltaTime;
+			rb.transform.position += rb.transform.forward * 20 * Input.GetAxis("Vertical") * Time.deltaTime;
 		}
 		if(Input.GetAxis("Horizontal")!=0){
 			
-			transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * 40 * Time.deltaTime);
+			rb.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * 40 * Time.deltaTime);
 		}
 		
 

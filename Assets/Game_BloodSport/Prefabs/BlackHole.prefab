@@ -23,7 +23,9 @@ GameObject:
   - component: {fileID: 199506186680996646}
   - component: {fileID: 54033668637534284}
   - component: {fileID: 136748143271361874}
-  - component: {fileID: 114723139238973260}
+  - component: {fileID: 114514328734468490}
+  - component: {fileID: 114556771409998232}
+  - component: {fileID: 114825569193255442}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Untagged
@@ -132,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114723139238973260
+--- !u!114 &114514328734468490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -140,11 +142,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043374010941776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f05c4bd00ab8b43825ef4b9425ba8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8765b3c38073983478fd7e211a0e3fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_pullRadius: 10
-  m_pullForce: 200
+  m_pullForce: 3
+--- !u!114 &114556771409998232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043374010941776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 97
+    i1: 147
+    i2: 186
+    i3: 218
+    i4: 253
+    i5: 206
+    i6: 32
+    i7: 228
+    i8: 26
+    i9: 168
+    i10: 127
+    i11: 134
+    i12: 250
+    i13: 125
+    i14: 22
+    i15: 171
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114825569193255442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043374010941776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135695068238055782
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -230,7 +285,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -35128451
+  randomSeed: 1668336853
   InitialModule:
     serializedVersion: 3
     enabled: 1

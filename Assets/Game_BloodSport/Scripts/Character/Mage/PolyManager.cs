@@ -17,6 +17,7 @@ public class PolyManager : MonoBehaviour {
 	public void SetPoly() {
 		if(!m_isPolyd) {
 			m_isPolyd = true;
+			m_sheep.transform.position = m_player.transform.position;
 			SetActives(false, true);
 			StartCoroutine(PolyDuration(m_polyDuration));
 		}
