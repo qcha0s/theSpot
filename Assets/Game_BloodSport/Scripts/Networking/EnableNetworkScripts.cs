@@ -18,8 +18,9 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	public GameObject m_overallWarrior;
 	public GameObject m_overallRogue;
 	public GameObject m_overallHunter;
+	public GameObject m_characterSelect;
 	public NetworkAnimator m_netAnim;
-
+	
 	private int m_animCounter = 0;
 	private int m_mageWarriorNum = 8;
 	private int m_rogueHunterNum = 7;
@@ -31,19 +32,26 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	}
 	
 	public override void OnStartLocalPlayer() {
+		this.gameObject.SetActive(true);
+		m_characterSelect.SetActive(true);
 		//m_netAnim.enabled = true;
+		
+	}
+	public void PickCharacter(int character){
 		switch(m_chosenChar) {
 			case 0:
 				m_mage.GetComponent<BS_Mage>().enabled = true;
 				m_mage.GetComponent<RPGCharacterController>().enabled = true;
 				//m_currAnimator = m_mage.GetComponent<Animator>();
 				m_animCounter = m_mageWarriorNum;
+				EnableCharacter(0);
 				break;
 			case 1:
 				m_warrior.GetComponent<BS_Warrior>().enabled = true;
 				m_warrior.GetComponent<RPGCharacterController>().enabled = true;
 				//m_currAnimator = m_warrior.GetComponent<Animator>();
 				m_animCounter = m_mageWarriorNum;
+				EnableCharacter(1);
 				//m_overallWarrior.SetActive(true);
 				break;
 			case 2:
@@ -51,23 +59,25 @@ public class EnableNetworkScripts : NetworkBehaviour {
 				m_rogue.GetComponent<RPGCharacterController>().enabled = true;
 				//m_currAnimator = m_rogue.GetComponent<Animator>();
 				m_animCounter = m_rogueHunterNum;
+				EnableCharacter(2);
 				//m_overallRogue.SetActive(true);
 				break;
 			case 3:
 				m_hunter.GetComponent<BS_Hunter>().enabled = true;
 				m_hunter.GetComponent<RPGCharacterController>().enabled = true;
 				//m_currAnimator = m_hunter.GetComponent<Animator>();
-				m_animCounter = m_rogueHunterNum;
+				m_animCounter = m_rogueHunterNum;	
+				EnableCharacter(3);
 				//m_overallHunter.SetActive(true);
 				break;
 			default:
 				Debug.Log("Char not found");
 				break;
 		}
+		m_characterSelect.SetActive(false);
 		SetAnimator();	
 	}
-
-	void Start() {
+	public void EnableCharacter(int character) {
 		m_currAnimator = GetComponent<Animator>();
 		switch(m_chosenChar) {
 			case 0:
